@@ -15,7 +15,7 @@ int main()
         }
 
         window.clear(sf::Color::White);
-        Line(100, 20).draw(window);
+        Line(sf::Vector2f(20 + clock() * 10.0 / CLOCKS_PER_SEC, 30), sf::Vector2f(145, 5)).draw(window);
         window.display();
     }
 
