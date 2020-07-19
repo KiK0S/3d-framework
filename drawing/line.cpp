@@ -1,3 +1,4 @@
+#pragma once
 #include <SFML/Graphics.hpp>
 #include <cmath>
 
@@ -26,5 +27,5 @@ class Line {
     double length_;
     double angle_;
     sf::Vector2f offset_;
-    const double WIDTH = 5.0f;
+    const double WIDTH = 0.5f;
 };
