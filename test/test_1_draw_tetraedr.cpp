@@ -6,7 +6,7 @@
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(200, 200), "Test 1: draw tetraedr");
+    sf::RenderWindow window(sf::VideoMode(1000, 1000), "Test 1: draw tetraedr");
 
     while (window.isOpen())
     {
@@ -19,10 +19,10 @@ int main()
 
         window.clear(sf::Color::White);
         std::vector<Line> to_draw = Tetraedr<>(
-            Point3d<>(10, 10, 10),
-            Point3d<>(20, 40, 35),
-            Point3d<>(140, 90, 60),
-            Point3d<>(50, 50, -10)
+            Point3d<>(100, 100, 10),
+            Point3d<>(200, 400, 35),
+            Point3d<>(140, 900, 60),
+            Point3d<>(500, 500, -10)
         ).lines();
         for (auto& line : to_draw) {
             line.draw(window);

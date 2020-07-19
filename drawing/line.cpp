@@ -10,6 +10,7 @@ class Line {
     Line(const sf::Vector2f& start, const sf::Vector2f& finish) {
         offset_ = start;
         sf::Vector2f vector = finish - start;
+        sf::Vector2f norm(-vector.y, vector.x);
         length_ = std::sqrt(vector.x * vector.x + vector.y * vector.y);
         angle_ = std::atan2(vector.y, vector.x) * 180 / atan2(0, -1);
         if (angle_ < 0) {
@@ -27,5 +28,5 @@ class Line {
     double length_;
     double angle_;
     sf::Vector2f offset_;
-    const double WIDTH = 0.5f;
+    const float WIDTH = 1.5f;
 };
