@@ -19,12 +19,6 @@ int main()
         Point3d<>(140, 900, 60),
         Point3d<>(500, 500, -10)
     ));
-    frame.addTetraedr(Tetraedr<>(
-        Point3d<>(900, 10, 10),
-        Point3d<>(500, 890, 35),
-        Point3d<>(100, 300, 60),
-        Point3d<>(20, 600, -10)
-    ));
     frame.addCamera(Camera());
     while (window.isOpen())
     {
@@ -35,6 +29,7 @@ int main()
                 window.close();
         }
         frame.update();
+        frame.camera_.move_camera();
         std::this_thread::sleep_for(std::chrono::milliseconds(50));
     }
 

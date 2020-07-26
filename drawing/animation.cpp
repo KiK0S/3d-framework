@@ -2,6 +2,7 @@
 #include <vector>
 #include "../objects/tetraedr.cpp"
 #include "../logger/log.cpp"
+#include "../camera/camera.cpp"
 
 class Frame {
   public:
@@ -14,8 +15,9 @@ class Frame {
         logger::debug("frame " + std::to_string(frame_));
         int frame_number = frame_ % FRAMES_PER_STEP;
         Tetraedr<> to_show = (frame_number * next + (FRAMES_PER_STEP - frame_number) * current) / FRAMES_PER_STEP;
-        for (auto& line : to_show.lines()) {
-            line.draw(window_);
+        for (auto& line3d : to_show.lines()) {
+            Line2d line2d = camera_.projectLine(line3d);
+            line2d.draw(window_);
         }
         window_.display();
         frame_++;
@@ -23,6 +25,10 @@ class Frame {
   	void addTetraedr(Tetraedr<> t) {
   	    steps_.push_back(t);
   	}
+    void addCamera(Camera camera) {
+       camera_ = camera;
+    }
+    Camera camera_;
   private:
   	std::vector<Tetraedr<>> steps_;
   	sf::RenderWindow& window_;

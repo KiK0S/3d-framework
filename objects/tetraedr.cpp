@@ -4,21 +4,32 @@
 #include "point.cpp"
 #include "../camera/camera.cpp"
 #include <vector>
+#include <utility>
 
 
 template <typename T = double>
-class Tetraedr {
+class WireObject {
+  public:
+    virtual WireObject();
+  private:
+    std::vector<Point4d<T>> points;
+    std::vector<std::pair<int, int>>
+};
+
+
+template <typename T = double>
+class Tetraedr : WireObject {
   public:
   	Tetraedr() = delete;
-  	Tetraedr(Point3d<T> a, Point3d<T>b, Point3d<T> c, Point3d<T> d): a(a), b(b), c(c), d(d) {}
-  	std::vector<Line> lines() {
-  		std::vector<Line> result;
-  		result.push_back(Camera::projectLine(a, b));
-  		result.push_back(Camera::projectLine(c, b));
-  		result.push_back(Camera::projectLine(a, c));
-  		result.push_back(Camera::projectLine(a, d));
-  		result.push_back(Camera::projectLine(c, d));
-  		result.push_back(Camera::projectLine(b, d));
+    Tetraedr(Point4d<T> a, Point4d<T>b, Point4d<T> c, Point4d<T> d): a(a), b(b), c(c), d(d) {}
+  	std::vector<Line4d<T>> lines() {
+  		std::vector<Line4d<T>> result;
+  		result.emplace_back(a, b);
+      result.emplace_back(c, d);
+      result.emplace_back(a, c);
+      result.emplace_back(a, d);
+      result.emplace_back(c, b);
+      result.emplace_back(b, d);
   		return result;
   	}
   	Tetraedr operator +(const Tetraedr& t) const {
@@ -30,14 +41,12 @@ class Tetraedr {
     Tetraedr operator /(float f) const {
       return (*this) * (1 / f);
     }
-    
-    
 
   private:
-  	Point3d<T> a;
-  	Point3d<T> b;
-  	Point3d<T> c;
-  	Point3d<T> d;
+  	Point4d<T> a;
+  	Point4d<T> b;
+  	Point4d<T> c;
+  	Point4d<T> d;
 };
 
 template<typename T>
