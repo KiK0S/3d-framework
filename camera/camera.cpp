@@ -4,6 +4,7 @@
 #include "../objects/point.cpp"
 #include <SFML/Graphics.hpp>
 #include "../matrix/matrix.cpp"
+#include <cmath>
 
 class Camera {
   public:
@@ -44,15 +45,14 @@ class Camera {
 		camera_ = moving * camera_;
 		transform_ = moving * transform_;
 	}
-	void rotate_camera(Vector4d v) {
+	void rotate_camera(double angle, int fixed_coord) {
 		Matrix4d moving;
-		moving[0][0] = 1;
-		moving[1][1] = v.y;
-		moving[2][2] = v.y;
+		moving[fixed_coord][fixed_coord] = 1;
+		moving[(fixed_coord + 1) % 3][(fixed_coord + 1) % 3] = std::cos(angle);
+		moving[(fixed_coord + 2) % 3][(fixed_coord + 2) % 3] = std::cos(angle);
+		moving[(fixed_coord + 1) % 3][(fixed_coord + 2) % 3] = std::sin(angle);
+		moving[(fixed_coord + 2) % 3][(fixed_coord + 1) % 3] = -std::sin(angle);
 		moving[3][3] = 1;
-		moving[1][2] = v.x;
-		moving[2][1] = -v.x;
-		
 		camera_ = moving * camera_;
 		transform_ = moving * transform_;
 	}

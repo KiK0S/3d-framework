@@ -11,7 +11,7 @@ class Frame {
   	void update() {
   		  window_.clear(sf::Color::White);
   		  Tetraedr<> current = steps_[getStep()];
-        Tetraedr<> next = steps_[getNextStep()];
+        Tetraedr<> next =  steps_[getNextStep()];
         logger::debug("frame " + std::to_string(frame_));
         int frame_number = frame_ % FRAMES_PER_STEP;
         Tetraedr<> to_show = (frame_number * next + (FRAMES_PER_STEP - frame_number) * current) / FRAMES_PER_STEP;
@@ -22,7 +22,7 @@ class Frame {
         window_.display();
         frame_++;
   	}
-  	void addTetraedr(Tetraedr<> t) {
+  	void addObject(Tetraedr<> t) {
   	    steps_.push_back(t);
   	}
     void addCamera(Camera camera) {

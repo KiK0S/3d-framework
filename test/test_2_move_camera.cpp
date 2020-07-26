@@ -29,7 +29,7 @@ int main()
                 window.close();
         }
         frame.update();
-        frame.camera_.move_camera();
+        frame.camera_.rotate_camera(0.01, 0);
         std::this_thread::sleep_for(std::chrono::milliseconds(50));
     }
 
