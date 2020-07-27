@@ -56,9 +56,15 @@ class Camera {
 		camera_ = moving * camera_;
 		transform_ = moving * transform_;
 	}
+	void draw_axis(sf::RenderWindow& window) {
+		for (int i = 0; i < 3; i++) {
+			projectLine(Line4d(Vector4d(0, 0, 0), AXIS[i])).draw(window, COLORS[i]);
+		}
+	}
   private:
   	Point4d<> camera_;
   	Point4d<> focal_point_;
   	Matrix4d transform_;
-  	const Vector4d AXIS[2] = {Vector4d(1, 0, 0), Vector4d(0, 1, 0)};
+  	const Vector4d AXIS[3] = {Vector4d(100, 0, 0), Vector4d(0, 100, 0), Vector4d(0, 0, 100)};
+  	const sf::Color COLORS[3] = {sf::Color::Green, sf::Color::Red, sf::Color::Blue};
 };

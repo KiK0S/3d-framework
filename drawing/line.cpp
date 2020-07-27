@@ -18,9 +18,9 @@ class Line2d {
             angle_ += 360;
         }
     }
-    void draw(sf::RenderWindow & window) {
+    void draw(sf::RenderWindow & window, sf::Color color = sf::Color::Black) {
         sf::RectangleShape shape(sf::Vector2f(length_, WIDTH));
-        shape.setFillColor(sf::Color::Black);
+        shape.setFillColor(color);
         shape.setRotation(angle_);
         shape.setPosition(offset_);
         window.draw(shape);

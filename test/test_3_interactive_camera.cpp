@@ -39,16 +39,16 @@ int main()
             frame.camera_.move_camera(Vector4d(1, 0, 0));
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
-            frame.camera_.move_camera(Vector4d(0, 1, 0));
-        }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
             frame.camera_.move_camera(Vector4d(0, -1, 0));
         }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
+            frame.camera_.move_camera(Vector4d(0, 1, 0));
+        }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-            frame.camera_.rotate_camera(0.01, 1);
+            frame.camera_.rotate_camera(-0.01, 1);
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
-            frame.camera_.rotate_camera(-0.01, 1);
+            frame.camera_.rotate_camera(0.01, 1);
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
             frame.camera_.rotate_camera(0.01, 0);

@@ -19,6 +19,7 @@ class Frame {
             Line2d line2d = camera_.projectLine(line3d);
             line2d.draw(window_);
         }
+        camera_.draw_axis(window_);
         window_.display();
         frame_++;
   	}
