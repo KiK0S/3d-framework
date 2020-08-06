@@ -1,10 +1,11 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
-#include "../drawing/line.cpp"
-#include "../objects/point.cpp"
-#include "../objects/tetraedr.cpp"
-#include "../drawing/animation.cpp"
-#include "../camera/camera.cpp"
+#include "../src/line.cpp"
+#include "../src/point.cpp"
+#include "../src/tetraedr.cpp"
+#include "../src/animation.cpp"
+#include "../src/camera.cpp"
+#include "../src/matrix.cpp"
 #include <vector>
 #include <chrono>
 #include <thread>
@@ -17,12 +18,11 @@ int main()
 {
     sf::RenderWindow window(sf::VideoMode(WINDOW_SIZE, WINDOW_SIZE), "Test 3: interacrtive camera");
     Frame frame(window);
-    frame.addObject(Tetraedr<>(
-        Point3d<>(100, 100, 10),
-        Point3d<>(200, 400, 35),
-        Point3d<>(140, 900, 600),
-        Point3d<>(500, 500, -10)
-    ));
+    Tetraedr<double> tetraedr(Point3d<double>(100, 100, 10),
+        Point3d<double>(200, 400, 35),
+        Point3d<double>(140, 900, 600),
+        Point3d<double>(500, 500, -10));
+    frame.addObject(tetraedr);
     frame.addCamera(Camera());
     while (window.isOpen())
     {
