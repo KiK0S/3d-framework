@@ -2,7 +2,7 @@
 #include <iostream>
 
 
-namespace logger {
+namespace app {
 	void debug(const std::string& s) {
 		if (!DEBUG) {
 			return;

@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
 
-namespace logger {
+namespace app {
 	const bool DEBUG = false;
 
 	void debug(const std::string& s);

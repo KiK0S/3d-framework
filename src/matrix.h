@@ -4,18 +4,20 @@
 #include <vector>
 #include "point.h"
 
-template <size_t N, size_t M>
-class Matrix {
-  public:
-    Matrix();
-    std::vector<double>& operator[] (size_t n);
-    const std::vector<double>& operator[] (size_t n) const ;
-    template <size_t K>
-    Matrix<N, K> operator * (Matrix<M, K> other) const ;
-    Vector4d operator *(Vector4d other) const ;
-  private:
-    std::vector<std::vector<double>> data_;
-};
+namespace app {
+	template <size_t N, size_t M>
+	class Matrix {
+	  public:
+	    Matrix();
+	    std::vector<double>& operator[] (size_t n);
+	    const std::vector<double>& operator[] (size_t n) const ;
+	    template <size_t K>
+	    Matrix<N, K> operator * (Matrix<M, K> other) const ;
+	    Vector4d operator *(Vector4d other) const ;
+	  private:
+	    std::vector<std::vector<double>> data_;
+	};
 
-using Matrix3d = Matrix<3, 3>;
-using Matrix4d = Matrix<4, 4>;
+	using Matrix3d = Matrix<3, 3>;
+	using Matrix4d = Matrix<4, 4>;
+}
