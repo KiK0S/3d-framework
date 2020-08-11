@@ -15,25 +15,21 @@
 #include <cmath>
 
 
-const int WINDOW_SIZE = 1000;
-
-int main()
-{
+int main() {
     app::Screen screen;
     app::Tetraedr<double> tetraedr(app::Point3d<double>(100, 100, 10),
-        app::Point3d<double>(200, 400, 35),
-        app::Point3d<double>(140, 900, 600),
-        app::Point3d<double>(500, 500, -10));
+                                   app::Point3d<double>(200, 400, 35),
+                                   app::Point3d<double>(140, 900, 600),
+                                   app::Point3d<double>(500, 500, -10));
     app::Cube<double> cube;
-    // screen.frame_->addObject(tetraedr);
-    screen.frame_->addObject(cube);
-    while (screen.window_.isOpen())
-    {
+    // screen.frame_->add_object(tetraedr);
+    screen.frame_->add_object(cube);
+    while (screen.window_.isOpen()) {
         sf::Event event;
-        while (screen.window_.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
+        while (screen.window_.pollEvent(event)) {
+            if (event.type == sf::Event::Closed) {
                 screen.window_.close();
+            }
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
             screen.move_camera(app::Vector4d(-1, 0, 0));

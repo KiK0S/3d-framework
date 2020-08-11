@@ -5,31 +5,31 @@
 #include <vector>
 
 namespace app {
-    Frame::Frame(Screen& screen): screen_(screen) {
-        color_.assign(screen_.SCREEN_SIZE, std::vector<bool>(screen_.SCREEN_SIZE));
+Frame::Frame(Screen& screen): screen_(screen) {
+    color_.assign(screen_.SCREEN_SIZE, std::vector<bool>(screen_.SCREEN_SIZE));
+}
+void Frame::update() {
+    for (const auto& current : objects_) {
+        for (auto& line3d : current.lines()) {
+            screen_.draw(line3d);
+        }
     }
-    void Frame::update() {
-        for (const auto& current : objects_) {
-            for (auto& line3d : current.lines()) {
-                screen_.draw(line3d);
-            }
-        }
-        std::vector<sf::Vertex> data;
-        for (int i = 0; i < screen_.SCREEN_SIZE; i++) {
-            for (int j = 0; j < screen_.SCREEN_SIZE; j++) {
-                if (color_[i][j]) {
-                    data.push_back(sf::Vertex(sf::Vector2f(i, j), sf::Color::Black));
-                }
-            }
-        }
-        screen_.draw(data);
-        for (int i = 0; i < screen_.SCREEN_SIZE; i++) {
-            for (int j = 0; j < screen_.SCREEN_SIZE; j++) {
-                color_[i][j] = 0;
+    std::vector<sf::Vertex> data;
+    for (int i = 0; i < screen_.SCREEN_SIZE; i++) {
+        for (int j = 0; j < screen_.SCREEN_SIZE; j++) {
+            if (color_[i][j]) {
+                data.push_back(sf::Vertex(sf::Vector2f(i, j), sf::Color::Black));
             }
         }
     }
-    void Frame::addObject(WireObject<>& t) {
-        objects_.push_back(t);
+    screen_.draw(data);
+    for (int i = 0; i < screen_.SCREEN_SIZE; i++) {
+        for (int j = 0; j < screen_.SCREEN_SIZE; j++) {
+            color_[i][j] = 0;
+        }
     }
+}
+void Frame::add_object(WireObject<>& t) {
+    objects_.push_back(t);
+}
 }
