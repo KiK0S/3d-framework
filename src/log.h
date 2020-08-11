@@ -2,7 +2,7 @@
 #include <string>
 
 namespace app {
-	const bool DEBUG = false;
+	const bool DEBUG = true;
 
 	void debug(const std::string& s);
 };

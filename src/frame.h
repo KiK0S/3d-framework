@@ -13,11 +13,12 @@ namespace app {
     class Frame {
       public:
         Frame() = delete;
-        Frame(Screen& screen): screen_(screen) {}
+        Frame(Screen& screen);
         void update();
         void addObject(WireObject<>& w);
         Screen& screen_;
-      private:
+      // private:
+        std::vector<std::vector<bool>> color_;
         std::vector<WireObject<>> objects_;
     };
 }

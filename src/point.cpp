@@ -1,4 +1,5 @@
 #include "point.h"
+#include <cmath>
 
 namespace app {
 	template <typename T>
@@ -46,5 +47,9 @@ namespace app {
 	template <typename T>
 	Point4d<T> Point4d<T>::operator / (float f) const {
 		return (*this) * (1 / f);
+	}
+	template <typename T>
+	double Point4d<T>::length() const {
+		return std::sqrt(x * x + y * y + z * z);
 	}
 }

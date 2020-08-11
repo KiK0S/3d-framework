@@ -30,6 +30,7 @@ namespace app {
 		Point4d operator - (const Point4d& p) const ;
 		Point4d operator * (float f) const ;
 		Point4d operator / (float f) const ;
+		double length() const ;
 	};
 
 	using Vector4d = Point4d<double>;
