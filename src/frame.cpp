@@ -2,6 +2,7 @@
 #include "screen.h"
 #include "wire_object.h"
 #include "log.h"
+#include <vector>
 
 namespace app {
     Frame::Frame(Screen& screen): screen_(screen) {
@@ -10,17 +11,18 @@ namespace app {
     void Frame::update() {
         for (const auto& current : objects_) {
             for (auto& line3d : current.lines()) {
-                Line4d<double> line2d = screen_.camera_->projectLine(line3d);
-                screen_.draw(line2d);
+                screen_.draw(line3d);
             }
         }
+        std::vector<sf::Vertex> data;
         for (int i = 0; i < screen_.SCREEN_SIZE; i++) {
             for (int j = 0; j < screen_.SCREEN_SIZE; j++) {
                 if (color_[i][j]) {
-                    screen_.draw(sf::Vertex(sf::Vector2f(i, j), sf::Color::Black));
+                    data.push_back(sf::Vertex(sf::Vector2f(i, j), sf::Color::Black));
                 }
             }
         }
+        screen_.draw(data);
         for (int i = 0; i < screen_.SCREEN_SIZE; i++) {
             for (int j = 0; j < screen_.SCREEN_SIZE; j++) {
                 color_[i][j] = 0;

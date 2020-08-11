@@ -1,6 +1,7 @@
 #include "screen.h"
 #include "matrix.h"
 #include "log.h"
+#include <vector>
 
 namespace app {
 	Screen::Screen(): frame_(new Frame(*this)), camera_(new Camera(*this)), window_(sf::VideoMode(1000, 1000), "Test 3: interacrtive camera") {}
@@ -18,15 +19,20 @@ namespace app {
         sf::Vertex data[] = {pixel};
         window_.draw(data, 1, sf::Points);
     }
+    void Screen::draw(std::vector<sf::Vertex>& data) {
+        sf::Vertex* ptr = &data[0];
+        window_.draw(ptr, data.size(), sf::Points);
+    }
+
     template<typename T>
 	void Screen::draw(Line4d<T> line) {
         Vector4d a = line.start_;
         Vector4d b = line.finish_ - line.start_;
-        int raster_parameter = 50;
+        int raster_parameter = ceil(b.length() * 2);
         for (int i = 0; i <= raster_parameter; i++) {
             sf::Vector2f kek = camera_->projectPoint(a + b * i / raster_parameter) + center;
-            int x = int(kek.x);
-            int y = int(kek.y);
+            int x = round(kek.x);
+            int y = round(kek.y);
             // debug(std::to_string(x) + " " + std::to_string(y));
             if (x >= 0 && x < SCREEN_SIZE && y >= 0 && y < SCREEN_SIZE) {
                 frame_->color_[x][y] = 1;
@@ -66,7 +72,7 @@ namespace app {
     }
     void Screen::draw_axis() {
         for (int i = 0; i < 3; i++) {
-            draw(camera_->projectLine(Line4d<double>(Vector4d(0, 0, 0), AXIS[i])));
+            draw(Line4d<double>(Vector4d(0, 0, 0), AXIS[i]));
         }
     }
 }

@@ -6,6 +6,7 @@
 #include "camera.h"
 #include "frame.h"
 #include <SFML/Graphics.hpp>
+#include <vector>
 
 namespace app {
 	class Screen {
@@ -18,6 +19,7 @@ namespace app {
 		
 		void update() ;
 	    void draw(sf::Vertex pixel);
+	    void draw(std::vector<sf::Vertex>& data);
 	   	template <typename T>
 		void draw(Line4d<T> line);
 

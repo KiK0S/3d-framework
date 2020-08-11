@@ -18,8 +18,6 @@ namespace app {
       	template <typename T>
       	sf::Vector2f projectPoint(Point4d<T> p);
 
-    	template <typename T>
-    	Line4d<T> projectLine(Line4d<T> line);
 
       // private:
       	Screen& screen_;

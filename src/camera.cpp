@@ -23,9 +23,4 @@ namespace app {
 		}
 		return {0, 0};
 	}
-
-	template <typename T>
-	Line4d<T> Camera::projectLine(Line4d<T> line) {
-		return line;
-	}
 }
