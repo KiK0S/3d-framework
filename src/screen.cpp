@@ -22,7 +22,7 @@ namespace app {
 	void Screen::draw(Line4d<T> line) {
         Vector4d a = line.start_;
         Vector4d b = line.finish_ - line.start_;
-        int raster_parameter = 1000;
+        int raster_parameter = 50;
         for (int i = 0; i <= raster_parameter; i++) {
             sf::Vector2f kek = camera_->projectPoint(a + b * i / raster_parameter) + center;
             int x = int(kek.x);
