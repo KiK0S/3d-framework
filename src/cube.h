@@ -3,6 +3,7 @@
 #include "wire_object.h"
 
 namespace app {
+
 template <typename T = double>
 class Cube : public WireObject<T> {
 public:
@@ -30,4 +31,5 @@ public:
 
     const double SIZE = 200;
 };
+
 }

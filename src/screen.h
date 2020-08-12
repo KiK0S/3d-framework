@@ -9,6 +9,7 @@
 #include <vector>
 
 namespace app {
+
 class Screen {
 public:
     const int SCREEN_SIZE = 1000;
@@ -32,4 +33,5 @@ public:
     sf::RenderWindow window_;
     sf::Vector2f center = sf::Vector2f(SCREEN_SIZE / 2, SCREEN_SIZE / 2);
 };
+
 }

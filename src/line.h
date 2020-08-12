@@ -6,12 +6,14 @@
 
 
 namespace app {
+
 class Line2d {
 public:
     Line2d() = delete;
     Line2d(double length);
     Line2d(double length, double angle);
     Line2d(const sf::Vector2f& start, const sf::Vector2f& finish);
+
     sf::Color color_ = sf::Color::Black;
     double length_;
     double angle_;
@@ -34,4 +36,5 @@ public:
     Line4d(const Point4d<T>& start, const Point4d<T>& finish);
     Point4d<T> start_, finish_;
 };
+
 }

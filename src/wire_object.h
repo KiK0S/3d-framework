@@ -6,6 +6,7 @@
 #include "point.h"
 
 namespace app {
+
 template <typename T = double>
 class WireObject {
 public:
@@ -21,4 +22,5 @@ public:
     std::vector<Point4d<T>> points_;
     std::vector<std::pair<int, int>> edges_;
 };
+
 }

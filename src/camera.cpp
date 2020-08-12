@@ -1,6 +1,7 @@
 #include "camera.h"
 
 namespace app {
+
 Camera::Camera(Screen& screen): screen_(screen),
     camera_(Point4d<double>(0, 0, 0)) {
     transform_[0][0] = 1;
@@ -23,4 +24,5 @@ sf::Vector2f Camera::project_point(Point4d<T> p) {
     }
     return {0, 0};
 }
+
 }

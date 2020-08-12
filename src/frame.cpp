@@ -5,9 +5,11 @@
 #include <vector>
 
 namespace app {
+
 Frame::Frame(Screen& screen): screen_(screen) {
     color_.assign(screen_.SCREEN_SIZE, std::vector<bool>(screen_.SCREEN_SIZE));
 }
+
 void Frame::update() {
     for (const auto& current : objects_) {
         for (auto& line3d : current.lines()) {
@@ -29,7 +31,9 @@ void Frame::update() {
         }
     }
 }
+
 void Frame::add_object(WireObject<>& t) {
     objects_.push_back(t);
 }
+
 }

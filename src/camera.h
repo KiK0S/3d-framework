@@ -9,6 +9,7 @@
 #include "screen.h"
 
 namespace app {
+
 class Camera {
 public:
     Camera() = delete;
@@ -18,12 +19,11 @@ public:
     template <typename T>
     sf::Vector2f project_point(Point4d<T> p);
 
-
-    // private:
     Screen& screen_;
     Point4d<> camera_;
     Matrix4d transform_;
     double MAX_Z = 1000;
     double MIN_Z = -1000;
 };
+
 }

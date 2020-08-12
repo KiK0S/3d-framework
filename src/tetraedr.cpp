@@ -1,6 +1,7 @@
 #include "tetraedr.h"
 
 namespace app {
+
 template <typename T>
 Tetraedr<T>::Tetraedr(Point4d<T> a, Point4d<T>b, Point4d<T> c, Point4d<T> d): a(a), b(b), c(c), d(d) {
     WireObject<T>::points_ = {a, b, c, d};
@@ -33,4 +34,5 @@ template<typename T>
 const Tetraedr<T> operator * (float f, Tetraedr<T> t) {
     return t * f;
 }
+
 }

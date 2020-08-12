@@ -4,21 +4,26 @@
 #include <vector>
 
 namespace app {
+
 Screen::Screen(): frame_(new Frame(*this)), camera_(new Camera(*this)), window_(sf::VideoMode(1000, 1000), "Test 3: interacrtive camera") {}
+
 Screen::~Screen() {
     delete frame_;
     delete camera_;
 }
+
 void Screen::update() {
     window_.clear(sf::Color::White);
     frame_->update();
     draw_axis();
     window_.display();
 }
+
 void Screen::draw(sf::Vertex pixel) {
     sf::Vertex data[] = {pixel};
     window_.draw(data, 1, sf::Points);
 }
+
 void Screen::draw(std::vector<sf::Vertex>& data) {
     sf::Vertex* ptr = &data[0];
     window_.draw(ptr, data.size(), sf::Points);
@@ -38,6 +43,7 @@ void Screen::draw(Line4d<T> line) {
         }
     }
 }
+
 void Screen::move_camera(Vector4d v) {
     Matrix4d moving;
     moving[0][0] = 1;
@@ -53,6 +59,7 @@ void Screen::move_camera(Vector4d v) {
         }
     }
 }
+
 void Screen::rotate_camera(double angle, int fixed_coord) {
     Matrix4d moving;
     moving[fixed_coord][fixed_coord] = 1;
@@ -64,9 +71,11 @@ void Screen::rotate_camera(double angle, int fixed_coord) {
     camera_->camera_ = moving * camera_->camera_;
     camera_->transform_ = moving * camera_->transform_;
 }
+
 void Screen::draw_axis() {
     for (int i = 0; i < 3; i++) {
         draw(Line4d<double>(Vector4d(0, 0, 0), AXIS[i]));
     }
 }
+
 }

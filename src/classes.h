@@ -2,6 +2,7 @@
 #include <cstdlib>
 
 namespace app {
+
 class Screen;
 class Frame;
 class Camera;
