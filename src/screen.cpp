@@ -45,6 +45,7 @@ void Screen::draw(Line4d<T> line) {
 }
 
 void Screen::move_camera(Vector4d v) {
+    v = camera_->transform_.inverse() * v;
     Matrix4d moving;
     moving[0][0] = 1;
     moving[1][1] = 1;
@@ -68,6 +69,11 @@ void Screen::rotate_camera(double angle, int fixed_coord) {
     moving[(fixed_coord + 1) % 3][(fixed_coord + 2) % 3] = std::sin(angle);
     moving[(fixed_coord + 2) % 3][(fixed_coord + 1) % 3] = -std::sin(angle);
     moving[3][3] = 1;
+    // for (WireObject<>& wire_object : frame_->objects_) {
+    //     for (Vector4d& vertex : wire_object) {
+    //         vertex = moving * vertex;
+    //     }
+    // }
     camera_->camera_ = moving * camera_->camera_;
     camera_->transform_ = moving * camera_->transform_;
 }

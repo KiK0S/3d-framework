@@ -22,8 +22,8 @@ public:
     Screen& screen_;
     Point4d<> camera_;
     Matrix4d transform_;
-    double MAX_Z = 1000;
-    double MIN_Z = -1000;
+    double MAX_Z = 100000;
+    double MIN_Z = -100000;
 };
 
 }
