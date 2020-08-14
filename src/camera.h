@@ -17,8 +17,12 @@ public:
     Camera& operator = (const Camera& camera);
 
     template <typename T>
-    sf::Vector2f project_point(Point4d<T> p);
+    sf::Vector2f project_point(Point4d<T> p) const;
 
+    void apply_matrix(Matrix4d matrix);
+    Matrix4d inverse() const;
+
+private:
     Screen& screen_;
     Point4d<> camera_;
     Matrix4d transform_;

@@ -1,4 +1,5 @@
 #include "line.h"
+#include <cmath>
 
 namespace app {
 

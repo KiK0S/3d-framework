@@ -24,13 +24,17 @@ public:
     template <typename T>
     void draw(Line4d<T> line);
 
+    void add_object(WireObject<> w) const;
+
     void move_camera(Vector4d v);
     void rotate_camera(double angle, int fixed_coord);
     void draw_axis();
 
+    sf::RenderWindow window_;
+
+private:
     Frame* frame_;
     Camera* camera_;
-    sf::RenderWindow window_;
     sf::Vector2f center = sf::Vector2f(SCREEN_SIZE / 2, SCREEN_SIZE / 2);
 };
 

@@ -16,8 +16,17 @@ Camera& Camera::operator = (const Camera& camera) {
     return (*this);
 }
 
+void Camera::apply_matrix(Matrix4d matrix) {
+    camera_ = matrix * camera_;
+    transform_ = matrix* transform_;
+}
+
+Matrix4d Camera::inverse() const {
+    return transform_.inverse();
+}
+
 template <typename T>
-sf::Vector2f Camera::project_point(Point4d<T> p) {
+sf::Vector2f Camera::project_point(Point4d<T> p) const {
     p = transform_ * p;
     if (p.z / p.w + screen_.SCREEN_SIZE / 2 > MIN_Z && p.z / p.w + screen_.SCREEN_SIZE / 2 < MAX_Z) {
         return {p.x / p.w, p.y / p.w};

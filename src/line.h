@@ -1,7 +1,6 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
-#include <cmath>
 #include "point.h"
 
 
@@ -14,6 +13,7 @@ public:
     Line2d(double length, double angle);
     Line2d(const sf::Vector2f& start, const sf::Vector2f& finish);
 
+private:
     sf::Color color_ = sf::Color::Black;
     double length_;
     double angle_;

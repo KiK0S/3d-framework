@@ -25,6 +25,10 @@ void Frame::update() {
         }
     }
     screen_.draw(data);
+    clear();
+}
+
+void Frame::clear() {
     for (int i = 0; i < screen_.SCREEN_SIZE; i++) {
         for (int j = 0; j < screen_.SCREEN_SIZE; j++) {
             color_[i][j] = 0;
@@ -34,6 +38,18 @@ void Frame::update() {
 
 void Frame::add_object(WireObject<>& t) {
     objects_.push_back(t);
+}
+
+void Frame::set_pixel(int x, int y) {
+    color_[x][y] = 1;
+}
+
+std::vector<WireObject<>>::iterator Frame::begin() {
+    return objects_.begin();
+}
+
+std::vector<WireObject<>>::iterator Frame::end() {
+    return objects_.end();
 }
 
 }

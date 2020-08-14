@@ -8,7 +8,7 @@
 #include "matrix.cpp"
 #include "frame.cpp"
 #include "screen.cpp"
-#include "cube.h"
+#include "cube.cpp"
 #include <vector>
 #include <chrono>
 #include <thread>
@@ -22,8 +22,8 @@ int main() {
                                    app::Point3d<double>(140, 900, 600),
                                    app::Point3d<double>(500, 500, -10));
     app::Cube<double> cube;
-    // screen.frame_->add_object(tetraedr);
-    screen.frame_->add_object(cube);
+    screen.add_object(tetraedr);
+    screen.add_object(cube);
     while (screen.window_.isOpen()) {
         sf::Event event;
         while (screen.window_.pollEvent(event)) {
@@ -44,16 +44,24 @@ int main() {
             screen.move_camera(app::Vector4d(0, 1, 0));
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
+            screen.move_camera(app::Vector4d(0, 0, -100));
             screen.rotate_camera(-0.01, 1);
+            screen.move_camera(app::Vector4d(0, 0, 100));
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
+            screen.move_camera(app::Vector4d(0, 0, -100));
             screen.rotate_camera(0.01, 1);
+            screen.move_camera(app::Vector4d(0, 0, 100));
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
+            screen.move_camera(app::Vector4d(0, 0, -100));
             screen.rotate_camera(0.01, 0);
+            screen.move_camera(app::Vector4d(0, 0, 100));
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
+            screen.move_camera(app::Vector4d(0, 0, -100));
             screen.rotate_camera(-0.01, 0);
+            screen.move_camera(app::Vector4d(0, 0, 100));
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
             screen.window_.close();

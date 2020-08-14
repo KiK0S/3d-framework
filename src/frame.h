@@ -19,6 +19,13 @@ public:
     void update();
     void add_object(WireObject<>& w);
 
+    void set_pixel(int x, int y);
+    void clear();
+
+    std::vector<WireObject<>>::iterator begin();
+    std::vector<WireObject<>>::iterator end();
+
+private:
     Screen& screen_;
     std::vector<std::vector<bool>> color_;
     std::vector<WireObject<>> objects_;

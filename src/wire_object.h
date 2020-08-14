@@ -18,7 +18,7 @@ public:
     typename std::vector<Point4d<T>>::iterator end() {
         return points_.end();
     }
-    // protected:
+protected:
     std::vector<Point4d<T>> points_;
     std::vector<std::pair<int, int>> edges_;
 };

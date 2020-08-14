@@ -39,13 +39,13 @@ void Screen::draw(Line4d<T> line) {
         int x = round(kek.x);
         int y = round(kek.y);
         if (x >= 0 && x < SCREEN_SIZE && y >= 0 && y < SCREEN_SIZE) {
-            frame_->color_[x][y] = 1;
+            frame_->set_pixel(x, y);
         }
     }
 }
 
 void Screen::move_camera(Vector4d v) {
-    v = camera_->transform_.inverse() * v;
+    v = camera_->inverse() * v;
     Matrix4d moving;
     moving[0][0] = 1;
     moving[1][1] = 1;
@@ -54,11 +54,15 @@ void Screen::move_camera(Vector4d v) {
     moving[0][3] = v.x;
     moving[1][3] = v.y;
     moving[2][3] = v.z;
-    for (WireObject<>& wire_object : frame_->objects_) {
+    for (WireObject<>& wire_object : *frame_) {
         for (Vector4d& vertex : wire_object) {
             vertex = moving * vertex;
         }
     }
+}
+
+void Screen::add_object(WireObject<> w) const {
+    frame_->add_object(w);
 }
 
 void Screen::rotate_camera(double angle, int fixed_coord) {
@@ -69,13 +73,7 @@ void Screen::rotate_camera(double angle, int fixed_coord) {
     moving[(fixed_coord + 1) % 3][(fixed_coord + 2) % 3] = std::sin(angle);
     moving[(fixed_coord + 2) % 3][(fixed_coord + 1) % 3] = -std::sin(angle);
     moving[3][3] = 1;
-    // for (WireObject<>& wire_object : frame_->objects_) {
-    //     for (Vector4d& vertex : wire_object) {
-    //         vertex = moving * vertex;
-    //     }
-    // }
-    camera_->camera_ = moving * camera_->camera_;
-    camera_->transform_ = moving * camera_->transform_;
+    camera_->apply_matrix(moving);
 }
 
 void Screen::draw_axis() {
