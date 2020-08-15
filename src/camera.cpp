@@ -34,4 +34,13 @@ sf::Vector2f Camera::project_point(Point4d<T> p) const {
     return {0, 0};
 }
 
+template <typename T>
+double Camera::get_z_value(Point4d<T> p) const {
+    p = transform_ * p;
+    if (p.z / p.w + screen_.SCREEN_SIZE / 2 > MIN_Z && p.z / p.w + screen_.SCREEN_SIZE / 2 < MAX_Z) {
+        return p.z / p.w;
+    }
+    return screen_.SCREEN_SIZE * 10;
+}
+
 }

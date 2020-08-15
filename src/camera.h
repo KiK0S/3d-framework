@@ -18,6 +18,8 @@ public:
 
     template <typename T>
     sf::Vector2f project_point(Point4d<T> p) const;
+    template <typename T>
+    double get_z_value(Point4d<T> p) const;
 
     void apply_matrix(Matrix4d matrix);
     Matrix4d inverse() const;

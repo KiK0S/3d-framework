@@ -37,4 +37,6 @@ public:
 using Vector3d = Point3d<double>;
 using Vector4d = Point4d<double>;
 
+double cross(const sf::Vector2f& a, const sf::Vector2f& b);
+
 }

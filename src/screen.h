@@ -5,6 +5,7 @@
 #include "point.h"
 #include "camera.h"
 #include "frame.h"
+#include "triangle.h"
 #include <SFML/Graphics.hpp>
 #include <vector>
 
@@ -23,8 +24,10 @@ public:
     void draw(std::vector<sf::Vertex>& data);
     template <typename T>
     void draw(Line4d<T> line);
+    template <typename T>
+    void draw(Triangle4d<T> triangle);
 
-    void add_object(WireObject<> w) const;
+    void add_object(WireObject<>* w) const;
 
     void move_camera(Vector4d v);
     void rotate_camera(double angle, int fixed_coord);

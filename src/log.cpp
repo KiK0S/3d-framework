@@ -11,4 +11,18 @@ void debug(const std::string& s) {
     std::cerr << s << std::endl;
 }
 
+void debug(double d) {
+    if (!DEBUG) {
+        return;
+    }
+    std::cerr << d << std::endl;
+}
+
+void debug(sf::Vector2f v) {
+    if (!DEBUG) {
+        return;
+    }
+    std::cerr << v.x << ' ' << v.y << std::endl;
+}
+
 }

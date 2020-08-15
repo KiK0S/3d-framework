@@ -9,6 +9,9 @@
 #include "frame.cpp"
 #include "screen.cpp"
 #include "cube.cpp"
+#include "chair.cpp"
+#include "surface_object.cpp"
+#include "triangle.cpp"
 #include <vector>
 #include <chrono>
 #include <thread>
@@ -22,8 +25,10 @@ int main() {
                                    app::Point3d<double>(140, 900, 600),
                                    app::Point3d<double>(500, 500, -10));
     app::Cube<double> cube;
-    screen.add_object(tetraedr);
-    screen.add_object(cube);
+    app::Chair* chair = new app::Chair();
+    // screen.add_object(tetraedr);
+    // screen.add_object(cube);
+    screen.add_object(chair);
     while (screen.window_.isOpen()) {
         sf::Event event;
         while (screen.window_.pollEvent(event)) {

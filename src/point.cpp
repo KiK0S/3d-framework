@@ -62,4 +62,12 @@ double Point4d<T>::length() const {
     return std::sqrt(x * x + y * y + z * z);
 }
 
+double cross(const sf::Vector2f& a, const sf::Vector2f& b) {
+    return a.x * b.y - a.y * b.x;
+}
+
+double scalar(const sf::Vector2f& a, const sf::Vector2f& b) {
+    return a.x * b.x + a.y * b.y;
+}
+
 }
