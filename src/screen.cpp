@@ -34,8 +34,8 @@ template <typename T>
 void Screen::draw(Triangle4d<T> triangle) {
     Vector4d n = triangle.b - triangle.a;
     Vector4d m = triangle.c - triangle.a;
-    int raster_parameter_n = ceil(n.length() * 0.7);
-    int raster_parameter_m = ceil(m.length() * 0.7);
+    int raster_parameter_n = ceil(n.length() * 0.3);
+    int raster_parameter_m = ceil(m.length() * 0.3);
     Triangle2d triangle2d(camera_->project_point(triangle.a) + center, camera_->project_point(triangle.b) + center, camera_->project_point(triangle.c) + center);
     for (int i = 0; i <= raster_parameter_n; i++) {
         for (int j = 0; j <= raster_parameter_m; j++) {
@@ -108,12 +108,12 @@ void Screen::rotate_camera(double angle, int fixed_coord) {
     moving[(fixed_coord + 1) % 3][(fixed_coord + 2) % 3] = std::sin(angle);
     moving[(fixed_coord + 2) % 3][(fixed_coord + 1) % 3] = -std::sin(angle);
     moving[3][3] = 1;
-    for (WireObject<>* wire_object : *frame_) {
-        for (Vector4d& vertex : *wire_object) {
-            vertex = moving * vertex;
-        }
-    }
-    // camera_->apply_matrix(moving);
+    // for (WireObject<>* wire_object : *frame_) {
+    //     for (Vector4d& vertex : *wire_object) {
+    //         vertex = moving * vertex;
+    //     }
+    // }
+    camera_->apply_matrix(moving);
 }
 
 void Screen::draw_axis() {

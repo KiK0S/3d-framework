@@ -5,6 +5,9 @@
 
 Пример использования: test.cpp
 
+![Output sample](https://github.com/kik0s/3d-framework/raw/dima-review/chair.gif)
+
+
 Инструкция по запуску на Linux:
 `git clone --recurse-submodules git@github.com:kik0s/3d-framework.git`
 `mkdir build && cd build`
