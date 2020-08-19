@@ -10,25 +10,22 @@
 
 namespace app {
 
-template <typename T = double>
-class Tetraedr : public WireObject<T> {
+class Tetraedr : public WireObject {
 public:
-    Tetraedr() = delete;
-    Tetraedr(Point4d<T> a, Point4d<T>b, Point4d<T> c, Point4d<T> d);
-    ~Tetraedr();
+    Tetraedr(Point4d a, Point4d b, Point4d c, Point4d d);
+    ~Tetraedr() = default;
 
     Tetraedr operator +(const Tetraedr& t) const ;
     Tetraedr operator *(float f) const ;
     Tetraedr operator /(float f) const ;
 
 private:
-    Point4d<T> a;
-    Point4d<T> b;
-    Point4d<T> c;
-    Point4d<T> d;
+    Point4d a;
+    Point4d b;
+    Point4d c;
+    Point4d d;
 };
 
-template<typename T>
-const Tetraedr<T> operator * (float f, Tetraedr<T> t) ;
+const Tetraedr operator * (float f, Tetraedr t) ;
 
 }

@@ -1,11 +1,13 @@
 #pragma once
-#include <cstdlib>
 
 namespace app {
-
-class Screen;
 class Frame;
+class Screen;
 class Camera;
-template<size_t N, size_t M> class Matrix;
-
+class Matrix;
+class Point4d;
+class Line4d;
+class Triangle4d;
+class WireObject;
+class SurfaceObject;
 }

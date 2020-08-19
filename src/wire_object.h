@@ -7,25 +7,24 @@
 
 namespace app {
 
-template <typename T = double>
 class WireObject {
 public:
-    WireObject() {}
+    WireObject(std::vector<Point4d> points, std::vector<std::pair<int, int>> edges);
     virtual ~WireObject();
 
-    std::vector<Line4d<T>> lines() const;
-    Point4d<T> operator [](size_t index) const {
+    std::vector<Line4d> lines() const;
+    Point4d operator [](size_t index) const {
         return points_[index];
     }
 
-    typename std::vector<Point4d<T>>::iterator begin() {
+    typename std::vector<Point4d>::iterator begin() {
         return points_.begin();
     }
-    typename std::vector<Point4d<T>>::iterator end() {
+    typename std::vector<Point4d>::iterator end() {
         return points_.end();
     }
 protected:
-    std::vector<Point4d<T>> points_;
+    std::vector<Point4d> points_;
     std::vector<std::pair<int, int>> edges_;
 };
 

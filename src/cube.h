@@ -4,13 +4,13 @@
 
 namespace app {
 
-template <typename T = double>
-class Cube : public WireObject<T> {
+class Cube : WireObject {
 public:
     Cube();
+    ~Cube() = default;
 
 private:
-    const double SIZE = 200;
+    static constexpr double kSize_ = 200;
 };
 
 }

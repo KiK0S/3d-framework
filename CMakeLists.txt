@@ -7,7 +7,7 @@ set(SOURCE_EXE test/test.cpp)
 include_directories(src)
 include_directories(SFML)
 
-add_executable(3d-drawer ${SOURCE_EXE})
+add_executable(3d-drawer $ {SOURCE_EXE})
 
 add_subdirectory(src)
 add_subdirectory(SFML)

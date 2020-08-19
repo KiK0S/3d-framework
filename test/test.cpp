@@ -20,11 +20,11 @@
 
 int main() {
     app::Screen screen;
-    app::Tetraedr<double> tetraedr(app::Point3d<double>(100, 100, 10),
-                                   app::Point3d<double>(200, 400, 35),
-                                   app::Point3d<double>(140, 900, 600),
-                                   app::Point3d<double>(500, 500, -10));
-    app::Cube<double> cube;
+    app::Tetraedr tetraedr(app::Point4d(100, 100, 10),
+                           app::Point4d(200, 400, 35),
+                           app::Point4d(140, 900, 600),
+                           app::Point4d(500, 500, -10));
+    app::Cube cube;
     app::Chair* chair = new app::Chair();
     // screen.add_object(tetraedr);
     // screen.add_object(cube);

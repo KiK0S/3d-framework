@@ -6,8 +6,7 @@
 
 namespace app {
 
-template <typename T>
-Triangle4d<T>::Triangle4d(Point4d<T> a, Point4d<T> b, Point4d<T> c): a(a), b(b), c(c) {}
+Triangle4d::Triangle4d(Point4d a, Point4d b, Point4d c): a(a), b(b), c(c) {}
 
 Triangle2d::Triangle2d(sf::Vector2f a, sf::Vector2f b, sf::Vector2f c): a(a), b(b), c(c) {}
 

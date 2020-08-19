@@ -7,12 +7,16 @@
 
 namespace app {
 
-template<typename T = double>
-class SurfaceObject : public WireObject<T> {
-public:
-    SurfaceObject() {}
+class SurfaceObject : public WireObject {
+private:
+    struct Triplet;
 
-    std::vector<Triangle4d<T>> triangles() const;
+public:
+    SurfaceObject(std::vector<Point4d> points,
+                  std::vector<std::pair<int, int>> edges,
+                  std::vector<Triplet> triangles);
+
+    std::vector<Triangle4d> triangles() const;
 
 private:
     struct Triplet {

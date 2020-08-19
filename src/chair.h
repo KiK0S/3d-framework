@@ -4,13 +4,13 @@
 
 namespace app {
 
-class Chair : public SurfaceObject<double> {
+class Chair : public SurfaceObject {
 public:
     Chair();
-    ~Chair();
+    ~Chair() = default;
 
 private:
-    const int SIZE = 100;
+    static constexpr double kSize_ = 100;
 
 };
 

@@ -1,4 +1,3 @@
-#include "classes.h"
 #include "matrix.h"
 #include <cassert>
 #include <vector>
@@ -6,36 +5,52 @@
 
 namespace app {
 
-template<size_t N, size_t M>
-Matrix<N, M>::Matrix() {
-    data_.assign(N, std::vector<double>(M, 0));
-}
-template<size_t N, size_t M>
-Matrix<N, M>::Matrix(std::vector<std::vector<double>> data): data_(data) {}
+Matrix::Matrix(): data_({
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0
+}) {}
 
-template<size_t N, size_t M>
-std::vector<double>& Matrix<N, M>::operator[] (size_t n) {
+Matrix::Matrix(std::array<double, N * N> data): data_(data) {}
+Matrix::Cursor::Cursor(int pos, std::array<double, N * N>* data): pos_(pos), data_(data) {}
+Matrix::ConstCursor::ConstCursor(int pos, const std::array<double, N * N>* data): pos_(pos), data_(data) {}
+
+Matrix::Cursor Matrix::operator[] (size_t n) {
     if (n < 0 || n >= N) {
         throw std::out_of_range("bad index");
     }
-    return data_[n];
+    return Matrix::Cursor(n * N, &data_);
 }
 
-template<size_t N, size_t M>
-const std::vector<double>& Matrix<N, M>::operator[] (size_t n) const {
+double& Matrix::Cursor::operator[] (size_t n) {
     if (n < 0 || n >= N) {
         throw std::out_of_range("bad index");
     }
-    return data_[n];
+    return (*data_)[pos_ + n];
 }
 
-template <size_t N, size_t M>
-template <size_t K>
-Matrix<N, K> Matrix<N, M>::operator * (Matrix<M, K> other) const {
-    Matrix<N, K> result;
+
+Matrix::ConstCursor Matrix::operator[] (size_t n) const {
+    if (n < 0 || n >= N) {
+        throw std::out_of_range("bad index");
+    }
+    return Matrix::ConstCursor(n * N, &data_);
+}
+
+const double& Matrix::ConstCursor::operator[] (size_t n) const {
+    if (n < 0 || n >= N) {
+        throw std::out_of_range("bad index");
+    }
+    return (*data_)[pos_ + n];
+}
+
+
+Matrix Matrix::operator * (Matrix other) const {
+    Matrix result;
     for (int i = 0; i < N; i++) {
-        for (int j = 0; j < K; j++) {
-            for (int k = 0; k < M; k++) {
+        for (int j = 0; j < N; j++) {
+            for (int k = 0; k < N; k++) {
                 result[i][j] += (*this)[i][k] * other[k][j];
             }
         }
@@ -43,43 +58,30 @@ Matrix<N, K> Matrix<N, M>::operator * (Matrix<M, K> other) const {
     return result;
 }
 
-template<size_t N, size_t M>
-Vector4d Matrix<N, M>::operator *(Vector4d other) const {
-    assert(M == 4);
+Vector4d Matrix::operator *(Vector4d other) const {
     Vector4d result(0, 0, 0);
-    Matrix<4, 1> v;
-    v[0][0] = other.x;
-    v[1][0] = other.y;
-    v[2][0] = other.z;
-    v[3][0] = other.w;
-    Matrix<4, 1> pseudo_result = (*this) * v;
-    result.x = pseudo_result[0][0];
-    result.y = pseudo_result[1][0];
-    result.z = pseudo_result[2][0];
-    result.w = pseudo_result[3][0];
+    std::array<double, N> tmp;
+    for (int i = 0; i < N; i++) {
+        tmp[i] = other.x * (*this)[i][0] + other.y * (*this)[i][1] + other.z * (*this)[i][2] + other.w * (*this)[i][3];
+    }
+    result.x = tmp[0];
+    result.y = tmp[1];
+    result.z = tmp[2];
+    result.w = tmp[3];
     return result;
 }
 
-template<size_t N, size_t M>
-Matrix<N, N> Matrix<N, M>::inverse() const {
-    if (N != M) {
-        throw std::runtime_error("lel");
-    }
-    std::vector<std::vector<double>> copy = data_;
-    std::vector<std::vector<double>> eye = copy;
-    for (size_t i = 0; i < N; i++) {
-        for (size_t j = 0; j < N; j++) {
-            eye[i][j] = 0;
-            if (i == j) {
-                eye[i][j] = 1;
-            }
-        }
-    }
+Matrix Matrix::inverse() const {
+    Matrix copy = (*this);
+    Matrix eye = identity_matrix();
+
     for (int j = 0; j < N; j++) {
         for (int i = j; i < N; i++) {
             if (copy[i][j] != 0) {
-                std::swap(copy[i], copy[j]);
-                std::swap(eye[i], eye[j]);
+                for (int k = 0; k < N; k++) {
+                    std::swap(copy[i][k], copy[j][k]);
+                    std::swap(eye[i][k], eye[j][k]);
+                }
                 break;
             }
         }
@@ -108,7 +110,11 @@ Matrix<N, N> Matrix<N, M>::inverse() const {
             }
         }
     }
-    return Matrix<N, N>(eye);
+    return eye;
+}
+
+Matrix Matrix::identity_matrix() {
+    return Matrix({1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1});
 }
 
 }

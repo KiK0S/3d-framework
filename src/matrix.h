@@ -7,26 +7,41 @@
 
 namespace app {
 
-template <size_t N, size_t M>
 class Matrix {
+private:
+    struct Cursor;
+    struct ConstCursor;
+    static constexpr size_t N = 4;
 public:
     Matrix();
-    Matrix(std::vector<std::vector<double>>);
+    Matrix(std::array<double, N * N> data);
 
-    std::vector<double>& operator[] (size_t n);
-    const std::vector<double>& operator[] (size_t n) const ;
+    Cursor operator[] (size_t n);
+    ConstCursor operator[] (size_t n) const ;
 
-    template <size_t K>
-    Matrix<N, K> operator * (Matrix<M, K> other) const ;
+    Matrix operator * (Matrix other) const ;
     Vector4d operator *(Vector4d other) const ;
 
-    Matrix<N, N> inverse() const ;
+    static Matrix identity_matrix() ;
+
+    Matrix inverse() const ;
 
 private:
-    std::vector<std::vector<double>> data_;
+    struct Cursor {
+        int pos_;
+        std::array<double, N * N>* data_;
+        Cursor(int pos, std::array<double, N * N>* data);
+        double& operator[] (size_t n);
+    };
+    struct ConstCursor {
+        int pos_;
+        const std::array<double, N * N>* data_;
+        ConstCursor(int pos, const std::array<double, N * N>* data);
+        const double& operator[] (size_t n) const ;
+    };
+    std::array<double, N * N> data_;
 };
 
-using Matrix3d = Matrix<3, 3>;
-using Matrix4d = Matrix<4, 4>;
+using Matrix4d = Matrix;
 
 }

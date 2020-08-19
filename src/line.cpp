@@ -18,10 +18,7 @@ Line2d::Line2d(const sf::Vector2f& start, const sf::Vector2f& finish) {
     }
 }
 
-template <typename T>
-Line3d<T>::Line3d(const Point3d<T>& start, const Point3d<T>& finish): start_(start), finish_(finish) {}
 
-template <typename T>
-Line4d<T>::Line4d(const Point4d<T>& start, const Point4d<T>& finish): start_(start), finish_(finish) {}
+Line4d::Line4d(const Point4d& start, const Point4d& finish): start_(start), finish_(finish) {}
 
 }

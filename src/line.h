@@ -21,20 +21,11 @@ private:
     const float WIDTH = 1.5f;
 };
 
-template <typename T>
-class Line3d {
-public:
-    Line3d() = delete;
-    Line3d(const Point3d<T>& start, const Point3d<T>& finish);
-    Point4d<T> start_, finish_;
-};
-
-template <typename T>
 class Line4d {
 public:
     Line4d() = delete;
-    Line4d(const Point4d<T>& start, const Point4d<T>& finish);
-    Point4d<T> start_, finish_;
+    Line4d(const Point4d& start, const Point4d& finish);
+    Point4d start_, finish_;
 };
 
 }
