@@ -12,57 +12,99 @@ Matrix::Matrix(): data_({
     0, 0, 0, 0
 }) {}
 
-Matrix::Matrix(std::array<double, N * N> data): data_(data) {}
-Matrix::Cursor::Cursor(int pos, std::array<double, N * N>* data): pos_(pos), data_(data) {}
-Matrix::ConstCursor::ConstCursor(int pos, const std::array<double, N * N>* data): pos_(pos), data_(data) {}
+Matrix::Matrix(const std::array<double, N * N>& data): data_(data) {}
 
-Matrix::Cursor Matrix::operator[] (size_t n) {
-    if (n < 0 || n >= N) {
-        throw std::out_of_range("bad index");
-    }
-    return Matrix::Cursor(n * N, &data_);
+double Matrix::operator()(size_t row, size_t column) const {
+    assert(row < N && column < N);
+    return data_[N * row + column];
 }
 
-double& Matrix::Cursor::operator[] (size_t n) {
-    if (n < 0 || n >= N) {
-        throw std::out_of_range("bad index");
-    }
-    return (*data_)[pos_ + n];
+double& Matrix::operator()(size_t row, size_t column) {
+    assert(row < N && column < N);
+    return data_[N * row + column];
 }
 
-
-Matrix::ConstCursor Matrix::operator[] (size_t n) const {
-    if (n < 0 || n >= N) {
-        throw std::out_of_range("bad index");
+Matrix& Matrix::operator += (const Matrix& other) {
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < N; j++) {
+            (*this)(i, j) += other(i, j);
+        }
     }
-    return Matrix::ConstCursor(n * N, &data_);
+    return *this;
 }
 
-const double& Matrix::ConstCursor::operator[] (size_t n) const {
-    if (n < 0 || n >= N) {
-        throw std::out_of_range("bad index");
-    }
-    return (*data_)[pos_ + n];
+Matrix Matrix::operator -() const {
+    return *this * -1;   
 }
 
+Matrix& Matrix::operator -= (const Matrix& other) {
+    *this += -other;
+    return *this;
+}
 
-Matrix Matrix::operator * (Matrix other) const {
-    Matrix result;
+Matrix& Matrix::operator *= (double k) {
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < N; j++) {
+            (*this)(i, j) *= k;
+        }
+    }
+    return *this;
+}
+
+Matrix& Matrix::operator /= (double k){
+    assert(k != 0);
+    *this *= 1 / k;
+    return *this;
+}
+
+Matrix& Matrix::operator *= (const Matrix& other) {
+    Matrix copy = (*this);
     for (int i = 0; i < N; i++) {
         for (int j = 0; j < N; j++) {
             for (int k = 0; k < N; k++) {
-                result[i][j] += (*this)[i][k] * other[k][j];
+                (*this)(i, j) += copy(i, k) * other(k, j);
             }
         }
     }
+    return *this;
+}
+
+
+Matrix Matrix::operator + (const Matrix& other) const {
+    Matrix result = *this;
+    result += other;
     return result;
 }
 
-Vector4d Matrix::operator *(Vector4d other) const {
+Matrix Matrix::operator - (const Matrix& other) const {
+    Matrix result = *this;
+    result -= other;
+    return result;
+}
+
+Matrix Matrix::operator * (double k) const {
+    Matrix result = *this;
+    result *= k;
+    return result;
+}
+
+Matrix Matrix::operator / (double k) const {
+    Matrix result = *this;
+    result /= k;
+    return result;
+}
+
+Matrix Matrix::operator * (const Matrix& other) const {
+    Matrix result = *this;
+    result *= other;
+    return result;
+}
+
+Vector4d Matrix::operator *(const Vector4d& vector) const {
     Vector4d result(0, 0, 0);
     std::array<double, N> tmp;
     for (int i = 0; i < N; i++) {
-        tmp[i] = other.x * (*this)[i][0] + other.y * (*this)[i][1] + other.z * (*this)[i][2] + other.w * (*this)[i][3];
+        tmp[i] = vector.x * (*this)(i, 0) + vector.y * (*this)(i, 1) + vector.z * (*this)(i, 2) + vector.w * (*this)(i, 3);
     }
     result.x = tmp[0];
     result.y = tmp[1];
@@ -73,44 +115,42 @@ Vector4d Matrix::operator *(Vector4d other) const {
 
 Matrix Matrix::inverse() const {
     Matrix copy = (*this);
-    Matrix eye = identity_matrix();
+    Matrix result = identity_matrix();
 
     for (int j = 0; j < N; j++) {
         for (int i = j; i < N; i++) {
-            if (copy[i][j] != 0) {
+            if (copy(i, j) != 0) {
                 for (int k = 0; k < N; k++) {
-                    std::swap(copy[i][k], copy[j][k]);
-                    std::swap(eye[i][k], eye[j][k]);
+                    std::swap(copy(i, k), copy(j, k));
+                    std::swap(result(i, k), result(j, k));
                 }
                 break;
             }
         }
-        if (copy[j][j] == 0) {
-            throw std::runtime_error("lel");
-        }
+        double x = copy(j, j);
+        // assert(x != 0);
         for (int i = j + 1; i < N; i++) {
-            double K = copy[i][j] / copy[j][j];
+            double K = copy(i, j) / x;
             for (int k = 0; k < N; k++) {
-                copy[i][k] -= copy[j][k] * K;
-                eye[i][k] -= eye[j][k] * K;
+                copy(i, k) -= copy(j, k) * K;
+                result(i, k) -= result(j, k) * K;
             }
         }
-        double x = copy[j][j];
         for (int i = 0; i < N; i++) {
-            copy[j][i] /= x;
-            eye[j][i] /= x;
+            copy(j, i) /= x;
+            result(j, i) /= x;
         }
     }
     for (int j = N - 1; j >= 0; j--) {
         for (int i = j - 1; i >= 0; i--) {
-            double K = copy[i][j] / copy[j][j];
+            double K = copy(i, j) / copy(j, j);
             for (int k = 0; k < N; k++) {
-                copy[i][k] -= copy[j][k] * K;
-                eye[i][k] -= eye[j][k] * K;
+                copy(i, k) -= copy(j, k) * K;
+                result(i, k) -= result(j, k) * K;
             }
         }
     }
-    return eye;
+    return result;
 }
 
 Matrix Matrix::identity_matrix() {

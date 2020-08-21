@@ -64,14 +64,10 @@ void Screen::draw(Line4d line) {
 
 void Screen::move_camera(Vector4d v) {
     v = camera_->find_inverse_transform() * v;
-    Matrix4d moving;
-    moving[0][0] = 1;
-    moving[1][1] = 1;
-    moving[2][2] = 1;
-    moving[3][3] = 1;
-    moving[0][3] = v.x;
-    moving[1][3] = v.y;
-    moving[2][3] = v.z;
+    Matrix4d moving = Matrix4d::identity_matrix();
+    moving(0, 3) = v.x;
+    moving(1, 3) = v.y;
+    moving(2, 3) = v.z;
     for (WireObject* wire_object : *frame_) {
         for (Vector4d& vertex : *wire_object) {
             vertex = moving * vertex;
@@ -85,12 +81,12 @@ void Screen::add_object(WireObject* w) const {
 
 void Screen::rotate_camera(double angle, int fixed_coord) {
     Matrix4d moving;
-    moving[fixed_coord][fixed_coord] = 1;
-    moving[(fixed_coord + 1) % 3][(fixed_coord + 1) % 3] = std::cos(angle);
-    moving[(fixed_coord + 2) % 3][(fixed_coord + 2) % 3] = std::cos(angle);
-    moving[(fixed_coord + 1) % 3][(fixed_coord + 2) % 3] = std::sin(angle);
-    moving[(fixed_coord + 2) % 3][(fixed_coord + 1) % 3] = -std::sin(angle);
-    moving[3][3] = 1;
+    moving(fixed_coord, fixed_coord) = 1;
+    moving((fixed_coord + 1) % 3, (fixed_coord + 1) % 3) = std::cos(angle);
+    moving((fixed_coord + 2) % 3, (fixed_coord + 2) % 3) = std::cos(angle);
+    moving((fixed_coord + 1) % 3, (fixed_coord + 2) % 3) = std::sin(angle);
+    moving((fixed_coord + 2) % 3, (fixed_coord + 1) % 3) = -std::sin(angle);
+    moving(3, 3) = 1;
     camera_->apply_matrix(moving);
 }
 

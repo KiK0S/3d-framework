@@ -1,17 +1,18 @@
 #pragma once
 
-#include "classes.h"
 #include "line.h"
 #include "point.h"
 #include "camera.h"
 #include "frame.h"
 #include "triangle.h"
+#include "wire_object.h"
 #include <SFML/Graphics.hpp>
 #include <vector>
 
 namespace app {
 
 class Camera;
+class Frame;
 
 class Screen {
 public:

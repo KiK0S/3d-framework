@@ -1,17 +1,16 @@
 #include "camera.h"
 #include "matrix.h"
+#include <cassert>
 
 namespace app {
 
-Camera::Camera(Screen* screen):
-    screen_(screen),
-    camera_(Point4d(0, 0, 0)),
-    transform_(Matrix::identity_matrix()) {}
+Camera::Camera(Screen* screen): screen_(screen) {
+    assert(screen);
+}
 
-
-void Camera::apply_matrix(Matrix4d matrix) {
+void Camera::apply_matrix(const Matrix4d& matrix) {
     camera_ = matrix * camera_;
-    transform_ = matrix* transform_;
+    transform_ = matrix * transform_;
 }
 
 Matrix4d Camera::find_inverse_transform() const {

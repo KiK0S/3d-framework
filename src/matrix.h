@@ -1,6 +1,5 @@
 #pragma once
 
-#include "classes.h"
 #include <cstdlib>
 #include <vector>
 #include "point.h"
@@ -9,36 +8,33 @@ namespace app {
 
 class Matrix {
 private:
-    struct Cursor;
-    struct ConstCursor;
     static constexpr size_t N = 4;
 public:
     Matrix();
-    Matrix(std::array<double, N * N> data);
+    Matrix(const std::array<double, N * N>& data);
 
-    Cursor operator[] (size_t n);
-    ConstCursor operator[] (size_t n) const ;
+    Matrix& operator += (const Matrix& other);
+    Matrix& operator -= (const Matrix& other);
+    Matrix& operator *= (double k);
+    Matrix& operator /= (double k);
+    Matrix& operator *= (const Matrix& other);
 
-    Matrix operator * (Matrix other) const ;
-    Vector4d operator *(Vector4d other) const ;
+    Matrix operator -() const ;
+    Matrix operator + (const Matrix& other) const ;
+    Matrix operator - (const Matrix& other) const ;
+    Matrix operator * (double k) const ;
+    Matrix operator / (double k) const ;
+    Matrix operator * (const Matrix& other) const ;
+    Vector4d operator *(const Vector4d& vector) const ;
 
     static Matrix identity_matrix() ;
+
+    double operator()(size_t row, size_t column) const ;
+    double& operator()(size_t row, size_t column);
 
     Matrix inverse() const ;
 
 private:
-    struct Cursor {
-        int pos_;
-        std::array<double, N * N>* data_;
-        Cursor(int pos, std::array<double, N * N>* data);
-        double& operator[] (size_t n);
-    };
-    struct ConstCursor {
-        int pos_;
-        const std::array<double, N * N>* data_;
-        ConstCursor(int pos, const std::array<double, N * N>* data);
-        const double& operator[] (size_t n) const ;
-    };
     std::array<double, N * N> data_;
 };
 

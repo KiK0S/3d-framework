@@ -2,6 +2,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <vector>
+#include "pixel_screen.h"
 #include "screen.h"
 #include "wire_object.h"
 #include "surface_object.h"
@@ -26,8 +27,8 @@ public:
 
 private:
     Screen* screen_ = nullptr;
-    std::vector<std::vector<sf::Color>> color_;
-    std::vector<std::vector<double>> z_value_;
+    PixelScreen<sf::Color> color_;
+    PixelScreen<double> z_value_;
     std::vector<WireObject*> objects_;
 };
 

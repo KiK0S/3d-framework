@@ -4,15 +4,15 @@
 #include "log.h"
 #include "surface_object.h"
 #include "triangle.h"
+#include <cassert>
 #include <string>
 #include <vector>
 
 namespace app {
 
-Frame::Frame(Screen* screen):
-    screen_(screen),
-    color_(screen_->kScreenSize, std::vector<sf::Color>(screen_->kScreenSize)),
-    z_value_(screen_->kScreenSize, std::vector<double>(screen_->kScreenSize, screen_->kScreenSize)) {}
+Frame::Frame(Screen* screen): screen_(screen), color_(screen->kScreenSize), z_value_(screen->kScreenSize) {
+    assert(screen);
+}
 
 void Frame::update() {
     for (auto current : objects_) {
@@ -27,10 +27,11 @@ void Frame::update() {
         }
     }
     std::vector<sf::Vertex> data;
+    data.reserve(screen_->kScreenSize * screen_->kScreenSize);
     for (int i = 0; i < screen_->kScreenSize; i++) {
         for (int j = 0; j < screen_->kScreenSize; j++) {
-            if (z_value_[i][j] < screen_->kScreenSize) {
-                data.push_back(sf::Vertex(sf::Vector2f(i, j), color_[i][j]));
+            if (z_value_(i, j) < screen_->kScreenSize) {
+                data.push_back(sf::Vertex(sf::Vector2f(i, j), color_(i, j)));
             }
         }
     }
@@ -41,8 +42,8 @@ void Frame::update() {
 void Frame::clear() {
     for (int i = 0; i < screen_->kScreenSize; i++) {
         for (int j = 0; j < screen_->kScreenSize; j++) {
-            color_[i][j] = sf::Color::White;
-            z_value_[i][j] = screen_->kScreenSize;
+            color_(i, j) = sf::Color::White;
+            z_value_(i, j) = screen_->kScreenSize;
         }
     }
 }
@@ -55,9 +56,9 @@ void Frame::set_pixel(int x, int y, double z, sf::Color color) {
     if (x < 0 || y < 0 || x >= screen_->kScreenSize || y >= screen_->kScreenSize) {
         return;
     }
-    if (z < z_value_[x][y]) {
-        z_value_[x][y] = z;
-        color_[x][y] = color;
+    if (z < z_value_(x, y)) {
+        z_value_(x, y) = z;
+        color_(x, y) = color;
     }
 }
 
