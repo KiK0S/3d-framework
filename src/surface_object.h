@@ -1,9 +1,9 @@
 #pragma once
 
-#include <vector>
 #include "point.h"
-#include "wire_object.h"
 #include "triangle.h"
+#include "wire_object.h"
+#include <vector>
 
 namespace app {
 

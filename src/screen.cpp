@@ -1,6 +1,6 @@
-#include "screen.h"
-#include "matrix.h"
 #include "log.h"
+#include "matrix.h"
+#include "screen.h"
 #include "triangle.h"
 #include <vector>
 
@@ -15,6 +15,7 @@ Screen::~Screen() {
 
 void Screen::update() {
     window_.clear(sf::Color::White);
+    camera_->create_transform();
     frame_->update();
     draw_axis();
     window_.display();
@@ -33,8 +34,8 @@ void Screen::draw(std::vector<sf::Vertex>& data) {
 void Screen::draw(Triangle4d triangle) {
     Vector4d n = triangle.b - triangle.a;
     Vector4d m = triangle.c - triangle.a;
-    int raster_parameter_n = ceil(n.length() * 0.9);
-    int raster_parameter_m = ceil(m.length() * 0.9);
+    int raster_parameter_n = ceil(n.length() * 0.5);
+    int raster_parameter_m = ceil(m.length() * 0.5);
     Triangle2d triangle2d(camera_->project_point(triangle.a) + center, camera_->project_point(triangle.b) + center, camera_->project_point(triangle.c) + center);
     for (int i = 0; i <= raster_parameter_n; i++) {
         for (int j = 0; j <= raster_parameter_m; j++) {
@@ -63,16 +64,12 @@ void Screen::draw(Line4d line) {
 }
 
 void Screen::move_camera(Vector4d v) {
-    v = camera_->find_inverse_transform() * v;
+    v = camera_->basis_world_ * v;
     Matrix4d moving = Matrix4d::identity_matrix();
     moving(0, 3) = v.x;
     moving(1, 3) = v.y;
     moving(2, 3) = v.z;
-    for (WireObject* wire_object : *frame_) {
-        for (Vector4d& vertex : *wire_object) {
-            vertex = moving * vertex;
-        }
-    }
+    camera_->apply_transform_to_camera(moving);
 }
 
 void Screen::add_object(WireObject* w) const {
@@ -87,7 +84,7 @@ void Screen::rotate_camera(double angle, int fixed_coord) {
     moving((fixed_coord + 1) % 3, (fixed_coord + 2) % 3) = std::sin(angle);
     moving((fixed_coord + 2) % 3, (fixed_coord + 1) % 3) = -std::sin(angle);
     moving(3, 3) = 1;
-    camera_->apply_matrix(moving);
+    camera_->apply_transform_to_world(moving);
 }
 
 void Screen::draw_axis() {

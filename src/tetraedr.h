@@ -1,8 +1,8 @@
 #pragma once
 
+#include "camera.h"
 #include "line.h"
 #include "point.h"
-#include "camera.h"
 #include "wire_object.h"
 #include <vector>
 #include <utility>

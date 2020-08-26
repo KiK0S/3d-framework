@@ -25,4 +25,11 @@ void debug(sf::Vector2f v) {
     std::cerr << v.x << ' ' << v.y << std::endl;
 }
 
+void debug(Vector4d v) {
+    if (!DEBUG) {
+        return;
+    }
+    std::cerr << v.x << ' ' << v.y << ' ' << v.z << ' ' << v.w << std::endl;
+}
+
 }

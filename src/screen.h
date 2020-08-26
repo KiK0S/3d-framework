@@ -1,9 +1,9 @@
 #pragma once
 
-#include "line.h"
-#include "point.h"
 #include "camera.h"
 #include "frame.h"
+#include "line.h"
+#include "point.h"
 #include "triangle.h"
 #include "wire_object.h"
 #include <SFML/Graphics.hpp>

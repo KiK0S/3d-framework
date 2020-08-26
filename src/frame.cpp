@@ -1,9 +1,9 @@
 #include "frame.h"
-#include "screen.h"
-#include "wire_object.h"
 #include "log.h"
+#include "screen.h"
 #include "surface_object.h"
 #include "triangle.h"
+#include "wire_object.h"
 #include <cassert>
 #include <string>
 #include <vector>
@@ -12,6 +12,11 @@ namespace app {
 
 Frame::Frame(Screen* screen): screen_(screen), color_(screen->kScreenSize), z_value_(screen->kScreenSize) {
     assert(screen);
+    for (int i = 0; i  < screen_->kScreenSize; i++) {
+        for (int j = 0; j < screen_->kScreenSize; j++) {
+            z_value_(i, j) = 200000;
+        }
+    }
 }
 
 void Frame::update() {

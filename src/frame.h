@@ -1,14 +1,14 @@
 #pragma once
 
-#include <SFML/Graphics.hpp>
-#include <vector>
+#include "camera.h"
+#include "log.h"
 #include "pixel_screen.h"
 #include "screen.h"
-#include "wire_object.h"
 #include "surface_object.h"
 #include "tetraedr.h"
-#include "log.h"
-#include "camera.h"
+#include "wire_object.h"
+#include <SFML/Graphics.hpp>
+#include <vector>
 
 namespace app {
 class Screen;

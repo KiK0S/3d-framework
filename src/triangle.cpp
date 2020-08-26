@@ -1,8 +1,6 @@
-#pragma once
-
-#include "triangle.h"
-#include "point.h"
 #include "log.h"
+#include "point.h"
+#include "triangle.h"
 
 namespace app {
 

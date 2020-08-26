@@ -1,9 +1,9 @@
 #pragma once
 
-#include <vector>
-#include <utility>
 #include "line.h"
 #include "point.h"
+#include <vector>
+#include <utility>
 
 namespace app {
 
