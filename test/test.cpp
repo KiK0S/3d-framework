@@ -19,14 +19,14 @@
 
 
 void setup(app::Screen& screen) {
-    app::Tetraedr tetraedr(app::Point4d(100, 100, 10),
+    app::Tetraedr* tetraedr = new app::Tetraedr(app::Point4d(100, 100, 10),
                            app::Point4d(200, 400, 35),
                            app::Point4d(140, 900, 600),
                            app::Point4d(500, 500, -10));
-    app::Cube cube;
+    app::Cube* cube = new app::Cube();
     app::Chair* chair = new app::Chair();
-    // screen.add_object(tetraedr);
-    // screen.add_object(cube);
+    screen.add_object(tetraedr);
+    screen.add_object(cube);
     screen.add_object(chair);
 }
 

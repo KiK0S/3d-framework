@@ -1,10 +1,10 @@
 #pragma once
 
-#include "wire_object.h"
+#include "surface_object.h"
 
 namespace app {
 
-class Cube : WireObject {
+class Cube : public SurfaceObject {
 public:
     Cube();
     ~Cube() = default;

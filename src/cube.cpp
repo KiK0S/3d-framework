@@ -2,7 +2,7 @@
 
 namespace app {
 
-Cube::Cube(): WireObject({
+Cube::Cube(): SurfaceObject({
     Point4d(0, 0, 0),
     Point4d(0, 0, kSize_),
     Point4d(0, kSize_, kSize_),

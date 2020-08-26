@@ -34,8 +34,8 @@ void Screen::draw(std::vector<sf::Vertex>& data) {
 void Screen::draw(Triangle4d triangle) {
     Vector4d n = triangle.b - triangle.a;
     Vector4d m = triangle.c - triangle.a;
-    int raster_parameter_n = ceil(n.length() * 0.5);
-    int raster_parameter_m = ceil(m.length() * 0.5);
+    int raster_parameter_n = ceil(n.length() * 0.7);
+    int raster_parameter_m = ceil(m.length() * 0.7);
     Triangle2d triangle2d(camera_->project_point(triangle.a) + center, camera_->project_point(triangle.b) + center, camera_->project_point(triangle.c) + center);
     for (int i = 0; i <= raster_parameter_n; i++) {
         for (int j = 0; j <= raster_parameter_m; j++) {
@@ -64,7 +64,7 @@ void Screen::draw(Line4d line) {
 }
 
 void Screen::move_camera(Vector4d v) {
-    v = camera_->basis_world_ * v;
+    v = camera_->get_world_transform() * v;
     Matrix4d moving = Matrix4d::identity_matrix();
     moving(0, 3) = v.x;
     moving(1, 3) = v.y;
@@ -72,18 +72,16 @@ void Screen::move_camera(Vector4d v) {
     camera_->apply_transform_to_camera(moving);
 }
 
-void Screen::add_object(WireObject* w) const {
+void Screen::add_object(SurfaceObject* w) const {
     frame_->add_object(w);
 }
 
 void Screen::rotate_camera(double angle, int fixed_coord) {
-    Matrix4d moving;
-    moving(fixed_coord, fixed_coord) = 1;
+    Matrix4d moving = Matrix4d::identity_matrix();
     moving((fixed_coord + 1) % 3, (fixed_coord + 1) % 3) = std::cos(angle);
     moving((fixed_coord + 2) % 3, (fixed_coord + 2) % 3) = std::cos(angle);
     moving((fixed_coord + 1) % 3, (fixed_coord + 2) % 3) = std::sin(angle);
     moving((fixed_coord + 2) % 3, (fixed_coord + 1) % 3) = -std::sin(angle);
-    moving(3, 3) = 1;
     camera_->apply_transform_to_world(moving);
 }
 
@@ -91,6 +89,10 @@ void Screen::draw_axis() {
     for (int i = 0; i < 3; i++) {
         draw(Line4d(Vector4d(0, 0, 0), kAxis[i]));
     }
+}
+
+double Screen::get_max_z_value() const {
+    return camera_->get_max_z_value();
 }
 
 }

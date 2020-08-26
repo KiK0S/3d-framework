@@ -3,7 +3,6 @@
 #include "screen.h"
 #include "surface_object.h"
 #include "triangle.h"
-#include "wire_object.h"
 #include <cassert>
 #include <string>
 #include <vector>
@@ -14,7 +13,7 @@ Frame::Frame(Screen* screen): screen_(screen), color_(screen->kScreenSize), z_va
     assert(screen);
     for (int i = 0; i  < screen_->kScreenSize; i++) {
         for (int j = 0; j < screen_->kScreenSize; j++) {
-            z_value_(i, j) = 200000;
+            z_value_(i, j) = screen_->get_max_z_value();
         }
     }
 }
@@ -24,18 +23,15 @@ void Frame::update() {
         for (auto& line3d : current->lines()) {
             screen_->draw(line3d);
         }
-        SurfaceObject* ptr = dynamic_cast<SurfaceObject*>(current);
-        if (ptr != nullptr) {
-            for (auto& triangle : ptr->triangles()) {
-                screen_->draw(triangle);
-            }
+        for (auto& triangle : current->triangles()) {
+            screen_->draw(triangle);
         }
     }
     std::vector<sf::Vertex> data;
     data.reserve(screen_->kScreenSize * screen_->kScreenSize);
     for (int i = 0; i < screen_->kScreenSize; i++) {
         for (int j = 0; j < screen_->kScreenSize; j++) {
-            if (z_value_(i, j) < screen_->kScreenSize) {
+            if (z_value_(i, j) < screen_->get_max_z_value()) {
                 data.push_back(sf::Vertex(sf::Vector2f(i, j), color_(i, j)));
             }
         }
@@ -48,12 +44,12 @@ void Frame::clear() {
     for (int i = 0; i < screen_->kScreenSize; i++) {
         for (int j = 0; j < screen_->kScreenSize; j++) {
             color_(i, j) = sf::Color::White;
-            z_value_(i, j) = screen_->kScreenSize;
+            z_value_(i, j) = screen_->get_max_z_value();
         }
     }
 }
 
-void Frame::add_object(WireObject* t) {
+void Frame::add_object(SurfaceObject* t) {
     objects_.push_back(t);
 }
 
@@ -67,11 +63,11 @@ void Frame::set_pixel(int x, int y, double z, sf::Color color) {
     }
 }
 
-std::vector<WireObject*>::iterator Frame::begin() {
+std::vector<SurfaceObject*>::iterator Frame::begin() {
     return objects_.begin();
 }
 
-std::vector<WireObject*>::iterator Frame::end() {
+std::vector<SurfaceObject*>::iterator Frame::end() {
     return objects_.end();
 }
 

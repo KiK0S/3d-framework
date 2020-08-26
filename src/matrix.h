@@ -44,6 +44,11 @@ public:
 
     Matrix(const std::array<double, N * N>& data): data_(data) {}
 
+    Matrix(const Point4d& p): data_({p.x, p.y, p.z, p.w}) {
+        assert(M == 1 && N == 4);
+    }
+
+
     double operator()(size_t row, size_t column) const noexcept {
         assert(row < N && column < M);
         return data_[M * row + column];

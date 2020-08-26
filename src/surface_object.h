@@ -13,6 +13,9 @@ private:
 
 public:
     SurfaceObject(std::vector<Point4d> points,
+                  std::vector<std::pair<int, int>> edges);
+
+    SurfaceObject(std::vector<Point4d> points,
                   std::vector<std::pair<int, int>> edges,
                   std::vector<Triplet> triangles);
 

@@ -19,24 +19,22 @@ void Camera::apply_transform_to_world(const Matrix4d& matrix) {
 }
 
 void Camera::create_transform() {
-    Matrix<2, 2> id = Matrix<2, 2>::identity_matrix();
     transform_ = basis_screen_ * basis_screen_.transpose();
 }
 
-Matrix4d Camera::find_inverse_transform() const {
-    return basis_world_.inverse();
+Matrix4d Camera::get_world_transform() const {
+    return basis_world_;
+}
+
+double Camera::get_max_z_value() const {
+    return kMaxDistance + 1;
 }
 
 Point4d Camera::transform_point(Point4d p) const {
     p = p - position_;
     Vector4d proj = transform_ * p;
     Vector4d ort = p - proj;
-    Matrix<4, 1> kek;
-    kek(0, 0) = proj.x;
-    kek(1, 0) = proj.y;
-    kek(2, 0) = proj.z;
-    kek(3, 0) = proj.w;
-    Matrix<2, 1> res = basis_screen_.transpose() * kek;
+    Matrix<2, 1> res = basis_screen_.transpose() * Matrix<4, 1>(proj);
     p.x = res(0, 0);
     p.y = res(1, 0);
     p.z = ort.length();
