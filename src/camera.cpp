@@ -5,8 +5,8 @@
 
 namespace app {
 
-Camera::Camera(Screen* screen): screen_(screen) {
-    assert(screen);
+Camera::Camera(Renderer* renderer): renderer_(renderer) {
+    assert(renderer);
 }
 
 void Camera::apply_transform_to_camera(const Matrix4d& matrix) {

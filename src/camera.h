@@ -8,10 +8,11 @@
 #include <cmath>
 
 namespace app {
-class Screen;
+
+class Renderer;
 class Camera {
 public:
-    Camera(Screen* screen);
+    Camera(Renderer* renderer);
 
     sf::Vector2f project_point(Point4d p) const;
     Point4d transform_point(Point4d p) const;
@@ -29,7 +30,7 @@ private:
     static constexpr double kMaxDistance = 1000;
     const sf::Vector2f kDefaultPixel = sf::Vector2f(0, 0);
 
-    Screen* screen_ = nullptr;
+    Renderer* renderer_ = nullptr;
 
     Point4d position_ = Point4d(0, 0, -kFocusDistance);
     Matrix<4, 2> basis_screen_ = Matrix<4, 2>::identity_matrix();

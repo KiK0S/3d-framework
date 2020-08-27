@@ -1,98 +1,49 @@
-#include "log.h"
-#include "matrix.h"
 #include "screen.h"
-#include "triangle.h"
+#include <cassert>
 #include <vector>
 
 namespace app {
 
-Screen::Screen(): frame_(new Frame(this)), camera_(new Camera(this)), window_(sf::VideoMode(1000, 1000), "Test: interacrtive camera") {}
-
-Screen::~Screen() {
-    delete frame_;
-    delete camera_;
-}
-
-void Screen::update() {
-    window_.clear(sf::Color::White);
-    camera_->create_transform();
-    frame_->update();
-    draw_axis();
-    window_.display();
-}
-
-void Screen::draw(sf::Vertex pixel) {
-    sf::Vertex data[] = {pixel};
-    window_.draw(data, 1, sf::Points);
-}
-
-void Screen::draw(std::vector<sf::Vertex>& data) {
-    sf::Vertex* ptr = &data[0];
-    window_.draw(ptr, data.size(), sf::Points);
-}
-
-void Screen::draw(Triangle4d triangle) {
-    Vector4d n = triangle.b - triangle.a;
-    Vector4d m = triangle.c - triangle.a;
-    int raster_parameter_n = ceil(n.length() * 0.7);
-    int raster_parameter_m = ceil(m.length() * 0.7);
-    Triangle2d triangle2d(camera_->project_point(triangle.a) + center, camera_->project_point(triangle.b) + center, camera_->project_point(triangle.c) + center);
-    for (int i = 0; i <= raster_parameter_n; i++) {
-        for (int j = 0; j <= raster_parameter_m; j++) {
-            Vector4d p = triangle.a + n * i / raster_parameter_n + m * j / raster_parameter_m;
-            sf::Vector2f kek = camera_->project_point(p) + center;
-            int x = round(kek.x);
-            int y = round(kek.y);
-            if (triangle2d.inner_point(x, y)) {
-                frame_->set_pixel(x, y, camera_->get_z_value(p), sf::Color::Black);
-            }
+Screen::Screen(Renderer* renderer): renderer_(renderer), z_value_(renderer_->kScreenSize), color_(renderer_->kScreenSize) {
+    assert(renderer_);
+    for (int i = 0; i  < renderer_->kScreenSize; i++) {
+        for (int j = 0; j < renderer_->kScreenSize; j++) {
+            z_value_(i, j) = renderer_->get_max_z_value();
         }
     }
 }
 
-void Screen::draw(Line4d line) {
-    Vector4d a = line.start_;
-    Vector4d b = line.finish_ - line.start_;
-    int raster_parameter = ceil(b.length() * 1.05);
-    for (int i = 0; i <= raster_parameter; i++) {
-        Vector4d m = a + b * i / raster_parameter;
-        sf::Vector2f kek = camera_->project_point(m) + center;
-        int x = round(kek.x);
-        int y = round(kek.y);
-        frame_->set_pixel(x, y, camera_->get_z_value(m), sf::Color::Red);
+void Screen::update() {
+    std::vector<sf::Vertex> data;
+    data.reserve(renderer_->kScreenSize * renderer_->kScreenSize);
+    for (int i = 0; i < renderer_->kScreenSize; i++) {
+        for (int j = 0; j < renderer_->kScreenSize; j++) {
+            if (z_value_(i, j) < renderer_->get_max_z_value()) {
+                data.push_back(sf::Vertex(sf::Vector2f(i, j), color_(i, j)));
+            }
+        }
+    }
+    renderer_->draw(data);
+    clear();
+}
+
+void Screen::clear() {
+    for (int i = 0; i < renderer_->kScreenSize; i++) {
+        for (int j = 0; j < renderer_->kScreenSize; j++) {
+            color_(i, j) = sf::Color::White;
+            z_value_(i, j) = renderer_->get_max_z_value();
+        }
     }
 }
 
-void Screen::move_camera(Vector4d v) {
-    v = camera_->get_world_transform() * v;
-    Matrix4d moving = Matrix4d::identity_matrix();
-    moving(0, 3) = v.x;
-    moving(1, 3) = v.y;
-    moving(2, 3) = v.z;
-    camera_->apply_transform_to_camera(moving);
-}
-
-void Screen::add_object(SurfaceObject* w) const {
-    frame_->add_object(w);
-}
-
-void Screen::rotate_camera(double angle, int fixed_coord) {
-    Matrix4d moving = Matrix4d::identity_matrix();
-    moving((fixed_coord + 1) % 3, (fixed_coord + 1) % 3) = std::cos(angle);
-    moving((fixed_coord + 2) % 3, (fixed_coord + 2) % 3) = std::cos(angle);
-    moving((fixed_coord + 1) % 3, (fixed_coord + 2) % 3) = std::sin(angle);
-    moving((fixed_coord + 2) % 3, (fixed_coord + 1) % 3) = -std::sin(angle);
-    camera_->apply_transform_to_world(moving);
-}
-
-void Screen::draw_axis() {
-    for (int i = 0; i < 3; i++) {
-        draw(Line4d(Vector4d(0, 0, 0), kAxis[i]));
+void Screen::set_pixel(int x, int y, double z, sf::Color color) {
+    if (x < 0 || y < 0 || x >= renderer_->kScreenSize || y >= renderer_->kScreenSize) {
+        return;
     }
-}
-
-double Screen::get_max_z_value() const {
-    return camera_->get_max_z_value();
+    if (z < z_value_(x, y)) {
+        z_value_(x, y) = z;
+        color_(x, y) = color;
+    }
 }
 
 }

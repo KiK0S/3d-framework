@@ -4,7 +4,7 @@ namespace app {
 
 SurfaceObject::SurfaceObject(std::vector<Point4d> points,
                              std::vector<std::pair<int, int>> edges):
-                             WireObject(points, edges) {}
+    WireObject(points, edges) {}
 
 SurfaceObject::SurfaceObject(std::vector<Point4d> points,
                              std::vector<std::pair<int, int>> edges,
