@@ -16,54 +16,58 @@ void setup(app::Renderer& renderer) {
     //                        app::Point4d(200, 400, 35),
     //                        app::Point4d(140, 900, 600),
     //                        app::Point4d(500, 500, -10));
-    app::Cube* cube = new app::Cube();
-    // app::Chair* chair = new app::Chair();
+    // app::Cube* cube = new app::Cube();
+    app::Chair* chair = new app::Chair();
     // renderer.add_object(tetraedr);
-    renderer.add_object(cube);
-    // renderer.add_object(chair);
+    // renderer.add_object(cube);
+    renderer.add_object(chair);
 }
 
 void handle(app::Renderer& renderer) {
     sf::Event event;
-    while (renderer.window_.pollEvent(event)) {
+    while (renderer.poll_event(event)) {
         if (event.type == sf::Event::Closed) {
-            renderer.window_.close();
+            renderer.close();
         }
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
-        renderer.move_camera(app::Vector4d(10, 0, 0));
+        renderer.move_camera(app::Vector4d(1, 0, 0));
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
-        renderer.move_camera(app::Vector4d(-10, 0, 0));
+        renderer.move_camera(app::Vector4d(-1, 0, 0));
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
-        renderer.move_camera(app::Vector4d(0, 10, 0));
+        renderer.move_camera(app::Vector4d(0, 1, 0));
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
-        renderer.move_camera(app::Vector4d(0, -10, 0));
+        renderer.move_camera(app::Vector4d(0, -1, 0));
+    }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z)) {
+        renderer.move_world(app::Vector4d(0, 0, 1));
+    }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::X)) {
+        renderer.move_world(app::Vector4d(0, 0, -1));
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-        renderer.move_camera(app::Vector4d(0, 0, -100));
         renderer.rotate_camera(-0.01, 1);
-        renderer.move_camera(app::Vector4d(0, 0, 100));
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
-        renderer.move_camera(app::Vector4d(0, 0, -100));
         renderer.rotate_camera(0.01, 1);
-        renderer.move_camera(app::Vector4d(0, 0, 100));
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
-        renderer.move_camera(app::Vector4d(0, 0, -100));
         renderer.rotate_camera(0.01, 0);
-        renderer.move_camera(app::Vector4d(0, 0, 100));
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
-        renderer.move_camera(app::Vector4d(0, 0, -100));
         renderer.rotate_camera(-0.01, 0);
-        renderer.move_camera(app::Vector4d(0, 0, 100));
+    }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q)) {
+        renderer.rotate_camera(0.01, 2);
+    }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::E)) {
+        renderer.rotate_camera(-0.01, 2);
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
-        renderer.window_.close();
+        renderer.close();
         exit(0);
     }
     renderer.update();
@@ -72,7 +76,7 @@ void handle(app::Renderer& renderer) {
 int main() {
     app::Renderer renderer;
     setup(renderer);
-    while (renderer.window_.isOpen()) {
+    while (renderer.is_open()) {
         handle(renderer);
     }
     return 0;

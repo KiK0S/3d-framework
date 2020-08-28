@@ -18,7 +18,7 @@ public:
     void clear();
 
 private:
-    Renderer* renderer_ = nullptr;
+    Renderer * const renderer_ = nullptr;
     PixelScreen<sf::Color> color_;
     PixelScreen<double> z_value_;
 
