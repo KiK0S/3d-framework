@@ -121,4 +121,29 @@ void Renderer::close() {
     window_.close();
 }
 
+void Renderer::roll(double angle) const {
+    rotate_world(angle, 2);
+}
+
+void Renderer::pitch(double angle) const {
+    rotate_camera(angle, 1);
+}
+
+void Renderer::yaw(double angle) const {
+    rotate_camera(angle, 0);
+}
+
+void Renderer::elevation(double angle) const {
+    rotate_world(angle, 0);
+}
+
+void Renderer::azimuth(double angle) const {
+    rotate_world(angle, 1);
+}
+
+
+
+
+
+
 }

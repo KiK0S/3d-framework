@@ -32,6 +32,13 @@ public:
 
     void move_camera(Vector4d v) const ;
     void move_world(Vector4d v) const ;
+    
+    void pitch(double angle) const ;
+    void roll(double angle) const ;
+    void elevation(double angle) const ;
+    void azimuth(double angle) const ;
+    void yaw(double angle) const ;
+
     void rotate_camera(double angle, int fixed_coord) const;
     void rotate_world(double angle, int fixed_coord) const;
     void draw_axis();
