@@ -36,12 +36,35 @@ void Renderer::draw(const std::vector<sf::Vertex>& data) {
     window_.draw(ptr, data.size(), sf::Points);
 }
 
-void Renderer::draw(Triangle4d triangle) {
-    Vector4d n = triangle.b - triangle.c;
-    int raster_parameter_n = ceil(n.length() * 1.05);
-    for (int i = 0; i <= raster_parameter_n; i++) {
-        Vector4d p = triangle.c + n * (i * 1.0 / raster_parameter_n);
-        draw(Line4d(triangle.a, p));
+void Renderer::draw(const Triangle4d& triangle4d) {
+    Triangle2d triangle2d(camera_->project_point(triangle4d.a), camera_->project_point(triangle4d.b), camera_->project_point(triangle4d.c));
+    std::array<int, 3> order = triangle2d.get_order();
+    Point4d a(0, 0, 0), b(0, 0, 0), c(0, 0, 0);
+    triangle4d.sort_points(order, a, b, c);
+    sf::Vector2f left_point = triangle2d.get_left_point();
+    sf::Vector2f right_point = triangle2d.get_right_point();
+    int min_y = left_point.y;
+    int max_y = left_point.y;
+    Matrix<2, 2> basis = triangle2d.create_basis();
+    for (int x = ceil(left_point.x); x <= right_point.x; x++) {
+        while (triangle2d.inner_point(x, min_y) && min_y >= -1.0 * kScreenSize_) {
+            min_y--;
+        }
+        while (triangle2d.inner_point(x, max_y) && max_y <= kScreenSize_) {
+            max_y++;
+        }
+        while (!triangle2d.inner_point(x, min_y) && min_y <= kScreenSize_) {
+            min_y++;
+        }
+        while (!triangle2d.inner_point(x, max_y) && max_y >= -1.0 * kScreenSize_) {
+            max_y--;
+        }
+        for (int y = min_y; y <= max_y; y++) {
+            sf::Vector2f arrow = sf::Vector2f(x, y) - left_point;
+            Matrix<2, 1> coords = basis.solve_system(Matrix<1, 2>({arrow}).transpose());
+            Point4d p = a + coords(0, 0) * (b - a) + coords(1, 0) * (c - a);
+            screen_->set_pixel(x + kCenter_.x, y + kCenter_.y, camera_->get_z_value(p), sf::Color::Black);
+        }
     }
 }
 

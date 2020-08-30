@@ -6,39 +6,105 @@ namespace app {
 
 Triangle4d::Triangle4d(Point4d a, Point4d b, Point4d c): a(a), b(b), c(c) {}
 
-Triangle2d::Triangle2d(sf::Vector2f a, sf::Vector2f b, sf::Vector2f c): a(a), b(b), c(c) {}
+void Triangle4d::sort_points(std::array<int, 3> order, Point4d& a, Point4d& b, Point4d& c) const {
+    if (order[0] == 0) {
+        a = this->a;
+    }
+    if (order[0] == 1) {
+        a = this->b;
+    }
+    if (order[0] == 2) {
+        a = this->c;
+    }
+    if (order[1] == 0) {
+        b = this->a;
+    }
+    if (order[1] == 1) {
+        b = this->b;
+    }
+    if (order[1] == 2) {
+        b = this->c;
+    }
+    if (order[2] == 0) {
+        c = this->a;
+    }
+    if (order[2] == 1) {
+        c = this->b;
+    }
+    if (order[2] == 2) {
+        c = this->c;
+    }
+}
 
-bool Triangle2d::inner_point(int x, int y) {
+Triangle2d::Triangle2d(sf::Vector2f a, sf::Vector2f b, sf::Vector2f c): a(a), b(b), c(c) {
+    if (a.x > b.x) {
+        std::swap(a, b);
+    }
+    if (a.x > c.x) {
+        std::swap(a, c);
+    }
+    if (b.x > c.x) {
+        std::swap(b, c);
+    }
+    // like for handle sorting 3 elements
+}
+
+bool Triangle2d::inner_point(double x, double y) {
     sf::Vector2f o(x, y);
-    // debug(a);
-    // debug(b);
-    // debug(c);
-    // debug(o);
-    if (scalar(o - a, b - a) < 0) {
-        return false;
+    return abs(abs(cross(a - b, c - b)) - abs(cross(a - o, b - o)) - abs(cross(b - o, c - o)) - abs(cross(c - o, a - o))) < 100;
+}
+
+sf::Vector2f Triangle2d::get_left_point() const {
+    if (a.x <= b.x && a.x <= c.x) {
+        return a;
     }
-    if (scalar(o - a, c - a) < 0) {
-        return false;
+    if (c.x <= b.x && c.x <= a.x) {
+        return c;
     }
-    if (scalar(o - b, a - b) < 0) {
-        return false;
+    return b;
+}
+
+sf::Vector2f Triangle2d::get_right_point() const {
+    if (a.x >= b.x && a.x >= c.x) {
+        return a;
     }
-    if (scalar(o - b, c - b) < 0) {
-        return false;
+    if (c.x >= b.x && c.x >= a.x) {
+        return c;
     }
-    bool f1 = cross(o - a, b - a) > 0;
-    bool s1 = cross(o - a, c - a) > 0;
-    if (cross(o - a, b - a) == 0 || cross(o - a, c - a) == 0) {
-        f1 = true, s1 = false;
+    return b;
+}
+
+Matrix<2, 2> Triangle2d::create_basis() const {
+    if (a == get_left_point()) {
+        return Matrix<2, 2> ({b - a, c - a}).transpose();
     }
-    bool f2 = cross(o - b, a - b) > 0;
-    bool s2 = cross(o - b, c - b) > 0;
-    if (cross(o - b, a - b) == 0 || cross(o - b, c - b) == 0) {
-        f2 = true, s2 = false;
+    if (b == get_left_point()) {
+        return Matrix<2, 2> ({a - b, c - b}).transpose();
     }
-    // debug(std::to_string(f1) + " " + std::to_string(s1) + " " + std::to_string(f2) + " " + std::to_string(s2));
-    // exit(0);
-    return (f1 ^ s1) && (f2 ^ s2);
+    if (c == get_left_point()) {
+        return Matrix<2, 2> ({a - c, b - c}).transpose();
+    }
+    return Matrix<2, 2>();
+}
+
+/*
+    the same order as in create_basis()
+*/
+std::array<int, 3> Triangle2d::get_order() const {
+    if (a == get_left_point()) {
+        return {0, 1, 2};
+    }
+    if (b == get_left_point()) {
+        return {1, 0, 2};
+    }
+    if (c == get_left_point()) {
+        return {2, 0, 1};
+    } 
+    return {0, 1, 2};
+}
+
+double Triangle2d::square() const {
+    return 0.5 * cross(b - a, c - a);
 }
 
 }

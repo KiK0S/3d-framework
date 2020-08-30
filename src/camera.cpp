@@ -27,7 +27,7 @@ Matrix4d Camera::get_world_transform() const {
 }
 
 double Camera::get_max_z_value() const {
-    return kMaxDistance_ + 1;
+    return kMaxDistance_;
 }
 
 double Camera::get_focus_distance() const {

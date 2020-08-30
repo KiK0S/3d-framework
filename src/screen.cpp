@@ -1,3 +1,4 @@
+#include "log.h"
 #include "screen.h"
 #include <cassert>
 #include <vector>

@@ -37,6 +37,10 @@ Point4d Point4d::operator / (double f) const {
     return (*this) * (1.0 / f);
 }
 
+Point4d operator * (double f, const Point4d& p) {
+    return p * f;
+}
+
 double Point4d::length() const {
     return std::sqrt(x * x + y * y + z * z);
 }

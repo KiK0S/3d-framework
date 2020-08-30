@@ -48,6 +48,24 @@ public:
         assert(M == 1 && N == 4);
     }
 
+    Matrix(const std::vector<sf::Vector2f>& data) {
+        assert(M == 2 && N == data.size());
+        for (int i = 0; i < N; i++) {
+            (*this)(i, 0) = data[i].x;
+            (*this)(i, 1) = data[i].y;
+        }
+    }
+
+    Matrix(const std::vector<Point4d>& data) {
+        assert(M == 4 && N == data.size());
+        for (int i = 0; i < N; i++) {
+            (*this)(i, 0) = data[i].x;
+            (*this)(i, 1) = data[i].y;
+            (*this)(i, 2) = data[i].z;
+            (*this)(i, 3) = data[i].w;
+        }
+    }
+
 
     double operator()(size_t row, size_t column) const noexcept {
         assert(row < N && column < M);
@@ -160,7 +178,7 @@ public:
     Vector4d operator * (const Vector4d& vector) const noexcept {
         assert(M == 4);
         Vector4d result(0, 0, 0);
-        std::array<double, N> tmp;
+        std::array<double, M> tmp;
         for (int i = 0; i < N; i++) {
             tmp[i] = vector.x * (*this)(i, 0) + vector.y * (*this)(i, 1) + vector.z * (*this)(i, 2) + vector.w * (*this)(i, 3);
         }
@@ -170,6 +188,19 @@ public:
         result.w = tmp[3];
         return result;
     }
+
+    sf::Vector2f operator * (const sf::Vector2f& vector) const noexcept {
+        assert(M == 2);
+        sf::Vector2f result(0, 0);
+        std::array<double, M> tmp;
+        for (int i = 0; i < M; i++) {
+            tmp[i] = vector.x * (*this)(i, 0) + vector.y * (*this)(i, 1);
+        }
+        result.x = tmp[0];
+        result.y = tmp[1];
+        return result;
+    }
+
 
     static Matrix identity_matrix() noexcept {
         Matrix result;
@@ -201,13 +232,8 @@ public:
         }
     }
 
-    std::pair<double, double> solve_system(Point4d p) {
-        assert(N == 3 && M == 2);
+    Matrix<N, 1> solve_system(Matrix<N, 1> point) {
         Matrix copy = (*this);
-        Matrix<3, 1> point;
-        point(0, 0) = p.x / p.w;
-        point(1, 0) = p.y / p.w;
-        point(2, 0) = p.z / p.w;
         for (int j = 0; j < M; j++) {
             for (int i = j; i < N; i++) {
                 if (copy(i, j) != 0) {
@@ -217,7 +243,9 @@ public:
                 }
             }
             double x = copy(j, j);
-            assert(x != 0);
+            if (x == 0) {
+                return Matrix<N, 1>();
+            }
             for (size_t i = j + 1; i < M; i++) {
                 double K = copy(i, j) / x;
                 copy.modification_mulsub(i, j, K);
@@ -226,14 +254,16 @@ public:
             copy.modification_multiply(j, 1.0 / x);
             point.modification_multiply(j, 1.0 / x);
         }
-        return {point(0, 0) - copy(0, 1) * point(1, 0), point(1, 0)};
+        for (int i = N - 1; i >= 0; i--) {
+            for (int j = i + 1; j < M; j++) {
+                point(i, 0) -= point(j, 0) * copy(i, j);
+            }
+        }
+        return point;
     }
 
     Matrix inverse() const {
         assert(N == M);
-        // debug("================");
-        // print();
-        // debug(det());
         Matrix copy = (*this);
         Matrix result = identity_matrix();
         for (int j = 0; j < M; j++) {
@@ -245,7 +275,6 @@ public:
                 }
             }
             double x = copy(j, j);
-            // assert(x != 0);
             for (int i = j + 1; i < N; i++) {
                 double K = copy(i, j) / x;
                 copy.modification_mulsub(i, j, K);

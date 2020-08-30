@@ -25,6 +25,8 @@ public:
 
 using Vector4d = Point4d;
 
+Point4d operator * (double f, const Point4d& p);
+
 double cross(const sf::Vector2f& a, const sf::Vector2f& b);
 double scalar(const sf::Vector2f& a, const sf::Vector2f& b);
 double scalar(const Vector4d& a, const Vector4d& b);

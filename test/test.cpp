@@ -49,34 +49,34 @@ void handle(app::Renderer& renderer) {
         renderer.move_camera(app::Vector4d(0, 0, -1));
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-        renderer.yaw(0.1);
+        renderer.yaw(0.01);
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
-        renderer.yaw(-0.1);
+        renderer.yaw(-0.01);
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
-        renderer.pitch(0.1);
+        renderer.pitch(0.01);
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
-        renderer.pitch(-0.1);
+        renderer.pitch(-0.01);
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q)) {
-        renderer.roll(0.1);
+        renderer.roll(0.01);
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::E)) {
-        renderer.roll(-0.1);
+        renderer.roll(-0.01);
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::R)) {
-        renderer.azimuth(0.1);
+        renderer.azimuth(0.01);
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::T)) {
-        renderer.azimuth(-0.1);
+        renderer.azimuth(-0.01);
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::F)) {
-        renderer.elevation(0.1);
+        renderer.elevation(0.01);
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::G)) {
-        renderer.elevation(-0.1);
+        renderer.elevation(-0.01);
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
         renderer.close();

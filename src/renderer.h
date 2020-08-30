@@ -26,7 +26,7 @@ public:
     void draw(sf::Vertex pixel) ;
     void draw(const std::vector<sf::Vertex>& data) ;
     void draw(Line4d line) ;
-    void draw(Triangle4d triangle) ;
+    void draw(const Triangle4d& triangle) ;
 
     void add_object(SurfaceObject* w) const ;
 
