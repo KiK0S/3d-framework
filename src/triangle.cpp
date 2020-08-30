@@ -49,9 +49,14 @@ Triangle2d::Triangle2d(sf::Vector2f a, sf::Vector2f b, sf::Vector2f c): a(a), b(
     // like for handle sorting 3 elements
 }
 
-bool Triangle2d::inner_point(double x, double y) {
-    sf::Vector2f o(x, y);
-    return abs(abs(cross(a - b, c - b)) - abs(cross(a - o, b - o)) - abs(cross(b - o, c - o)) - abs(cross(c - o, a - o))) < 100;
+bool Triangle2d::inner_point(const sf::Vector2f& o) const {
+    bool f1 = cross(o - a, b - a) >= 0;
+    bool f2 = cross(o - b, c - b) >= 0;
+    bool f3 = cross(o - c, a - c) >= 0;
+    bool s1 = cross(o - a, b - a) <= 0;
+    bool s2 = cross(o - b, c - b) <= 0;
+    bool s3 = cross(o - c, a - c) <= 0;
+    return f1 && f2 && f3 || s1 && s2 && s3;
 }
 
 sf::Vector2f Triangle2d::get_left_point() const {

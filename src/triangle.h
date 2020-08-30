@@ -20,7 +20,7 @@ public:
     Triangle2d() = delete;
     Triangle2d(sf::Vector2f a, sf::Vector2f b, sf::Vector2f c);
     sf::Vector2f a, b, c;
-    bool inner_point(double x, double y);
+    bool inner_point(const sf::Vector2f& o) const ;
     sf::Vector2f get_left_point() const ;
     sf::Vector2f get_right_point() const ;
     Matrix<2, 2> create_basis() const ;

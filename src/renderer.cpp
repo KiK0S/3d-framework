@@ -47,16 +47,16 @@ void Renderer::draw(const Triangle4d& triangle4d) {
     int max_y = left_point.y;
     Matrix<2, 2> basis = triangle2d.create_basis();
     for (int x = ceil(left_point.x); x <= right_point.x; x++) {
-        while (triangle2d.inner_point(x, min_y) && min_y >= -1.0 * kScreenSize_) {
+        while (triangle2d.inner_point(sf::Vector2f(x, min_y)) && min_y >= -1.0 * kScreenSize_) {
             min_y--;
         }
-        while (triangle2d.inner_point(x, max_y) && max_y <= kScreenSize_) {
+        while (triangle2d.inner_point(sf::Vector2f(x, max_y)) && max_y <= kScreenSize_) {
             max_y++;
         }
-        while (!triangle2d.inner_point(x, min_y) && min_y <= kScreenSize_) {
+        while (!triangle2d.inner_point(sf::Vector2f(x, min_y)) && min_y <= kScreenSize_) {
             min_y++;
         }
-        while (!triangle2d.inner_point(x, max_y) && max_y >= -1.0 * kScreenSize_) {
+        while (!triangle2d.inner_point(sf::Vector2f(x, max_y)) && max_y >= -1.0 * kScreenSize_) {
             max_y--;
         }
         for (int y = min_y; y <= max_y; y++) {
