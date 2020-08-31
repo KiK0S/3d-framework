@@ -20,11 +20,12 @@ public:
     Triangle2d() = delete;
     Triangle2d(sf::Vector2f a, sf::Vector2f b, sf::Vector2f c);
     sf::Vector2f a, b, c;
+    std::array<int, 3> order_;
     bool inner_point(const sf::Vector2f& o) const ;
     sf::Vector2f get_left_point() const ;
     sf::Vector2f get_right_point() const ;
     Matrix<2, 2> create_basis() const ;
-    std::array<int, 3> get_order() const ;
+    const std::array<int, 3>& get_order() const ;
     double square() const ;
 };
 

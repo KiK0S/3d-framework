@@ -59,10 +59,9 @@ public:
     Matrix(const std::vector<Point4d>& data) {
         assert(M == 4 && N == data.size());
         for (int i = 0; i < N; i++) {
-            (*this)(i, 0) = data[i].x;
-            (*this)(i, 1) = data[i].y;
-            (*this)(i, 2) = data[i].z;
-            (*this)(i, 3) = data[i].w;
+            for (int j = 0; j < M; j++) {
+                (*this)(i, j) = data[i][j];   
+            }
         }
     }
 

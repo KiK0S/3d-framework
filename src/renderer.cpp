@@ -46,20 +46,13 @@ void Renderer::draw(const Triangle4d& triangle4d) {
     int min_y = left_point.y;
     int max_y = left_point.y;
     Matrix<2, 2> basis = triangle2d.create_basis();
-    for (int x = ceil(left_point.x); x <= right_point.x; x++) {
-        while (triangle2d.inner_point(sf::Vector2f(x, min_y)) && min_y >= -1.0 * kScreenSize_) {
-            min_y--;
-        }
-        while (triangle2d.inner_point(sf::Vector2f(x, max_y)) && max_y <= kScreenSize_) {
-            max_y++;
-        }
-        while (!triangle2d.inner_point(sf::Vector2f(x, min_y)) && min_y <= kScreenSize_) {
-            min_y++;
-        }
-        while (!triangle2d.inner_point(sf::Vector2f(x, max_y)) && max_y >= -1.0 * kScreenSize_) {
-            max_y--;
-        }
+    for (int x = left_point.x; x <= right_point.x; x++) {
+        min_y = find_min_y(triangle2d, x);
+        max_y = find_max_y(triangle2d, x);
         for (int y = min_y; y <= max_y; y++) {
+            // if (!triangle2d.inner_point(sf::Vector2f(x, y))) {
+            //     continue;
+            // }
             sf::Vector2f arrow = sf::Vector2f(x, y) - left_point;
             Matrix<2, 1> coords = basis.solve_system(Matrix<1, 2>({arrow}).transpose());
             Point4d p = a + coords(0, 0) * (b - a) + coords(1, 0) * (c - a);
@@ -164,9 +157,53 @@ void Renderer::azimuth(double angle) const {
     rotate_world(angle, 1);
 }
 
+double Renderer::find_min_y(const Triangle2d& triangle, double x) const {
+    if (triangle.b.x == x) {
+        return triangle.b.y;
+    }
+    if (triangle.b.x > x) {
+        sf::Vector2f v = triangle.a - triangle.b;
+        if (v.x == 0) {
+            return triangle.a.y;   
+        }
+        double k = (triangle.b.x - x) / v.x;
+        v *= std::abs(k);
+        return (triangle.b + v).y;
+    }
+    else {
+        sf::Vector2f v = triangle.c - triangle.b;
+        if (v.x == 0) {
+            return triangle.b.y;
+        }
+        double k = (triangle.b.x - x) / v.x;
+        v *= std::abs(k);
+        return (triangle.b + v).y;
+    }
+}
 
-
-
+double Renderer::find_max_y(const Triangle2d& triangle, double x) const {
+    if (triangle.c.x == x) {
+        return triangle.c.y;
+    }
+    if (triangle.c.x > x) {
+        sf::Vector2f v = triangle.a - triangle.c;
+        if (v.x == 0) {
+            return triangle.c.y;
+        }
+        double k = (triangle.c.x - x) / v.x;
+        v *= std::abs(k);
+        return (triangle.c + v).y;
+    }
+    else {
+        sf::Vector2f v = triangle.b - triangle.c;
+        if (v.x == 0) {
+            return triangle.b.y;
+        }
+        double k = (triangle.c.x - x) / v.x;
+        v *= std::abs(k);
+        return (triangle.c + v).y;
+    }
+}
 
 
 }

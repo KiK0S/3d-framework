@@ -1,4 +1,5 @@
 #include "point.h"
+#include <cassert>
 #include <cmath>
 
 namespace app {
@@ -45,6 +46,25 @@ double Point4d::length() const {
     return std::sqrt(x * x + y * y + z * z);
 }
 
+
+double Point4d::operator[] (size_t i) const {
+    if (i == 0) return x;
+    if (i == 1) return y;
+    if (i == 2) return z;
+    if (i == 3) return w;
+    assert(0);
+    return -1;
+}
+
+double& Point4d::operator[] (size_t i) {
+    if (i == 0) return x;
+    if (i == 1) return y;
+    if (i == 2) return z;
+    if (i == 3) return w;
+    assert(0);
+    return x;
+}
+
 double cross(const sf::Vector2f& a, const sf::Vector2f& b) {
     return a.x * b.y - a.y * b.x;
 }
@@ -55,6 +75,21 @@ double scalar(const sf::Vector2f& a, const sf::Vector2f& b) {
 
 double scalar(const Vector4d& a, const Vector4d& b) {
     return a.x * b.x + a.y * b.y + a.z * b.z;
+}
+
+sf::Vector2f& operator*= (sf::Vector2f& v, double d) {
+    v.x *= d;
+    v.y *= d;
+    return v;
+}
+
+sf::Vector2f& operator/= (sf::Vector2f& v, double d) {
+    v *= (1.0 / d);
+    return v;
+}
+
+double length(const sf::Vector2f& v) {
+    return std::sqrt(v.x * v.x + v.y * v.y);
 }
 
 }

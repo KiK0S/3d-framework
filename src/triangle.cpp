@@ -37,13 +37,19 @@ void Triangle4d::sort_points(std::array<int, 3> order, Point4d& a, Point4d& b, P
 }
 
 Triangle2d::Triangle2d(sf::Vector2f a, sf::Vector2f b, sf::Vector2f c): a(a), b(b), c(c) {
-    if (a.x > b.x) {
+    for (int i = 0; i < 3; i++) {
+        order_[i] = i;
+    }
+    if (a.x > b.x || a.x == b.x && a.y > b.y) {
+        std::swap(order_[0], order_[1]);
         std::swap(a, b);
     }
-    if (a.x > c.x) {
+    if (a.x > c.x || a.x == c.x && a.y > c.y) {
         std::swap(a, c);
+        std::swap(order_[0], order_[2]);
     }
-    if (b.x > c.x) {
+    if (cross(b - a, c - a) > 0) {
+        std::swap(order_[1], order_[2]);
         std::swap(b, c);
     }
     // like for handle sorting 3 elements
@@ -60,52 +66,29 @@ bool Triangle2d::inner_point(const sf::Vector2f& o) const {
 }
 
 sf::Vector2f Triangle2d::get_left_point() const {
-    if (a.x <= b.x && a.x <= c.x) {
-        return a;
-    }
-    if (c.x <= b.x && c.x <= a.x) {
-        return c;
-    }
-    return b;
+    return a;
 }
 
 sf::Vector2f Triangle2d::get_right_point() const {
-    if (a.x >= b.x && a.x >= c.x) {
-        return a;
+    sf::Vector2f ans = a; 
+    if (ans.x < b.x || ans.x == b.x && ans.y < b.y) {
+        ans = b;
     }
-    if (c.x >= b.x && c.x >= a.x) {
-        return c;
+    if (ans.x < c.x || ans.x == c.x && ans.y < c.y) {
+        ans = c;
     }
-    return b;
+    return ans;
 }
 
 Matrix<2, 2> Triangle2d::create_basis() const {
-    if (a == get_left_point()) {
-        return Matrix<2, 2> ({b - a, c - a}).transpose();
-    }
-    if (b == get_left_point()) {
-        return Matrix<2, 2> ({a - b, c - b}).transpose();
-    }
-    if (c == get_left_point()) {
-        return Matrix<2, 2> ({a - c, b - c}).transpose();
-    }
-    return Matrix<2, 2>();
+    return Matrix<2, 2> ({b - a, c - a}).transpose();
 }
 
 /*
     the same order as in create_basis()
 */
-std::array<int, 3> Triangle2d::get_order() const {
-    if (a == get_left_point()) {
-        return {0, 1, 2};
-    }
-    if (b == get_left_point()) {
-        return {1, 0, 2};
-    }
-    if (c == get_left_point()) {
-        return {2, 0, 1};
-    } 
-    return {0, 1, 2};
+const std::array<int, 3>& Triangle2d::get_order() const {
+    return order_;
 }
 
 double Triangle2d::square() const {

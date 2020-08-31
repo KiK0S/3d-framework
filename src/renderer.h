@@ -51,6 +51,8 @@ public:
     bool is_open() const ;
     void close();
 
+    double find_max_y(const Triangle2d& triangle, double x) const ;
+    double find_min_y(const Triangle2d& triangle, double x) const ;
 private:
     constexpr static size_t kScreenSize_ = 1000;
     sf::RenderWindow window_;
@@ -59,6 +61,7 @@ private:
     Camera * const camera_ = nullptr;
     constexpr static Vector4d kAxis_[3] = {Vector4d(100, 0, 0), Vector4d(0, 100, 0), Vector4d(0, 0, 100)};
     const static sf::Vector2f kCenter_;
+
 };
 
 }

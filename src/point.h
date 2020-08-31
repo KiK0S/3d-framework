@@ -20,6 +20,8 @@ public:
     Point4d& operator -= (const Point4d& p);
     Point4d& operator *= (double f);
     Point4d& operator /= (double f);
+    double operator[] (size_t i) const ;
+    double& operator[] (size_t i) ;
     double length() const ;
 };
 
@@ -30,5 +32,10 @@ Point4d operator * (double f, const Point4d& p);
 double cross(const sf::Vector2f& a, const sf::Vector2f& b);
 double scalar(const sf::Vector2f& a, const sf::Vector2f& b);
 double scalar(const Vector4d& a, const Vector4d& b);
+
+sf::Vector2f& operator*= (sf::Vector2f& v, double d);
+sf::Vector2f& operator/= (sf::Vector2f& v, double d);
+
+double length(const sf::Vector2f& v);
 
 }
