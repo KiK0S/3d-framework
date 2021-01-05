@@ -37,7 +37,9 @@ void Renderer::draw(const std::vector<sf::Vertex>& data) {
 }
 
 void Renderer::draw(const Triangle4d& triangle4d) {
-    Triangle2d triangle2d(camera_->project_point(triangle4d.a), camera_->project_point(triangle4d.b), camera_->project_point(triangle4d.c));
+    Triangle2d triangle2d(camera_->project_point(triangle4d.a),
+                          camera_->project_point(triangle4d.b),
+                          camera_->project_point(triangle4d.c));
     std::array<int, 3> order = triangle2d.get_order();
     Point4d a(0, 0, 0), b(0, 0, 0), c(0, 0, 0);
     triangle4d.sort_points(order, a, b, c);
@@ -50,6 +52,7 @@ void Renderer::draw(const Triangle4d& triangle4d) {
         min_y = find_min_y(triangle2d, x);
         max_y = find_max_y(triangle2d, x);
         for (int y = min_y; y <= max_y; y++) {
+            
             // if (!triangle2d.inner_point(sf::Vector2f(x, y))) {
             //     continue;
             // }
@@ -197,7 +200,7 @@ double Renderer::find_max_y(const Triangle2d& triangle, double x) const {
     else {
         sf::Vector2f v = triangle.b - triangle.c;
         if (v.x == 0) {
-            return triangle.b.y;
+            return triangle.c.y;
         }
         double k = (triangle.c.x - x) / v.x;
         v *= std::abs(k);

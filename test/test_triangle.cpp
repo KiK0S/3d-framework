@@ -7,6 +7,9 @@
 int main() {
 	app::Renderer renderer;
     app::Triangle2d t(sf::Vector2f(1, 3), sf::Vector2f(5, -2), sf::Vector2f(-3, 1));
+    for (auto it : t.get_order()) {
+        std::cerr << it << '\n';
+    }
     for (double x = -5; x <= 5.1; x += 0.2) {
         for (double y = -5; y <= 5.1; y += 0.2) {
             std::cout << t.inner_point(sf::Vector2f(x, y)) << ' ';

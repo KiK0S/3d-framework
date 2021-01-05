@@ -25,7 +25,7 @@ public:
     sf::Vector2f get_left_point() const ;
     sf::Vector2f get_right_point() const ;
     Matrix<2, 2> create_basis() const ;
-    const std::array<int, 3>& get_order() const ;
+    std::array<int, 3>&& get_order();
     double square() const ;
 };
 

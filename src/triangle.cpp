@@ -36,19 +36,19 @@ void Triangle4d::sort_points(std::array<int, 3> order, Point4d& a, Point4d& b, P
     }
 }
 
-Triangle2d::Triangle2d(sf::Vector2f a, sf::Vector2f b, sf::Vector2f c): a(a), b(b), c(c) {
+Triangle2d::Triangle2d(sf::Vector2f _a, sf::Vector2f _b, sf::Vector2f _c): a(_a), b(_b), c(_c) {
     for (int i = 0; i < 3; i++) {
         order_[i] = i;
     }
-    if (a.x > b.x || a.x == b.x && a.y > b.y) {
+    if (a.x > b.x || (a.x == b.x && a.y > b.y)) {
         std::swap(order_[0], order_[1]);
         std::swap(a, b);
     }
-    if (a.x > c.x || a.x == c.x && a.y > c.y) {
+    if (a.x > c.x || (a.x == c.x && a.y > c.y)) {
         std::swap(a, c);
         std::swap(order_[0], order_[2]);
     }
-    if (cross(b - a, c - a) > 0) {
+    if (cross(b - a, c - a) < 0) {
         std::swap(order_[1], order_[2]);
         std::swap(b, c);
     }
@@ -87,8 +87,8 @@ Matrix<2, 2> Triangle2d::create_basis() const {
 /*
     the same order as in create_basis()
 */
-const std::array<int, 3>& Triangle2d::get_order() const {
-    return order_;
+std::array<int, 3>&& Triangle2d::get_order() {
+    return std::move(order_);
 }
 
 double Triangle2d::square() const {
