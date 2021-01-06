@@ -42,11 +42,11 @@ public:
         }
     }
 
-    Matrix(const std::array<double, N * N>& data): data_(data) {}
-
     Matrix(const Point4d& p): data_({p.x, p.y, p.z, p.w}) {
         assert(M == 1 && N == 4);
     }
+
+    Matrix(std::array<double, 4>&& data): data_{{std::forward<std::array<double, 4>>(data)}} {}
 
     Matrix(const std::vector<sf::Vector2f>& data) {
         assert(M == 2 && N == data.size());
