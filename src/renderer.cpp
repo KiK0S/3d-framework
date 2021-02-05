@@ -68,8 +68,8 @@ void Renderer::draw(const Triangle4d& triangle4d) {
         for (int y = min_y; y <= max_y; y++) {
             // if (!triangle2d.inner_point(sf::Vector2f(x, y))) {
             //     continue;
-            // }
-            screen_->set_pixel(x + kCenter_.x, y + kCenter_.y, min_z + (max_z - min_z) * (y - min_y), sf::Color::Black);
+            // }                                         TODO: z coord
+            screen_->set_pixel(x + kCenter_.x, y + kCenter_.y, 0, sf::Color::Black);
         }
     }
 }
