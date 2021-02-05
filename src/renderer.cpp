@@ -36,6 +36,16 @@ void Renderer::draw(const std::vector<sf::Vertex>& data) {
     window_.draw(ptr, data.size(), sf::Points);
 }
 
+Matrix<2, 1> Renderer::get_coords(int x, int y, Matrix<2, 2>& basis, sf::Vector2f& left_point) const {
+    sf::Vector2f arrow = sf::Vector2f(x, y) - left_point;
+    return basis.solve_system(Matrix<1, 2>({arrow}).transpose());  
+}
+
+double Renderer::get_z(int x, int y, Matrix<2, 1>&& coords, Point4d& a, Point4d& b, Point4d& c) const {
+    Point4d p = a + coords(0, 0) * (b - a) + coords(1, 0) * (c - a);
+    return camera_->get_z_value(p);
+}
+
 void Renderer::draw(const Triangle4d& triangle4d) {
     Triangle2d triangle2d(camera_->project_point(triangle4d.a),
                           camera_->project_point(triangle4d.b),
@@ -45,21 +55,21 @@ void Renderer::draw(const Triangle4d& triangle4d) {
     triangle4d.sort_points(order, a, b, c);
     sf::Vector2f left_point = triangle2d.get_left_point();
     sf::Vector2f right_point = triangle2d.get_right_point();
-    int min_y = left_point.y;
-    int max_y = left_point.y;
+    double min_y;
+    double max_y;
     Matrix<2, 2> basis = triangle2d.create_basis();
     for (int x = left_point.x; x <= right_point.x; x++) {
         min_y = find_min_y(triangle2d, x);
         max_y = find_max_y(triangle2d, x);
+
+        double min_z = get_z(x, min_y, std::move(get_coords(x, min_y, basis, left_point)), a, b, c);
+        double max_z = get_z(x, max_y, std::move(get_coords(x, max_y, basis, left_point)), a, b, c);
+
         for (int y = min_y; y <= max_y; y++) {
-            
             // if (!triangle2d.inner_point(sf::Vector2f(x, y))) {
             //     continue;
             // }
-            sf::Vector2f arrow = sf::Vector2f(x, y) - left_point;
-            Matrix<2, 1> coords = basis.solve_system(Matrix<1, 2>({arrow}).transpose());
-            Point4d p = a + coords(0, 0) * (b - a) + coords(1, 0) * (c - a);
-            screen_->set_pixel(x + kCenter_.x, y + kCenter_.y, camera_->get_z_value(p), sf::Color::Black);
+            screen_->set_pixel(x + kCenter_.x, y + kCenter_.y, min_z + (max_z - min_z) * (y - min_y), sf::Color::Black);
         }
     }
 }

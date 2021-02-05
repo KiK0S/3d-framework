@@ -53,6 +53,9 @@ public:
 
     double find_max_y(const Triangle2d& triangle, double x) const ;
     double find_min_y(const Triangle2d& triangle, double x) const ;
+
+    double get_z(int x, int y, Matrix<2, 1>&& coords, Point4d& a, Point4d& b, Point4d& c) const ;
+    Matrix<2, 1> get_coords(int x, int y, Matrix<2, 2>& basis, sf::Vector2f& point) const ;
 private:
     constexpr static size_t kScreenSize_ = 1000;
     sf::RenderWindow window_;
