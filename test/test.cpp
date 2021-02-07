@@ -16,11 +16,11 @@ void setup(app::Renderer& renderer) {
     //                        app::Point4d(200, 400, 35),
     //                        app::Point4d(140, 900, 600),
     //                        app::Point4d(500, 500, -10));
-    app::Cube* cube = new app::Cube();
-    // app::Chair* chair = new app::Chair();
+    // app::Cube* cube = new app::Cube();
+    app::Chair* chair = new app::Chair();
     // renderer.add_object(tetraedr);
-    renderer.add_object(cube);
-    // renderer.add_object(chair);
+    // renderer.add_object(cube);
+    renderer.add_object(chair);
 }
 
 void handle(app::Renderer& renderer) {
@@ -31,22 +31,22 @@ void handle(app::Renderer& renderer) {
         }
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
-        renderer.move_camera(app::Vector4d(1, 0, 0));
+        renderer.move_camera(app::Vector4d(10, 0, 0));
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
-        renderer.move_camera(app::Vector4d(-1, 0, 0));
+        renderer.move_camera(app::Vector4d(-10, 0, 0));
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
-        renderer.move_camera(app::Vector4d(0, 1, 0));
+        renderer.move_camera(app::Vector4d(0, 10, 0));
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
-        renderer.move_camera(app::Vector4d(0, -1, 0));
+        renderer.move_camera(app::Vector4d(0, -10, 0));
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z)) {
-        renderer.move_camera(app::Vector4d(0, 0, 1));
+        renderer.move_camera(app::Vector4d(0, 0, 10));
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::X)) {
-        renderer.move_camera(app::Vector4d(0, 0, -1));
+        renderer.move_camera(app::Vector4d(0, 0, -10));
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
         renderer.yaw(0.01);
@@ -82,6 +82,7 @@ void handle(app::Renderer& renderer) {
         renderer.close();
         exit(0);
     }
+    // std::this_thread::sleep_for(std::chrono::milliseconds(100));
     renderer.update();
 }
 

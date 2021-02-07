@@ -18,12 +18,15 @@ Renderer::~Renderer() {
 }
 
 void Renderer::update() {
+    debug("/////////////");
+    debug("new frame");
     window_.clear(sf::Color::White);
     camera_->create_transform();
     world_->update();
     screen_->update();
     draw_axis();
     window_.display();
+    debug("/////////////");
 }
 
 void Renderer::draw(sf::Vertex pixel) {
@@ -50,6 +53,10 @@ void Renderer::draw(const Triangle4d& triangle4d) {
     Triangle2d triangle2d(camera_->project_point(triangle4d.a),
                           camera_->project_point(triangle4d.b),
                           camera_->project_point(triangle4d.c));
+    debug(triangle2d.a);
+    debug(triangle2d.b);
+    debug(triangle2d.c);
+    debug("\n=====\n");
     std::array<int, 3> order = triangle2d.get_order();
     Point4d a(0, 0, 0), b(0, 0, 0), c(0, 0, 0);
     triangle4d.sort_points(order, a, b, c);
@@ -58,18 +65,25 @@ void Renderer::draw(const Triangle4d& triangle4d) {
     double min_y;
     double max_y;
     Matrix<2, 2> basis = triangle2d.create_basis();
-    for (int x = left_point.x; x <= right_point.x; x++) {
+    for (int x = ceil(left_point.x); x <= floor(right_point.x); x++) {
         min_y = find_min_y(triangle2d, x);
         max_y = find_max_y(triangle2d, x);
 
         double min_z = get_z(x, min_y, std::move(get_coords(x, min_y, basis, left_point)), a, b, c);
         double max_z = get_z(x, max_y, std::move(get_coords(x, max_y, basis, left_point)), a, b, c);
 
-        for (int y = min_y; y <= max_y; y++) {
+        for (int y = ceil(min_y); y <= floor(max_y); y++) {
             // if (!triangle2d.inner_point(sf::Vector2f(x, y))) {
             //     continue;
-            // }                                         TODO: z coord
-            screen_->set_pixel(x + kCenter_.x, y + kCenter_.y, 0, sf::Color::Black);
+            // }   
+            // 
+            double z = 0;
+            if (min_z != max_z) {
+                z = (max_z - min_z) * (y - min_y) / (max_y - min_y);
+            } else {
+                z = max_z;
+            }
+            screen_->set_pixel(x + kCenter_.x, y + kCenter_.y, z, sf::Color::Black);
         }
     }
 }
@@ -134,6 +148,10 @@ double Renderer::get_max_z_value() const {
     return camera_->get_max_z_value();
 }
 
+double Renderer::get_min_z_value() const {
+    return camera_->get_min_z_value();
+}
+
 size_t Renderer::get_screen_size() const {
     return kScreenSize_;
 }
@@ -171,12 +189,12 @@ void Renderer::azimuth(double angle) const {
 }
 
 double Renderer::find_min_y(const Triangle2d& triangle, double x) const {
-    if (triangle.b.x == x) {
+    if (std::abs(triangle.b.x - x) < 1e-10) {
         return triangle.b.y;
     }
     if (triangle.b.x > x) {
         sf::Vector2f v = triangle.a - triangle.b;
-        if (v.x == 0) {
+        if (std::abs(v.x) < 1e-5) {
             return triangle.a.y;   
         }
         double k = (triangle.b.x - x) / v.x;
@@ -185,7 +203,7 @@ double Renderer::find_min_y(const Triangle2d& triangle, double x) const {
     }
     else {
         sf::Vector2f v = triangle.c - triangle.b;
-        if (v.x == 0) {
+        if (std::abs(v.x) < 1e-5) {
             return triangle.b.y;
         }
         double k = (triangle.b.x - x) / v.x;
@@ -195,12 +213,14 @@ double Renderer::find_min_y(const Triangle2d& triangle, double x) const {
 }
 
 double Renderer::find_max_y(const Triangle2d& triangle, double x) const {
-    if (triangle.c.x == x) {
+
+    if (std::abs(triangle.c.x - x) < 1e-10) {
         return triangle.c.y;
     }
     if (triangle.c.x > x) {
         sf::Vector2f v = triangle.a - triangle.c;
-        if (v.x == 0) {
+        debug(v);
+       if (std::abs(v.x) < 1e-5) {
             return triangle.c.y;
         }
         double k = (triangle.c.x - x) / v.x;
@@ -209,7 +229,7 @@ double Renderer::find_max_y(const Triangle2d& triangle, double x) const {
     }
     else {
         sf::Vector2f v = triangle.b - triangle.c;
-        if (v.x == 0) {
+        if (std::abs(v.x) < 1e-5) {
             return triangle.c.y;
         }
         double k = (triangle.c.x - x) / v.x;

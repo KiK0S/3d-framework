@@ -38,7 +38,8 @@ void Screen::clear() {
 }
 
 void Screen::set_pixel(int x, int y, double z, sf::Color color) {
-    if (x < 0 || y < 0 || x >= renderer_->get_screen_size() || y >= renderer_->get_screen_size()) {
+    if (x < 0 || y < 0 || x >= renderer_->get_screen_size() || y >= renderer_->get_screen_size() ||
+        z > renderer_->get_max_z_value() || z < renderer_->get_min_z_value()) {
         return;
     }
     if (z < z_value_(x, y)) {

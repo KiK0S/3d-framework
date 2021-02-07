@@ -44,6 +44,7 @@ public:
     void draw_axis();
 
     double get_max_z_value() const ;
+    double get_min_z_value() const ;
     size_t get_focus_distance() const ;
     size_t get_screen_size() const ;
 

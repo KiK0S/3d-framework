@@ -27,7 +27,11 @@ Matrix4d Camera::get_world_transform() const {
 }
 
 double Camera::get_max_z_value() const {
-    return kMaxDistance_;
+    return kMaxDistance_ - kFocusDistance_;
+}
+
+double Camera::get_min_z_value() const {
+    return kMinDistance_ - kFocusDistance_;
 }
 
 double Camera::get_focus_distance() const {
@@ -48,10 +52,7 @@ Point4d Camera::transform_point(Point4d p) const {
 
 sf::Vector2f Camera::project_point(Point4d p) const {
     p = transform_point(p);
-    if (p.z >= kMinDistance_ && p.z <= kMaxDistance_) {
-        return {p.x, p.y};
-    }
-    return kDefaultPixel_;
+    return {p.x, p.y};
 }
 
 double Camera::get_z_value(Point4d p) const {

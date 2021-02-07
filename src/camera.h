@@ -23,6 +23,7 @@ public:
     void apply_transform_to_world(const Matrix4d& matrix);
     Matrix4d get_world_transform() const;
     double get_max_z_value() const;
+    double get_min_z_value() const;
     double get_focus_distance() const;
 
 private:

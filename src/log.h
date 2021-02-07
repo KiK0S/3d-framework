@@ -6,7 +6,9 @@
 
 namespace app {
 
-const bool DEBUG = true;
+// TODO: spdlog
+
+const bool DEBUG = false;
 
 void debug(const std::string& s);
 void debug(double d);
