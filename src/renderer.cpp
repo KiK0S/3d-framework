@@ -103,7 +103,8 @@ void Renderer::move_camera(Vector4d v) const {
     moving(0, 3) = v.x;
     moving(1, 3) = v.y;
     moving(2, 3) = v.z;
-    camera_->apply_transform_to_camera(moving);
+    // moving = camera_->get_move().transpose() * camera_->get_rotate().transpose() * camera_->get_rotate().transpose() * moving;
+    camera_->move_camera(moving);
 }
 
 void Renderer::move_world(Vector4d v) const {
@@ -129,7 +130,7 @@ void Renderer::rotate_world(double angle, int fixed_coord) const {
     moving((fixed_coord + 2) % 3, (fixed_coord + 2) % 3) = std::cos(angle);
     moving((fixed_coord + 1) % 3, (fixed_coord + 2) % 3) = std::sin(angle);
     moving((fixed_coord + 2) % 3, (fixed_coord + 1) % 3) = -std::sin(angle);
-    camera_->apply_transform_to_world(moving);
+    camera_->rotate_camera(moving);
 }
 
 void Renderer::rotate_camera(double angle, int fixed_coord) const {
@@ -213,13 +214,11 @@ double Renderer::find_min_y(const Triangle2d& triangle, double x) const {
 }
 
 double Renderer::find_max_y(const Triangle2d& triangle, double x) const {
-
     if (std::abs(triangle.c.x - x) < 1e-10) {
         return triangle.c.y;
     }
     if (triangle.c.x > x) {
         sf::Vector2f v = triangle.a - triangle.c;
-        debug(v);
        if (std::abs(v.x) < 1e-5) {
             return triangle.c.y;
         }

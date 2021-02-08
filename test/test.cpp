@@ -16,11 +16,11 @@ void setup(app::Renderer& renderer) {
     //                        app::Point4d(200, 400, 35),
     //                        app::Point4d(140, 900, 600),
     //                        app::Point4d(500, 500, -10));
-    // app::Cube* cube = new app::Cube();
-    app::Chair* chair = new app::Chair();
+    app::Cube* cube = new app::Cube();
+    // app::Chair* chair = new app::Chair();
     // renderer.add_object(tetraedr);
-    // renderer.add_object(cube);
-    renderer.add_object(chair);
+    renderer.add_object(cube);
+    // renderer.add_object(chair);
 }
 
 void handle(app::Renderer& renderer) {
