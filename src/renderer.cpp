@@ -8,25 +8,23 @@ namespace app {
 
 const sf::Vector2f Renderer::kCenter_ = sf::Vector2f(Renderer::kScreenSize_ / 2, Renderer::kScreenSize_ / 2);
 
-Renderer::Renderer(): screen_(new Screen(this)), world_(new World(this)), camera_(new Camera(this)),
-    window_(sf::VideoMode(kScreenSize_, kScreenSize_), "Test: interacrtive camera") {}
+Renderer::Renderer(): screen_(new Screen(this)), camera_(new Camera(this)),
+                      window_(sf::VideoMode(kScreenSize_, kScreenSize_), "Test: interacrtive camera") {}
 
 Renderer::~Renderer() {
-    delete world_;
     delete camera_;
     delete screen_;
 }
 
-void Renderer::update() {
-    debug("/////////////");
-    debug("new frame");
+void Renderer::prepare() {
     window_.clear(sf::Color::White);
     camera_->create_transform();
-    world_->update();
+}
+
+void Renderer::update() {
     screen_->update();
     draw_axis();
     window_.display();
-    debug("/////////////");
 }
 
 void Renderer::draw(sf::Vertex pixel) {
@@ -106,22 +104,9 @@ void Renderer::move_camera(Vector4d v) const {
     camera_->apply_transform_to_camera(moving);
 }
 
-void Renderer::move_world(Vector4d v) const {
-    v = v;
-    Matrix4d moving = Matrix4d::identity_matrix();
-    moving(0, 3) = v.x;
-    moving(1, 3) = v.y;
-    moving(2, 3) = v.z;
-    for (SurfaceObject* object : (*world_)) {
-        for (Point4d& p : (*object)) {
-            p = moving * p;
-        }
-    }
-}
+void Renderer::move_world(Vector4d v) const {}
 
-void Renderer::add_object(SurfaceObject* w) const {
-    world_->add_object(w);
-}
+void Renderer::add_object(SurfaceObject* w) const {}
 
 void Renderer::rotate_world(double angle, int fixed_coord) const {
     Matrix4d moving = Matrix4d::identity_matrix();

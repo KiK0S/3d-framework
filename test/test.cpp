@@ -1,96 +1,89 @@
-#include "chair.cpp"
-#include "cube.cpp"
-#include "point.cpp"
-#include "renderer.cpp"
-#include "tetraedr.cpp"
-#include <SFML/Graphics.hpp>
-#include <SFML/Window.hpp>
+#include "application.h"
+#include "chair.h"
+#include "cube.h"
+#include "point.h"
+#include "tetraedr.h"
 #include <chrono>
 #include <cmath>
 #include <thread>
 #include <vector>
+#include <SFML/Graphics.hpp>
+#include <SFML/Window.hpp>
 
 
-void setup(app::Renderer& renderer) {
-    // app::Tetraedr* tetraedr = new app::Tetraedr(app::Point4d(100, 100, 10),
-    //                        app::Point4d(200, 400, 35),
-    //                        app::Point4d(140, 900, 600),
-    //                        app::Point4d(500, 500, -10));
-    // app::Cube* cube = new app::Cube();
-    app::Chair* chair = new app::Chair();
-    // renderer.add_object(tetraedr);
-    // renderer.add_object(cube);
-    renderer.add_object(chair);
+void setup(app::Application& application) {
+    app::Cube* cube = new app::Cube();
+    application.add_object(cube);
 }
 
-void handle(app::Renderer& renderer) {
+void handle(app::Application& application) {
     sf::Event event;
-    while (renderer.poll_event(event)) {
+    while (application.poll_event(event)) {
         if (event.type == sf::Event::Closed) {
-            renderer.close();
+            application.close();
         }
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
-        renderer.move_camera(app::Vector4d(10, 0, 0));
+        application.move_camera(app::Vector4d(10, 0, 0));
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
-        renderer.move_camera(app::Vector4d(-10, 0, 0));
+        application.move_camera(app::Vector4d(-10, 0, 0));
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
-        renderer.move_camera(app::Vector4d(0, 10, 0));
+        application.move_camera(app::Vector4d(0, 10, 0));
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
-        renderer.move_camera(app::Vector4d(0, -10, 0));
+        application.move_camera(app::Vector4d(0, -10, 0));
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z)) {
-        renderer.move_camera(app::Vector4d(0, 0, 10));
+        application.move_camera(app::Vector4d(0, 0, 10));
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::X)) {
-        renderer.move_camera(app::Vector4d(0, 0, -10));
+        application.move_camera(app::Vector4d(0, 0, -10));
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-        renderer.yaw(0.01);
+        application.yaw(0.01);
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
-        renderer.yaw(-0.01);
+        application.yaw(-0.01);
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
-        renderer.pitch(0.01);
+        application.pitch(0.01);
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
-        renderer.pitch(-0.01);
+        application.pitch(-0.01);
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q)) {
-        renderer.roll(0.01);
+        application.roll(0.01);
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::E)) {
-        renderer.roll(-0.01);
+        application.roll(-0.01);
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::R)) {
-        renderer.azimuth(0.01);
+        application.azimuth(0.01);
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::T)) {
-        renderer.azimuth(-0.01);
+        application.azimuth(-0.01);
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::F)) {
-        renderer.elevation(0.01);
+        application.elevation(0.01);
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::G)) {
-        renderer.elevation(-0.01);
+        application.elevation(-0.01);
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
-        renderer.close();
+        application.close();
         exit(0);
     }
     // std::this_thread::sleep_for(std::chrono::milliseconds(100));
-    renderer.update();
+    application.update();
 }
 
 int main() {
-    app::Renderer renderer;
-    setup(renderer);
-    while (renderer.is_open()) {
-        handle(renderer);
+    app::Application application;
+    setup(application);
+    while (application.is_open()) {
+        handle(application);
     }
     return 0;
 }

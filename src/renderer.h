@@ -17,12 +17,22 @@ class Screen;
 class World;
 class Camera;
 
+/*!
+    \brief Дочерний класс
+    \author Norserium
+    \version 1.0
+    \date Март 2015 года
+    \warning Данный класс создан только в учебных целях
+
+    Обычный дочерний класс, который отнаследован от ранее созданного класса Parent
+*/
 class Renderer {
 public:
     Renderer();
     ~Renderer();
 
     void update();
+    void prepare();
     void draw(sf::Vertex pixel) ;
     void draw(const std::vector<sf::Vertex>& data) ;
     void draw(Line4d line) ;
@@ -61,7 +71,6 @@ private:
     constexpr static size_t kScreenSize_ = 1000;
     sf::RenderWindow window_;
     Screen * const screen_ = nullptr;
-    World * const world_ = nullptr;
     Camera * const camera_ = nullptr;
     constexpr static Vector4d kAxis_[3] = {Vector4d(100, 0, 0), Vector4d(0, 100, 0), Vector4d(0, 0, 100)};
     const static sf::Vector2f kCenter_;

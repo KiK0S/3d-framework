@@ -15,7 +15,7 @@ class Renderer;
 
 class World {
 public:
-    World(Renderer* renderer);
+    World();
 
     void update();
     void add_object(SurfaceObject* w);
@@ -24,7 +24,6 @@ public:
     std::vector<SurfaceObject*>::iterator end();
 
 private:
-    Renderer * const renderer_ = nullptr;
     std::vector<SurfaceObject*> objects_;
 };
 

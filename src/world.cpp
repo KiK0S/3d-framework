@@ -9,20 +9,9 @@
 
 namespace app {
 
-World::World(Renderer* renderer): renderer_(renderer) {
-    assert(renderer);
-}
+World::World() {}
 
-void World::update() {
-    for (auto current : objects_) {
-        for (auto& line3d : current->lines()) {
-            renderer_->draw(line3d);
-        }
-        for (auto& triangle : current->triangles()) {
-            renderer_->draw(triangle);
-        }
-    }
-}
+void World::update() {}
 
 void World::add_object(SurfaceObject* t) {
     objects_.push_back(t);
