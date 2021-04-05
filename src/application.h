@@ -39,7 +39,6 @@ public:
     bool is_open() const ;
     void close(); ;
 private:
-    sf::RenderWindow window_;
     Renderer * const renderer_;
     World * const world_;
 };

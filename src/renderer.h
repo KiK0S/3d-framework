@@ -72,7 +72,7 @@ private:
     sf::RenderWindow window_;
     Screen * const screen_ = nullptr;
     Camera * const camera_ = nullptr;
-    constexpr static Vector4d kAxis_[3] = {Vector4d(100, 0, 0), Vector4d(0, 100, 0), Vector4d(0, 0, 100)};
+    const static Vector4d kAxis_[3];
     const static sf::Vector2f kCenter_;
 
 };

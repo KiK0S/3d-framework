@@ -75,7 +75,7 @@ void handle(app::Application& application) {
         application.close();
         exit(0);
     }
-    // std::this_thread::sleep_for(std::chrono::milliseconds(100));
+    std::this_thread::sleep_for(std::chrono::milliseconds(5));
     application.update();
 }
 

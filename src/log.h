@@ -8,7 +8,7 @@ namespace app {
 
 // TODO: spdlog
 
-const bool DEBUG = false;
+const bool DEBUG = true;
 
 void debug(const std::string& s);
 void debug(double d);

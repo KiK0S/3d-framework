@@ -1,6 +1,7 @@
 #pragma once
 
 #include "surface_object.h"
+#include "point.h"
 
 namespace app {
 
@@ -10,7 +11,8 @@ public:
     ~Cube() = default;
 
 private:
-    static constexpr double kSize_ = 200;
+    static constexpr double kSize_ = 100;
+    static constexpr Vector4d start = Vector4d(100, 100, 100);
 };
 
 }

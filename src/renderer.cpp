@@ -7,8 +7,9 @@
 namespace app {
 
 const sf::Vector2f Renderer::kCenter_ = sf::Vector2f(Renderer::kScreenSize_ / 2, Renderer::kScreenSize_ / 2);
+const Vector4d Renderer::kAxis_[3] = {Vector4d(100, 0, 0), Vector4d(0, 100, 0), Vector4d(0, 0, 100)};
 
-Renderer::Renderer(): screen_(new Screen(this)), camera_(new Camera(this)),
+Renderer::Renderer(): screen_(new Screen(this)), camera_(new Camera()),
                       window_(sf::VideoMode(kScreenSize_, kScreenSize_), "Test: interacrtive camera") {}
 
 Renderer::~Renderer() {
@@ -48,13 +49,22 @@ double Renderer::get_z(int x, int y, Matrix<2, 1>&& coords, Point4d& a, Point4d&
 }
 
 void Renderer::draw(const Triangle4d& triangle4d) {
+    
     Triangle2d triangle2d(camera_->project_point(triangle4d.a),
                           camera_->project_point(triangle4d.b),
                           camera_->project_point(triangle4d.c));
+    
     debug(triangle2d.a);
     debug(triangle2d.b);
     debug(triangle2d.c);
-    debug("\n=====\n");
+    debug(triangle4d.a);
+    debug(triangle4d.b);
+    debug(triangle4d.c);
+    debug("---");
+
+    if (triangle2d.a == triangle2d.b || triangle2d.c == triangle2d.a || triangle2d.c == triangle2d.b) {
+        return;
+    }
     std::array<int, 3> order = triangle2d.get_order();
     Point4d a(0, 0, 0), b(0, 0, 0), c(0, 0, 0);
     triangle4d.sort_points(order, a, b, c);
@@ -69,9 +79,8 @@ void Renderer::draw(const Triangle4d& triangle4d) {
 
         double min_z = get_z(x, min_y, std::move(get_coords(x, min_y, basis, left_point)), a, b, c);
         double max_z = get_z(x, max_y, std::move(get_coords(x, max_y, basis, left_point)), a, b, c);
-
         for (int y = ceil(min_y); y <= floor(max_y); y++) {
-            // if (!triangle2d.inner_point(sf::Vector2f(x, y))) {
+              // if (!triangle2d.inner_point(sf::Vector2f(x, y))) {
             //     continue;
             // }   
             // 
@@ -96,17 +105,8 @@ void Renderer::draw(Line4d line4d) {
 }
 
 void Renderer::move_camera(Vector4d v) const {
-    v = camera_->get_world_transform() * v;
-    Matrix4d moving = Matrix4d::identity_matrix();
-    moving(0, 3) = v.x;
-    moving(1, 3) = v.y;
-    moving(2, 3) = v.z;
-    camera_->apply_transform_to_camera(moving);
+    camera_->move(v);
 }
-
-void Renderer::move_world(Vector4d v) const {}
-
-void Renderer::add_object(SurfaceObject* w) const {}
 
 void Renderer::rotate_world(double angle, int fixed_coord) const {
     Matrix4d moving = Matrix4d::identity_matrix();
@@ -204,7 +204,6 @@ double Renderer::find_max_y(const Triangle2d& triangle, double x) const {
     }
     if (triangle.c.x > x) {
         sf::Vector2f v = triangle.a - triangle.c;
-        debug(v);
        if (std::abs(v.x) < 1e-5) {
             return triangle.c.y;
         }
