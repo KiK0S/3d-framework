@@ -32,4 +32,19 @@ void debug(Vector4d v) {
     std::cerr << v.x / v.w << ' ' << v.y / v.w << ' ' << v.z / v.w << ' ' << v.w << std::endl;
 }
 
+void debug(Matrix4d mat) {
+    if (!DEBUG) {
+        return;
+    }
+    std::cerr << "[";
+    for (int i = 0; i < 4; i++) {
+        std::cerr << "[";
+        for (int j = 0; j < 4; j++) {
+            std::cerr << mat(i, j) << ',';
+        }
+        std::cerr << "], ";
+    }
+    std::cerr << "]\n";
+}
+
 }

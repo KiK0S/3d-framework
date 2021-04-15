@@ -1,6 +1,5 @@
 #pragma once
 
-#include "log.h"
 #include "point.h"
 #include <cassert>
 #include <cstdlib>
@@ -232,17 +231,6 @@ public:
             }
         }
         return result;
-    }
-
-
-    void print() const {
-        for (int i = 0; i < N; i++) {
-            std::string line = "";
-            for (int j = 0; j < M; j++) {
-                line += std::to_string((*this)(i, j)) + " ";
-            }
-            debug(line);
-        }
     }
 
     Matrix<N, 1> solve_system(Matrix<N, 1> point) {
