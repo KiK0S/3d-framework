@@ -48,6 +48,14 @@ public:
 
     Matrix(std::array<double, 4>&& data): data_{{std::forward<std::array<double, 4>>(data)}} {}
 
+    Matrix(std::vector<std::vector<double>> initial) {
+        for (int i = 0; i < initial.size(); i++) {
+            for (int j = 0; j < initial[i].size(); j++) {
+                data_[i * M + j] = initial[i][j];
+            }
+        }
+    }
+
     Matrix(const std::vector<sf::Vector2f>& data) {
         assert(M == 2 && N == data.size());
         for (int i = 0; i < N; i++) {
@@ -209,6 +217,12 @@ public:
         return result;
     }
 
+
+    Point4d row(size_t idx) const noexcept {
+        assert(M == 4);
+        assert(idx < N);
+        return Point4d((*this)(idx, 0) / (*this)(idx, 3), (*this)(idx, 1) / (*this)(idx, 3), (*this)(idx, 2) / (*this)(idx, 3));
+    }
 
     Matrix<M, N> transpose() const noexcept {
         Matrix<M, N> result;

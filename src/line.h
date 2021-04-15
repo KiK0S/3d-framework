@@ -13,7 +13,7 @@ public:
     Line2d(double length, double angle);
     Line2d(const sf::Vector2f& start, const sf::Vector2f& finish);
 
-    constexpr static double kWidth = 1.5f;
+    constexpr static double kWidth = 1.5;
     double length_;
     double angle_;
     sf::Color color_ = sf::Color::Red;

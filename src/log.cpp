@@ -29,7 +29,7 @@ void debug(Vector4d v) {
     if (!DEBUG) {
         return;
     }
-    std::cerr << v.x << ' ' << v.y << ' ' << v.z << ' ' << v.w << std::endl;
+    std::cerr << v.x / v.w << ' ' << v.y / v.w << ' ' << v.z / v.w << ' ' << v.w << std::endl;
 }
 
 }

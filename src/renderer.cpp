@@ -54,12 +54,13 @@ void Renderer::draw(const Triangle4d& triangle4d) {
                           camera_->project_point(triangle4d.b),
                           camera_->project_point(triangle4d.c));
     
-    debug(triangle2d.a);
-    debug(triangle2d.b);
-    debug(triangle2d.c);
+    // debug(triangle2d.a);
+    // debug(triangle2d.b);
+    // debug(triangle2d.c);
     debug(triangle4d.a);
     debug(triangle4d.b);
     debug(triangle4d.c);
+    debug(camera_->transform_point(triangle4d.a));
     debug("---");
 
     if (triangle2d.a == triangle2d.b || triangle2d.c == triangle2d.a || triangle2d.c == triangle2d.b) {
@@ -80,7 +81,7 @@ void Renderer::draw(const Triangle4d& triangle4d) {
         double min_z = get_z(x, min_y, std::move(get_coords(x, min_y, basis, left_point)), a, b, c);
         double max_z = get_z(x, max_y, std::move(get_coords(x, max_y, basis, left_point)), a, b, c);
         for (int y = ceil(min_y); y <= floor(max_y); y++) {
-              // if (!triangle2d.inner_point(sf::Vector2f(x, y))) {
+            // if (!triangle2d.inner_point(sf::Vector2f(x, y))) {
             //     continue;
             // }   
             // 
@@ -90,13 +91,13 @@ void Renderer::draw(const Triangle4d& triangle4d) {
             } else {
                 z = max_z;
             }
-            screen_->set_pixel(x + kCenter_.x, y + kCenter_.y, z, sf::Color::Black);
+            screen_->set_pixel(x, y, z, sf::Color::Black);
         }
     }
 }
 
 void Renderer::draw(Line4d line4d) {
-    Line2d line(camera_->project_point(line4d.start_) + kCenter_, camera_->project_point(line4d.finish_) + kCenter_);
+    Line2d line(camera_->project_point(line4d.start_), camera_->project_point(line4d.finish_));
     sf::RectangleShape rectangle(sf::Vector2f(line.length_, line.kWidth));
     rectangle.setRotation(line.angle_);
     rectangle.setPosition(line.offset_);
@@ -118,9 +119,9 @@ void Renderer::rotate_world(double angle, int fixed_coord) const {
 }
 
 void Renderer::rotate_camera(double angle, int fixed_coord) const {
-    move_camera(Vector4d(0, 0, -camera_->get_focus_distance()));
+    // move_camera(Vector4d(0, 0, -camera_->get_focus_distance()));
     rotate_world(angle, fixed_coord);
-    move_camera(Vector4d(0, 0, camera_->get_focus_distance()));
+    // move_camera(Vector4d(0, 0, camera_->get_focus_distance()));
 }
 
 void Renderer::draw_axis() {

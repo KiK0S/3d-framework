@@ -31,10 +31,13 @@ private:
     static constexpr double kMaxDistance_ = 1100;
     const sf::Vector2f kDefaultPixel_ = sf::Vector2f(0, 0);
 
-    Point4d position_ = Point4d(0, 0, -kFocusDistance_);
-    Point4d default_position_ = Point4d(0, 0, -kFocusDistance_);
-    Matrix<3, 4> basis_screen_ = Matrix<3, 4>::identity_matrix();
-    Matrix4d basis_world_ = Matrix4d::identity_matrix();
+    Point4d position_ = Point4d(0, 0, 0);
+    Point4d default_position_ = position_;
+    Matrix<3, 4> basis_screen_ = Matrix<3, 4>({
+        {1, 0, 0, 1},
+        {0, 1, 0, 1},
+        {0, 0, 1, 1}
+    });
     Matrix4d transform_ = Matrix4d::identity_matrix();
     Matrix4d transform_camera_ = Matrix4d::identity_matrix();
 };

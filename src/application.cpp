@@ -21,13 +21,13 @@ void Application::update() {
     int lines = 0;
     int triangles = 0;
     for (auto& object : *world_) {
-        for (auto& line3d : object->lines()) {
-            renderer_->draw(line3d);
-            lines++;
-        }
         for (auto& triangle : object->triangles()) {
             renderer_->draw(triangle);
             triangles++;
+        }
+        for (auto& line3d : object->lines()) {
+            renderer_->draw(line3d);
+            lines++;
         }
     }
     renderer_->update();
@@ -76,7 +76,7 @@ void Application::roll(double angle) const {
 void Application::pitch(double angle) const {
     renderer_->rotate_camera(angle, 1);
 }
-
+ 
 void Application::yaw(double angle) const {
     renderer_->rotate_camera(angle, 0);
 }
