@@ -3,3 +3,6 @@ build/
 src/CMakeFiles/
 out/
 CMakeFiles/
+src/latex/
+src/out/
+src/html/
