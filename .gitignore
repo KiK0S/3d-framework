@@ -1,0 +1,5 @@
+build/
+*.orig
+src/CMakeFiles/
+out/
+CMakeFiles/
