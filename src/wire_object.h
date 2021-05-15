@@ -6,7 +6,12 @@
 #include <utility>
 
 namespace app {
-
+/*!
+    \brief Класс каркаса объекта в 3д.
+    \version 1.0
+    \date May 14 2021
+    \author KiK0S
+*/
 class WireObject {
 public:
     WireObject(std::vector<Point4d> points, std::vector<std::pair<int, int>> edges);

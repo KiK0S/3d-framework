@@ -62,10 +62,6 @@ double Camera::get_min_z_value() const {
     return -1000;
 }
 
-double Camera::get_focus_distance() const {
-    return 0; 
-}
-
 void Camera::move(Point4d v) {
     Matrix<1, 4> m = Matrix<4,1>(v).transpose();
     position_ -= Vector4d(m(0, 0) / m(0, 3), m(0, 1) / m(0, 3), m(0, 2) / m(0, 3));

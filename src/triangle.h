@@ -6,7 +6,12 @@
 #include <array>
 
 namespace app {
-
+/*!
+    \brief Класс треугольника в 4д.
+    \version 1.0
+    \date May 14 2021
+    \author KiK0S
+*/
 class Triangle4d {
 public:
     Triangle4d() = delete;
@@ -14,7 +19,12 @@ public:
     Point4d a, b, c;
     void sort_points(std::array<int, 3>, Point4d& a, Point4d& b, Point4d& c) const ;
 };
-
+/*!
+    \brief Класс треугольника в 2д.
+    \version 1.0
+    \date May 14 2021
+    \author KiK0S
+*/
 class Triangle2d {
 public:
     Triangle2d() = delete;

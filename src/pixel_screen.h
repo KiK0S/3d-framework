@@ -3,6 +3,12 @@
 #include <cstddef>
 #include <vector>
 
+/*!
+    \brief Класс пиксельного экрана.
+    \author KiK0S
+    \version 1.0
+    \date May 14 2021
+*/
 template <typename T>
 class PixelScreen {
 public:

@@ -4,7 +4,12 @@
 
 namespace app {
 
-
+/*!
+    \brief Класс четырехмерной точки.
+    \author KiK0S
+    \version 1.0
+    \date May 14 2021
+*/
 class Point4d {
 public:
     double x, y, z, w;

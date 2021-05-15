@@ -5,6 +5,12 @@
 
 namespace app {
 
+/*!
+    \brief Класс куба.
+    \author KiK0S
+    \version 1.0
+    \date May 14 2021
+*/
 class Cube : public SurfaceObject {
 public:
     Cube();

@@ -6,7 +6,12 @@
 #include <vector>
 
 namespace app {
-
+/*!
+    \brief Класс объекта в 3д.
+    \author KiK0S
+    \version 1.0
+    \date May 14 2021
+*/
 class SurfaceObject : public WireObject {
 private:
     struct Triplet;
@@ -19,6 +24,9 @@ public:
                   std::vector<std::pair<int, int>> edges,
                   std::vector<Triplet> triangles);
 
+/*!
+    \brief Массив информации о триангуляции поверхностей фигуры
+ */
     std::vector<Triangle4d> triangles() const;
 
 private:

@@ -18,13 +18,10 @@ class World;
 class Camera;
 
 /*!
-    \brief Дочерний класс
-    \author Norserium
+    \brief Класс рендерера
+    \author KiK0S
     \version 1.0
-    \date Март 2015 года
-    \warning Данный класс создан только в учебных целях
-
-    Обычный дочерний класс, который отнаследован от ранее созданного класса Parent
+    \date May 14 2021
 */
 class Renderer {
 public:

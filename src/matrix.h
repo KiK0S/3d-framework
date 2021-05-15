@@ -6,7 +6,12 @@
 #include <vector>
 
 namespace app {
-
+/*!
+    \brief Класс для работы с матрицами.
+    \author KiK0S
+    \version 1.0
+    \date May 14 2021
+*/
 template
 <size_t N, size_t M>
 class Matrix {

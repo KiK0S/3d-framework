@@ -6,6 +6,12 @@
 
 namespace app {
 
+/*!
+    \brief Класс прямой в 2д.
+    \author KiK0S
+    \version 1.0
+    \date May 14 2021
+*/
 class Line2d {
 public:
     Line2d() = delete;
@@ -20,6 +26,12 @@ public:
     sf::Vector2f offset_;
 };
 
+/*!
+    \brief Класс прямой в 4д.
+    \author KiK0S
+    \version 1.0
+    \date May 14 2021
+*/
 class Line4d {
 public:
     Line4d() = delete;

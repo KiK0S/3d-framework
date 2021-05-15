@@ -12,7 +12,12 @@
 namespace app {
 
 class Renderer;
-
+/*!
+    \brief Класс мира в 3д.
+    \version 1.0
+    \date May 14 2021
+    \author KiK0S
+*/
 class World {
 public:
     World();

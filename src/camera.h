@@ -9,20 +9,62 @@
 
 namespace app {
 
+/*!
+    \brief Класс камеры
+    \author KiK0S
+    \version 1.0
+    \date May 14 2021
+*/
 class Camera {
 public:
+/*!
+    \brief Конструктор
+ */
     Camera();
 
+/*!
+    \brief Получение видоизмененных 2д-коортинат точки
+ */
     sf::Vector2f project_point(Point4d p) const;
+
+/*!
+    \brief ОПолучаение всей точки в другом базисе.
+ */ 
     Point4d transform_point(Point4d p) const;
+
+/*!
+    \brief Получение третьей координаты точки
+ */
     double get_z_value(Point4d p) const;
 
+/*!
+    \brief Метод для инициализации матриц поворота
+ */
     void create_transform();
+
+/*!
+    \brief Метод для применения матриц поворота
+ */    
     void apply_transform_to_world(const Matrix4d& matrix);
+
+/*!
+    \brief Метод для получения матриц поворота
+ */
     Matrix4d get_world_transform() const;
+
+/*!
+    \brief max z
+ */
     double get_max_z_value() const;
+
+/*!
+    \brief min z
+ */
     double get_min_z_value() const;
-    double get_focus_distance() const;
+
+/*!
+    \brief Сдвиг на вектор
+ */
     void move(Point4d v);
 
 private:
