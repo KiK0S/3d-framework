@@ -14,14 +14,14 @@ World::World() {}
 void World::update() {}
 
 void World::add_object(SurfaceObject* t) {
-    objects_.push_back(t);
+    objects_.push_back(std::unique_ptr<SurfaceObject>(t));
 }
 
-std::vector<SurfaceObject*>::iterator World::begin() {
+std::vector<std::unique_ptr<SurfaceObject>>::iterator World::begin() {
     return objects_.begin();
 }
 
-std::vector<SurfaceObject*>::iterator World::end() {
+std::vector<std::unique_ptr<SurfaceObject>>::iterator World::end() {
     return objects_.end();
 }
 

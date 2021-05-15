@@ -1,13 +1,11 @@
 #pragma once
 
 #include "pixel_screen.h"
-#include "renderer.h"
 #include <SFML/Graphics.hpp>
 #include <vector>
 
 namespace app {
 
-class Renderer;
 /*!
     \brief Класс экрана.
     \author KiK0S
@@ -16,16 +14,17 @@ class Renderer;
 */
 class Screen {
 public:
-    Screen(Renderer* renderer);
+    Screen(size_t screen_size, double max_z_value);
 
 /*!
     \brief отобразить пиксель
 */  
     void set_pixel(int x, int y, double z, sf::Color color);
-    void update();
+
 /*!
     \brief выбор всех пикслей
 */
+    std::vector<sf::Vertex> get_picture();
 
 /*!
     \brief очистка
@@ -33,9 +32,11 @@ public:
     void clear();
 
 private:
-    Renderer * const renderer_ = nullptr;
     PixelScreen<sf::Color> color_;
     PixelScreen<double> z_value_;
+    size_t screen_size_;
+    double max_z_value_;
+
 
 };
 

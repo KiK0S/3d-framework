@@ -25,11 +25,11 @@ public:
     void update();
     void add_object(SurfaceObject* w);
 
-    std::vector<SurfaceObject*>::iterator begin();
-    std::vector<SurfaceObject*>::iterator end();
+    std::vector<std::unique_ptr<SurfaceObject>>::iterator begin();
+    std::vector<std::unique_ptr<SurfaceObject>>::iterator end();
 
 private:
-    std::vector<SurfaceObject*> objects_;
+    std::vector<std::unique_ptr<SurfaceObject>> objects_;
 };
 
 }

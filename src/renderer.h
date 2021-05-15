@@ -1,7 +1,6 @@
 #pragma once
 
 #include "camera.h"
-#include "world.h"
 #include "line.h"
 #include "point.h"
 #include "screen.h"
@@ -14,7 +13,6 @@
 namespace app {
 
 class Screen;
-class World;
 class Camera;
 
 /*!
@@ -26,7 +24,6 @@ class Camera;
 class Renderer {
 public:
     Renderer();
-    ~Renderer();
 
     void update();
     void prepare();
@@ -35,19 +32,19 @@ public:
     void draw(Line4d line) ;
     void draw(const Triangle4d& triangle) ;
 
-    void add_object(SurfaceObject* w) const ;
+    void add_object(SurfaceObject* w) ;
 
-    void move_camera(Vector4d v) const ;
-    void move_world(Vector4d v) const ;
+    void move_camera(Vector4d v) ;
+    void move_world(Vector4d v) ;
     
-    void pitch(double angle) const ;
-    void roll(double angle) const ;
-    void elevation(double angle) const ;
-    void azimuth(double angle) const ;
-    void yaw(double angle) const ;
+    void pitch(double angle) ;
+    void roll(double angle) ;
+    void elevation(double angle) ;
+    void azimuth(double angle) ;
+    void yaw(double angle) ;
 
-    void rotate_camera(double angle, int fixed_coord) const;
-    void rotate_world(double angle, int fixed_coord) const;
+    void rotate_camera(double angle, int fixed_coord) ;
+    void rotate_world(double angle, int fixed_coord) ;
     void draw_axis();
 
     double get_max_z_value() const ;
@@ -67,8 +64,8 @@ public:
 private:
     constexpr static size_t kScreenSize_ = 1000;
     sf::RenderWindow window_;
-    Screen * const screen_ = nullptr;
-    Camera * const camera_ = nullptr;
+    Screen screen_;
+    Camera camera_;
     const static Vector4d kAxis_[3];
     const static sf::Vector2f kCenter_;
 

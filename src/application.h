@@ -17,7 +17,6 @@ namespace app {
 class Application {
 public:
     Application();
-    ~Application();
 
 /*!
     \brief Обновление кадра в приложении.
@@ -27,40 +26,40 @@ public:
 /*!
     \brief Добавление объекта на сцену.
  */ 
-    void add_object(SurfaceObject* w) const ;
+    void add_object(SurfaceObject* w) ;
 
 /*!
     \brief Сдвиг камеры на вектор
 */ 
-    void move_camera(Vector4d v) const ;
+    void move_camera(Vector4d v) ;
 
 /*!
     \brief Передвинуть все элементы на какой-то вектор
 */
-    void move_world(Vector4d v) const ;
+    void move_world(Vector4d v) ;
   
 /*!
     \brief какой-то поворот
 */  
-    void pitch(double angle) const ;
+    void pitch(double angle) ;
 
 /*!
     \brief какой-то поворот
 */  
-    void roll(double angle) const ;
+    void roll(double angle) ;
 
 /*!
     \brief какой-то поворот
 */  
-    void elevation(double angle) const ;
+    void elevation(double angle) ;
 /*!
     \brief какой-то поворот
 */  
-    void azimuth(double angle) const ;
+    void azimuth(double angle) ;
 /*!
     \brief какой-то поворот
 */  
-    void yaw(double angle) const ;
+    void yaw(double angle) ;
 
 /*!
     \brief поллинг событий
@@ -77,8 +76,8 @@ public:
 */
     void close(); ;
 private:
-    Renderer * const renderer_;
-    World * const world_;
+    Renderer renderer_;
+    World world_;
 };
 
 }

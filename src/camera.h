@@ -3,7 +3,6 @@
 #include "line.h"
 #include "matrix.h"
 #include "point.h"
-#include "screen.h"
 #include <SFML/Graphics.hpp>
 #include <cmath>
 

@@ -5,42 +5,43 @@
 
 namespace app {
 
-Screen::Screen(Renderer* renderer): renderer_(renderer), z_value_(renderer_->get_screen_size()), color_(renderer_->get_screen_size()) {
-    assert(renderer_);
-    for (int i = 0; i  < renderer_->get_screen_size(); i++) {
-        for (int j = 0; j < renderer_->get_screen_size(); j++) {
-            z_value_(i, j) = renderer_->get_max_z_value();
+Screen::Screen(size_t screen_size, double max_z_value):
+               z_value_(screen_size), color_(screen_size),
+               max_z_value_(max_z_value), screen_size_(screen_size) {
+    for (int i = 0; i  < screen_size_; i++) {
+        for (int j = 0; j < screen_size_; j++) {
+            z_value_(i, j) = max_z_value_;
         }
     }
 }
 
-void Screen::update() {
+std::vector<sf::Vertex> Screen::get_picture() {
     // TODO: calc non-zero pixels
     std::vector<sf::Vertex> data;
-    data.reserve(renderer_->get_screen_size() * renderer_->get_screen_size());
-    for (int i = 0; i < renderer_->get_screen_size(); i++) {
-        for (int j = 0; j < renderer_->get_screen_size(); j++) {
-            if (z_value_(i, j) < renderer_->get_max_z_value()) {
+    data.reserve(screen_size_ * screen_size_);
+    for (int i = 0; i < screen_size_; i++) {
+        for (int j = 0; j < screen_size_; j++) {
+            if (z_value_(i, j) < max_z_value_) {
                 data.push_back(sf::Vertex(sf::Vector2f(i, j), color_(i, j)));
             }
         }
     }
-    renderer_->draw(data);
     clear();
+    return data;
 }
 
 void Screen::clear() {
-    for (int i = 0; i < renderer_->get_screen_size(); i++) {
-        for (int j = 0; j < renderer_->get_screen_size(); j++) {
+    for (int i = 0; i < screen_size_; i++) {
+        for (int j = 0; j < screen_size_; j++) {
             color_(i, j) = sf::Color::White;
-            z_value_(i, j) = renderer_->get_max_z_value();
+            z_value_(i, j) = max_z_value_;
         }
     }
 }
 
 void Screen::set_pixel(int x, int y, double z, sf::Color color) {
-    if (x < 0 || y < 0 || x >= renderer_->get_screen_size() || y >= renderer_->get_screen_size() ||
-        z > renderer_->get_max_z_value() || z < renderer_->get_min_z_value()) {
+    if (x < 0 || y < 0 || x >= screen_size_ || y >= screen_size_ ||
+        z > max_z_value_ || z < -max_z_value_) {
         return;
     }
     if (z < z_value_(x, y)) {

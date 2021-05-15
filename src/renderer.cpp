@@ -9,21 +9,16 @@ namespace app {
 const sf::Vector2f Renderer::kCenter_ = sf::Vector2f(Renderer::kScreenSize_ / 2, Renderer::kScreenSize_ / 2);
 const Vector4d Renderer::kAxis_[3] = {Vector4d(100, 0, 0), Vector4d(0, 100, 0), Vector4d(0, 0, 100)};
 
-Renderer::Renderer(): screen_(new Screen(this)), camera_(new Camera()),
+Renderer::Renderer(): screen_(Renderer::kScreenSize_, 1000), camera_(),
                       window_(sf::VideoMode(kScreenSize_, kScreenSize_), "Test: interacrtive camera") {}
-
-Renderer::~Renderer() {
-    delete camera_;
-    delete screen_;
-}
 
 void Renderer::prepare() {
     window_.clear(sf::Color::White);
-    camera_->create_transform();
+    camera_.create_transform();
 }
 
 void Renderer::update() {
-    screen_->update();
+    draw(screen_.get_picture());
     draw_axis();
     window_.display();
 }
@@ -45,14 +40,14 @@ Matrix<2, 1> Renderer::get_coords(int x, int y, Matrix<2, 2>& basis, sf::Vector2
 
 double Renderer::get_z(int x, int y, Matrix<2, 1>&& coords, Point4d& a, Point4d& b, Point4d& c) const {
     Point4d p = a + coords(0, 0) * (b - a) + coords(1, 0) * (c - a);
-    return camera_->get_z_value(p);
+    return camera_.get_z_value(p);
 }
 
 void Renderer::draw(const Triangle4d& triangle4d) {
     
-    Triangle2d triangle2d(camera_->project_point(triangle4d.a),
-                          camera_->project_point(triangle4d.b),
-                          camera_->project_point(triangle4d.c));
+    Triangle2d triangle2d(camera_.project_point(triangle4d.a),
+                          camera_.project_point(triangle4d.b),
+                          camera_.project_point(triangle4d.c));
     
     // debug(triangle2d.a);
     // debug(triangle2d.b);
@@ -60,7 +55,7 @@ void Renderer::draw(const Triangle4d& triangle4d) {
     debug(triangle4d.a);
     debug(triangle4d.b);
     debug(triangle4d.c);
-    debug(camera_->transform_point(triangle4d.a));
+    debug(camera_.transform_point(triangle4d.a));
     debug("---");
 
     if (triangle2d.a == triangle2d.b || triangle2d.c == triangle2d.a || triangle2d.c == triangle2d.b) {
@@ -91,13 +86,13 @@ void Renderer::draw(const Triangle4d& triangle4d) {
             } else {
                 z = max_z;
             }
-            screen_->set_pixel(x, y, z, sf::Color::Black);
+            screen_.set_pixel(x, y, z, sf::Color::Black);
         }
     }
 }
 
 void Renderer::draw(Line4d line4d) {
-    Line2d line(camera_->project_point(line4d.start_), camera_->project_point(line4d.finish_));
+    Line2d line(camera_.project_point(line4d.start_), camera_.project_point(line4d.finish_));
     sf::RectangleShape rectangle(sf::Vector2f(line.length_, line.kWidth));
     rectangle.setRotation(line.angle_);
     rectangle.setPosition(line.offset_);
@@ -105,23 +100,23 @@ void Renderer::draw(Line4d line4d) {
     window_.draw(rectangle);
 }
 
-void Renderer::move_camera(Vector4d v) const {
-    camera_->move(v);
+void Renderer::move_camera(Vector4d v) {
+    camera_.move(v);
 }
 
-void Renderer::rotate_world(double angle, int fixed_coord) const {
+void Renderer::rotate_world(double angle, int fixed_coord) {
     Matrix4d moving = Matrix4d::identity_matrix();
     moving((fixed_coord + 1) % 3, (fixed_coord + 1) % 3) = std::cos(angle);
     moving((fixed_coord + 2) % 3, (fixed_coord + 2) % 3) = std::cos(angle);
     moving((fixed_coord + 1) % 3, (fixed_coord + 2) % 3) = std::sin(angle);
     moving((fixed_coord + 2) % 3, (fixed_coord + 1) % 3) = -std::sin(angle);
-    camera_->apply_transform_to_world(moving);
+    camera_.apply_transform_to_world(moving);
 }
 
-void Renderer::rotate_camera(double angle, int fixed_coord) const {
-    // move_camera(Vector4d(0, 0, -camera_->get_focus_distance()));
+void Renderer::rotate_camera(double angle, int fixed_coord) {
+    // move_camera(Vector4d(0, 0, -camera_.get_focus_distance()));
     rotate_world(angle, fixed_coord);
-    // move_camera(Vector4d(0, 0, camera_->get_focus_distance()));
+    // move_camera(Vector4d(0, 0, camera_.get_focus_distance()));
 }
 
 void Renderer::draw_axis() {
@@ -131,11 +126,11 @@ void Renderer::draw_axis() {
 }
 
 double Renderer::get_max_z_value() const {
-    return camera_->get_max_z_value();
+    return camera_.get_max_z_value();
 }
 
 double Renderer::get_min_z_value() const {
-    return camera_->get_min_z_value();
+    return camera_.get_min_z_value();
 }
 
 size_t Renderer::get_screen_size() const {
@@ -154,23 +149,23 @@ void Renderer::close() {
     window_.close();
 }
 
-void Renderer::roll(double angle) const {
+void Renderer::roll(double angle) {
     rotate_world(angle, 2);
 }
 
-void Renderer::pitch(double angle) const {
+void Renderer::pitch(double angle) {
     rotate_camera(angle, 1);
 }
 
-void Renderer::yaw(double angle) const {
+void Renderer::yaw(double angle) {
     rotate_camera(angle, 0);
 }
 
-void Renderer::elevation(double angle) const {
+void Renderer::elevation(double angle) {
     rotate_world(angle, 0);
 }
 
-void Renderer::azimuth(double angle) const {
+void Renderer::azimuth(double angle) {
     rotate_world(angle, 1);
 }
 
