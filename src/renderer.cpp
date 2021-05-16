@@ -9,28 +9,19 @@ namespace app {
 const sf::Vector2f Renderer::kCenter_ = sf::Vector2f(Renderer::kScreenSize_ / 2, Renderer::kScreenSize_ / 2);
 const Vector4d Renderer::kAxis_[3] = {Vector4d(100, 0, 0), Vector4d(0, 100, 0), Vector4d(0, 0, 100)};
 
-Renderer::Renderer(): screen_(Renderer::kScreenSize_, 1000), camera_(),
-                      window_(sf::VideoMode(kScreenSize_, kScreenSize_), "Test: interacrtive camera") {}
+Renderer::Renderer(): screen_(Renderer::kScreenSize_, 1000), camera_() {}
 
 void Renderer::prepare() {
-    window_.clear(sf::Color::White);
     camera_.create_transform();
 }
 
-void Renderer::update() {
-    draw(screen_.get_picture());
-    draw_axis();
-    window_.display();
+void Renderer::update(sf::RenderWindow& window) {
+    draw(screen_.get_picture(), window);
 }
 
-void Renderer::draw(sf::Vertex pixel) {
-    sf::Vertex data[] = {pixel};
-    window_.draw(data, 1, sf::Points);
-}
-
-void Renderer::draw(const std::vector<sf::Vertex>& data) {
+void Renderer::draw(const std::vector<sf::Vertex>& data, sf::RenderWindow& window) {
     const sf::Vertex* ptr = &data[0];
-    window_.draw(ptr, data.size(), sf::Points);
+    window.draw(ptr, data.size(), sf::Points);
 }
 
 Matrix<2, 1> Renderer::get_coords(int x, int y, Matrix<2, 2>& basis, sf::Vector2f& left_point) const {
@@ -91,13 +82,13 @@ void Renderer::draw(const Triangle4d& triangle4d) {
     }
 }
 
-void Renderer::draw(Line4d line4d) {
+void Renderer::draw(Line4d line4d, sf::RenderWindow& window) {
     Line2d line(camera_.project_point(line4d.start_), camera_.project_point(line4d.finish_));
     sf::RectangleShape rectangle(sf::Vector2f(line.length_, line.kWidth));
     rectangle.setRotation(line.angle_);
     rectangle.setPosition(line.offset_);
     rectangle.setFillColor(line.color_);
-    window_.draw(rectangle);
+    window.draw(rectangle);
 }
 
 void Renderer::move_camera(Vector4d v) {
@@ -119,12 +110,6 @@ void Renderer::rotate_camera(double angle, int fixed_coord) {
     // move_camera(Vector4d(0, 0, camera_.get_focus_distance()));
 }
 
-void Renderer::draw_axis() {
-    for (int i = 0; i < 3; i++) {
-        draw(Line4d(Vector4d(0, 0, 0), kAxis_[i]));
-    }
-}
-
 double Renderer::get_max_z_value() const {
     return camera_.get_max_z_value();
 }
@@ -135,18 +120,6 @@ double Renderer::get_min_z_value() const {
 
 size_t Renderer::get_screen_size() const {
     return kScreenSize_;
-}
-
-bool Renderer::poll_event(sf::Event& event) {
-    return window_.pollEvent(event);
-}
-
-bool Renderer::is_open() const {
-    return window_.isOpen();
-}
-
-void Renderer::close() {
-    window_.close();
 }
 
 void Renderer::roll(double angle) {
@@ -216,6 +189,5 @@ double Renderer::find_max_y(const Triangle2d& triangle, double x) const {
         return (triangle.c + v).y;
     }
 }
-
 
 }

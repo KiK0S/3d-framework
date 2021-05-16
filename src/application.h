@@ -26,7 +26,7 @@ public:
 /*!
     \brief Добавление объекта на сцену.
  */ 
-    void add_object(SurfaceObject* w) ;
+    void add_object(std::unique_ptr<SurfaceObject>&& w) ;
 
 /*!
     \brief Сдвиг камеры на вектор
@@ -74,10 +74,17 @@ public:
 /*!
     \brief Закрыть приложение
 */
-    void close(); ;
+    void close() ;
+
+/*!
+    \brief Цикл приложения
+*/
+    void run();
 private:
     Renderer renderer_;
     World world_;
+    sf::RenderWindow window_;
+    constexpr static size_t kScreenSize_ = 1000;
 };
 
 }

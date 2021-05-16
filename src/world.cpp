@@ -13,8 +13,8 @@ World::World() {}
 
 void World::update() {}
 
-void World::add_object(SurfaceObject* t) {
-    objects_.push_back(std::unique_ptr<SurfaceObject>(t));
+void World::add_object(std::unique_ptr<SurfaceObject>&& t) {
+    objects_.emplace_back(std::move(t));
 }
 
 std::vector<std::unique_ptr<SurfaceObject>>::iterator World::begin() {

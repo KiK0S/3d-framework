@@ -23,7 +23,7 @@ public:
     World();
 
     void update();
-    void add_object(SurfaceObject* w);
+    void add_object(std::unique_ptr<SurfaceObject>&& w);
 
     std::vector<std::unique_ptr<SurfaceObject>>::iterator begin();
     std::vector<std::unique_ptr<SurfaceObject>>::iterator end();

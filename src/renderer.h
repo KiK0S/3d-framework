@@ -25,11 +25,11 @@ class Renderer {
 public:
     Renderer();
 
-    void update();
+    void update(sf::RenderWindow& window);
     void prepare();
     void draw(sf::Vertex pixel) ;
-    void draw(const std::vector<sf::Vertex>& data) ;
-    void draw(Line4d line) ;
+    void draw(const std::vector<sf::Vertex>& data, sf::RenderWindow& window) ;
+    void draw(Line4d line, sf::RenderWindow& window) ;
     void draw(const Triangle4d& triangle) ;
 
     void add_object(SurfaceObject* w) ;
@@ -45,16 +45,11 @@ public:
 
     void rotate_camera(double angle, int fixed_coord) ;
     void rotate_world(double angle, int fixed_coord) ;
-    void draw_axis();
 
     double get_max_z_value() const ;
     double get_min_z_value() const ;
     size_t get_focus_distance() const ;
     size_t get_screen_size() const ;
-
-    bool poll_event(sf::Event& event);
-    bool is_open() const ;
-    void close();
 
     double find_max_y(const Triangle2d& triangle, double x) const ;
     double find_min_y(const Triangle2d& triangle, double x) const ;
@@ -63,12 +58,10 @@ public:
     Matrix<2, 1> get_coords(int x, int y, Matrix<2, 2>& basis, sf::Vector2f& point) const ;
 private:
     constexpr static size_t kScreenSize_ = 1000;
-    sf::RenderWindow window_;
     Screen screen_;
     Camera camera_;
     const static Vector4d kAxis_[3];
     const static sf::Vector2f kCenter_;
-
 };
 
 }

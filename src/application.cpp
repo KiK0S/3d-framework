@@ -8,10 +8,13 @@
 namespace app {
 
 
-Application::Application(): world_(), renderer_() {}
+Application::Application(): world_(), renderer_(),
+                            window_(sf::VideoMode(kScreenSize_, kScreenSize_),
+                                    "Test: interacrtive camera") {}
 
 void Application::update() {
     debug("new frame");
+    window_.clear(sf::Color::White);
     renderer_.prepare();
     int lines = 0;
     int triangles = 0;
@@ -21,11 +24,12 @@ void Application::update() {
             triangles++;
         }
         for (auto& line3d : object->lines()) {
-            renderer_.draw(line3d);
+            renderer_.draw(line3d, window_);
             lines++;
         }
     }
-    renderer_.update();
+    renderer_.update(window_);
+    window_.display();
     debug("/////////////");
 }
 
@@ -46,20 +50,20 @@ void Application::move_world(Vector4d v) {
     }
 }
 
-void Application::add_object(SurfaceObject* w) {
-    world_.add_object(w);
+void Application::add_object(std::unique_ptr<SurfaceObject>&& w) {
+    world_.add_object(std::move(w));
 }
 
 bool Application::poll_event(sf::Event& event) {
-    return renderer_.poll_event(event);
+    return window_.pollEvent(event);
 }
 
 bool Application::is_open() const {
-    return renderer_.is_open();
+    return window_.isOpen();
 }
 
 void Application::close() {
-    renderer_.close();
+    window_.close();
 }
 
 void Application::roll(double angle) {
@@ -80,6 +84,72 @@ void Application::elevation(double angle) {
 
 void Application::azimuth(double angle) {
     renderer_.rotate_world(angle, 1);
+}
+
+
+void Application::run() {
+    while (is_open()) {
+        sf::Event event;
+        while (poll_event(event)) {
+            if (event.type == sf::Event::Closed) {
+                close();
+                return;
+            }
+        }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
+            move_camera(app::Vector4d(10, 0, 0));
+        }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
+            move_camera(app::Vector4d(-10, 0, 0));
+        }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
+            move_camera(app::Vector4d(0, 10, 0));
+        }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
+            move_camera(app::Vector4d(0, -10, 0));
+        }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z)) {
+            move_camera(app::Vector4d(0, 0, 10));
+        }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::X)) {
+            move_camera(app::Vector4d(0, 0, -10));
+        }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
+            yaw(0.01);
+        }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
+            yaw(-0.01);
+        }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
+            pitch(0.01);
+        }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
+            pitch(-0.01);
+        }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q)) {
+            roll(0.01);
+        }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::E)) {
+            roll(-0.01);
+        }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::R)) {
+            azimuth(0.01);
+        }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::T)) {
+            azimuth(-0.01);
+        }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::F)) {
+            elevation(0.01);
+        }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::G)) {
+            elevation(-0.01);
+        }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
+            close();
+            return;
+        }
+        update();
+    }
 }
 
 }
