@@ -15,6 +15,13 @@ namespace app {
     \date May 14 2021
  */
 class Application {
+private:
+    enum class EAxes {
+        AXE_X = 0,
+        AXE_Y = 1,
+        AXE_Z = 2
+    };
+
 public:
     Application();
 
@@ -37,7 +44,12 @@ public:
     \brief Передвинуть все элементы на какой-то вектор
 */
     void move_world(Vector4d v) ;
-  
+
+/*!
+    \brief Все повороты сразу
+*/
+    void rotate_world(double angle, EAxes fixed_coord) ; 
+
 /*!
     \brief какой-то поворот
 */  
@@ -80,9 +92,11 @@ public:
     \brief Цикл приложения
 */
     void run();
+
 private:
     Renderer renderer_;
     World world_;
+    Camera camera_;
     sf::RenderWindow window_;
     constexpr static size_t kScreenSize_ = 1000;
 };

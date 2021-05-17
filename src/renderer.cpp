@@ -9,11 +9,7 @@ namespace app {
 const sf::Vector2f Renderer::kCenter_ = sf::Vector2f(Renderer::kScreenSize_ / 2, Renderer::kScreenSize_ / 2);
 const Vector4d Renderer::kAxis_[3] = {Vector4d(100, 0, 0), Vector4d(0, 100, 0), Vector4d(0, 0, 100)};
 
-Renderer::Renderer(): screen_(Renderer::kScreenSize_, 1000), camera_() {}
-
-void Renderer::prepare() {
-    camera_.create_transform();
-}
+Renderer::Renderer(): screen_(Renderer::kScreenSize_, 1000) {}
 
 void Renderer::update(sf::RenderWindow& window) {
     draw(screen_.get_picture(), window);
@@ -29,16 +25,16 @@ Matrix<2, 1> Renderer::get_coords(int x, int y, Matrix<2, 2>& basis, sf::Vector2
     return basis.solve_system(Matrix<1, 2>({arrow}).transpose());  
 }
 
-double Renderer::get_z(int x, int y, Matrix<2, 1>&& coords, Point4d& a, Point4d& b, Point4d& c) const {
+double Renderer::get_z(const Camera& camera, int x, int y, Matrix<2, 1>&& coords, Point4d& a, Point4d& b, Point4d& c) const {
     Point4d p = a + coords(0, 0) * (b - a) + coords(1, 0) * (c - a);
-    return camera_.get_z_value(p);
+    return camera.get_z_value(p);
 }
 
-void Renderer::draw(const Triangle4d& triangle4d) {
+void Renderer::draw(const Camera& camera, const Triangle4d& triangle4d) {
     
-    Triangle2d triangle2d(camera_.project_point(triangle4d.a),
-                          camera_.project_point(triangle4d.b),
-                          camera_.project_point(triangle4d.c));
+    Triangle2d triangle2d(camera.project_point(triangle4d.a),
+                          camera.project_point(triangle4d.b),
+                          camera.project_point(triangle4d.c));
     
     // debug(triangle2d.a);
     // debug(triangle2d.b);
@@ -46,7 +42,7 @@ void Renderer::draw(const Triangle4d& triangle4d) {
     debug(triangle4d.a);
     debug(triangle4d.b);
     debug(triangle4d.c);
-    debug(camera_.transform_point(triangle4d.a));
+    debug(camera.transform_point(triangle4d.a));
     debug("---");
 
     if (triangle2d.a == triangle2d.b || triangle2d.c == triangle2d.a || triangle2d.c == triangle2d.b) {
@@ -64,8 +60,8 @@ void Renderer::draw(const Triangle4d& triangle4d) {
         min_y = find_min_y(triangle2d, x);
         max_y = find_max_y(triangle2d, x);
 
-        double min_z = get_z(x, min_y, std::move(get_coords(x, min_y, basis, left_point)), a, b, c);
-        double max_z = get_z(x, max_y, std::move(get_coords(x, max_y, basis, left_point)), a, b, c);
+        double min_z = get_z(camera, x, min_y, std::move(get_coords(x, min_y, basis, left_point)), a, b, c);
+        double max_z = get_z(camera, x, max_y, std::move(get_coords(x, max_y, basis, left_point)), a, b, c);
         for (int y = ceil(min_y); y <= floor(max_y); y++) {
             // if (!triangle2d.inner_point(sf::Vector2f(x, y))) {
             //     continue;
@@ -83,63 +79,24 @@ void Renderer::draw(const Triangle4d& triangle4d) {
 }
 
 void Renderer::draw(Line4d line4d, sf::RenderWindow& window) {
-    Line2d line(camera_.project_point(line4d.start_), camera_.project_point(line4d.finish_));
-    sf::RectangleShape rectangle(sf::Vector2f(line.length_, line.kWidth));
-    rectangle.setRotation(line.angle_);
-    rectangle.setPosition(line.offset_);
-    rectangle.setFillColor(line.color_);
-    window.draw(rectangle);
-}
-
-void Renderer::move_camera(Vector4d v) {
-    camera_.move(v);
-}
-
-void Renderer::rotate_world(double angle, int fixed_coord) {
-    Matrix4d moving = Matrix4d::identity_matrix();
-    moving((fixed_coord + 1) % 3, (fixed_coord + 1) % 3) = std::cos(angle);
-    moving((fixed_coord + 2) % 3, (fixed_coord + 2) % 3) = std::cos(angle);
-    moving((fixed_coord + 1) % 3, (fixed_coord + 2) % 3) = std::sin(angle);
-    moving((fixed_coord + 2) % 3, (fixed_coord + 1) % 3) = -std::sin(angle);
-    camera_.apply_transform_to_world(moving);
-}
-
-void Renderer::rotate_camera(double angle, int fixed_coord) {
-    // move_camera(Vector4d(0, 0, -camera_.get_focus_distance()));
-    rotate_world(angle, fixed_coord);
-    // move_camera(Vector4d(0, 0, camera_.get_focus_distance()));
+    // Line2d line(camera_.project_point(line4d.start_), camera_.project_point(line4d.finish_));
+    // sf::RectangleShape rectangle(sf::Vector2f(line.length_, line.kWidth));
+    // rectangle.setRotation(line.angle_);
+    // rectangle.setPosition(line.offset_);
+    // rectangle.setFillColor(line.color_);
+    // window.draw(rectangle);
 }
 
 double Renderer::get_max_z_value() const {
-    return camera_.get_max_z_value();
+    return 1000;
 }
 
 double Renderer::get_min_z_value() const {
-    return camera_.get_min_z_value();
+    return -1000;
 }
 
 size_t Renderer::get_screen_size() const {
     return kScreenSize_;
-}
-
-void Renderer::roll(double angle) {
-    rotate_world(angle, 2);
-}
-
-void Renderer::pitch(double angle) {
-    rotate_camera(angle, 1);
-}
-
-void Renderer::yaw(double angle) {
-    rotate_camera(angle, 0);
-}
-
-void Renderer::elevation(double angle) {
-    rotate_world(angle, 0);
-}
-
-void Renderer::azimuth(double angle) {
-    rotate_world(angle, 1);
 }
 
 double Renderer::find_min_y(const Triangle2d& triangle, double x) const {
@@ -189,5 +146,10 @@ double Renderer::find_max_y(const Triangle2d& triangle, double x) const {
         return (triangle.c + v).y;
     }
 }
+
+std::vector<Triangle4d> Renderer::clip(const Camera& camera, const Triangle4d& triangle) const {
+    return {triangle};
+}
+
 
 }

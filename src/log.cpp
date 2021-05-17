@@ -32,7 +32,7 @@ void debug(Vector4d v) {
     std::cerr << v.x / v.w << ' ' << v.y / v.w << ' ' << v.z / v.w << ' ' << v.w << std::endl;
 }
 
-void debug(Matrix4d mat) {
+void debug(const Matrix4d& mat) {
     if (!DEBUG) {
         return;
     }

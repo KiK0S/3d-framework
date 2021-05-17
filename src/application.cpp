@@ -8,25 +8,27 @@
 namespace app {
 
 
-Application::Application(): world_(), renderer_(),
+Application::Application(): world_(), renderer_(), camera_(),
                             window_(sf::VideoMode(kScreenSize_, kScreenSize_),
                                     "Test: interacrtive camera") {}
 
 void Application::update() {
     debug("new frame");
     window_.clear(sf::Color::White);
-    renderer_.prepare();
+    camera_.create_transform();
     int lines = 0;
     int triangles = 0;
     for (auto& object : world_) {
-        for (auto& triangle : object->triangles()) {
-            renderer_.draw(triangle);
-            triangles++;
+        for (auto& triangle4d : object->triangles()) {
+            for (auto& triangle : renderer_.clip(camera_, triangle4d)) {
+                renderer_.draw(camera_, triangle);
+                triangles++;
+            }
         }
-        for (auto& line3d : object->lines()) {
-            renderer_.draw(line3d, window_);
-            lines++;
-        }
+        // for (auto& line3d : object->lines()) {
+        //     renderer_.draw(line3d, window_);
+        //     lines++;
+        // }
     }
     renderer_.update(window_);
     window_.display();
@@ -34,7 +36,7 @@ void Application::update() {
 }
 
 void Application::move_camera(Vector4d v) {
-    renderer_.move_camera(v);
+    camera_.move(v);
 }
 
 void Application::move_world(Vector4d v) {
@@ -66,24 +68,46 @@ void Application::close() {
     window_.close();
 }
 
+void Application::rotate_world(double angle, Application::EAxes axe) {
+    int fixed_coord = 0;
+    switch (axe) {
+    case EAxes::AXE_X:
+        fixed_coord = 0;
+        break;
+    case EAxes::AXE_Y:
+        fixed_coord = 1;
+        break;
+    case EAxes::AXE_Z:
+        fixed_coord = 2;
+        break;
+    }
+    Matrix4d moving = Matrix4d::identity_matrix();
+    moving((fixed_coord + 1) % 3, (fixed_coord + 1) % 3) = std::cos(angle);
+    moving((fixed_coord + 2) % 3, (fixed_coord + 2) % 3) = std::cos(angle);
+    moving((fixed_coord + 1) % 3, (fixed_coord + 2) % 3) = std::sin(angle);
+    moving((fixed_coord + 2) % 3, (fixed_coord + 1) % 3) = -std::sin(angle);
+    camera_.apply_transform_to_world(moving);
+}
+
+
 void Application::roll(double angle) {
-    renderer_.rotate_world(angle, 2);
+    rotate_world(angle, EAxes::AXE_Z);
 }
 
 void Application::pitch(double angle) {
-    renderer_.rotate_camera(angle, 1);
+    rotate_world(angle, EAxes::AXE_Y);
 }
  
 void Application::yaw(double angle) {
-    renderer_.rotate_camera(angle, 0);
+    rotate_world(angle, EAxes::AXE_X);
 }
 
 void Application::elevation(double angle) {
-    renderer_.rotate_world(angle, 0);
+    rotate_world(angle, EAxes::AXE_X);
 }
 
 void Application::azimuth(double angle) {
-    renderer_.rotate_world(angle, 1);
+    rotate_world(angle, EAxes::AXE_Y);
 }
 
 

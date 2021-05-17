@@ -52,7 +52,7 @@ public:
 
     Matrix(std::array<double, 4>&& data): data_{{std::forward<std::array<double, 4>>(data)}} {}
 
-    Matrix(std::vector<std::vector<double>> initial) {
+    Matrix(const std::vector<std::vector<double>>& initial) {
         for (int i = 0; i < initial.size(); i++) {
             for (int j = 0; j < initial[i].size(); j++) {
                 data_[i * M + j] = initial[i][j];

@@ -15,6 +15,6 @@ void debug(const std::string& s);
 void debug(double d);
 void debug(sf::Vector2f v);
 void debug(Vector4d v);
-void debug(Matrix<4, 4> mat);
+void debug(const Matrix<4, 4>& mat);
 
 }

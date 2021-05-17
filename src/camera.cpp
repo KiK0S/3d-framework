@@ -16,31 +16,31 @@ void Camera::create_transform() {
     double t = 1000;
     double n = -1000;
     double f = 1000;
-    Matrix4d canonical2Screen({
+    Matrix4d canonical2Screen{
         500.0, 0,     0, 499.5,
         0,     500.0, 0, 499.5,
         0,     0,     1,     0,
-        0,     0,     0,     1,});
-    Matrix4d rect2Canonical({
+        0,     0,     0,     1,};
+    Matrix4d rect2Canonical{
         2.0 / (r - l), 0, 0, 0,
         0, 2.0 / (t - b), 0, 0,
         0, 0, 2.0 / (n - f), 0,
-        0, 0, 0, 1});
-    Matrix4d move2Center({
+        0, 0, 0, 1};
+    Matrix4d move2Center{
         1, 0, 0, - (l + r) / 2.0,
         0, 1, 0, - (b + t) / 2.0,
         0, 0, 1, - (n + f) / 2.0,
-        0, 0, 0, 1});
-    Matrix4d magic({
+        0, 0, 0, 1};
+    Matrix4d magic{
         n, 0, 0, 0,
         0, n, 0, 0,
         0, 0, n + f, -n * f,
-        0, 0, 1, 0});
-    Matrix4d move_camera({
+        0, 0, 1, 0};
+    Matrix4d move_camera{
         1, 0, 0, -position_.x / position_.w,
         0, 1, 0, -position_.y / position_.w,
         0, 0, 1, -position_.z / position_.w,
-        0, 0, 0, 1});
+        0, 0, 0, 1};
     transform_ = canonical2Screen * rect2Canonical  *  move2Center * magic * transform_camera_.transpose() * move_camera;
     debug(transform_);
 }
