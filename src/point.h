@@ -14,7 +14,7 @@ class Point4d {
 public:
     double x, y, z, w;
     Point4d() = delete;
-    Point4d(const std::initializer_list<double>& args): x(*args.begin()), y(*(args.begin() + 1)), z(*(args.begin() + 2)), w(*(args.begin() + 3)) {}
+    constexpr Point4d(const std::initializer_list<double>& args): x(*args.begin()), y(*(args.begin() + 1)), z(*(args.begin() + 2)), w(1) {}
     constexpr Point4d(double x, double y, double z): x(x), y(y), z(z), w(1) {}
     Point4d(sf::Vector3f v);
 

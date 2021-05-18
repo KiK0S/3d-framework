@@ -66,14 +66,14 @@ public:
  */
     void move(Point4d v);
 
-private:
-    static constexpr double kMinDistance_ = 100;
-    static constexpr double kFocusDistance_ = 600;
-    static constexpr double kMaxDistance_ = 1100;
-    const sf::Vector2f kDefaultPixel_ = sf::Vector2f(0, 0);
+    Point4d to_cameras_coordinates(Point4d p) const;
 
-    Point4d position_ = Point4d(0, 0, 0);
-    Point4d default_position_ = position_;
+
+private:
+    static constexpr double kMinDistance_{100};
+    static constexpr double kMaxDistance_{1000};
+
+    Point4d position_{0, 0, 0};
     Matrix<3, 4> basis_screen_ = Matrix<3, 4>(std::vector<Point4d>({
         Point4d(1, 0, 0),
         Point4d(0, 1, 0),
@@ -81,7 +81,9 @@ private:
     }));
     Matrix4d transform_ = Matrix4d::identity_matrix();
     Matrix4d transform_camera_ = Matrix4d::identity_matrix();
+    constexpr static Point4d kLeftPoint_{-100, -100, -100};
+    constexpr static Point4d kRightPoint_{200, 200, 200};
+    constexpr static double kScreenSize_{1000};
 };
-
 
 }

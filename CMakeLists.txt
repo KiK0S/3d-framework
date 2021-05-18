@@ -3,6 +3,8 @@ cmake_minimum_required(VERSION 2.8)
 project(3d-drawer)
 
 set(SOURCE_EXE test/test.cpp)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 include_directories(src)
 
@@ -11,8 +13,6 @@ add_executable(3d-drawer ${SOURCE_EXE})
 target_compile_definitions(3d-drawer PUBLIC SFML-STATIC)
 add_subdirectory(src)
 
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
 SET(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} ${GCC_COVERAGE_COMPILE_FLAGS}")
 SET(CMAKE_EXE_LINKER_FLAGS  "${CMAKE_EXE_LINKER_FLAGS} ${GCC_COVERAGE_LINK_FLAGS}")
 
