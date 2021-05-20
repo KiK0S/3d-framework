@@ -5,46 +5,64 @@
 namespace app {
 
 void debug(const std::string& s) {
-    if (!DEBUG) {
+    if (!PRINT) {
         return;
     }
-    std::cerr << s << std::endl;
+    std::cout << s << '\n';
+    if (FLUSH) {
+        std::cout.flush();
+    }
 }
 
 void debug(double d) {
-    if (!DEBUG) {
+    if (!PRINT) {
         return;
     }
-    std::cerr << d << std::endl;
+    std::cout << d << '\n';
+    if (FLUSH) {
+        std::cout.flush();
+    }
 }
+
 
 void debug(sf::Vector2f v) {
-    if (!DEBUG) {
+    if (!PRINT) {
         return;
     }
-    std::cerr << v.x << ' ' << v.y << std::endl;
+    std::cout << v.x << ' ' << v.y << '\n';
+    if (FLUSH) {
+        std::cout.flush();
+    }
 }
+
 
 void debug(Vector4d v) {
-    if (!DEBUG) {
+    if (!PRINT) {
         return;
     }
-    std::cerr << v.x / v.w << ' ' << v.y / v.w << ' ' << v.z / v.w << ' ' << v.w << std::endl;
+    std::cout << v.x / v.w << ' ' << v.y / v.w << ' ' << v.z / v.w << ' ' << v.w << '\n';
+    if (FLUSH) {
+        std::cout.flush();
+    }
 }
 
+
 void debug(const Matrix4d& mat) {
-    if (!DEBUG) {
+    if (!PRINT) {
         return;
     }
-    std::cerr << "[";
+    std::cout << "[";
     for (int i = 0; i < 4; i++) {
-        std::cerr << "[";
+        std::cout << "[";
         for (int j = 0; j < 4; j++) {
-            std::cerr << mat(i, j) << ',';
+            std::cout << mat(i, j) << ',';
         }
-        std::cerr << "], ";
+        std::cout << "], ";
     }
-    std::cerr << "]\n";
+    std::cout << "]\n";
+    if (FLUSH) {
+        std::cout.flush();
+    }
 }
 
 }

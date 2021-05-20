@@ -35,14 +35,13 @@ void Renderer::draw(const Camera& camera, const Triangle4d& triangle4d) {
     Triangle2d triangle2d(camera.project_point(triangle4d.a),
                           camera.project_point(triangle4d.b),
                           camera.project_point(triangle4d.c));
-    
-    // debug(triangle2d.a);
-    // debug(triangle2d.b);
-    // debug(triangle2d.c);
-    debug(triangle4d.a);
-    debug(triangle4d.b);
-    debug(triangle4d.c);
-    debug(camera.transform_point(triangle4d.a));
+    debug(triangle2d.a);
+    debug(triangle2d.b);
+    debug(triangle2d.c);
+    // debug(triangle4d.a);
+    // debug(triangle4d.b);
+    // debug(triangle4d.c);
+    // debug(camera.transform_point(triangle4d.a));
     debug("---");
 
     if (triangle2d.a == triangle2d.b || triangle2d.c == triangle2d.a || triangle2d.c == triangle2d.b) {
@@ -147,7 +146,71 @@ double Renderer::find_max_y(const Triangle2d& triangle, double x) const {
     }
 }
 
+std::optional<Point4d> find_intersection(Point4d a, Point4d b) {
+    if (a.z <= Renderer::Z && b.z <= Renderer::Z) {
+        return {};
+    }
+    if (a.z >= Renderer::Z && b.z >= Renderer::Z) {
+        return {};
+    }
+    if (a.z > b.z) {
+        Point4d t = a;
+        a = b;
+        b = t;
+    }
+    Point4d v = b - a;
+    return a + v * a.z / v.z;
+}
+
 std::vector<Triangle4d> Renderer::clip(const Camera& camera, const Triangle4d& triangle) const {
+    Point4d A = camera.to_cameras_coordinates(triangle.a);
+    Point4d B = camera.to_cameras_coordinates(triangle.b);
+    Point4d C = camera.to_cameras_coordinates(triangle.c);
+    debug(A);
+    debug(B);
+    debug(C);
+    if (A.z <= Renderer::Z && B.z <= Renderer::Z && C.z <= Renderer::Z) {
+        debug("triangle is too near");
+        return {};
+    }
+    std::optional<Point4d> cross_a = find_intersection(A, B);
+    std::optional<Point4d> cross_b = find_intersection(A, C);
+    std::optional<Point4d> cross_c = find_intersection(B, C);
+    /*
+        u need to visualise it
+    */
+    if (cross_a && cross_b && !cross_c) {
+        debug ("changed A");
+        if (A.z <= Renderer::Z) return {
+            Triangle4d(*cross_a, B, C),
+            Triangle4d(*cross_b, C, *cross_a),
+        };
+        if (A.z >= Renderer::Z) return {
+            Triangle4d(*cross_a, A, *cross_b)
+        };
+    }
+    if (cross_a && cross_c && !cross_b) {
+        debug ("changed B");
+        if (B.z <= Renderer::Z) return {
+            Triangle4d(*cross_a, A, C),
+            Triangle4d(*cross_c, C, *cross_a),
+        };
+        if (B.z >= Renderer::Z) return {
+            Triangle4d(*cross_a, B, *cross_c)
+        };
+    }
+    if (cross_c && cross_b && !cross_a) {
+        debug ("changed C");
+        if (C.z <= Renderer::Z) return {
+            Triangle4d(*cross_c, B, A),
+            Triangle4d(*cross_b, A, *cross_c),
+        };
+        if (C.z >= Renderer::Z) return {
+            Triangle4d(*cross_c, C, *cross_b)
+        };
+
+    }
+    debug ("nothing has changed");
     return {triangle};
 }
 

@@ -16,7 +16,7 @@ void Camera::create_transform() {
     Matrix4d rect2Canonical{
         2.0 / (kRightPoint_.x - kLeftPoint_.x), 0, 0, 0,
         0, 2.0 / (kRightPoint_.y - kLeftPoint_.y), 0, 0,
-        0, 0, 2.0 / (kLeftPoint_.z - kRightPoint_.z), 0,
+        0, 0, 2.0 / (kRightPoint_.z - kLeftPoint_.z), 0,
         0, 0, 0, 1};
     Matrix4d move2Center{
         1, 0, 0, - (kLeftPoint_.x + kRightPoint_.x) / 2.0,
@@ -47,11 +47,11 @@ Matrix4d Camera::get_world_transform() const {
 }
 
 double Camera::get_max_z_value() const {
-    return kLeftPoint_.z;
+    return kRightPoint_.z;
 }
 
 double Camera::get_min_z_value() const {
-    return kRightPoint_.z;
+    return kLeftPoint_.z;
 }
 
 void Camera::move(Point4d v) {

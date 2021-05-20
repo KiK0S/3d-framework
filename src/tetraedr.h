@@ -17,6 +17,7 @@ namespace app {
 */
 class Tetraedr : public SurfaceObject {
 public:
+    Tetraedr();
     Tetraedr(Point4d a, Point4d b, Point4d c, Point4d d);
     ~Tetraedr() = default;
 
