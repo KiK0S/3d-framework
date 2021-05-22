@@ -68,18 +68,13 @@ public:
 
     Point4d to_cameras_coordinates(Point4d p) const;
 
-
+constexpr static Point4d kLeftPoint_{-300, -300, 50};
+constexpr static Point4d kRightPoint_{300, 300, 150};
+    
 private:
     Point4d position_{0, 0, 0};
-    Matrix<3, 4> basis_screen_ = Matrix<3, 4>(std::vector<Point4d>({
-        Point4d(1, 0, 0),
-        Point4d(0, 1, 0),
-        Point4d(0, 0, 1)
-    }));
     Matrix4d transform_ = Matrix4d::identity_matrix();
     Matrix4d transform_camera_ = Matrix4d::identity_matrix();
-    constexpr static Point4d kLeftPoint_{50, 50, 50};
-    constexpr static Point4d kRightPoint_{300, 300, 300};
     constexpr static double kScreenSize_{1000};
 };
 

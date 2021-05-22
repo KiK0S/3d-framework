@@ -9,7 +9,7 @@
 namespace app {
 
 /*!
-    \brief Класс инстантса графического приложения.
+    \brief Класс инстанса графического приложения.
     \author KiK0S
     \version 1.0
     \date May 14 2021

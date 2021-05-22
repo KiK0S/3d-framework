@@ -9,7 +9,7 @@ namespace app {
 const sf::Vector2f Renderer::kCenter_ = sf::Vector2f(Renderer::kScreenSize_ / 2, Renderer::kScreenSize_ / 2);
 const Vector4d Renderer::kAxis_[3] = {Vector4d(100, 0, 0), Vector4d(0, 100, 0), Vector4d(0, 0, 100)};
 
-Renderer::Renderer(): screen_(Renderer::kScreenSize_, 1000) {}
+Renderer::Renderer(double max_z_value): screen_(Renderer::kScreenSize_, max_z_value) {}
 
 void Renderer::update(sf::RenderWindow& window) {
     draw(screen_.get_picture(), window);
@@ -211,7 +211,7 @@ std::vector<Triangle4d> Renderer::clip(const Camera& camera, const Triangle4d& t
 
     }
     debug ("nothing has changed");
-    return {triangle};
+    return {Triangle4d(A, B, C)};
 }
 
 

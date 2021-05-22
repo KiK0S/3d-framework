@@ -33,12 +33,11 @@ void Camera::create_transform() {
         0, 1, 0, -position_.y / position_.w,
         0, 0, 1, -position_.z / position_.w,
         0, 0, 0, 1};
-    transform_ = canonical2Screen * rect2Canonical  *  move2Center * magic * transform_camera_.transpose() * move_camera;
+    transform_ = canonical2Screen * rect2Canonical  *  move2Center; // * magic * transform_camera_.transpose() * move_camera;
     debug(transform_);
 }
 
 void Camera::apply_transform_to_world(const Matrix4d& matrix) {
-    basis_screen_ = (matrix * basis_screen_.transpose()).transpose();
     transform_camera_ = transform_camera_ * matrix;
 }
 
@@ -82,7 +81,12 @@ Point4d Camera::to_cameras_coordinates(Point4d p) const {
         0, 1, 0, -position_.y / position_.w,
         0, 0, 1, -position_.z / position_.w,
         0, 0, 0, 1};
-    return transform_camera_.transpose() * move_camera * p;
+        Matrix4d magic{
+        kLeftPoint_.z, 0, 0, 0,
+        0, kLeftPoint_.z, 0, 0,
+        0, 0, kLeftPoint_.z + kRightPoint_.z, -kLeftPoint_.z * kRightPoint_.z,
+        0, 0, 1, 0};
+    return magic * transform_camera_.transpose() * move_camera * p;
 }
 
 

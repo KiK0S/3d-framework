@@ -23,7 +23,7 @@ class Camera;
 */
 class Renderer {
 public:
-    Renderer();
+    Renderer(double max_z_value);
 
     void update(sf::RenderWindow& window);
     void draw(sf::Vertex pixel) ;
@@ -43,7 +43,7 @@ public:
 
     double get_z(const Camera& camera, int x, int y, Matrix<2, 1>&& coords, Point4d& a, Point4d& b, Point4d& c) const ;
     Matrix<2, 1> get_coords(int x, int y, Matrix<2, 2>& basis, sf::Vector2f& point) const ;
-    constexpr static int Z = 100;
+
 private:
     constexpr static size_t kScreenSize_ = 1000;
     Screen screen_;

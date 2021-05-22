@@ -6,3 +6,5 @@ CMakeFiles/
 src/latex/
 src/out/
 src/html/
+*.pygtex
+*.pygstyle

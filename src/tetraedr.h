@@ -28,4 +28,10 @@ private:
     Point4d d;
 };
 
+class Triangle : public SurfaceObject {
+public:
+    Triangle();
+};
+
+
 }
