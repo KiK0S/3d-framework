@@ -77,13 +77,13 @@ void Renderer::draw(const Camera& camera, const Triangle4d& triangle4d) {
     }
 }
 
-void Renderer::draw(Line4d line4d, sf::RenderWindow& window) {
-    // Line2d line(camera_.project_point(line4d.start_), camera_.project_point(line4d.finish_));
-    // sf::RectangleShape rectangle(sf::Vector2f(line.length_, line.kWidth));
-    // rectangle.setRotation(line.angle_);
-    // rectangle.setPosition(line.offset_);
-    // rectangle.setFillColor(line.color_);
-    // window.draw(rectangle);
+void Renderer::draw(Line4d line4d, sf::RenderWindow& window, const Camera& camera) {
+    Line2d line(camera.project_point(camera.to_cameras_coordinates(line4d.start_)), camera.project_point(camera.to_cameras_coordinates(line4d.finish_)));
+    sf::RectangleShape rectangle(sf::Vector2f(line.length_, line.kWidth));
+    rectangle.setRotation(line.angle_);
+    rectangle.setPosition(line.offset_);
+    rectangle.setFillColor(sf::Color::Red);
+    window.draw(rectangle);
 }
 
 double Renderer::get_max_z_value() const {

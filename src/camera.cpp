@@ -23,11 +23,6 @@ void Camera::create_transform() {
         0, 1, 0, - (kLeftPoint_.y + kRightPoint_.y) / 2.0,
         0, 0, 1, - (kLeftPoint_.z + kRightPoint_.z) / 2.0,
         0, 0, 0, 1};
-    Matrix4d magic{
-        kLeftPoint_.z, 0, 0, 0,
-        0, kLeftPoint_.z, 0, 0,
-        0, 0, kLeftPoint_.z + kRightPoint_.z, -kLeftPoint_.z * kRightPoint_.z,
-        0, 0, 1, 0};
     Matrix4d move_camera{
         1, 0, 0, -position_.x / position_.w,
         0, 1, 0, -position_.y / position_.w,
@@ -81,11 +76,13 @@ Point4d Camera::to_cameras_coordinates(Point4d p) const {
         0, 1, 0, -position_.y / position_.w,
         0, 0, 1, -position_.z / position_.w,
         0, 0, 0, 1};
-        Matrix4d magic{
+    Matrix4d magic{
         kLeftPoint_.z, 0, 0, 0,
         0, kLeftPoint_.z, 0, 0,
         0, 0, kLeftPoint_.z + kRightPoint_.z, -kLeftPoint_.z * kRightPoint_.z,
         0, 0, 1, 0};
+        debug(magic);
+    debug(magic * transform_camera_.transpose() * move_camera);
     return magic * transform_camera_.transpose() * move_camera * p;
 }
 

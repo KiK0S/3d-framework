@@ -28,7 +28,7 @@ public:
     void update(sf::RenderWindow& window);
     void draw(sf::Vertex pixel) ;
     void draw(const std::vector<sf::Vertex>& data, sf::RenderWindow& window) ;
-    void draw(Line4d line, sf::RenderWindow& window) ;
+    void draw(Line4d line, sf::RenderWindow& window, const Camera& camera) ;
     void draw(const Camera& camera, const Triangle4d& triangle) ;
 
     double get_max_z_value() const ;
@@ -43,7 +43,7 @@ public:
 
     double get_z(const Camera& camera, int x, int y, Matrix<2, 1>&& coords, Point4d& a, Point4d& b, Point4d& c) const ;
     Matrix<2, 1> get_coords(int x, int y, Matrix<2, 2>& basis, sf::Vector2f& point) const ;
-
+    constexpr static int Z = -1000;
 private:
     constexpr static size_t kScreenSize_ = 1000;
     Screen screen_;

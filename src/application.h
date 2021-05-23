@@ -98,7 +98,8 @@ private:
     World world_;
     Camera camera_;
     sf::RenderWindow window_;
-    constexpr static size_t kScreenSize_ = 1000;
+    constexpr static size_t kScreenHeight_ = 1000;
+    constexpr static size_t kScreenWidth_ = 1000;
 };
 
 }

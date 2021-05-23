@@ -9,7 +9,7 @@ namespace app {
 
 
 Application::Application(): world_(), camera_(), renderer_(camera_.kRightPoint_.z), 
-                            window_(sf::VideoMode(kScreenSize_, kScreenSize_),
+                            window_(sf::VideoMode(kScreenWidth_, kScreenHeight_),
                                     "Test: interacrtive camera") {}
 
 void Application::update() {
@@ -25,22 +25,28 @@ void Application::update() {
                 triangles++;
             }
         }
-        // for (auto& line3d : object->lines()) {
-        //     renderer_.draw(line3d, window_);
-        //     lines++;
-        // }
+        for (auto& line3d : object->lines()) {
+            renderer_.draw(line3d, window_, camera_);
+            lines++;
+        }
     }
     renderer_.update(window_);
+    for (auto& object : world_) {
+        for (auto& line3d : object->lines()) {
+            renderer_.draw(line3d, window_, camera_);
+            lines++;
+        }
+    }
     window_.display();
     debug("/////////////");
 }
 
 void Application::move_camera(Vector4d v) {
+    // move_world(v);
     camera_.move(v);
 }
 
 void Application::move_world(Vector4d v) {
-    // v = v;
     Matrix4d moving = Matrix4d::identity_matrix();
     moving(0, 3) = v.x;
     moving(1, 3) = v.y;

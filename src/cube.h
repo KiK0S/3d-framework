@@ -18,7 +18,7 @@ public:
 
 private:
     static constexpr double kSize_ = 100;
-    static constexpr Vector4d start = Vector4d(100, 100, 100);
+    static constexpr Vector4d start = Vector4d(0, 0, 400);
 };
 
 }

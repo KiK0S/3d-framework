@@ -1,0 +1,16 @@
+\begin{thebibliography}{1}
+
+\bibitem{vtkBook}
+\url{https://lorensen.github.io/VTKExamples/site/VTKBook/00Preface/}.
+\newblock [VTKBook].
+
+\bibitem{urtech}
+\url{https://www.youtube.com/watch?v=4z6zRet_gkg\&list=PLbCDZQXIq7uYaf263gr-zb0wZGoCL-T5G}.
+\newblock [Urtech University lectures].
+
+\bibitem{Math3d}
+Eric Lengyel.
+\newblock {\em Mathmatics for 3d game programming and computer graphics}.
+\newblock Course Technology PTR, 2012.
+
+\end{thebibliography}

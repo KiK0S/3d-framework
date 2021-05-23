@@ -68,8 +68,8 @@ public:
 
     Point4d to_cameras_coordinates(Point4d p) const;
 
-constexpr static Point4d kLeftPoint_{-300, -300, 50};
-constexpr static Point4d kRightPoint_{300, 300, 150};
+constexpr static Point4d kLeftPoint_{-200, -200, 300};
+constexpr static Point4d kRightPoint_{200, 200, 5000};
     
 private:
     Point4d position_{0, 0, 0};
