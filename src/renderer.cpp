@@ -6,10 +6,8 @@
 
 namespace app {
 
-const sf::Vector2f Renderer::kCenter_ = sf::Vector2f(Renderer::kScreenSize_ / 2, Renderer::kScreenSize_ / 2);
-const Vector4d Renderer::kAxis_[3] = {Vector4d(100, 0, 0), Vector4d(0, 100, 0), Vector4d(0, 0, 100)};
-
-Renderer::Renderer(double max_z_value): screen_(Renderer::kScreenSize_, max_z_value) {}
+Renderer::Renderer(double screen_width, double screen_height, double max_z_value):
+                                            screen_(screen_width, screen_height, max_z_value) {}
 
 void Renderer::update(sf::RenderWindow& window) {
     draw(screen_.get_picture(), window);
@@ -78,24 +76,28 @@ void Renderer::draw(const Camera& camera, const Triangle4d& triangle4d) {
 }
 
 void Renderer::draw(Line4d line4d, sf::RenderWindow& window, const Camera& camera) {
-    Line2d line(camera.project_point(camera.to_cameras_coordinates(line4d.start_)), camera.project_point(camera.to_cameras_coordinates(line4d.finish_)));
+    Point4d A = camera.to_cameras_coordinates(line4d.start_);
+    Point4d B = camera.to_cameras_coordinates(line4d.finish_);
+    A.normalize();
+    B.normalize();
+    double z_plane = camera.kLeftPoint_.z - 20;
+    if (A.z <= z_plane && B.z <= z_plane) {
+        return;
+    }
+    if (A.z < z_plane || B.z < z_plane) {
+        if (A.z > B.z) {
+            std::swap(A, B);
+        }
+        Point4d dir = A - B;
+        dir.resize(dir.length() * (B.z - z_plane) / (B.z - A.z));
+        A = B + dir;
+    }
+    Line2d line(camera.project_point(A), camera.project_point(B));
     sf::RectangleShape rectangle(sf::Vector2f(line.length_, line.kWidth));
     rectangle.setRotation(line.angle_);
     rectangle.setPosition(line.offset_);
     rectangle.setFillColor(sf::Color::Red);
     window.draw(rectangle);
-}
-
-double Renderer::get_max_z_value() const {
-    return 1000;
-}
-
-double Renderer::get_min_z_value() const {
-    return -1000;
-}
-
-size_t Renderer::get_screen_size() const {
-    return kScreenSize_;
 }
 
 double Renderer::find_min_y(const Triangle2d& triangle, double x) const {
@@ -146,66 +148,68 @@ double Renderer::find_max_y(const Triangle2d& triangle, double x) const {
     }
 }
 
-std::optional<Point4d> find_intersection(Point4d a, Point4d b) {
-    if (a.z <= Renderer::Z && b.z <= Renderer::Z) {
+std::optional<Point4d> Renderer::find_intersection(Point4d a, Point4d b, double z) const{
+    if (a.z <= z && b.z <= z) {
         return {};
     }
-    if (a.z >= Renderer::Z && b.z >= Renderer::Z) {
+    if (a.z > z && b.z > z) {
         return {};
     }
     if (a.z > b.z) {
-        Point4d t = a;
-        a = b;
-        b = t;
+        std::swap(a, b);
     }
     Point4d v = b - a;
-    return a + v * a.z / v.z;
+    return a + v * (z - a.z) / v.z;
 }
 
 std::vector<Triangle4d> Renderer::clip(const Camera& camera, const Triangle4d& triangle) const {
     Point4d A = camera.to_cameras_coordinates(triangle.a);
     Point4d B = camera.to_cameras_coordinates(triangle.b);
     Point4d C = camera.to_cameras_coordinates(triangle.c);
+    double z_plane = camera.kLeftPoint_.z - 20;
     debug(A);
     debug(B);
     debug(C);
-    if (A.z <= Renderer::Z && B.z <= Renderer::Z && C.z <= Renderer::Z) {
+    A.normalize();
+    B.normalize();
+    C.normalize();
+    if (A.z <= z_plane && B.z <= z_plane && C.z <= z_plane) {
         debug("triangle is too near");
         return {};
     }
-    std::optional<Point4d> cross_a = find_intersection(A, B);
-    std::optional<Point4d> cross_b = find_intersection(A, C);
-    std::optional<Point4d> cross_c = find_intersection(B, C);
+    std::optional<Point4d> cross_a = find_intersection(A, B, z_plane);
+    std::optional<Point4d> cross_b = find_intersection(A, C, z_plane);
+    std::optional<Point4d> cross_c = find_intersection(B, C, z_plane);
     /*
         u need to visualise it
     */
     if (cross_a && cross_b && !cross_c) {
         debug ("changed A");
-        if (A.z <= Renderer::Z) return {
+        if (A.z <= z_plane) return {
             Triangle4d(*cross_a, B, C),
             Triangle4d(*cross_b, C, *cross_a),
         };
-        if (A.z >= Renderer::Z) return {
+        if (A.z >= z_plane) return {
             Triangle4d(*cross_a, A, *cross_b)
         };
     }
     if (cross_a && cross_c && !cross_b) {
         debug ("changed B");
-        if (B.z <= Renderer::Z) return {
+        if (B.z <= z_plane) return {
             Triangle4d(*cross_a, A, C),
             Triangle4d(*cross_c, C, *cross_a),
         };
-        if (B.z >= Renderer::Z) return {
+        if (B.z >= z_plane) return {
             Triangle4d(*cross_a, B, *cross_c)
         };
     }
     if (cross_c && cross_b && !cross_a) {
         debug ("changed C");
-        if (C.z <= Renderer::Z) return {
+        if (C.z <= z_plane) return {
             Triangle4d(*cross_c, B, A),
             Triangle4d(*cross_b, A, *cross_c),
         };
-        if (C.z >= Renderer::Z) return {
+        if (C.z >= z_plane) return {
             Triangle4d(*cross_c, C, *cross_b)
         };
 

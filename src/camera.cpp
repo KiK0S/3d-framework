@@ -5,12 +5,12 @@
 
 namespace app {
 
-Camera::Camera() {}
+Camera::Camera(double max_x, double max_y): kScreenHeight_(max_y), kScreenWidth_(max_x) {}
 
 void Camera::create_transform() {
     Matrix4d canonical2Screen{
-        kScreenSize_ / 2, 0,     0, kScreenSize_ / 2 - 0.5,
-        0,     kScreenSize_ / 2, 0, kScreenSize_ / 2 - 0.5,
+        kScreenWidth_ / 2, 0,     0, kScreenWidth_ / 2 - 0.5,
+        0,     kScreenHeight_ / 2, 0, kScreenHeight_ / 2 - 0.5,
         0,     0,     1,     0,
         0,     0,     0,     1,};
     Matrix4d rect2Canonical{
@@ -23,13 +23,12 @@ void Camera::create_transform() {
         0, 1, 0, - (kLeftPoint_.y + kRightPoint_.y) / 2.0,
         0, 0, 1, - (kLeftPoint_.z + kRightPoint_.z) / 2.0,
         0, 0, 0, 1};
-    Matrix4d move_camera{
-        1, 0, 0, -position_.x / position_.w,
-        0, 1, 0, -position_.y / position_.w,
-        0, 0, 1, -position_.z / position_.w,
-        0, 0, 0, 1};
-    transform_ = canonical2Screen * rect2Canonical  *  move2Center; // * magic * transform_camera_.transpose() * move_camera;
-    debug(transform_);
+    Matrix4d projective_transform{
+        kLeftPoint_.z, 0, 0, 0,
+        0, kLeftPoint_.z, 0, 0,
+        0, 0, kLeftPoint_.z + kRightPoint_.z, -kLeftPoint_.z * kRightPoint_.z,
+        0, 0, 1, 0};
+    transform_ = canonical2Screen * rect2Canonical  *  move2Center * projective_transform; // * magic * transform_camera_.transpose() * move_camera;
 }
 
 void Camera::apply_transform_to_world(const Matrix4d& matrix) {
@@ -59,9 +58,6 @@ Point4d Camera::transform_point(Point4d p) const {
 
 sf::Vector2f Camera::project_point(Point4d p) const {
     Point4d transformed = transform_point(p);
-    // debug("===");
-    // debug(transformed[0]);
-    // debug("===");
     return {transformed.x / transformed.w, 
             transformed.y / transformed.w};
 }
@@ -76,14 +72,7 @@ Point4d Camera::to_cameras_coordinates(Point4d p) const {
         0, 1, 0, -position_.y / position_.w,
         0, 0, 1, -position_.z / position_.w,
         0, 0, 0, 1};
-    Matrix4d magic{
-        kLeftPoint_.z, 0, 0, 0,
-        0, kLeftPoint_.z, 0, 0,
-        0, 0, kLeftPoint_.z + kRightPoint_.z, -kLeftPoint_.z * kRightPoint_.z,
-        0, 0, 1, 0};
-        debug(magic);
-    debug(magic * transform_camera_.transpose() * move_camera);
-    return magic * transform_camera_.transpose() * move_camera * p;
+    return transform_camera_.transpose() * move_camera * p;
 }
 
 

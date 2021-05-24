@@ -12,16 +12,17 @@
 template <typename T>
 class PixelScreen {
 public:
-    PixelScreen(size_t size): size_(size), data_(size * size) {}
+    PixelScreen(size_t width, size_t height): height_(height), width_(width), data_(height_ * width_) {}
 
     T& operator() (size_t row, size_t column) {
-        return data_[row * size_ + column];
+        return data_[row * width_ + column];
     }
     const T& operator() (size_t row, size_t column) const {
-        return data_[row * size_ + column];
+        return data_[row * width_ + column];
     }
 
 private:
-    size_t size_;
+    size_t width_;
+    size_t height_;
     std::vector<T> data_;
 };

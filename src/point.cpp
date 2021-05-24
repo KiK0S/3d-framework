@@ -23,6 +23,8 @@ Point4d& Point4d::operator /= (double k) {
     return *this;
 }
 
+
+
 Point4d Point4d::operator + (const Point4d& p) const {
     return Point4d(x / w + p.x / p.w, y / w + p.y / p.w, z / w + p.z / p.w);
 }   
@@ -46,6 +48,21 @@ double Point4d::length() const {
     return std::sqrt(x * x + y * y + z * z);
 }
 
+void Point4d::normalize() {
+    assert(w != 0);
+    x /= w;
+    y /= w;
+    z /= w;
+    w = 1;
+}
+
+void Point4d::resize(double d) {
+    normalize();
+    d /= length();
+    x *= d;
+    y *= d;
+    z *= d;
+}
 
 double Point4d::operator[] (size_t i) const {
     if (i == 0) return x;

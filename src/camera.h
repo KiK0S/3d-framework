@@ -20,6 +20,8 @@ public:
     \brief Конструктор
  */
     Camera();
+    Camera(double max_x, double max_y);
+
 
 /*!
     \brief Получение видоизмененных 2д-коортинат точки
@@ -75,7 +77,8 @@ private:
     Point4d position_{0, 0, 0};
     Matrix4d transform_ = Matrix4d::identity_matrix();
     Matrix4d transform_camera_ = Matrix4d::identity_matrix();
-    constexpr static double kScreenSize_{1000};
+    const double kScreenHeight_;
+    const double kScreenWidth_;
 };
 
 }

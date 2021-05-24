@@ -23,18 +23,13 @@ class Camera;
 */
 class Renderer {
 public:
-    Renderer(double max_z_value);
+    Renderer(double width, double height, double max_z_value);
 
     void update(sf::RenderWindow& window);
     void draw(sf::Vertex pixel) ;
     void draw(const std::vector<sf::Vertex>& data, sf::RenderWindow& window) ;
     void draw(Line4d line, sf::RenderWindow& window, const Camera& camera) ;
     void draw(const Camera& camera, const Triangle4d& triangle) ;
-
-    double get_max_z_value() const ;
-    double get_min_z_value() const ;
-    size_t get_focus_distance() const ;
-    size_t get_screen_size() const ;
 
     std::vector<Triangle4d> clip(const Camera& camera, const Triangle4d& triangle) const ;
 
@@ -43,9 +38,9 @@ public:
 
     double get_z(const Camera& camera, int x, int y, Matrix<2, 1>&& coords, Point4d& a, Point4d& b, Point4d& c) const ;
     Matrix<2, 1> get_coords(int x, int y, Matrix<2, 2>& basis, sf::Vector2f& point) const ;
-    constexpr static int Z = -1000;
+    std::optional<Point4d> find_intersection(Point4d a, Point4d b, double z) const ;
+
 private:
-    constexpr static size_t kScreenSize_ = 1000;
     Screen screen_;
     const static Vector4d kAxis_[3];
     const static sf::Vector2f kCenter_;

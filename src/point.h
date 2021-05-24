@@ -30,6 +30,8 @@ public:
     double operator[] (size_t i) const ;
     double& operator[] (size_t i) ;
     double length() const ;
+    void normalize() ;
+    void resize(double d) ;
 };
 
 using Vector4d = Point4d;

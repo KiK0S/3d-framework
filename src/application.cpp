@@ -8,7 +8,7 @@
 namespace app {
 
 
-Application::Application(): world_(), camera_(), renderer_(camera_.kRightPoint_.z), 
+Application::Application(): world_(), camera_(kScreenWidth_, kScreenHeight_), renderer_(kScreenWidth_, kScreenHeight_, camera_.kRightPoint_.z), 
                             window_(sf::VideoMode(kScreenWidth_, kScreenHeight_),
                                     "Test: interacrtive camera") {}
 

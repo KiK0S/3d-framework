@@ -14,7 +14,7 @@ namespace app {
 */
 class Screen {
 public:
-    Screen(size_t screen_size, double max_z_value);
+    Screen(size_t screen_width, size_t screen_height, double max_z_value);
 
 /*!
     \brief отобразить пиксель
@@ -34,7 +34,8 @@ public:
 private:
     PixelScreen<sf::Color> color_;
     PixelScreen<double> z_value_;
-    size_t screen_size_;
+    size_t screen_width_;
+    size_t screen_height_;
     double max_z_value_;
 
 
