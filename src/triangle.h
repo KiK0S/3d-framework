@@ -17,7 +17,7 @@ public:
     Triangle4d() = delete;
     Triangle4d(Point4d a, Point4d b, Point4d c);
     Point4d a, b, c;
-    void sort_points(std::array<int, 3>, Point4d& a, Point4d& b, Point4d& c) const ;
+    void assign_points(std::array<int, 3>, Point4d& a, Point4d& b, Point4d& c) const ;
 };
 /*!
     \brief Класс треугольника в 2д.
@@ -37,7 +37,7 @@ public:
     double min_y_in_line(double x) const ;
     double max_y_in_line(double x) const ;
     Matrix<2, 2> create_basis() const ;
-    std::array<int, 3>&& get_order();
+    std::array<int, 3> get_order();
     double square() const ;
 };
 

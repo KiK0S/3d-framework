@@ -36,7 +36,6 @@ public:
             (*this)(i, t) -= (*this)(j, t) * k;
         }
     }
-private:
     std::array<double, N * M> data_;
 
 public:
@@ -77,7 +76,7 @@ public:
         assert(M == 4 && N == data.size());
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < M; j++) {
-                (*this)(i, j) = data[i][j];   
+                (*this)(i, j) = data[i][j];
             }
         }
     }
@@ -243,28 +242,35 @@ public:
         return result;
     }
 
-    Matrix<N, 1> solve_system(Matrix<N, 1> point) {
+    template <size_t _N, size_t _M>
+    void gaussian(Matrix<_N, _M>& second) {
+        assert(_N == N);
         Matrix copy = (*this);
         for (int j = 0; j < M; j++) {
             for (int i = j; i < N; i++) {
                 if (copy(i, j) != 0) {
                     copy.modification_swap(i, j);
-                    point.modification_swap(i, j);
+                    second.modification_swap(i, j);
                     break;
                 }
             }
             double x = copy(j, j);
             if (x == 0) {
-                return Matrix<N, 1>();
+                return ;
             }
             for (size_t i = j + 1; i < M; i++) {
                 double K = copy(i, j) / x;
                 copy.modification_mulsub(i, j, K);
-                point.modification_mulsub(i, j, K);
+                second.modification_mulsub(i, j, K);
             }
             copy.modification_multiply(j, 1.0 / x);
-            point.modification_multiply(j, 1.0 / x);
+            second.modification_multiply(j, 1.0 / x);
         }
+    }
+
+    Matrix<N, 1> solve_system(Matrix<N, 1> point) {
+        Matrix copy = (*this);
+        gaussian(point);
         for (int i = N - 1; i >= 0; i--) {
             for (int j = i + 1; j < M; j++) {
                 point(i, 0) -= point(j, 0) * copy(i, j);
@@ -277,61 +283,13 @@ public:
         assert(N == M);
         Matrix copy = (*this);
         Matrix result = identity_matrix();
-        for (int j = 0; j < M; j++) {
-            for (int i = j; i < N; i++) {
-                if (copy(i, j) != 0) {
-                    copy.modification_swap(i, j);
-                    result.modification_swap(i, j);
-                    break;
-                }
-            }
-            double x = copy(j, j);
-            for (int i = j + 1; i < N; i++) {
-                double K = copy(i, j) / x;
-                copy.modification_mulsub(i, j, K);
-                result.modification_mulsub(i, j, K);
-            }
-            copy.modification_multiply(j, 1.0 / x);
-            result.modification_multiply(j, 1.0 / x);
-        }
+        gaussian(result);
         for (int j = N - 1; j >= 0; j--) {
             for (int i = j - 1; i >= 0; i--) {
                 double K = copy(i, j) / copy(j, j);
                 copy.modification_mulsub(i, j, K);
                 result.modification_mulsub(i, j, K);
             }
-        }
-        return result;
-    }
-
-private:
-    double det() const {
-        assert(N == M);
-        Matrix copy = (*this);
-        for (int j = 0; j < N; j++) {
-            for (int i = j; i < N; i++) {
-                if (copy(i, j) != 0) {
-                    copy.modification_swap(i, j);
-                    break;
-                }
-            }
-            double x = copy(j, j);
-            assert(x != 0);
-            for (int i = j + 1; i < N; i++) {
-                double K = copy(i, j) / x;
-                copy.modification_mulsub(i, j, K);
-            }
-            copy.modification_multiply(j, 1.0 / x);
-        }
-        for (int j = N - 1; j >= 0; j--) {
-            for (int i = j - 1; i >= 0; i--) {
-                double K = copy(i, j) / copy(j, j);
-                copy.modification_mulsub(i, j, K);
-            }
-        }
-        double result = 1;
-        for (int i = 0; i < std::min(N, M); i++) {
-            result *= copy(i, i);
         }
         return result;
     }

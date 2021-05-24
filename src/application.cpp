@@ -8,14 +8,14 @@
 namespace app {
 
 
-Application::Application(): world_(), camera_(kScreenWidth_, kScreenHeight_), renderer_(kScreenWidth_, kScreenHeight_, camera_.kRightPoint_.z), 
-                            window_(sf::VideoMode(kScreenWidth_, kScreenHeight_),
-                                    "Test: interacrtive camera") {}
+Application::Application(): world_(), camera_(kScreenWidth_, kScreenHeight_), renderer_(kScreenWidth_, kScreenHeight_, camera_.kRightPoint_.z),
+    window_(sf::VideoMode(kScreenWidth_, kScreenHeight_),
+            "Test: interacrtive camera") {}
 
 void Application::update() {
     debug("new frame");
     window_.clear(sf::Color::White);
-    camera_.create_transform();
+    camera_.create_transformation_matrixes();
     int lines = 0;
     int triangles = 0;
     for (auto& object : world_) {
@@ -103,7 +103,7 @@ void Application::roll(double angle) {
 void Application::pitch(double angle) {
     rotate_world(angle, EAxes::AXE_Y);
 }
- 
+
 void Application::yaw(double angle) {
     rotate_world(angle, EAxes::AXE_X);
 }

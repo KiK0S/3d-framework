@@ -24,9 +24,9 @@ public:
                   std::vector<std::pair<int, int>> edges,
                   std::vector<Triplet> triangles);
 
-/*!
-    \brief Массив информации о триангуляции поверхностей фигуры
- */
+    /*!
+        \brief Массив информации о триангуляции поверхностей фигуры
+     */
     std::vector<Triangle4d> triangles() const;
 
 private:

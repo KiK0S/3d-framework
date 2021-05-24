@@ -2,19 +2,6 @@
 
 namespace app {
 
-/*
-
-    0 - - - - 3
-    |\         \
-    | \         \
-    |  1 - - - - 2
-    | / \ 
-     
-
-
-*/
-
-
 Chair::Chair(): SurfaceObject({
     Point4d(0, 0, 0), Point4d(0, kSize_, 0), Point4d(kSize_, kSize_, 0), Point4d(kSize_, 0, 0),
     Point4d(kSize_ / 2, kSize_ / 2, 0),

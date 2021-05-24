@@ -16,19 +16,19 @@ class Screen {
 public:
     Screen(size_t screen_width, size_t screen_height, double max_z_value);
 
-/*!
-    \brief отобразить пиксель
-*/  
+    /*!
+        \brief отобразить пиксель
+    */
     void set_pixel(int x, int y, double z, sf::Color color);
 
-/*!
-    \brief выбор всех пикслей
-*/
+    /*!
+        \brief выбор всех пикслей
+    */
     std::vector<sf::Vertex> get_picture();
 
-/*!
-    \brief очистка
-*/  
+    /*!
+        \brief очистка
+    */
     void clear();
 
 private:
@@ -37,8 +37,6 @@ private:
     size_t screen_width_;
     size_t screen_height_;
     double max_z_value_;
-
-
 };
 
 }

@@ -6,10 +6,18 @@
 
 namespace app {
 
+namespace {
+    bool is_degenerate(Triangle2d triangle) {
+        return triangle.a == triangle.b ||
+               triangle.a == triangle.c ||
+               triangle.b == triangle.c;
+    }
+}
+
 Renderer::Renderer(double screen_width, double screen_height, double max_z_value):
-                                            screen_(screen_width, screen_height, max_z_value),
-                                            screen_width_(screen_width),
-                                            screen_height_(screen_height) {}
+    screen_(screen_width, screen_height, max_z_value),
+    screen_width_(screen_width),
+    screen_height_(screen_height) {}
 
 void Renderer::update(sf::RenderWindow& window) {
     draw(screen_.get_picture(), window);
@@ -22,7 +30,7 @@ void Renderer::draw(const std::vector<sf::Vertex>& data, sf::RenderWindow& windo
 
 Matrix<2, 1> Renderer::get_coords(int x, int y, Matrix<2, 2>& basis, sf::Vector2f& left_point) const {
     sf::Vector2f arrow = sf::Vector2f(x, y) - left_point;
-    return basis.solve_system(Matrix<1, 2>({arrow}).transpose());  
+    return basis.solve_system(Matrix<1, 2>({arrow}).transpose());
 }
 
 double Renderer::get_z(const Camera& camera, int x, int y, Matrix<2, 1>&& coords, Point4d& a, Point4d& b, Point4d& c) const {
@@ -31,25 +39,16 @@ double Renderer::get_z(const Camera& camera, int x, int y, Matrix<2, 1>&& coords
 }
 
 void Renderer::draw(const Camera& camera, const Triangle4d& triangle4d) {
-    
+
     Triangle2d triangle2d(camera.project_point(triangle4d.a),
                           camera.project_point(triangle4d.b),
                           camera.project_point(triangle4d.c));
-    debug(triangle2d.a);
-    debug(triangle2d.b);
-    debug(triangle2d.c);
-    // debug(triangle4d.a);
-    // debug(triangle4d.b);
-    // debug(triangle4d.c);
-    // debug(camera.transform_point(triangle4d.a));
-    debug("---");
-
-    if (triangle2d.a == triangle2d.b || triangle2d.c == triangle2d.a || triangle2d.c == triangle2d.b) {
+    if (is_degenerate(triangle2d)) {
         return;
     }
     std::array<int, 3> order = triangle2d.get_order();
     Point4d a(0, 0, 0), b(0, 0, 0), c(0, 0, 0);
-    triangle4d.sort_points(order, a, b, c);
+    triangle4d.assign_points(order, a, b, c);
     sf::Vector2f left_point = triangle2d.get_left_point();
     sf::Vector2f right_point = triangle2d.get_right_point();
     double min_y;
@@ -62,10 +61,6 @@ void Renderer::draw(const Camera& camera, const Triangle4d& triangle4d) {
         double min_z = get_z(camera, x, min_y, std::move(get_coords(x, min_y, basis, left_point)), a, b, c);
         double max_z = get_z(camera, x, max_y, std::move(get_coords(x, max_y, basis, left_point)), a, b, c);
         for (int y = std::max(0, (int)ceil(min_y)); y <= std::min((int)screen_height_, (int)floor(max_y)); y++) {
-            // if (!triangle2d.inner_point(sf::Vector2f(x, y))) {
-            //     continue;
-            // }   
-            // 
             double z = 0;
             if (min_z != max_z) {
                 z = (max_z - min_z) * (y - min_y) / (max_y - min_y);
@@ -82,7 +77,7 @@ void Renderer::draw(Line4d line4d, sf::RenderWindow& window, const Camera& camer
     Point4d B = camera.to_cameras_coordinates(line4d.finish_);
     A.normalize();
     B.normalize();
-    double z_plane = camera.kLeftPoint_.z * 0.01;
+    double z_plane = camera.get_clipping_plane();
     if (A.z <= z_plane && B.z <= z_plane) {
         return;
     }
@@ -102,7 +97,7 @@ void Renderer::draw(Line4d line4d, sf::RenderWindow& window, const Camera& camer
     window.draw(rectangle);
 }
 
-std::optional<Point4d> Renderer::find_intersection(Point4d a, Point4d b, double z) const{
+std::optional<Point4d> Renderer::find_intersection(Point4d a, Point4d b, double z) const {
     if (a.z <= z && b.z <= z) {
         return {};
     }
@@ -120,10 +115,7 @@ std::vector<Triangle4d> Renderer::clip(const Camera& camera, const Triangle4d& t
     Point4d A = camera.to_cameras_coordinates(triangle.a);
     Point4d B = camera.to_cameras_coordinates(triangle.b);
     Point4d C = camera.to_cameras_coordinates(triangle.c);
-    double z_plane = camera.kLeftPoint_.z * 0.01;
-    debug(A);
-    debug(B);
-    debug(C);
+    double z_plane = camera.get_clipping_plane();
     A.normalize();
     B.normalize();
     C.normalize();

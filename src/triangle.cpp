@@ -6,7 +6,7 @@ namespace app {
 
 Triangle4d::Triangle4d(Point4d a, Point4d b, Point4d c): a(a), b(b), c(c) {}
 
-void Triangle4d::sort_points(std::array<int, 3> order, Point4d& a, Point4d& b, Point4d& c) const {
+void Triangle4d::assign_points(std::array<int, 3> order, Point4d& a, Point4d& b, Point4d& c) const {
     if (order[0] == 0) {
         a = this->a;
     }
@@ -70,7 +70,7 @@ sf::Vector2f Triangle2d::get_left_point() const {
 }
 
 sf::Vector2f Triangle2d::get_right_point() const {
-    sf::Vector2f ans = a; 
+    sf::Vector2f ans = a;
     if (ans.x < b.x || ans.x == b.x && ans.y < b.y) {
         ans = b;
     }
@@ -87,8 +87,8 @@ Matrix<2, 2> Triangle2d::create_basis() const {
 /*
     the same order as in create_basis()
 */
-std::array<int, 3>&& Triangle2d::get_order() {
-    return std::move(order_);
+std::array<int, 3> Triangle2d::get_order() {
+    return order_;
 }
 
 double Triangle2d::square() const {
@@ -102,7 +102,7 @@ double Triangle2d::min_y_in_line(double x) const {
     if (b.x > x) {
         sf::Vector2f v = a - b;
         if (std::abs(v.x) < 1e-5) {
-            return a.y;   
+            return a.y;
         }
         double k = (b.x - x) / v.x;
         v *= std::abs(k);
@@ -125,7 +125,7 @@ double Triangle2d::max_y_in_line(double x) const {
     }
     if (c.x > x) {
         sf::Vector2f v = a - c;
-       if (std::abs(v.x) < 1e-5) {
+        if (std::abs(v.x) < 1e-5) {
             return c.y;
         }
         double k = (c.x - x) / v.x;

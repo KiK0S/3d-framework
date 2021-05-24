@@ -27,7 +27,7 @@ Point4d& Point4d::operator /= (double k) {
 
 Point4d Point4d::operator + (const Point4d& p) const {
     return Point4d(x / w + p.x / p.w, y / w + p.y / p.w, z / w + p.z / p.w);
-}   
+}
 
 Point4d Point4d::operator - (const Point4d& p) const {
     return (*this) + (p * -1);
