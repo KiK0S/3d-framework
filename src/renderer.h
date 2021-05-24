@@ -33,15 +33,13 @@ public:
 
     std::vector<Triangle4d> clip(const Camera& camera, const Triangle4d& triangle) const ;
 
-    double find_max_y(const Triangle2d& triangle, double x) const ;
-    double find_min_y(const Triangle2d& triangle, double x) const ;
-
     double get_z(const Camera& camera, int x, int y, Matrix<2, 1>&& coords, Point4d& a, Point4d& b, Point4d& c) const ;
     Matrix<2, 1> get_coords(int x, int y, Matrix<2, 2>& basis, sf::Vector2f& point) const ;
     std::optional<Point4d> find_intersection(Point4d a, Point4d b, double z) const ;
 
 private:
     Screen screen_;
+    const unsigned int screen_width_, screen_height_;
     const static Vector4d kAxis_[3];
     const static sf::Vector2f kCenter_;
 };

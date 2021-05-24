@@ -34,6 +34,8 @@ public:
     bool inner_point(const sf::Vector2f& o) const ;
     sf::Vector2f get_left_point() const ;
     sf::Vector2f get_right_point() const ;
+    double min_y_in_line(double x) const ;
+    double max_y_in_line(double x) const ;
     Matrix<2, 2> create_basis() const ;
     std::array<int, 3>&& get_order();
     double square() const ;

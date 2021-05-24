@@ -7,7 +7,9 @@
 namespace app {
 
 Renderer::Renderer(double screen_width, double screen_height, double max_z_value):
-                                            screen_(screen_width, screen_height, max_z_value) {}
+                                            screen_(screen_width, screen_height, max_z_value),
+                                            screen_width_(screen_width),
+                                            screen_height_(screen_height) {}
 
 void Renderer::update(sf::RenderWindow& window) {
     draw(screen_.get_picture(), window);
@@ -53,13 +55,13 @@ void Renderer::draw(const Camera& camera, const Triangle4d& triangle4d) {
     double min_y;
     double max_y;
     Matrix<2, 2> basis = triangle2d.create_basis();
-    for (int x = ceil(left_point.x); x <= floor(right_point.x); x++) {
-        min_y = find_min_y(triangle2d, x);
-        max_y = find_max_y(triangle2d, x);
+    for (int x = std::max(0, (int)ceil(left_point.x)); x <= std::min((int)screen_width_, (int)floor(right_point.x)); x++) {
+        min_y = triangle2d.min_y_in_line(x);
+        max_y = triangle2d.max_y_in_line(x);
 
         double min_z = get_z(camera, x, min_y, std::move(get_coords(x, min_y, basis, left_point)), a, b, c);
         double max_z = get_z(camera, x, max_y, std::move(get_coords(x, max_y, basis, left_point)), a, b, c);
-        for (int y = ceil(min_y); y <= floor(max_y); y++) {
+        for (int y = std::max(0, (int)ceil(min_y)); y <= std::min((int)screen_height_, (int)floor(max_y)); y++) {
             // if (!triangle2d.inner_point(sf::Vector2f(x, y))) {
             //     continue;
             // }   
@@ -80,7 +82,7 @@ void Renderer::draw(Line4d line4d, sf::RenderWindow& window, const Camera& camer
     Point4d B = camera.to_cameras_coordinates(line4d.finish_);
     A.normalize();
     B.normalize();
-    double z_plane = camera.kLeftPoint_.z - 20;
+    double z_plane = camera.kLeftPoint_.z * 0.01;
     if (A.z <= z_plane && B.z <= z_plane) {
         return;
     }
@@ -98,54 +100,6 @@ void Renderer::draw(Line4d line4d, sf::RenderWindow& window, const Camera& camer
     rectangle.setPosition(line.offset_);
     rectangle.setFillColor(sf::Color::Red);
     window.draw(rectangle);
-}
-
-double Renderer::find_min_y(const Triangle2d& triangle, double x) const {
-    if (std::abs(triangle.b.x - x) < 1e-10) {
-        return triangle.b.y;
-    }
-    if (triangle.b.x > x) {
-        sf::Vector2f v = triangle.a - triangle.b;
-        if (std::abs(v.x) < 1e-5) {
-            return triangle.a.y;   
-        }
-        double k = (triangle.b.x - x) / v.x;
-        v *= std::abs(k);
-        return (triangle.b + v).y;
-    }
-    else {
-        sf::Vector2f v = triangle.c - triangle.b;
-        if (std::abs(v.x) < 1e-5) {
-            return triangle.b.y;
-        }
-        double k = (triangle.b.x - x) / v.x;
-        v *= std::abs(k);
-        return (triangle.b + v).y;
-    }
-}
-
-double Renderer::find_max_y(const Triangle2d& triangle, double x) const {
-    if (std::abs(triangle.c.x - x) < 1e-10) {
-        return triangle.c.y;
-    }
-    if (triangle.c.x > x) {
-        sf::Vector2f v = triangle.a - triangle.c;
-       if (std::abs(v.x) < 1e-5) {
-            return triangle.c.y;
-        }
-        double k = (triangle.c.x - x) / v.x;
-        v *= std::abs(k);
-        return (triangle.c + v).y;
-    }
-    else {
-        sf::Vector2f v = triangle.b - triangle.c;
-        if (std::abs(v.x) < 1e-5) {
-            return triangle.c.y;
-        }
-        double k = (triangle.c.x - x) / v.x;
-        v *= std::abs(k);
-        return (triangle.c + v).y;
-    }
 }
 
 std::optional<Point4d> Renderer::find_intersection(Point4d a, Point4d b, double z) const{
@@ -166,7 +120,7 @@ std::vector<Triangle4d> Renderer::clip(const Camera& camera, const Triangle4d& t
     Point4d A = camera.to_cameras_coordinates(triangle.a);
     Point4d B = camera.to_cameras_coordinates(triangle.b);
     Point4d C = camera.to_cameras_coordinates(triangle.c);
-    double z_plane = camera.kLeftPoint_.z - 20;
+    double z_plane = camera.kLeftPoint_.z * 0.01;
     debug(A);
     debug(B);
     debug(C);

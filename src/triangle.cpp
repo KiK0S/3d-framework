@@ -95,4 +95,52 @@ double Triangle2d::square() const {
     return 0.5 * cross(b - a, c - a);
 }
 
+double Triangle2d::min_y_in_line(double x) const {
+    if (std::abs(b.x - x) < 1e-10) {
+        return b.y;
+    }
+    if (b.x > x) {
+        sf::Vector2f v = a - b;
+        if (std::abs(v.x) < 1e-5) {
+            return a.y;   
+        }
+        double k = (b.x - x) / v.x;
+        v *= std::abs(k);
+        return (b + v).y;
+    }
+    else {
+        sf::Vector2f v = c - b;
+        if (std::abs(v.x) < 1e-5) {
+            return b.y;
+        }
+        double k = (b.x - x) / v.x;
+        v *= std::abs(k);
+        return (b + v).y;
+    }
+}
+
+double Triangle2d::max_y_in_line(double x) const {
+    if (std::abs(c.x - x) < 1e-10) {
+        return c.y;
+    }
+    if (c.x > x) {
+        sf::Vector2f v = a - c;
+       if (std::abs(v.x) < 1e-5) {
+            return c.y;
+        }
+        double k = (c.x - x) / v.x;
+        v *= std::abs(k);
+        return (c + v).y;
+    }
+    else {
+        sf::Vector2f v = b - c;
+        if (std::abs(v.x) < 1e-5) {
+            return c.y;
+        }
+        double k = (c.x - x) / v.x;
+        v *= std::abs(k);
+        return (c + v).y;
+    }
+}
+
 }
