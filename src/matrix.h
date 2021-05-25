@@ -270,7 +270,7 @@ public:
 
     Matrix<N, 1> solve_system(Matrix<N, 1> point) {
         Matrix copy = (*this);
-        gaussian(point);
+        copy.gaussian(point);
         for (int i = N - 1; i >= 0; i--) {
             for (int j = i + 1; j < M; j++) {
                 point(i, 0) -= point(j, 0) * copy(i, j);
@@ -283,7 +283,7 @@ public:
         assert(N == M);
         Matrix copy = (*this);
         Matrix result = identity_matrix();
-        gaussian(result);
+        copy.gaussian(result);
         for (int j = N - 1; j >= 0; j--) {
             for (int i = j - 1; i >= 0; i--) {
                 double K = copy(i, j) / copy(j, j);
