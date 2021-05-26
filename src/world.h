@@ -1,13 +1,12 @@
 #pragma once
 
 #include "camera.h"
-#include "log.h"
 #include "pixel_screen.h"
 #include "renderer.h"
 #include "surface_object.h"
 #include "tetraedr.h"
 #include <SFML/Graphics.hpp>
-#include <vector>
+#include <list>
 
 namespace app {
 
@@ -20,16 +19,13 @@ class Renderer;
 */
 class World {
 public:
-    World();
-
-    void update();
     void add_object(std::unique_ptr<SurfaceObject>&& w);
 
-    std::vector<std::unique_ptr<SurfaceObject>>::iterator begin();
-    std::vector<std::unique_ptr<SurfaceObject>>::iterator end();
+    std::list<std::unique_ptr<SurfaceObject>>::iterator begin();
+    std::list<std::unique_ptr<SurfaceObject>>::iterator end();
 
 private:
-    std::vector<std::unique_ptr<SurfaceObject>> objects_;
+    std::list<std::unique_ptr<SurfaceObject>> objects_;
 };
 
 }

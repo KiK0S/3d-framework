@@ -4,7 +4,7 @@
 
 namespace app {
 
-Point4d::Point4d(sf::Vector3f v) : x(v.x), y(v.y), z(v.z), w(1) {}
+Point4d::Point4d(const sf::Vector3f& v) : x(v.x), y(v.y), z(v.z), w(1) {}
 
 Point4d& Point4d::operator += (const Point4d& other) {
     *this = *this + other;
@@ -49,7 +49,6 @@ double Point4d::length() const {
 }
 
 void Point4d::normalize() {
-    assert(w != 0);
     x /= w;
     y /= w;
     z /= w;
@@ -80,6 +79,11 @@ double& Point4d::operator[] (size_t i) {
     if (i == 3) return w;
     assert(0);
     return x;
+}
+
+
+bool Point4d::is_collinear(const Vector4d& b) const {
+    return std::abs(x * b.z - z * b.x) < 1e-5 && std::abs(y * b.x - x * b.y) < 1e-5;
 }
 
 double cross(const sf::Vector2f& a, const sf::Vector2f& b) {

@@ -1,6 +1,5 @@
 #pragma once
 
-#include "line.h"
 #include "matrix.h"
 #include "point.h"
 #include <SFML/Graphics.hpp>
@@ -19,24 +18,28 @@ public:
     /*!
         \brief Конструктор
      */
-    Camera();
-    Camera(double max_x, double max_y);
+    Camera(double screen_width, double screen_height);
 
+    /*!
+        \brief Перевод точки в координатную систему камеры
+     */
+
+    Point4d transform_to_cameras_coordinates(const Point4d& p) const;
+
+    /*!
+        \brief Получение координат на в пространстве (экран, z-value)
+     */
+    Point4d transform_to_screen(const Point4d& p) const;
 
     /*!
         \brief Получение видоизмененных 2д-коортинат точки
      */
-    sf::Vector2f project_point(Point4d p) const;
+    sf::Vector2f project_on_screen(const Point4d& p) const;
 
     /*!
-        \brief ОПолучаение всей точки в другом базисе.
+        \brief Получение z-value точки
      */
-    Point4d transform_point(Point4d p) const;
-
-    /*!
-        \brief Получение третьей координаты точки
-     */
-    double get_z_value(Point4d p) const;
+    double get_z_value(const Point4d& p) const;
 
     /*!
         \brief Метод для инициализации матриц поворота
@@ -61,23 +64,23 @@ public:
     /*!
         \brief Сдвиг на вектор
      */
-    void move(Point4d v);
+    void move(const Point4d& v);
 
-    Point4d to_cameras_coordinates(Point4d p) const;
-
-    double get_clipping_plane() const;
-
-    constexpr static Point4d kLeftPoint_{-200, -200, 300};
-    constexpr static Point4d kRightPoint_{200, 200, 5000};
+    /*!
+        \brief Расстояние до ближайшей плоскости обзора
+     */
+    double get_clipping_plane_distance() const;
 
 private:
-    Point4d position_{0, 0, 0};
+    Point4d focus_point_{0, 0, 0};
     Matrix4d transform_space_to_screen_ = Matrix4d::identity_matrix();
     Matrix4d transform_to_camera_space_ = Matrix4d::identity_matrix();
     Matrix4d camera_rotation_ = Matrix4d::identity_matrix();
-    const double kScreenHeight_;
-    const double kScreenWidth_;
-    const double kClipPlane_{1};
+    constexpr static Point4d kLeftPoint_{-200, -200, 300};
+    constexpr static Point4d kRightPoint_{200, 200, 5000};
+    constexpr static double kClippingPlaneDistance_{1};
+    double kScreenHeight_;
+    double kScreenWidth_;
 };
 
 }

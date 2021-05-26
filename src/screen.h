@@ -32,11 +32,13 @@ public:
     void clear();
 
 private:
+    bool validate_pixel(int x, int y);
+
     PixelScreen<sf::Color> color_;
     PixelScreen<double> z_value_;
+    std::vector<sf::Vertex> non_empty_pixels_;
     size_t screen_width_;
     size_t screen_height_;
-    double max_z_value_;
 };
 
 }

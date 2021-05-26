@@ -1,4 +1,3 @@
-#include "log.h"
 #include "matrix.h"
 #include "renderer.h"
 #include "triangle.h"
@@ -6,44 +5,25 @@
 
 namespace app {
 
-namespace {
-    bool is_degenerate(Triangle2d triangle) {
-        return triangle.a == triangle.b ||
-               triangle.a == triangle.c ||
-               triangle.b == triangle.c;
-    }
-}
-
 Renderer::Renderer(double screen_width, double screen_height, double max_z_value):
     screen_(screen_width, screen_height, max_z_value),
     screen_width_(screen_width),
     screen_height_(screen_height) {}
 
-void Renderer::update(sf::RenderWindow& window) {
+void Renderer::draw_frame(sf::RenderWindow& window) {
     draw(screen_.get_picture(), window);
 }
 
 void Renderer::draw(const std::vector<sf::Vertex>& data, sf::RenderWindow& window) {
-    const sf::Vertex* ptr = &data[0];
-    window.draw(ptr, data.size(), sf::Points);
+    window.draw(data.data(), data.size(), sf::Points);
 }
 
-Matrix<2, 1> Renderer::get_coords(int x, int y, Matrix<2, 2>& basis, sf::Vector2f& left_point) const {
-    sf::Vector2f arrow = sf::Vector2f(x, y) - left_point;
-    return basis.solve_system(Matrix<1, 2>({arrow}).transpose());
-}
+void Renderer::draw_triangle(const Camera& camera, const Triangle4d& triangle4d) {
 
-double Renderer::get_z(const Camera& camera, int x, int y, Matrix<2, 1>&& coords, Point4d& a, Point4d& b, Point4d& c) const {
-    Point4d p = a + coords(0, 0) * (b - a) + coords(1, 0) * (c - a);
-    return camera.get_z_value(p);
-}
-
-void Renderer::draw(const Camera& camera, const Triangle4d& triangle4d) {
-
-    Triangle2d triangle2d(camera.project_point(triangle4d.a),
-                          camera.project_point(triangle4d.b),
-                          camera.project_point(triangle4d.c));
-    if (is_degenerate(triangle2d)) {
+    Triangle2d triangle2d(camera.project_on_screen(triangle4d.a),
+                          camera.project_on_screen(triangle4d.b),
+                          camera.project_on_screen(triangle4d.c));
+    if (triangle2d.is_degenerate()) {
         return;
     }
     std::array<int, 3> order = triangle2d.get_order();
@@ -72,96 +52,82 @@ void Renderer::draw(const Camera& camera, const Triangle4d& triangle4d) {
     }
 }
 
-void Renderer::draw(Line4d line4d, sf::RenderWindow& window, const Camera& camera) {
-    Point4d A = camera.to_cameras_coordinates(line4d.start_);
-    Point4d B = camera.to_cameras_coordinates(line4d.finish_);
+std::vector<Triangle4d> Renderer::clip_triangle(const Camera& camera, const Triangle4d& triangle) const {
+    Point4d A = camera.transform_to_cameras_coordinates(triangle.a);
+    Point4d B = camera.transform_to_cameras_coordinates(triangle.b);
+    Point4d C = camera.transform_to_cameras_coordinates(triangle.c);
+    double z_plane = camera.get_clipping_plane_distance();
     A.normalize();
     B.normalize();
-    double z_plane = camera.get_clipping_plane();
-    if (A.z <= z_plane && B.z <= z_plane) {
-        return;
+    C.normalize();
+    if (A.z <= z_plane && B.z <= z_plane && C.z <= z_plane) {
+        return {};
     }
-    if (A.z < z_plane || B.z < z_plane) {
-        if (A.z > B.z) {
-            std::swap(A, B);
-        }
-        Point4d dir = A - B;
-        dir.resize(dir.length() * (B.z - z_plane) / (B.z - A.z));
-        A = B + dir;
+    std::optional<Point4d> cross_a = find_intersection(A, B, z_plane);
+    std::optional<Point4d> cross_b = find_intersection(A, C, z_plane);
+    std::optional<Point4d> cross_c = find_intersection(B, C, z_plane);
+    std::optional<std::vector<Triangle4d>> intersection;
+    if (cross_a && cross_b && !cross_c) {
+        return divide_triangle(A, B, C, z_plane,
+                               *cross_a, *cross_b);
     }
-    Line2d line(camera.project_point(A), camera.project_point(B));
-    sf::RectangleShape rectangle(sf::Vector2f(line.length_, line.kWidth));
-    rectangle.setRotation(line.angle_);
-    rectangle.setPosition(line.offset_);
-    rectangle.setFillColor(sf::Color::Red);
-    window.draw(rectangle);
+    if (cross_a && cross_c && !cross_b) {
+        return divide_triangle(B, A, C, z_plane,
+                       *cross_a, *cross_c);
+    }
+    if (cross_c && cross_b && !cross_a) {
+        return divide_triangle(C, A, B, z_plane,
+                       *cross_b, *cross_c);
+    }
+    return {Triangle4d(A, B, C)};
 }
 
-std::optional<Point4d> Renderer::find_intersection(Point4d a, Point4d b, double z) const {
+Matrix<2, 1> Renderer::get_coords(int x, int y, Matrix<2, 2>& basis, sf::Vector2f& left_point) {
+    sf::Vector2f arrow = sf::Vector2f(x, y) - left_point;
+    return basis.solve_system(Matrix<1, 2>({arrow}).transpose());
+}
+
+double Renderer::get_z(const Camera& camera, int x, int y,
+                       Matrix<2, 1>&& coords,
+                       Point4d& a, Point4d& b, Point4d& c) {
+    Point4d p = a + coords(0, 0) * (b - a) + coords(1, 0) * (c - a);
+    return camera.get_z_value(p);
+}
+
+std::optional<Point4d> Renderer::find_intersection(const Point4d& a,
+                                                   const Point4d& b,
+                                                   double z) {
     if (a.z <= z && b.z <= z) {
         return {};
     }
     if (a.z > z && b.z > z) {
         return {};
     }
+    Vector4d v = b - a;
+    Point4d nearest = a;
     if (a.z > b.z) {
-        std::swap(a, b);
+        nearest = b;
+        v *= -1;
     }
-    Point4d v = b - a;
-    return a + v * (z - a.z) / v.z;
+    return nearest + v * (z - nearest.z) / v.z;
 }
 
-std::vector<Triangle4d> Renderer::clip(const Camera& camera, const Triangle4d& triangle) const {
-    Point4d A = camera.to_cameras_coordinates(triangle.a);
-    Point4d B = camera.to_cameras_coordinates(triangle.b);
-    Point4d C = camera.to_cameras_coordinates(triangle.c);
-    double z_plane = camera.get_clipping_plane();
-    A.normalize();
-    B.normalize();
-    C.normalize();
-    if (A.z <= z_plane && B.z <= z_plane && C.z <= z_plane) {
-        debug("triangle is too near");
-        return {};
-    }
-    std::optional<Point4d> cross_a = find_intersection(A, B, z_plane);
-    std::optional<Point4d> cross_b = find_intersection(A, C, z_plane);
-    std::optional<Point4d> cross_c = find_intersection(B, C, z_plane);
-    /*
-        u need to visualise it
-    */
-    if (cross_a && cross_b && !cross_c) {
-        debug ("changed A");
-        if (A.z <= z_plane) return {
-            Triangle4d(*cross_a, B, C),
-            Triangle4d(*cross_b, C, *cross_a),
-        };
-        if (A.z >= z_plane) return {
-            Triangle4d(*cross_a, A, *cross_b)
-        };
-    }
-    if (cross_a && cross_c && !cross_b) {
-        debug ("changed B");
-        if (B.z <= z_plane) return {
-            Triangle4d(*cross_a, A, C),
-            Triangle4d(*cross_c, C, *cross_a),
-        };
-        if (B.z >= z_plane) return {
-            Triangle4d(*cross_a, B, *cross_c)
-        };
-    }
-    if (cross_c && cross_b && !cross_a) {
-        debug ("changed C");
-        if (C.z <= z_plane) return {
-            Triangle4d(*cross_c, B, A),
-            Triangle4d(*cross_b, A, *cross_c),
-        };
-        if (C.z >= z_plane) return {
-            Triangle4d(*cross_c, C, *cross_b)
-        };
-
-    }
-    debug ("nothing has changed");
-    return {Triangle4d(A, B, C)};
+std::vector<Triangle4d> Renderer::divide_triangle(const Point4d& base_split_point,
+                                                  const Point4d& A, const Point4d& B,
+                                                  double z_plane,
+                                                  const Point4d& f_intersection,
+                                                  const Point4d& s_intersection) {
+    assert((A - base_split_point).is_collinear(f_intersection - base_split_point));
+    assert((B - base_split_point).is_collinear(s_intersection - base_split_point));
+    if (base_split_point.z <= z_plane) return {
+        Triangle4d(f_intersection, A, B),
+        Triangle4d(s_intersection, B, f_intersection),
+    };
+    if (base_split_point.z >= z_plane) return {
+        Triangle4d(f_intersection, base_split_point, s_intersection)
+    };
+    assert(0);
+    return {};
 }
 
 

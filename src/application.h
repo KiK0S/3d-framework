@@ -23,12 +23,15 @@ private:
     };
 
 public:
+    /*!
+        \brief Конструктор приложения.
+     */
     Application();
 
     /*!
         \brief Обновление кадра в приложении.
      */
-    void update();
+    void update_and_draw_frame();
 
     /*!
         \brief Добавление объекта на сцену.
@@ -36,29 +39,24 @@ public:
     void add_object(std::unique_ptr<SurfaceObject>&& w) ;
 
     /*!
-        \brief Сдвиг камеры на вектор
+        \brief Сдвиг позиции камеры на вектор
     */
-    void move_camera(Vector4d v) ;
+    void move_camera(const Vector4d& v) ;
 
     /*!
-        \brief Передвинуть все элементы на какой-то вектор
+        \brief Передвинуть все объекты в мире на какой-то вектор
     */
-    void move_world(Vector4d v) ;
-
-    /*!
-        \brief Все повороты сразу
-    */
-    void rotate_world(double angle, EAxes fixed_coord) ;
-
-    /*!
-        \brief какой-то поворот
-    */
-    void pitch(double angle) ;
+    void move_world(const Vector4d& v) ;
 
     /*!
         \brief какой-то поворот
     */
     void roll(double angle) ;
+
+    /*!
+        \brief какой-то поворот
+    */
+    void pitch(double angle) ;
 
     /*!
         \brief какой-то поворот
@@ -94,6 +92,13 @@ public:
     void run();
 
 private:
+    void rotate_world(double angle, EAxes fixed_coord) ;
+    static int convert_axis_to_int(const EAxes& axe) ;
+    static Matrix4d construct_moving_matrix(const Vector4d& moving_vector) ;
+    static Matrix4d construct_rotation_matrix(int fixed_coordinate, double angle) ;
+    void draw_object(const std::unique_ptr<SurfaceObject>& object) ;
+    void draw_triangle(const Triangle4d& object) ;
+
     Renderer renderer_;
     World world_;
     Camera camera_;

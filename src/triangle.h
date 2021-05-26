@@ -39,6 +39,7 @@ public:
     Matrix<2, 2> create_basis() const ;
     std::array<int, 3> get_order();
     double square() const ;
+    bool is_degenerate() const ;
 };
 
 }

@@ -1,4 +1,3 @@
-#include "log.h"
 #include "point.h"
 #include "triangle.h"
 
@@ -141,6 +140,10 @@ double Triangle2d::max_y_in_line(double x) const {
         v *= std::abs(k);
         return (c + v).y;
     }
+}
+
+bool Triangle2d::is_degenerate() const {
+    return a == b || a == c || b == c;
 }
 
 }

@@ -1,11 +1,32 @@
 #include "camera.h"
-#include "log.h"
 #include "matrix.h"
 #include <cassert>
 
 namespace app {
 
-Camera::Camera(double max_x, double max_y): kScreenHeight_(max_y), kScreenWidth_(max_x) {}
+Camera::Camera(double screen_width, double screen_height):
+    kScreenHeight_(screen_height),
+    kScreenWidth_(screen_width) {}
+
+Point4d Camera::transform_to_cameras_coordinates(const Point4d& p) const {
+    return transform_to_camera_space_ * p;
+}
+
+Point4d Camera::transform_to_screen(const Point4d& p) const {
+    Point4d result = transform_space_to_screen_ * p;
+    result.normalize();
+    return result;
+}
+
+sf::Vector2f Camera::project_on_screen(const Point4d& p) const {
+    Point4d transformed = transform_to_screen(p);
+    return {transformed.x, transformed.y};
+}
+
+double Camera::get_z_value(const Point4d& p) const {
+    Point4d transformed = transform_to_screen(p);
+    return transformed.z;
+}
 
 void Camera::create_transformation_matrixes() {
     Matrix4d canonical_to_screen{
@@ -29,16 +50,19 @@ void Camera::create_transformation_matrixes() {
         0, 0, kLeftPoint_.z + kRightPoint_.z, -kLeftPoint_.z * kRightPoint_.z,
         0, 0, 1, 0};
     Matrix4d move_camera{
-        1, 0, 0, -position_.x / position_.w,
-        0, 1, 0, -position_.y / position_.w,
-        0, 0, 1, -position_.z / position_.w,
+        1, 0, 0, -focus_point_.x / focus_point_.w,
+        0, 1, 0, -focus_point_.y / focus_point_.w,
+        0, 0, 1, -focus_point_.z / focus_point_.w,
         0, 0, 0, 1};
-    transform_space_to_screen_ = canonical_to_screen * rect_to_canonical  *  move_to_center * projective_transform;
+    transform_space_to_screen_ = canonical_to_screen *
+                                 rect_to_canonical  *
+                                 move_to_center *
+                                 projective_transform;
     transform_to_camera_space_ = camera_rotation_.transpose() * move_camera;
 }
 
 void Camera::apply_transform_to_world(const Matrix4d& matrix) {
-    camera_rotation_ = camera_rotation_ * matrix;
+    camera_rotation_ *= matrix;
 }
 
 double Camera::get_max_z_value() const {
@@ -49,31 +73,13 @@ double Camera::get_min_z_value() const {
     return kLeftPoint_.z;
 }
 
-void Camera::move(Point4d v) {
-    Matrix<1, 4> m = Matrix<4,1>(v).transpose();
-    position_ -= Vector4d(m(0, 0) / m(0, 3), m(0, 1) / m(0, 3), m(0, 2) / m(0, 3));
+void Camera::move(const Point4d& v) {
+    Point4d m = v;
+    focus_point_ -= m;
 }
 
-Point4d Camera::transform_point(Point4d p) const {
-    return transform_space_to_screen_ * p;
-}
-
-sf::Vector2f Camera::project_point(Point4d p) const {
-    Point4d transformed = transform_point(p);
-    return {transformed.x / transformed.w,
-            transformed.y / transformed.w};
-}
-
-double Camera::get_z_value(Point4d p) const {
-    return transform_point(p).z / transform_point(p).w;
-}
-
-Point4d Camera::to_cameras_coordinates(Point4d p) const {
-    return transform_to_camera_space_ * p;
-}
-
-double Camera::get_clipping_plane() const {
-    return kClipPlane_;
+double Camera::get_clipping_plane_distance() const {
+    return kClippingPlaneDistance_;
 }
 
 }

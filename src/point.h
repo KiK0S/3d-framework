@@ -16,8 +16,7 @@ public:
     Point4d() = delete;
     constexpr Point4d(const std::initializer_list<double>& args): x(*args.begin()), y(*(args.begin() + 1)), z(*(args.begin() + 2)), w(1) {}
     constexpr Point4d(double x, double y, double z): x(x), y(y), z(z), w(1) {}
-    Point4d(sf::Vector3f v);
-
+    Point4d(const sf::Vector3f& v);
 
     Point4d operator + (const Point4d& p) const ;
     Point4d operator - (const Point4d& p) const ;
@@ -32,16 +31,15 @@ public:
     double length() const ;
     void normalize() ;
     void resize(double d) ;
+    bool is_collinear(const Point4d& b) const ;
 };
 
 using Vector4d = Point4d;
 
 Point4d operator * (double f, const Point4d& p);
-
 double cross(const sf::Vector2f& a, const sf::Vector2f& b);
-double scalar(const sf::Vector2f& a, const sf::Vector2f& b);
-double scalar(const Vector4d& a, const Vector4d& b);
-
+double scalar(const sf::Vector2f& a, const sf::Vector2f& b);    
+double scalar(const Vector4d& a, const Vector4d& b);    
 sf::Vector2f& operator*= (sf::Vector2f& v, double d);
 sf::Vector2f& operator/= (sf::Vector2f& v, double d);
 

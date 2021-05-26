@@ -1,7 +1,6 @@
 #pragma once
 
 #include "camera.h"
-#include "line.h"
 #include "point.h"
 #include "screen.h"
 #include "surface_object.h"
@@ -11,9 +10,6 @@
 #include <vector>
 
 namespace app {
-
-class Screen;
-class Camera;
 
 /*!
     \brief Класс рендерера
@@ -25,21 +21,18 @@ class Renderer {
 public:
     Renderer(double width, double height, double max_z_value);
 
-    void update(sf::RenderWindow& window);
+    void draw_frame(sf::RenderWindow& window);
     void draw(sf::Vertex pixel) ;
     void draw(const std::vector<sf::Vertex>& data, sf::RenderWindow& window) ;
-    void draw(Line4d line, sf::RenderWindow& window, const Camera& camera) ;
-    void draw(const Camera& camera, const Triangle4d& triangle) ;
-
-    std::vector<Triangle4d> clip(const Camera& camera, const Triangle4d& triangle) const ;
-
-    double get_z(const Camera& camera, int x, int y, Matrix<2, 1>&& coords, Point4d& a, Point4d& b, Point4d& c) const ;
-    Matrix<2, 1> get_coords(int x, int y, Matrix<2, 2>& basis, sf::Vector2f& point) const ;
-
-
-    std::optional<Point4d> find_intersection(Point4d a, Point4d b, double z) const ;
+    std::vector<Triangle4d> clip_triangle(const Camera& camera, const Triangle4d& triangle) const ;
+    void draw_triangle(const Camera& camera, const Triangle4d& triangle) ;
 
 private:
+    static double get_z(const Camera& camera, int x, int y, Matrix<2, 1>&& coords, Point4d& a, Point4d& b, Point4d& c) ;
+    static Matrix<2, 1> get_coords(int x, int y, Matrix<2, 2>& basis, sf::Vector2f& point) ;
+    static std::optional<Point4d> find_intersection(const Point4d& a, const Point4d& b, double z) ;
+    static std::vector<Triangle4d> divide_triangle(const Point4d& base_split_point, const Point4d& A, const Point4d& B,
+                    double z_plane, const Point4d& f_intersection, const Point4d& s_intersection) ;
     Screen screen_;
     const unsigned int screen_width_, screen_height_;
 };

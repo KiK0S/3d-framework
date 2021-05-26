@@ -1,7 +1,6 @@
 #pragma once
 
 #include "camera.h"
-#include "line.h"
 #include "point.h"
 #include "surface_object.h"
 #include <vector>

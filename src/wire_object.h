@@ -1,7 +1,7 @@
 #pragma once
 
-#include "line.h"
 #include "point.h"
+#include "matrix.h"
 #include <vector>
 #include <utility>
 
@@ -17,7 +17,6 @@ public:
     WireObject(std::vector<Point4d> points, std::vector<std::pair<int, int>> edges);
     virtual ~WireObject();
 
-    std::vector<Line4d> lines() const;
     Point4d operator [](size_t index) const {
         return points_[index];
     }
@@ -28,6 +27,9 @@ public:
     typename std::vector<Point4d>::iterator end() {
         return points_.end();
     }
+
+    void apply_transform(const Matrix4d& transform);
+
 protected:
     std::vector<Point4d> points_;
     std::vector<std::pair<int, int>> edges_;

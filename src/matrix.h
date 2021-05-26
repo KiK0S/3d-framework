@@ -16,25 +16,31 @@ template
 <size_t N, size_t M>
 class Matrix {
 public:
-    void modification_swap(size_t i, size_t j) noexcept {
+    double my_abs(double x) const {
+        return x > 0 ? x : -x;
+    }
+    Matrix& swap_rows(size_t i, size_t j) noexcept {
         assert(i < N && j < N);
         for (int k = 0; k < M; k++) {
             std::swap((*this)(i, k), (*this)(j, k));
         }
+        return *this;
     }
 
-    void modification_multiply(size_t i, double k) noexcept {
+    Matrix& multiply_row(size_t i, double k) noexcept {
         assert(i < N);
         for (int j = 0; j < M; j++) {
             (*this)(i, j) *= k;
         }
+        return *this;
     }
 
-    void modification_mulsub(size_t i, size_t j, double k) noexcept {
+    Matrix& multiply_then_substract_row(size_t i, size_t j, double k) noexcept {
         assert(i < N && j < N);
         for (int t = 0; t < M; t++) {
             (*this)(i, t) -= (*this)(j, t) * k;
         }
+        return *this;
     }
     std::array<double, N * M> data_;
 
@@ -45,19 +51,12 @@ public:
         }
     }
 
-    Matrix(const Point4d& p): data_({p.x, p.y, p.z, p.w}) {
+    Matrix(const Point4d& p): data_{{p.x, p.y, p.z, p.w}} {
         assert(M == 1 && N == 4);
     }
 
-    Matrix(std::array<double, 4>&& data): data_{{std::forward<std::array<double, 4>>(data)}} {}
+    Matrix(const std::array<double, N * M>& data): data_{data_} {}
 
-    Matrix(const std::vector<std::vector<double>>& initial) {
-        for (int i = 0; i < initial.size(); i++) {
-            for (int j = 0; j < initial[i].size(); j++) {
-                data_[i * M + j] = initial[i][j];
-            }
-        }
-    }
     Matrix(std::initializer_list<double> initial) {
         for (int i = 0; i < N * M; i++) {
             data_[i] = *(initial.begin() + i);
@@ -216,7 +215,6 @@ public:
         return result;
     }
 
-
     static Matrix identity_matrix() noexcept {
         Matrix result;
         for (int i = 0; i < std::min(N, M); i++) {
@@ -225,13 +223,48 @@ public:
         return result;
     }
 
-
-    Point4d row(size_t idx) const noexcept {
-        assert(M == 4);
-        assert(idx < N);
-        return Point4d((*this)(idx, 0) / (*this)(idx, 3), (*this)(idx, 1) / (*this)(idx, 3), (*this)(idx, 2) / (*this)(idx, 3));
+private:
+    int find_optimal_row(size_t column) const {
+        int optimal = -1;
+        double max_abs_value = 0;
+        for (size_t row = column; row < N; row++) {
+            if (my_abs((*this)(row, column)) != 0) {
+                max_abs_value = my_abs((*this)(row, column));;
+                optimal = row;
+                break;
+            }
+        }
+        return optimal;
     }
 
+    template <size_t _M>
+    void clear_column(int column, Matrix<N, _M> &second, double k) {
+        for (int row = column + 1; row < M; row++) {
+            double coefficient = (*this)(row, column) / k;
+            multiply_then_substract_row(row, column, coefficient);
+            second.multiply_then_substract_row(row, column, coefficient);
+        }
+    }
+
+    template <size_t _M>
+    void gaussian(Matrix<N, _M>& second) const {
+        Matrix copy = (*this);
+        for (int j = 0; j < std::min(N, M); j++) {
+            int id = copy.find_optimal_row(j);
+            if (id == -1) {
+                return;
+            }
+            copy.swap_rows(id, j);
+            second.swap_rows(id, j);
+            double x = copy(j, j);
+            if (x == 0) {
+                return ;
+            }
+            copy.clear_column(j, second, x);
+        }
+    }
+
+public:
     Matrix<M, N> transpose() const noexcept {
         Matrix<M, N> result;
         for (int i = 0; i < N; i++) {
@@ -240,32 +273,6 @@ public:
             }
         }
         return result;
-    }
-
-    template <size_t _N, size_t _M>
-    void gaussian(Matrix<_N, _M>& second) {
-        assert(_N == N);
-        Matrix copy = (*this);
-        for (int j = 0; j < M; j++) {
-            for (int i = j; i < N; i++) {
-                if (copy(i, j) != 0) {
-                    copy.modification_swap(i, j);
-                    second.modification_swap(i, j);
-                    break;
-                }
-            }
-            double x = copy(j, j);
-            if (x == 0) {
-                return ;
-            }
-            for (size_t i = j + 1; i < M; i++) {
-                double K = copy(i, j) / x;
-                copy.modification_mulsub(i, j, K);
-                second.modification_mulsub(i, j, K);
-            }
-            copy.modification_multiply(j, 1.0 / x);
-            second.modification_multiply(j, 1.0 / x);
-        }
     }
 
     Matrix<N, 1> solve_system(Matrix<N, 1> point) {
@@ -287,8 +294,8 @@ public:
         for (int j = N - 1; j >= 0; j--) {
             for (int i = j - 1; i >= 0; i--) {
                 double K = copy(i, j) / copy(j, j);
-                copy.modification_mulsub(i, j, K);
-                result.modification_mulsub(i, j, K);
+                copy.multiply_then_substract_row(i, j, K);
+                result.multiply_then_substract_row(i, j, K);
             }
         }
         return result;
