@@ -21,6 +21,7 @@ public:
         assert(row * width_ + column < data_.size());
         return data_[row * width_ + column];
     }
+    
     const T& operator() (size_t row, size_t column) const {
         assert(row * width_ + column < data_.size());
         return data_[row * width_ + column];
@@ -28,6 +29,14 @@ public:
 
     void clear() {
         std::fill(data_.begin(), data_.end(), default_value_);
+    }
+
+    size_t get_width() const {
+        return width_;
+    }
+
+    size_t get_height() const {
+        return height_;
     }
 
 private:

@@ -13,4 +13,8 @@ Eric Lengyel.
 \newblock {\em Mathmatics for 3d game programming and computer graphics}.
 \newblock Course Technology PTR, 2012.
 
+\bibitem{SFML}
+\url{https://www.sfml-dev.org/index.php}.
+\newblock [Simple and Fast Multimedia Library Documentation]
+
 \end{thebibliography}

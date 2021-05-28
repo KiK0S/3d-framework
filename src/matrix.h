@@ -12,36 +12,14 @@ namespace app {
     \version 1.0
     \date May 14 2021
 */
+
 template
 <size_t N, size_t M>
 class Matrix {
-public:
-    double my_abs(double x) const {
-        return x > 0 ? x : -x;
-    }
-    Matrix& swap_rows(size_t i, size_t j) noexcept {
-        assert(i < N && j < N);
-        for (int k = 0; k < M; k++) {
-            std::swap((*this)(i, k), (*this)(j, k));
-        }
-        return *this;
-    }
-
-    Matrix& multiply_row(size_t i, double k) noexcept {
-        assert(i < N);
-        for (int j = 0; j < M; j++) {
-            (*this)(i, j) *= k;
-        }
-        return *this;
-    }
-
-    Matrix& multiply_then_substract_row(size_t i, size_t j, double k) noexcept {
-        assert(i < N && j < N);
-        for (int t = 0; t < M; t++) {
-            (*this)(i, t) -= (*this)(j, t) * k;
-        }
-        return *this;
-    }
+private:
+    template
+    <size_t N_, size_t M_>
+    friend class Matrix;
     std::array<double, N * M> data_;
 
 public:
@@ -52,7 +30,7 @@ public:
     }
 
     Matrix(const Point4d& p): data_{{p.x, p.y, p.z, p.w}} {
-        assert(M == 1 && N == 4);
+        static_assert(M == 1 && N == 4);
     }
 
     Matrix(const std::array<double, N * M>& data): data_{data_} {}
@@ -79,7 +57,6 @@ public:
             }
         }
     }
-
 
     double operator()(size_t row, size_t column) const noexcept {
         assert(row < N && column < M);
@@ -125,7 +102,7 @@ public:
     }
 
     Matrix& operator *= (const Matrix& other) noexcept {
-        assert(N == M);
+        static_assert(N == M);
         Matrix copy = (*this);
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < N; j++) {
@@ -190,7 +167,7 @@ public:
     }
 
     Vector4d operator * (const Vector4d& vector) const noexcept {
-        assert(M == 4);
+        static_assert(M == 4);
         Vector4d result(0, 0, 0);
         std::array<double, M> tmp;
         for (int i = 0; i < N; i++) {
@@ -204,7 +181,7 @@ public:
     }
 
     sf::Vector2f operator * (const sf::Vector2f& vector) const noexcept {
-        assert(M == 2);
+        static_assert(M == 2);
         sf::Vector2f result(0, 0);
         std::array<double, M> tmp;
         for (int i = 0; i < M; i++) {
@@ -224,12 +201,36 @@ public:
     }
 
 private:
+    Matrix& swap_rows(size_t i, size_t j) noexcept {
+        assert(i < N && j < N);
+        for (int k = 0; k < M; k++) {
+            std::swap((*this)(i, k), (*this)(j, k));
+        }
+        return *this;
+    }
+
+    Matrix& multiply_row(size_t i, double k) noexcept {
+        assert(i < N);
+        for (int j = 0; j < M; j++) {
+            (*this)(i, j) *= k;
+        }
+        return *this;
+    }
+
+    Matrix& multiply_then_substract_row(size_t i, size_t j, double k) noexcept {
+        assert(i < N && j < N);
+        for (int t = 0; t < M; t++) {
+            (*this)(i, t) -= (*this)(j, t) * k;
+        }
+        return *this;
+    }
+
     int find_optimal_row(size_t column) const {
         int optimal = -1;
         double max_abs_value = 0;
         for (size_t row = column; row < N; row++) {
-            if (my_abs((*this)(row, column)) != 0) {
-                max_abs_value = my_abs((*this)(row, column));;
+            if (std::abs((*this)(row, column)) != 0) {
+                max_abs_value = std::abs((*this)(row, column));;
                 optimal = row;
                 break;
             }
@@ -238,16 +239,16 @@ private:
     }
 
     template <size_t _M>
-    void clear_column(int column, Matrix<N, _M> &second, double k) {
+    void clear_column(int column, Matrix<N, _M> *paired, double k) {
         for (int row = column + 1; row < M; row++) {
             double coefficient = (*this)(row, column) / k;
             multiply_then_substract_row(row, column, coefficient);
-            second.multiply_then_substract_row(row, column, coefficient);
+            paired->multiply_then_substract_row(row, column, coefficient);
         }
     }
 
     template <size_t _M>
-    void gaussian(Matrix<N, _M>& second) const {
+    void convert_to_upper_triangular(Matrix<N, _M>* paired) {
         Matrix copy = (*this);
         for (int j = 0; j < std::min(N, M); j++) {
             int id = copy.find_optimal_row(j);
@@ -255,12 +256,12 @@ private:
                 return;
             }
             copy.swap_rows(id, j);
-            second.swap_rows(id, j);
+            paired->swap_rows(id, j);
             double x = copy(j, j);
             if (x == 0) {
                 return ;
             }
-            copy.clear_column(j, second, x);
+            copy.clear_column(j, paired, x);
         }
     }
 
@@ -275,9 +276,9 @@ public:
         return result;
     }
 
-    Matrix<N, 1> solve_system(Matrix<N, 1> point) {
+    Matrix<N, 1> solve_system(Matrix<N, 1>&& point) const {
         Matrix copy = (*this);
-        copy.gaussian(point);
+        copy.convert_to_upper_triangular(&point);
         for (int i = N - 1; i >= 0; i--) {
             for (int j = i + 1; j < M; j++) {
                 point(i, 0) -= point(j, 0) * copy(i, j);
@@ -287,10 +288,10 @@ public:
     }
 
     Matrix inverse() const {
-        assert(N == M);
+        static_assert(N == M);
         Matrix copy = (*this);
         Matrix result = identity_matrix();
-        copy.gaussian(result);
+        copy.convert_to_upper_triangular(&result);
         for (int j = N - 1; j >= 0; j--) {
             for (int i = j - 1; i >= 0; i--) {
                 double K = copy(i, j) / copy(j, j);

@@ -6,12 +6,11 @@
 namespace app {
 
 Renderer::Renderer(double screen_width, double screen_height, double max_z_value):
-    screen_(screen_width, screen_height, max_z_value),
-    screen_width_(screen_width),
-    screen_height_(screen_height) {}
+                   screen_(screen_width, screen_height, max_z_value) {}
 
 void Renderer::draw_frame(sf::RenderWindow& window) {
-    draw(screen_.get_picture(), window);
+    draw(screen_.get_pixels_to_draw(), window);
+    screen_.clear();
 }
 
 void Renderer::draw(const std::vector<sf::Vertex>& data, sf::RenderWindow& window) {
@@ -34,13 +33,18 @@ void Renderer::draw_triangle(const Camera& camera, const Triangle4d& triangle4d)
     double min_y;
     double max_y;
     Matrix<2, 2> basis = triangle2d.create_basis();
-    for (int x = std::max(0, (int)ceil(left_point.x)); x <= std::min((int)screen_width_, (int)floor(right_point.x)); x++) {
+    for (int x = ceil(left_point.x); x <= floor(right_point.x); x++) {
+        if (x < 0 || x >= screen_.get_height()) {
+            continue;
+        }
         min_y = triangle2d.min_y_in_line(x);
         max_y = triangle2d.max_y_in_line(x);
-
         double min_z = get_z(camera, x, min_y, std::move(get_coords(x, min_y, basis, left_point)), a, b, c);
         double max_z = get_z(camera, x, max_y, std::move(get_coords(x, max_y, basis, left_point)), a, b, c);
-        for (int y = std::max(0, (int)ceil(min_y)); y <= std::min((int)screen_height_, (int)floor(max_y)); y++) {
+        for (int y = ceil(min_y); y <= floor(max_y); y++) {
+            if (y < 0 || y >= screen_.get_width()) {
+                continue;
+            }
             double z = 0;
             if (min_z != max_z) {
                 z = (max_z - min_z) * (y - min_y) / (max_y - min_y);

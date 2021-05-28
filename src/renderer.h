@@ -34,7 +34,6 @@ private:
     static std::vector<Triangle4d> divide_triangle(const Point4d& base_split_point, const Point4d& A, const Point4d& B,
                     double z_plane, const Point4d& f_intersection, const Point4d& s_intersection) ;
     Screen screen_;
-    const unsigned int screen_width_, screen_height_;
 };
 
 }

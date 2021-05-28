@@ -14,31 +14,33 @@ namespace app {
 */
 class Screen {
 public:
-    Screen(size_t screen_width, size_t screen_height, double max_z_value);
+    Screen(size_t screen_width, size_t screen_height, double max_z_value) ;
 
     /*!
         \brief отобразить пиксель
     */
-    void set_pixel(int x, int y, double z, sf::Color color);
+    void set_pixel(int x, int y, double z, sf::Color color) ;
 
     /*!
         \brief выбор всех пикслей
     */
-    std::vector<sf::Vertex> get_picture();
+    std::vector<sf::Vertex> get_pixels_to_draw() const ;
 
     /*!
         \brief очистка
     */
-    void clear();
+    void clear() ;
+
+    bool validate_pixel(int x, int y) const ;
+
+    size_t get_width() const ;
+
+    size_t get_height() const ;
 
 private:
-    bool validate_pixel(int x, int y);
 
     PixelScreen<sf::Color> color_;
     PixelScreen<double> z_value_;
-    std::vector<sf::Vertex> non_empty_pixels_;
-    size_t screen_width_;
-    size_t screen_height_;
 };
 
 }
