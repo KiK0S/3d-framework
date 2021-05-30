@@ -17,7 +17,7 @@ public:
     Triangle4d() = delete;
     Triangle4d(Point4d a, Point4d b, Point4d c);
     Point4d a, b, c;
-    void assign_points(std::array<int, 3>, Point4d* a, Point4d* b, Point4d* c) const ;
+    void get_points(std::array<int, 3>, Point4d* a, Point4d* b, Point4d* c) const ;
 };
 /*!
     \brief Класс треугольника в 2д.

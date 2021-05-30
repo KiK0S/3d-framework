@@ -92,17 +92,19 @@ public:
     void run();
 
 private:
-    void rotate_world(double angle, EAxes fixed_coord) ;
     static int convert_axis_to_int(const EAxes& axe) ;
-    static Matrix4d construct_rotation_matrix(int fixed_coordinate, double angle) ;
+    void rotate_world(double angle, EAxes fixed_coord) ;
     void draw_object(const std::unique_ptr<SurfaceObject>& object) ;
+    void create_keyboard_handlers() ;
 
+    constexpr static size_t kScreenHeight_ = 1000;
+    constexpr static size_t kScreenWidth_ = 1000;
+    constexpr static size_t kMaxDepth_ = 3000;
     Renderer renderer_;
     World world_;
     Camera camera_;
     sf::RenderWindow window_;
-    constexpr static size_t kScreenHeight_ = 1000;
-    constexpr static size_t kScreenWidth_ = 1000;
+    std::vector<std::pair<sf::Keyboard::Key, std::function<void()>>> keyboard_handlers_;
 };
 
 }

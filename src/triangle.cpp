@@ -5,34 +5,13 @@ namespace app {
 
 Triangle4d::Triangle4d(Point4d a, Point4d b, Point4d c): a(a), b(b), c(c) {}
 
-void Triangle4d::assign_points(std::array<int, 3> order, Point4d *a, Point4d *b, Point4d *c) const {
-    if (order[0] == 0) {
-        *a = this->a;
-    }
-    if (order[0] == 1) {
-        *a = this->b;
-    }
-    if (order[0] == 2) {
-        *a = this->c;
-    }
-    if (order[1] == 0) {
-        *b = this->a;
-    }
-    if (order[1] == 1) {
-        *b = this->b;
-    }
-    if (order[1] == 2) {
-        *b = this->c;
-    }
-    if (order[2] == 0) {
-        *c = this->a;
-    }
-    if (order[2] == 1) {
-        *c = this->b;
-    }
-    if (order[2] == 2) {
-        *c = this->c;
-    }
+void Triangle4d::get_points(std::array<int, 3> order, Point4d *a, Point4d *b, Point4d *c) const {
+    std::vector<Point4d> points = {
+        this->a, this->b, this->c
+    };
+    *a = points[order[0]];
+    *b = points[order[1]];
+    *c = points[order[2]];
 }
 
 Triangle2d::Triangle2d(sf::Vector2f _a, sf::Vector2f _b, sf::Vector2f _c): a(_a), b(_b), c(_c) {

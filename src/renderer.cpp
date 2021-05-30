@@ -39,11 +39,10 @@ double Renderer::get_z(const Camera& camera, int x, int y,
 
 std::optional<Point4d> Renderer::find_intersection(const Point4d& a,
         const Point4d& b,
-        double z) {
-    if (a.z <= z && b.z <= z) {
-        return {};
-    }
-    if (a.z > z && b.z > z) {
+        double z_plane) {
+    bool a_side = a.z < z_plane;
+    bool b_side = a.z < z_plane;
+    if (a_side == b_side) {
         return {};
     }
     Vector4d v = b - a;
@@ -52,7 +51,7 @@ std::optional<Point4d> Renderer::find_intersection(const Point4d& a,
         nearest = b;
         v *= -1;
     }
-    return nearest + v * (z - nearest.z) / v.z;
+    return nearest + v * (z_plane - nearest.z) / v.z;
 }
 
 std::vector<Triangle4d> Renderer::divide_triangle(const Point4d& base_split_point,
@@ -84,9 +83,9 @@ Triangle4d Renderer::move_triangle_to_another_basis(const Camera& camera, const 
 }
 
 Triangle2d Renderer::project_on_screen(const Camera& camera, const Triangle4d& triangle) {
-   return Triangle2d(camera.project_on_screen(triangle.a),
-                     camera.project_on_screen(triangle.b),
-                     camera.project_on_screen(triangle.c));
+    return Triangle2d(camera.project_on_screen(triangle.a),
+                      camera.project_on_screen(triangle.b),
+                      camera.project_on_screen(triangle.c));
 }
 
 double Renderer::get_scaled_z_value(double y, double top_y, double bottom_y, double top_z, double bottom_z) {
@@ -103,8 +102,8 @@ std::vector<Triangle4d> Renderer::clip_triangle_camera_space(const Camera& camer
     std::tie(A, B, C) = std::tie(projected_triangle.a, projected_triangle.b, projected_triangle.c);
     double z_plane = camera.get_clipping_plane_distance();
     if (A.z <= z_plane &&
-        B.z <= z_plane &&
-        C.z <= z_plane) {
+            B.z <= z_plane &&
+            C.z <= z_plane) {
         return {};
     }
     std::optional<Point4d> cross_a = find_intersection(A, B, z_plane);
@@ -129,7 +128,7 @@ std::vector<Triangle4d> Renderer::clip_triangle_camera_space(const Camera& camer
 Renderer::DrawData Renderer::create_data(const Triangle2d& triangle2d, const Triangle4d& triangle4d) {
     Point4d a(0, 0, 0), b(0, 0, 0), c(0, 0, 0);
     std::array<int, 3> order = triangle2d.get_order();
-    triangle4d.assign_points(order, &a, &b, &c);
+    triangle4d.get_points(order, &a, &b, &c);
 
     sf::Vector2f left_point = triangle2d.get_left_point();
     sf::Vector2f right_point = triangle2d.get_right_point();

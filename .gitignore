@@ -8,3 +8,10 @@ src/out/
 src/html/
 *.pygtex
 *.pygstyle
+*aux
+*latexmk
+*fls
+*log
+*out
+*toc
+*.o

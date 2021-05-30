@@ -9,9 +9,11 @@ namespace app {
 
 Application::Application():
     world_(), camera_(kScreenWidth_, kScreenHeight_),
-    renderer_(kScreenWidth_, kScreenHeight_, 50000),
+    renderer_(kScreenWidth_, kScreenHeight_, kMaxDepth_),
     window_(sf::VideoMode(kScreenWidth_, kScreenHeight_),
-            "Test: interacrtive camera") {}
+            "Test: interacrtive camera") {
+    create_keyboard_handlers();
+}
 
 void Application::update_and_draw_frame() {
     window_.clear(sf::Color::White);
@@ -79,66 +81,13 @@ void Application::run() {
                 return;
             }
         }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
-            move_camera(app::Vector4d(10, 0, 0));
-        }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
-            move_camera(app::Vector4d(-10, 0, 0));
-        }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
-            move_camera(app::Vector4d(0, 10, 0));
-        }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
-            move_camera(app::Vector4d(0, -10, 0));
-        }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z)) {
-            move_camera(app::Vector4d(0, 0, 10));
-        }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::X)) {
-            move_camera(app::Vector4d(0, 0, -10));
-        }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-            yaw(0.01);
-        }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
-            yaw(-0.01);
-        }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
-            pitch(0.01);
-        }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
-            pitch(-0.01);
-        }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q)) {
-            roll(0.01);
-        }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::E)) {
-            roll(-0.01);
-        }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::R)) {
-            azimuth(0.01);
-        }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::T)) {
-            azimuth(-0.01);
-        }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::F)) {
-            elevation(0.01);
-        }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::G)) {
-            elevation(-0.01);
-        }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
-            close();
-            return;
+        for (auto& [key, handler] : keyboard_handlers_) {
+            if (sf::Keyboard::isKeyPressed(key)) {
+                handler();
+            }
         }
         update_and_draw_frame();
     }
-}
-
-void Application::rotate_world(double angle, Application::EAxes axe) {
-    int fixed_coord = convert_axis_to_int(axe);
-    Matrix4d transform = Matrix4d::construct_rotation_matrix(fixed_coord, angle);
-    camera_.apply_transform_to_world(transform);
 }
 
 int Application::convert_axis_to_int(const Application::EAxes& axe) {
@@ -154,10 +103,89 @@ int Application::convert_axis_to_int(const Application::EAxes& axe) {
     return -1;
 }
 
+void Application::rotate_world(double angle, Application::EAxes axe) {
+    int fixed_coord = convert_axis_to_int(axe);
+    Matrix4d transform = Matrix4d::construct_rotation_matrix(fixed_coord, angle);
+    camera_.apply_transform_to_world(transform);
+}
+
 void Application::draw_object(const std::unique_ptr<SurfaceObject>& object_ptr) {
     for (auto& triangle4d : object_ptr->triangles()) {
         renderer_.draw_triangle(camera_, triangle4d);
     }
+}
+
+void Application::create_keyboard_handlers() {
+    keyboard_handlers_ = {
+        {sf::Keyboard::Left, [this]() {
+                move_camera(app::Vector4d(10, 0, 0));
+            }
+        },
+        {sf::Keyboard::Right, [this]() {
+                move_camera(app::Vector4d(-10, 0, 0));
+            }
+        },
+        {sf::Keyboard::Down, [this]() {
+                move_camera(app::Vector4d(0, -10, 0));
+            }
+        },
+        {sf::Keyboard::Up, [this]() {
+                move_camera(app::Vector4d(0, 10, 0));
+            }
+        },
+        {sf::Keyboard::Z, [this]() {
+                move_camera(app::Vector4d(0, 0, 10));
+            }
+        },
+        {sf::Keyboard::X, [this]() {
+                move_camera(app::Vector4d(0, 0, -10));
+            }
+        },
+        {sf::Keyboard::A, [this]() {
+                yaw(0.01);
+            }
+        },
+        {sf::Keyboard::D, [this]() {
+                yaw(-0.01);
+            }
+        },
+        {sf::Keyboard::W, [this]() {
+                pitch(0.01);
+            }
+        },
+        {sf::Keyboard::S, [this]() {
+                pitch(-0.01);
+            }
+        },
+        {sf::Keyboard::Q, [this]() {
+                roll(0.01);
+            }
+        },
+        {sf::Keyboard::E, [this]() {
+                roll(-0.01);
+            }
+        },
+        {sf::Keyboard::R, [this]() {
+                azimuth(0.01);
+            }
+        },
+        {sf::Keyboard::T, [this]() {
+                azimuth(-0.01);
+            }
+        },
+        {sf::Keyboard::F, [this]() {
+                elevation(0.01);
+            }
+        },
+        {sf::Keyboard::G, [this]() {
+                elevation(-0.01);
+            }
+        },
+        {sf::Keyboard::Escape, [this]() {
+                close();
+            }
+        },
+    };
 }
 
 }
