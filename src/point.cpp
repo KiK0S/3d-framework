@@ -4,6 +4,7 @@
 
 namespace app {
 
+Point4d::Point4d() : x(0), y(0), z(0), w(1) {}
 Point4d::Point4d(const sf::Vector3f& v) : x(v.x), y(v.y), z(v.z), w(1) {}
 
 Point4d& Point4d::operator += (const Point4d& other) {

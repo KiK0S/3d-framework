@@ -13,7 +13,7 @@ namespace app {
 class Point4d {
 public:
     double x, y, z, w;
-    Point4d() = delete;
+    Point4d();
     constexpr Point4d(const std::initializer_list<double>& args): x(*args.begin()), y(*(args.begin() + 1)), z(*(args.begin() + 2)), w(1) {}
     constexpr Point4d(double x, double y, double z): x(x), y(y), z(z), w(1) {}
     Point4d(const sf::Vector3f& v);
@@ -38,8 +38,8 @@ using Vector4d = Point4d;
 
 Point4d operator * (double f, const Point4d& p);
 double cross(const sf::Vector2f& a, const sf::Vector2f& b);
-double scalar(const sf::Vector2f& a, const sf::Vector2f& b);    
-double scalar(const Vector4d& a, const Vector4d& b);    
+double scalar(const sf::Vector2f& a, const sf::Vector2f& b);
+double scalar(const Vector4d& a, const Vector4d& b);
 sf::Vector2f& operator*= (sf::Vector2f& v, double d);
 sf::Vector2f& operator/= (sf::Vector2f& v, double d);
 

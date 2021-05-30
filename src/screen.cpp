@@ -11,7 +11,7 @@ Screen::Screen(size_t screen_width, size_t screen_height, double max_z_value):
 std::vector<sf::Vertex> Screen::get_pixels_to_draw() const {
     size_t screen_width = color_.get_width();
     size_t screen_height = color_.get_height();
-    
+
     std::vector<sf::Vertex> data;
     data.reserve(screen_height * screen_width);
 

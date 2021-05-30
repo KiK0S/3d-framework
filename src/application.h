@@ -94,10 +94,8 @@ public:
 private:
     void rotate_world(double angle, EAxes fixed_coord) ;
     static int convert_axis_to_int(const EAxes& axe) ;
-    static Matrix4d construct_moving_matrix(const Vector4d& moving_vector) ;
     static Matrix4d construct_rotation_matrix(int fixed_coordinate, double angle) ;
     void draw_object(const std::unique_ptr<SurfaceObject>& object) ;
-    void draw_triangle(const Triangle4d& object) ;
 
     Renderer renderer_;
     World world_;

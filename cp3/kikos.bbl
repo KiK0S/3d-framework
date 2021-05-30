@@ -1,7 +1,7 @@
 \begin{thebibliography}{1}
 
 \bibitem{vtkBook}
-\url{https://lorensen.github.io/VTKExamples/site/VTKBook/00Preface/}.
+\url{https://raw.githubusercontent.com/lorensen/VTKExamples/master/src/VTKBookLaTeX/VTKTextBook.pdf}.
 \newblock [VTKBook].
 
 \bibitem{urtech}

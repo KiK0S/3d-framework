@@ -2,6 +2,7 @@
 
 #include "point.h"
 #include <cassert>
+#include <cmath>
 #include <cstdlib>
 #include <vector>
 
@@ -33,6 +34,10 @@ public:
         static_assert(M == 1 && N == 4);
     }
 
+    Matrix(const sf::Vector2f& v): data_{{v.x, v.y}} {
+        static_assert(M == 1 && N == 2);
+    }
+
     Matrix(const std::array<double, N * M>& data): data_{data_} {}
 
     Matrix(std::initializer_list<double> initial) {
@@ -42,7 +47,8 @@ public:
     }
 
     Matrix(const std::vector<sf::Vector2f>& data) {
-        assert(M == 2 && N == data.size());
+        static_assert(M == 2);
+        assert(N == data.size());
         for (int i = 0; i < N; i++) {
             (*this)(i, 0) = data[i].x;
             (*this)(i, 1) = data[i].y;
@@ -50,7 +56,8 @@ public:
     }
 
     Matrix(const std::vector<Point4d>& data) {
-        assert(M == 4 && N == data.size());
+        static_assert(M == 4);
+        assert(N == data.size());
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < M; j++) {
                 (*this)(i, j) = data[i][j];
@@ -58,17 +65,17 @@ public:
         }
     }
 
-    double operator()(size_t row, size_t column) const noexcept {
+    double operator()(size_t row, size_t column) const {
         assert(row < N && column < M);
         return data_[M * row + column];
     }
 
-    double& operator()(size_t row, size_t column) noexcept {
+    double& operator()(size_t row, size_t column) {
         assert(row < N && column < M);
         return data_[M * row + column];
     }
 
-    Matrix& operator += (const Matrix& other) noexcept {
+    Matrix& operator += (const Matrix& other) {
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < M; j++) {
                 (*this)(i, j) += other(i, j);
@@ -77,16 +84,16 @@ public:
         return *this;
     }
 
-    Matrix operator - () const noexcept {
+    Matrix operator - () const {
         return *this * -1;
     }
 
-    Matrix& operator -= (const Matrix& other) noexcept {
+    Matrix& operator -= (const Matrix& other) {
         *this += -other;
         return *this;
     }
 
-    Matrix& operator *= (double k) noexcept {
+    Matrix& operator *= (double k) {
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < M; j++) {
                 (*this)(i, j) *= k;
@@ -95,13 +102,44 @@ public:
         return *this;
     }
 
-    Matrix& operator /= (double k) noexcept {
+    Matrix& operator /= (double k) {
         assert(k != 0);
         *this *= 1.0 / k;
         return *this;
     }
 
-    Matrix& operator *= (const Matrix& other) noexcept {
+    Matrix operator * (double k) const {
+        Matrix result = *this;
+        result *= k;
+        return result;
+    }
+
+    Matrix operator / (double k) const {
+        Matrix result = *this;
+        result /= k;
+        return result;
+    }
+
+    template <size_t N_, size_t M_>
+    friend bool operator == (const Matrix<N_, M_>& first,
+                             const Matrix<N_, M_>& second);
+    template <size_t N_, size_t M_>
+
+    friend bool operator != (const Matrix<N_, M_>& first,
+                             const Matrix<N_, M_>& second);
+
+    template <size_t N_, size_t M_>
+
+    friend Matrix<N_, M_> operator + (const Matrix<N_, M_>& first,
+                                      const Matrix<N_, M_>& second);
+    template <size_t N_, size_t M_>
+
+    friend Matrix<N_, M_> operator - (const Matrix<N_, M_>& first,
+                                      const Matrix<N_, M_>& second) ;
+    template <size_t N_, size_t M_, size_t K>
+    friend Matrix<N_, K> operator * (const Matrix<N_, M_>& first,
+                                     const Matrix<M_, K>& second);
+    Matrix& operator *= (const Matrix& other) {
         static_assert(N == M);
         Matrix copy = (*this);
         for (int i = 0; i < N; i++) {
@@ -114,85 +152,7 @@ public:
         return *this;
     }
 
-    bool operator == (const Matrix& other) const noexcept {
-        for (int i = 0; i < N; i++) {
-            for (int j = 0; j < M; j++) {
-                if ((*this)(i, j) != other(i, j)) {
-                    return false;
-                }
-            }
-        }
-        return true;
-    }
-
-    bool operator != (const Matrix& other) const noexcept {
-        return !(*this == other);
-    }
-
-    Matrix operator + (const Matrix& other) const noexcept {
-        Matrix result = *this;
-        result += other;
-        return result;
-    }
-
-    Matrix operator - (const Matrix& other) const noexcept {
-        Matrix result = *this;
-        result -= other;
-        return result;
-    }
-
-    Matrix operator * (double k) const noexcept {
-        Matrix result = *this;
-        result *= k;
-        return result;
-    }
-
-    Matrix operator / (double k) const noexcept {
-        Matrix result = *this;
-        result /= k;
-        return result;
-    }
-
-    template <size_t K>
-    Matrix<N, K> operator * (const Matrix<M, K>& other) const noexcept {
-        Matrix<N, K> result;
-        for (int i = 0; i < N; i++) {
-            for (int j = 0; j < K; j++) {
-                for (int k = 0; k < M; k++) {
-                    result(i, j) += (*this)(i, k) * other(k, j);
-                }
-            }
-        }
-        return result;
-    }
-
-    Vector4d operator * (const Vector4d& vector) const noexcept {
-        static_assert(M == 4);
-        Vector4d result(0, 0, 0);
-        std::array<double, M> tmp;
-        for (int i = 0; i < N; i++) {
-            tmp[i] = vector.x * (*this)(i, 0) + vector.y * (*this)(i, 1) + vector.z * (*this)(i, 2) + vector.w * (*this)(i, 3);
-        }
-        result.x = tmp[0];
-        result.y = tmp[1];
-        result.z = tmp[2];
-        result.w = tmp[3];
-        return result;
-    }
-
-    sf::Vector2f operator * (const sf::Vector2f& vector) const noexcept {
-        static_assert(M == 2);
-        sf::Vector2f result(0, 0);
-        std::array<double, M> tmp;
-        for (int i = 0; i < M; i++) {
-            tmp[i] = vector.x * (*this)(i, 0) + vector.y * (*this)(i, 1);
-        }
-        result.x = tmp[0];
-        result.y = tmp[1];
-        return result;
-    }
-
-    static Matrix identity_matrix() noexcept {
+    static Matrix identity_matrix() {
         Matrix result;
         for (int i = 0; i < std::min(N, M); i++) {
             result(i, i) = 1;
@@ -200,8 +160,30 @@ public:
         return result;
     }
 
+    static Matrix construct_moving_matrix(const Vector4d& moving_vector) {
+        static_assert(M == 4 && N == 4);
+        assert(moving_vector.w != 0);
+        Matrix move = identity_matrix();
+        move(0, 3) = moving_vector.x / moving_vector.w;
+        move(1, 3) = moving_vector.y / moving_vector.w;
+        move(2, 3) = moving_vector.z / moving_vector.w;
+        return move;
+    }
+
+    static Matrix construct_rotation_matrix(int fixed_coordinate, double angle) {
+        static_assert(M == 4 && N == 4);
+        assert(fixed_coordinate >= 0 && fixed_coordinate <= 2);
+        // oX, oY, oZ <-> 0, 1, 2
+        Matrix rotation = identity_matrix();
+        rotation((fixed_coordinate + 1) % 3, (fixed_coordinate + 1) % 3) = std::cos(angle);
+        rotation((fixed_coordinate + 2) % 3, (fixed_coordinate + 2) % 3) = std::cos(angle);
+        rotation((fixed_coordinate + 1) % 3, (fixed_coordinate + 2) % 3) = std::sin(angle);
+        rotation((fixed_coordinate + 2) % 3, (fixed_coordinate + 1) % 3) = -std::sin(angle);
+        return rotation;
+    }
+
 private:
-    Matrix& swap_rows(size_t i, size_t j) noexcept {
+    Matrix& swap_rows(size_t i, size_t j) {
         assert(i < N && j < N);
         for (int k = 0; k < M; k++) {
             std::swap((*this)(i, k), (*this)(j, k));
@@ -209,7 +191,7 @@ private:
         return *this;
     }
 
-    Matrix& multiply_row(size_t i, double k) noexcept {
+    Matrix& multiply_row(size_t i, double k) {
         assert(i < N);
         for (int j = 0; j < M; j++) {
             (*this)(i, j) *= k;
@@ -217,7 +199,7 @@ private:
         return *this;
     }
 
-    Matrix& multiply_then_substract_row(size_t i, size_t j, double k) noexcept {
+    Matrix& multiply_then_substract_row(size_t i, size_t j, double k) {
         assert(i < N && j < N);
         for (int t = 0; t < M; t++) {
             (*this)(i, t) -= (*this)(j, t) * k;
@@ -266,7 +248,7 @@ private:
     }
 
 public:
-    Matrix<M, N> transpose() const noexcept {
+    Matrix<M, N> transpose() const {
         Matrix<M, N> result;
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < M; j++) {
@@ -304,5 +286,87 @@ public:
 };
 
 using Matrix4d = Matrix<4, 4>;
+using Matrix2d = Matrix<2, 2>;
+
+template<size_t N, size_t M>
+bool operator == (const Matrix<N, M>& first,
+                  const Matrix<N, M>& second) {
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < M; j++) {
+            if (first(i, j) != second(i, j)) {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
+template<size_t N, size_t M>
+bool operator != (const Matrix<N, M>& first,
+                  const Matrix<N, M>& second) {
+    return !(first == second);
+}
+
+
+template<size_t N, size_t M>
+Matrix<N, M> operator + (const Matrix<N, M>& first,
+                         const Matrix<N, M>& second) {
+    Matrix result = first;
+    result += second;
+    return result;
+}
+
+template<size_t N, size_t M>
+Matrix<N, M> operator - (const Matrix<N, M>& first,
+                         const Matrix<N, M>& second) {
+    Matrix result = first;
+    result -= second;
+    return result;
+}
+
+template <size_t N, size_t M, size_t K>
+Matrix<N, K> operator * (const Matrix<N, M>& first,
+                         const Matrix<M, K>& second) {
+    Matrix<N, K> result;
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < K; j++) {
+            for (int k = 0; k < M; k++) {
+                result(i, j) += first(i, k) * second(k, j);
+            }
+        }
+    }
+    return result;
+}
+
+template<size_t N, size_t M>
+Vector4d operator * (const Matrix<N, M>& matrix,
+                     const Vector4d& vector) {
+    static_assert(M == 4);
+    Vector4d result(0, 0, 0);
+    std::array<double, M> tmp;
+    for (int i = 0; i < N; i++) {
+        tmp[i] = vector.x * matrix(i, 0) + vector.y * matrix(i, 1) +
+                 vector.z * matrix(i, 2) + vector.w * matrix(i, 3);
+    }
+    result.x = tmp[0];
+    result.y = tmp[1];
+    result.z = tmp[2];
+    result.w = tmp[3];
+    return result;
+}
+
+template <size_t N, size_t M>
+sf::Vector2f operator * (const Matrix<N, M> &matrix, const sf::Vector2f& vector) {
+    static_assert(M == 2);
+    sf::Vector2f result(0, 0);
+    std::array<double, M> tmp;
+    for (int i = 0; i < M; i++) {
+        tmp[i] = vector.x * matrix(i, 0) + vector.y * matrix(i, 1);
+    }
+    result.x = tmp[0];
+    result.y = tmp[1];
+    return result;
+}
+
 
 }

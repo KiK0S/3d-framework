@@ -5,33 +5,33 @@ namespace app {
 
 Triangle4d::Triangle4d(Point4d a, Point4d b, Point4d c): a(a), b(b), c(c) {}
 
-void Triangle4d::assign_points(std::array<int, 3> order, Point4d& a, Point4d& b, Point4d& c) const {
+void Triangle4d::assign_points(std::array<int, 3> order, Point4d *a, Point4d *b, Point4d *c) const {
     if (order[0] == 0) {
-        a = this->a;
+        *a = this->a;
     }
     if (order[0] == 1) {
-        a = this->b;
+        *a = this->b;
     }
     if (order[0] == 2) {
-        a = this->c;
+        *a = this->c;
     }
     if (order[1] == 0) {
-        b = this->a;
+        *b = this->a;
     }
     if (order[1] == 1) {
-        b = this->b;
+        *b = this->b;
     }
     if (order[1] == 2) {
-        b = this->c;
+        *b = this->c;
     }
     if (order[2] == 0) {
-        c = this->a;
+        *c = this->a;
     }
     if (order[2] == 1) {
-        c = this->b;
+        *c = this->b;
     }
     if (order[2] == 2) {
-        c = this->c;
+        *c = this->c;
     }
 }
 
@@ -86,7 +86,7 @@ Matrix<2, 2> Triangle2d::create_basis() const {
 /*
     the same order as in create_basis()
 */
-std::array<int, 3> Triangle2d::get_order() {
+std::array<int, 3> Triangle2d::get_order() const {
     return order_;
 }
 

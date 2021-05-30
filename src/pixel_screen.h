@@ -21,7 +21,7 @@ public:
         assert(row * width_ + column < data_.size());
         return data_[row * width_ + column];
     }
-    
+
     const T& operator() (size_t row, size_t column) const {
         assert(row * width_ + column < data_.size());
         return data_[row * width_ + column];
