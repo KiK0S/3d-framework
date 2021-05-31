@@ -5,40 +5,41 @@
 namespace app {
 
 Point4d::Point4d() : x(0), y(0), z(0), w(1) {}
-Point4d::Point4d(const sf::Vector3f& v) : x(v.x), y(v.y), z(v.z), w(1) {}
 
 Point4d& Point4d::operator += (const Point4d& other) {
     *this = *this + other;
     return *this;
 }
+
 Point4d& Point4d::operator -= (const Point4d& other) {
     *this = *this - other;
     return *this;
 }
+
 Point4d& Point4d::operator *= (double k) {
     *this = *this * k;
     return *this;
 }
+
 Point4d& Point4d::operator /= (double k) {
     *this = *this / k;
     return *this;
 }
 
-
-
-Point4d Point4d::operator + (const Point4d& p) const {
-    return Point4d(x / w + p.x / p.w, y / w + p.y / p.w, z / w + p.z / p.w);
+Point4d operator + (const Point4d& a, const Point4d& b) {
+    return Point4d(a.x / a.w + b.x / b.w, a.y / a.w + b.y / b.w, a.z / a.w + b.z / b.w);
 }
 
-Point4d Point4d::operator - (const Point4d& p) const {
-    return (*this) + (p * -1);
+Point4d operator - (const Point4d& a, const Point4d& b) {
+    return Point4d(a.x / a.w - b.x / b.w, a.y / a.w - b.y / b.w, a.z / a.w - b.z / b.w);
 }
 
-Point4d Point4d::operator * (double f) const {
-    return Point4d(x * f, y * f, z * f);
+Point4d operator * (const Point4d& a, double f) {
+    return Point4d(a.x / a.w * f, a.y / a.w * f, a.z / a.w * f);
 }
-Point4d Point4d::operator / (double f) const {
-    return (*this) * (1.0 / f);
+
+Point4d operator / (const Point4d& a, double f) {
+    return a * (1.0 / f);
 }
 
 Point4d operator * (double f, const Point4d& p) {
@@ -64,7 +65,7 @@ void Point4d::resize(double d) {
     z *= d;
 }
 
-double Point4d::operator[] (size_t i) const {
+double Point4d::operator() (size_t i) const {
     if (i == 0) return x;
     if (i == 1) return y;
     if (i == 2) return z;
@@ -73,7 +74,7 @@ double Point4d::operator[] (size_t i) const {
     return -1;
 }
 
-double& Point4d::operator[] (size_t i) {
+double& Point4d::operator() (size_t i) {
     if (i == 0) return x;
     if (i == 1) return y;
     if (i == 2) return z;

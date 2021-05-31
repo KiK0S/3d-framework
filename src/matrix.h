@@ -24,28 +24,46 @@ private:
     std::array<double, N * M> data_;
 
 public:
+    /*!
+        \brief Конструктор, делающий нулевую матрицу
+    */
     Matrix() {
         for (int i = 0; i < N * M; i++) {
             data_[i] = 0;
         }
     }
 
+    /*!
+        \brief Конструктор, создающий матрицу по четырехмерной точке
+    */
     Matrix(const Point4d& p): data_{{p.x, p.y, p.z, p.w}} {
         static_assert(M == 1 && N == 4);
     }
 
+    /*!
+        \brief Конструктор, создающий матрицу по двумерному вектору
+    */
     Matrix(const sf::Vector2f& v): data_{{v.x, v.y}} {
         static_assert(M == 1 && N == 2);
     }
 
+    /*!
+        \brief Конструктор, создающий матрицу из массива со всеми ее элементами
+    */
     Matrix(const std::array<double, N * M>& data): data_{data_} {}
 
+    /*!
+        \brief Конструктор, создающий матрицу из списка ее элементов
+    */
     Matrix(std::initializer_list<double> initial) {
         for (int i = 0; i < N * M; i++) {
             data_[i] = *(initial.begin() + i);
         }
     }
 
+    /*!
+        \brief Конструктор, создающий матрицу по массиву двумерных векторов
+    */
     Matrix(const std::vector<sf::Vector2f>& data) {
         static_assert(M == 2);
         assert(N == data.size());
@@ -55,26 +73,44 @@ public:
         }
     }
 
+    /*!
+        \brief Конструктор, создающий матрицу по массиву четырехмерных точек
+    */
     Matrix(const std::vector<Point4d>& data) {
         static_assert(M == 4);
         assert(N == data.size());
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < M; j++) {
-                (*this)(i, j) = data[i][j];
+                (*this)(i, j) = data[i](j);
             }
         }
     }
 
+    /*!
+        \brief Оператор доступа к элементу матрицы
+        \param row ряд
+        \param column колонка
+        \returns A[row][column]
+    */
     double operator()(size_t row, size_t column) const {
         assert(row < N && column < M);
         return data_[M * row + column];
     }
 
+    /*!
+        \brief Оператор доступа к элементу матрицы
+        \param row ряд
+        \param column колонка
+        \returns A[row][column]
+    */
     double& operator()(size_t row, size_t column) {
         assert(row < N && column < M);
         return data_[M * row + column];
     }
 
+    /*!
+        \brief Оператор прибавления  матрицы по правилу A[x][y] += B[x][y]
+    */
     Matrix& operator += (const Matrix& other) {
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < M; j++) {
@@ -84,15 +120,24 @@ public:
         return *this;
     }
 
+    /*!
+        \brief Оператор получения матрицы с обратным знаком: A[x][y] -> -A[x][y]
+    */
     Matrix operator - () const {
         return *this * -1;
     }
 
+    /*!
+        \brief Оператор вычитания матрицы по правилу A[x][y] -= B[x][y]
+    */
     Matrix& operator -= (const Matrix& other) {
         *this += -other;
         return *this;
     }
 
+    /*!
+        \brief Оператор домножения матрицы на число по правилу A[x][y] *= k
+    */
     Matrix& operator *= (double k) {
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < M; j++) {
@@ -102,43 +147,36 @@ public:
         return *this;
     }
 
+    /*!
+        \brief Оператор деления матрицы на число по правилу A[x][y] /= k
+    */
     Matrix& operator /= (double k) {
         assert(k != 0);
         *this *= 1.0 / k;
         return *this;
     }
 
+    /*!
+        \brief Оператор домножения матрицы на число по правилу A[x][y] *= k
+    */
     Matrix operator * (double k) const {
         Matrix result = *this;
         result *= k;
         return result;
     }
 
+    /*!
+        \brief Оператор деления матрицы на число по правилу A[x][y] /= k
+    */
     Matrix operator / (double k) const {
         Matrix result = *this;
         result /= k;
         return result;
     }
 
-    template <size_t N_, size_t M_>
-    friend bool operator == (const Matrix<N_, M_>& first,
-                             const Matrix<N_, M_>& second);
-    template <size_t N_, size_t M_>
-
-    friend bool operator != (const Matrix<N_, M_>& first,
-                             const Matrix<N_, M_>& second);
-
-    template <size_t N_, size_t M_>
-
-    friend Matrix<N_, M_> operator + (const Matrix<N_, M_>& first,
-                                      const Matrix<N_, M_>& second);
-    template <size_t N_, size_t M_>
-
-    friend Matrix<N_, M_> operator - (const Matrix<N_, M_>& first,
-                                      const Matrix<N_, M_>& second) ;
-    template <size_t N_, size_t M_, size_t K>
-    friend Matrix<N_, K> operator * (const Matrix<N_, M_>& first,
-                                     const Matrix<M_, K>& second);
+    /*!
+        \brief Оператор домножения квадратной матрицы на матрицу
+    */
     Matrix& operator *= (const Matrix& other) {
         static_assert(N == M);
         Matrix copy = (*this);
@@ -152,6 +190,41 @@ public:
         return *this;
     }
 
+    /*!
+        \brief Оператор сравнения матриц по правилу A[x][y] == B[x][y]
+    */
+    template <size_t N_, size_t M_>
+    friend bool operator == (const Matrix<N_, M_>& first,
+                             const Matrix<N_, M_>& second);
+    /*!
+        \brief Оператор проверки матриц на неравенство по правилу A[x][y] == B[x][y]
+    */
+    template <size_t N_, size_t M_>
+    friend bool operator != (const Matrix<N_, M_>& first,
+                             const Matrix<N_, M_>& second);
+
+    /*!
+        \brief Оператор сложения матриц по правилу A[x][y] + B[x][y]
+    */
+    template <size_t N_, size_t M_>
+    friend Matrix<N_, M_> operator + (const Matrix<N_, M_>& first,
+                                      const Matrix<N_, M_>& second);
+    /*!
+        \brief Оператор вычитания матриц по правилу A[x][y] - B[x][y]
+    */
+    template <size_t N_, size_t M_>
+    friend Matrix<N_, M_> operator - (const Matrix<N_, M_>& first,
+                                      const Matrix<N_, M_>& second) ;
+    /*!
+        \brief Оператор перемножения матриц
+    */
+    template <size_t N_, size_t M_, size_t K>
+    friend Matrix<N_, K> operator * (const Matrix<N_, M_>& first,
+                                     const Matrix<M_, K>& second);
+
+    /*!
+        \brief Получение единичной матрицы: A[x][x] = 1, A[x][y] = 0
+    */
     static Matrix identity_matrix() {
         Matrix result;
         for (int i = 0; i < std::min(N, M); i++) {
@@ -160,6 +233,9 @@ public:
         return result;
     }
 
+    /*!
+        \brief Получение матрицы для сдвига на вектор в четырехмерном пространстве
+    */
     static Matrix construct_moving_matrix(const Vector4d& moving_vector) {
         static_assert(M == 4 && N == 4);
         assert(moving_vector.w != 0);
@@ -170,6 +246,9 @@ public:
         return move;
     }
 
+    /*!
+        \brief Получение матрицы для поворота в четырехмерном пространстве
+    */
     static Matrix construct_rotation_matrix(int fixed_coordinate, double angle) {
         static_assert(M == 4 && N == 4);
         assert(fixed_coordinate >= 0 && fixed_coordinate <= 2);
@@ -248,6 +327,9 @@ private:
     }
 
 public:
+    /*!
+        \brief Получение транспонированной матрицы
+    */
     Matrix<M, N> transpose() const {
         Matrix<M, N> result;
         for (int i = 0; i < N; i++) {
@@ -258,6 +340,9 @@ public:
         return result;
     }
 
+    /*!
+        \brief Решение системы уравнений Ax = point
+    */
     Matrix<N, 1> solve_system(Matrix<N, 1>&& point) const {
         Matrix copy = (*this);
         copy.convert_to_upper_triangular(&point);
@@ -269,6 +354,9 @@ public:
         return point;
     }
 
+    /*!
+        \brief Получение обратной матрицы
+    */
     Matrix inverse() const {
         static_assert(N == M);
         Matrix copy = (*this);

@@ -19,9 +19,19 @@ namespace app {
 */
 class Renderer {
 public:
+    /*!
+        \brief Конструктор рендерера
+     */
     Renderer(double width, double height, double max_z_value);
 
+    /*!
+        \brief Производит отрисовку кадра
+     */
     void draw_frame(sf::RenderWindow& window);
+
+    /*!
+        \brief Добавляет треугольник на буферный кадр
+     */
     void draw_triangle(const Camera& camera, const Triangle4d& triangle) ;
 
 private:

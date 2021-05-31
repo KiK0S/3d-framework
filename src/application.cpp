@@ -117,71 +117,71 @@ void Application::draw_object(const std::unique_ptr<SurfaceObject>& object_ptr) 
 
 void Application::create_keyboard_handlers() {
     keyboard_handlers_ = {
-        {sf::Keyboard::Left, [this]() {
+        {   sf::Keyboard::Left, [this]() {
                 move_camera(app::Vector4d(10, 0, 0));
             }
         },
-        {sf::Keyboard::Right, [this]() {
+        {   sf::Keyboard::Right, [this]() {
                 move_camera(app::Vector4d(-10, 0, 0));
             }
         },
-        {sf::Keyboard::Down, [this]() {
+        {   sf::Keyboard::Down, [this]() {
                 move_camera(app::Vector4d(0, -10, 0));
             }
         },
-        {sf::Keyboard::Up, [this]() {
+        {   sf::Keyboard::Up, [this]() {
                 move_camera(app::Vector4d(0, 10, 0));
             }
         },
-        {sf::Keyboard::Z, [this]() {
+        {   sf::Keyboard::Z, [this]() {
                 move_camera(app::Vector4d(0, 0, 10));
             }
         },
-        {sf::Keyboard::X, [this]() {
+        {   sf::Keyboard::X, [this]() {
                 move_camera(app::Vector4d(0, 0, -10));
             }
         },
-        {sf::Keyboard::A, [this]() {
+        {   sf::Keyboard::A, [this]() {
                 yaw(0.01);
             }
         },
-        {sf::Keyboard::D, [this]() {
+        {   sf::Keyboard::D, [this]() {
                 yaw(-0.01);
             }
         },
-        {sf::Keyboard::W, [this]() {
+        {   sf::Keyboard::W, [this]() {
                 pitch(0.01);
             }
         },
-        {sf::Keyboard::S, [this]() {
+        {   sf::Keyboard::S, [this]() {
                 pitch(-0.01);
             }
         },
-        {sf::Keyboard::Q, [this]() {
+        {   sf::Keyboard::Q, [this]() {
                 roll(0.01);
             }
         },
-        {sf::Keyboard::E, [this]() {
+        {   sf::Keyboard::E, [this]() {
                 roll(-0.01);
             }
         },
-        {sf::Keyboard::R, [this]() {
+        {   sf::Keyboard::R, [this]() {
                 azimuth(0.01);
             }
         },
-        {sf::Keyboard::T, [this]() {
+        {   sf::Keyboard::T, [this]() {
                 azimuth(-0.01);
             }
         },
-        {sf::Keyboard::F, [this]() {
+        {   sf::Keyboard::F, [this]() {
                 elevation(0.01);
             }
         },
-        {sf::Keyboard::G, [this]() {
+        {   sf::Keyboard::G, [this]() {
                 elevation(-0.01);
             }
         },
-        {sf::Keyboard::Escape, [this]() {
+        {   sf::Keyboard::Escape, [this]() {
                 close();
             }
         },

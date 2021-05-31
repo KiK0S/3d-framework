@@ -17,12 +17,12 @@ private:
     struct Triplet;
 
 public:
-    SurfaceObject(std::vector<Point4d> points,
-                  std::vector<std::pair<int, int>> edges);
-
-    SurfaceObject(std::vector<Point4d> points,
-                  std::vector<std::pair<int, int>> edges,
-                  std::vector<Triplet> triangles);
+    /*!
+        \brief Конструктор объекта в пространстве
+     */
+    SurfaceObject(std::vector<Point4d> points = {},
+                  std::vector<std::pair<int, int>> edges = {},
+                  std::vector<Triplet> triangles = {});
 
     /*!
         \brief Массив информации о триангуляции поверхностей фигуры
@@ -36,7 +36,6 @@ private:
         Triplet(int a, int b, int c): a(a), b(b), c(c) {}
     };
 
-protected:
     std::vector<Triplet> triangles_;
 };
 

@@ -1,5 +1,4 @@
 #include "application.h"
-#include "chair.h"
 #include "cube.h"
 #include "point.h"
 #include "tetraedr.h"

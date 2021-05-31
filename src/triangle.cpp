@@ -58,21 +58,6 @@ sf::Vector2f Triangle2d::get_right_point() const {
     return ans;
 }
 
-Matrix<2, 2> Triangle2d::create_basis() const {
-    return Matrix<2, 2> ({b - a, c - a}).transpose();
-}
-
-/*
-    the same order as in create_basis()
-*/
-std::array<int, 3> Triangle2d::get_order() const {
-    return order_;
-}
-
-double Triangle2d::square() const {
-    return 0.5 * cross(b - a, c - a);
-}
-
 double Triangle2d::min_y_in_line(double x) const {
     if (std::abs(b.x - x) < 1e-10) {
         return b.y;
@@ -119,6 +104,22 @@ double Triangle2d::max_y_in_line(double x) const {
         v *= std::abs(k);
         return (c + v).y;
     }
+}
+
+
+Matrix<2, 2> Triangle2d::create_basis() const {
+    return Matrix<2, 2> ({b - a, c - a}).transpose();
+}
+
+/*
+    the same order as in create_basis()
+*/
+std::array<int, 3> Triangle2d::get_order() const {
+    return order_;
+}
+
+double Triangle2d::square() const {
+    return 0.5 * cross(b - a, c - a);
 }
 
 bool Triangle2d::is_degenerate() const {

@@ -17,15 +17,15 @@ namespace app {
 
 */
 
-Cube::Cube(): SurfaceObject({
-    Point4d(kStart_.x, kStart_.y, kStart_.z),
-    Point4d(kStart_.x, kStart_.y, kStart_.z + kSize_),
-    Point4d(kStart_.x, kStart_.y + kSize_, kStart_.z + kSize_),
-    Point4d(kStart_.x + kSize_, kStart_.y + kSize_, kStart_.z + kSize_),
-    Point4d(kStart_.x + kSize_, kStart_.y, kStart_.z),
-    Point4d(kStart_.x + kSize_, kStart_.y + kSize_, kStart_.z),
-    Point4d(kStart_.x + kSize_, kStart_.y, kStart_.z + kSize_),
-    Point4d(kStart_.x, kStart_.y + kSize_, kStart_.z)
+Cube::Cube(const Point4d& offset): SurfaceObject({
+    Point4d(offset.x, offset.y, offset.z),
+    Point4d(offset.x, offset.y, offset.z + kSize_),
+    Point4d(offset.x, offset.y + kSize_, offset.z + kSize_),
+    Point4d(offset.x + kSize_, offset.y + kSize_, offset.z + kSize_),
+    Point4d(offset.x + kSize_, offset.y, offset.z),
+    Point4d(offset.x + kSize_, offset.y + kSize_, offset.z),
+    Point4d(offset.x + kSize_, offset.y, offset.z + kSize_),
+    Point4d(offset.x, offset.y + kSize_, offset.z)
 }, {
     {0, 1}, {0, 7}, {0, 4},
     {1, 2}, {1, 6},

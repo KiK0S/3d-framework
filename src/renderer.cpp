@@ -40,8 +40,8 @@ double Renderer::get_z(const Camera& camera, int x, int y,
 std::optional<Point4d> Renderer::find_intersection(const Point4d& a,
         const Point4d& b,
         double z_plane) {
-    bool a_side = a.z < z_plane;
-    bool b_side = a.z < z_plane;
+    bool a_side = a.z <= z_plane;
+    bool b_side = b.z <= z_plane;
     if (a_side == b_side) {
         return {};
     }

@@ -19,9 +19,19 @@ class Renderer;
 */
 class World {
 public:
+    /*!
+        \brief Добавление объекта
+     */
     void add_object(std::unique_ptr<SurfaceObject>&& w);
 
+    /*!
+        \brief итератор на начало списка объектов
+     */
     std::list<std::unique_ptr<SurfaceObject>>::iterator begin();
+
+    /*!
+        \brief итератор на конец списка объектов
+     */
     std::list<std::unique_ptr<SurfaceObject>>::iterator end();
 
 private:

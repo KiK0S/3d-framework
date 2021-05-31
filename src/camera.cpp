@@ -65,10 +65,6 @@ void Camera::apply_transform_to_world(const Matrix4d& matrix) {
     camera_rotation_ *= matrix;
 }
 
-double Camera::get_max_z_value() const {
-    return kRightPoint_.z;
-}
-
 double Camera::get_min_z_value() const {
     return kLeftPoint_.z;
 }

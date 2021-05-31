@@ -14,6 +14,9 @@ namespace app {
 */
 class Screen {
 public:
+    /*!
+        \brief Конструктор экрана
+    */
     Screen(size_t screen_width, size_t screen_height, double max_z_value) ;
 
     /*!
@@ -31,13 +34,18 @@ public:
     */
     void clear() ;
 
-    bool validate_pixel(int x, int y) const ;
-
+    /*!
+        \brief возвращает ширину экрана
+    */
     size_t get_width() const ;
 
+    /*!
+        \brief возвращает высоту экрана
+    */
     size_t get_height() const ;
 
 private:
+    bool validate_pixel(int x, int y) const ;
 
     PixelScreen<sf::Color> color_;
     PixelScreen<double> z_value_;

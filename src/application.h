@@ -35,49 +35,60 @@ public:
 
     /*!
         \brief Добавление объекта на сцену.
+        \param w unique_ptr на добавляемый SurfaceObject
      */
     void add_object(std::unique_ptr<SurfaceObject>&& w) ;
 
     /*!
-        \brief Сдвиг позиции камеры на вектор
+        \brief Сдвиг фокусной позиции камеры на вектор
+        \param v вектор сдвига камеры
     */
     void move_camera(const Vector4d& v) ;
 
     /*!
         \brief Передвинуть все объекты в мире на какой-то вектор
+        \param v вектор сдвига
     */
     void move_world(const Vector4d& v) ;
 
     /*!
         \brief какой-то поворот
+        \param angle угол, на который делается поворот
     */
     void roll(double angle) ;
 
     /*!
         \brief какой-то поворот
+        \param angle угол, на который делается поворот
     */
     void pitch(double angle) ;
 
     /*!
         \brief какой-то поворот
+        \param angle угол, на который делается поворот
     */
     void elevation(double angle) ;
     /*!
         \brief какой-то поворот
+        \param angle угол, на который делается поворот
     */
     void azimuth(double angle) ;
     /*!
         \brief какой-то поворот
+        \param angle угол, на который делается поворот
     */
     void yaw(double angle) ;
 
     /*!
         \brief поллинг событий
+        \param ecent ссылка на событие
+        \returns true, если событие произошло и по ссылке записаловь событие, иначе false
     */
     bool poll_event(sf::Event& event);
 
     /*!
         \brief Проверка, что графическо окно
+        \returns true, если окно приложения открыто, иначе false
     */
     bool is_open() const ;
 

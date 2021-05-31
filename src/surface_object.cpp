@@ -3,10 +3,6 @@
 namespace app {
 
 SurfaceObject::SurfaceObject(std::vector<Point4d> points,
-                             std::vector<std::pair<int, int>> edges):
-    WireObject(std::move(points), std::move(edges)) {}
-
-SurfaceObject::SurfaceObject(std::vector<Point4d> points,
                              std::vector<std::pair<int, int>> edges,
                              std::vector<Triplet> triangles):
     WireObject(std::move(points), std::move(edges)), triangles_(std::move(triangles)) {}

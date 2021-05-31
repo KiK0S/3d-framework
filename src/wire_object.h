@@ -14,20 +14,30 @@ namespace app {
 */
 class WireObject {
 public:
+
+    /*!
+        \brief Конструктор каркаса объекта
+     */
     WireObject(std::vector<Point4d> points, std::vector<std::pair<int, int>> edges);
     virtual ~WireObject();
 
-    Point4d operator [](size_t index) const {
-        return points_[index];
-    }
-
+    /*!
+        \brief итератор на начало списка вершин
+     */
     typename std::vector<Point4d>::iterator begin() {
         return points_.begin();
     }
+
+    /*!
+        \brief итератор на конец списка вершин
+     */
     typename std::vector<Point4d>::iterator end() {
         return points_.end();
     }
 
+    /*!
+        \brief Применение преобразвания к объекту
+     */
     void apply_transform(const Matrix4d& transform);
 
 protected:

@@ -12,9 +12,4 @@ Tetraedr::Tetraedr(Point4d a, Point4d b, Point4d c, Point4d d):
 }),
 a(a), b(b), c(c), d(d) {}
 
-
-Triangle::Triangle(): SurfaceObject({Point4d(300, 300, 200), Point4d(400, 400, 300), Point4d(300, 400, 200)}, { {0, 1}, {1, 2}, {0, 2}
-}, {
-    {0, 1, 2}
-}) {}
 }

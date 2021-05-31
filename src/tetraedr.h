@@ -16,7 +16,15 @@ namespace app {
 */
 class Tetraedr : public SurfaceObject {
 public:
+
+    /*!
+        \brief Конструктор тетраедра
+     */
     Tetraedr();
+
+    /*!
+        \brief Конструктор тетраедра
+     */
     Tetraedr(Point4d a, Point4d b, Point4d c, Point4d d);
     ~Tetraedr() = default;
 
@@ -26,11 +34,5 @@ private:
     Point4d c;
     Point4d d;
 };
-
-class Triangle : public SurfaceObject {
-public:
-    Triangle();
-};
-
 
 }
