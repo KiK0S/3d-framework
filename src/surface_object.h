@@ -22,7 +22,8 @@ public:
      */
     SurfaceObject(std::vector<Point4d> points = {},
                   std::vector<std::pair<int, int>> edges = {},
-                  std::vector<Triplet> triangles = {});
+                  std::vector<Triplet> triangles = {},
+                  sf::Color color = sf::Color::Black);
 
     /*!
         \brief Массив информации о триангуляции поверхностей фигуры
@@ -36,6 +37,7 @@ private:
         Triplet(int a, int b, int c): a(a), b(b), c(c) {}
     };
 
+    sf::Color color_;
     std::vector<Triplet> triangles_;
 };
 

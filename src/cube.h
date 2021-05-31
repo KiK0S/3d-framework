@@ -17,7 +17,7 @@ public:
         \brief Расстояние до ближайшей плоскости обзора
         \param offset сдвиг куба относительно центра координат. По умолчанию (0, 0, 0)
      */
-    Cube(const Point4d& offset = kStart_);
+    Cube(const Point4d& offset = kStart_, sf::Color color = sf::Color::Black);
 
 private:
     static constexpr double kSize_ = 100;

@@ -38,8 +38,8 @@ private:
     static double get_z(const Camera& camera, int x, int y, Matrix<2, 1>&& coords, const Point4d& a, const Point4d& b, const Point4d& c) ;
     static Matrix<2, 1> get_coords(int x, int y, const Matrix<2, 2>& basis, sf::Vector2f point) ;
     static std::optional<Point4d> find_intersection(const Point4d& a, const Point4d& b, double z) ;
-    static std::vector<Triangle4d> divide_triangle(const Point4d& base_split_point, const Point4d& A, const Point4d& B,
-            double z_plane, const Point4d& f_intersection, const Point4d& s_intersection) ;
+    static std::vector<Triangle4d> divide_triangle(const Triangle4d& triangle, double z_plane,
+                                                   const Point4d& f_intersection, const Point4d& s_intersection) ;
     static Triangle4d move_triangle_to_another_basis(const Camera& camera, const Triangle4d& triangle) ;
     static Triangle2d project_on_screen(const Camera& camera, const Triangle4d& triangle) ;
     static double get_scaled_z_value(double y, double top_y, double bottom_y, double top_z, double bottom_z) ;
@@ -54,6 +54,7 @@ private:
         sf::Vector2f right_point;
         Matrix2d triangle_basis;
         Triangle2d triangle;
+        sf::Color color;
     };
     static Renderer::DrawData create_data(const Triangle2d& triangle2d, const Triangle4d& triangle4d) ;
 

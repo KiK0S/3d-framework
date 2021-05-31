@@ -17,14 +17,21 @@ public:
     /*!
         \brief Конструктор треугольника
      */
-    Triangle4d(Point4d a, Point4d b, Point4d c);
+    Triangle4d(Point4d a, Point4d b, Point4d c, sf::Color color = sf::Color::Black);
 
     /*!
         \brief Выдает вершины треугольника в нужном порядке
      */
     void get_points(std::array<int, 3> order, Point4d* a, Point4d* b, Point4d* c) const ;
 
+    /*!
+        \brief Возвращает цвет треугольника
+     */
+    sf::Color get_color() const ;
+
     Point4d a, b, c;
+private:
+    sf::Color color_;
 };
 /*!
     \brief Класс треугольника в 2д.

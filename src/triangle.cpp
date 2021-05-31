@@ -3,7 +3,7 @@
 
 namespace app {
 
-Triangle4d::Triangle4d(Point4d a, Point4d b, Point4d c): a(a), b(b), c(c) {}
+Triangle4d::Triangle4d(Point4d a, Point4d b, Point4d c, sf::Color color): a(a), b(b), c(c), color_(color) {}
 
 void Triangle4d::get_points(std::array<int, 3> order, Point4d *a, Point4d *b, Point4d *c) const {
     std::vector<Point4d> points = {
@@ -12,6 +12,10 @@ void Triangle4d::get_points(std::array<int, 3> order, Point4d *a, Point4d *b, Po
     *a = points[order[0]];
     *b = points[order[1]];
     *c = points[order[2]];
+}
+
+sf::Color Triangle4d::get_color() const {
+    return color_;
 }
 
 Triangle2d::Triangle2d(sf::Vector2f _a, sf::Vector2f _b, sf::Vector2f _c): a(_a), b(_b), c(_c) {

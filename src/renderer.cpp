@@ -54,19 +54,19 @@ std::optional<Point4d> Renderer::find_intersection(const Point4d& a,
     return nearest + v * (z_plane - nearest.z) / v.z;
 }
 
-std::vector<Triangle4d> Renderer::divide_triangle(const Point4d& base_split_point,
-        const Point4d& A, const Point4d& B,
+std::vector<Triangle4d> Renderer::divide_triangle(const Triangle4d& triangle,
         double z_plane,
         const Point4d& f_intersection,
         const Point4d& s_intersection) {
-    assert((A - base_split_point).is_collinear(f_intersection - base_split_point));
-    assert((B - base_split_point).is_collinear(s_intersection - base_split_point));
+    Point4d base_split_point = triangle.a;
+    assert((triangle.b - base_split_point).is_collinear(f_intersection - base_split_point));
+    assert((triangle.c - base_split_point).is_collinear(s_intersection - base_split_point));
     if (base_split_point.z <= z_plane) return {
-        Triangle4d(f_intersection, A, B),
-        Triangle4d(s_intersection, B, f_intersection),
+        Triangle4d(f_intersection, triangle.b, triangle.c, triangle.get_color()),
+        Triangle4d(s_intersection, triangle.c, f_intersection, triangle.get_color())
     };
     if (base_split_point.z >= z_plane) return {
-        Triangle4d(f_intersection, base_split_point, s_intersection)
+        Triangle4d(f_intersection, base_split_point, s_intersection, triangle.get_color())
     };
     assert(0);
     return {};
@@ -79,7 +79,7 @@ Triangle4d Renderer::move_triangle_to_another_basis(const Camera& camera, const 
     A.normalize();
     B.normalize();
     C.normalize();
-    return Triangle4d(A, B, C);
+    return Triangle4d(A, B, C, triangle.get_color());
 }
 
 Triangle2d Renderer::project_on_screen(const Camera& camera, const Triangle4d& triangle) {
@@ -111,18 +111,36 @@ std::vector<Triangle4d> Renderer::clip_triangle_camera_space(const Camera& camer
     std::optional<Point4d> cross_c = find_intersection(B, C, z_plane);
     std::optional<std::vector<Triangle4d>> intersection;
     if (cross_a && cross_b && !cross_c) {
-        return divide_triangle(A, B, C, z_plane,
+        Triangle4d reordered_triangle{
+            projected_triangle.a,
+            projected_triangle.b,
+            projected_triangle.c,
+            projected_triangle.get_color()
+        };
+        return divide_triangle(reordered_triangle, z_plane,
                                *cross_a, *cross_b);
     }
     if (cross_a && cross_c && !cross_b) {
-        return divide_triangle(B, A, C, z_plane,
+        Triangle4d reordered_triangle{
+            projected_triangle.b,
+            projected_triangle.a,
+            projected_triangle.c,
+            projected_triangle.get_color()
+        };
+        return divide_triangle(reordered_triangle, z_plane,
                                *cross_a, *cross_c);
     }
     if (cross_c && cross_b && !cross_a) {
-        return divide_triangle(C, A, B, z_plane,
+        Triangle4d reordered_triangle{
+            projected_triangle.c,
+            projected_triangle.a,
+            projected_triangle.b,
+            projected_triangle.get_color()
+        };
+        return divide_triangle(reordered_triangle, z_plane,
                                *cross_b, *cross_c);
     }
-    return {Triangle4d(A, B, C)};
+    return {projected_triangle};
 }
 
 Renderer::DrawData Renderer::create_data(const Triangle2d& triangle2d, const Triangle4d& triangle4d) {
@@ -133,22 +151,22 @@ Renderer::DrawData Renderer::create_data(const Triangle2d& triangle2d, const Tri
     sf::Vector2f left_point = triangle2d.get_left_point();
     sf::Vector2f right_point = triangle2d.get_right_point();
     Matrix2d basis = triangle2d.create_basis();
-    return DrawData{
-        a = a,
-        b = b,
-        c = c,
+    return DrawData {
+        a,
+        b,
+        c,
         left_point,
         right_point,
         std::move(basis),
-        triangle2d
+        triangle2d,
+        triangle4d.get_color()
     };
 }
 
 void Renderer::draw_data(const Camera& camera, const Renderer::DrawData& data) {
-    for (int x = ceil(data.left_point.x); x <= floor(data.right_point.x); x++) {
-        if (x < 0 || x >= screen_.get_height()) {
-            continue;
-        }
+    int min_valid_x = std::max(0, (int)ceil(data.left_point.x));
+    int max_valid_x = std::min((int)screen_.get_height() - 1, (int)floor(data.right_point.x));
+    for (int x = min_valid_x; x <= max_valid_x; x++) {
         double top_y = data.triangle.min_y_in_line(x);
         double bottom_y = data.triangle.max_y_in_line(x);
         draw_line(x, top_y, bottom_y, camera, data);
@@ -159,12 +177,11 @@ void Renderer::draw_line(int x, double top_y, double bottom_y,
                          const Camera& camera, const Renderer::DrawData& data) {
     double top_z = get_z(camera, x, top_y, std::move(get_coords(x, top_y, data.triangle_basis, data.left_point)), data.a, data.b, data.c);
     double bottom_z = get_z(camera, x, bottom_y, std::move(get_coords(x, bottom_y, data.triangle_basis, data.left_point)), data.a, data.b, data.c);
-    for (int y = ceil(top_y); y <= floor(bottom_y); y++) {
-        if (y < 0 || y >= screen_.get_width()) {
-            continue;
-        }
+    int min_valid_y = std::max(0, (int)ceil(top_y));
+    int max_valid_y = std::min((int)screen_.get_width() - 1, (int)floor(bottom_y));
+    for (int y = min_valid_y; y <= max_valid_y; y++) {
         double z = get_scaled_z_value(y, top_y, bottom_y, top_z, bottom_z);
-        screen_.set_pixel(x, y, z, sf::Color::Black);
+        screen_.set_pixel(x, y, z, data.color);
     }
 }
 
