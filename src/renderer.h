@@ -22,7 +22,7 @@ public:
     /*!
         \brief Конструктор рендерера
      */
-    Renderer(double width, double height, double max_z_value);
+    Renderer(double width, double height);
 
     /*!
         \brief Производит отрисовку кадра

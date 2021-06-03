@@ -4,8 +4,8 @@
 
 namespace app {
 
-Screen::Screen(size_t screen_width, size_t screen_height, double max_z_value):
-    z_value_(screen_width, screen_height, max_z_value),
+Screen::Screen(size_t screen_width, size_t screen_height):
+    z_value_(screen_width, screen_height, 100),
     color_(screen_width, screen_height, sf::Color::Transparent) {}
 
 std::vector<sf::Vertex> Screen::get_pixels_to_draw() const {

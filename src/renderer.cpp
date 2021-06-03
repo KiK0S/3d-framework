@@ -5,8 +5,8 @@
 
 namespace app {
 
-Renderer::Renderer(double screen_width, double screen_height, double max_z_value):
-    screen_(screen_width, screen_height, max_z_value) {}
+Renderer::Renderer(double screen_width, double screen_height):
+    screen_(screen_width, screen_height) {}
 
 void Renderer::draw_frame(sf::RenderWindow& window) {
     draw_pixels(screen_.get_pixels_to_draw(), window);

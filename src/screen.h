@@ -17,7 +17,7 @@ public:
     /*!
         \brief Конструктор экрана
     */
-    Screen(size_t screen_width, size_t screen_height, double max_z_value) ;
+    Screen(size_t screen_width, size_t screen_height) ;
 
     /*!
         \brief отобразить пиксель
