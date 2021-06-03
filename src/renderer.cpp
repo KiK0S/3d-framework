@@ -90,9 +90,9 @@ Triangle2d Renderer::project_on_screen(const Camera& camera, const Triangle4d& t
 
 double Renderer::get_scaled_z_value(double y, double top_y, double bottom_y, double top_z, double bottom_z) {
     if (top_z != bottom_z) {
-        return (bottom_z - top_z) * (y - top_y) / (bottom_y - top_y);
+        return top_z + (bottom_z - top_z) * (y - top_y) / (bottom_y - top_y);
     } else {
-        return bottom_z;
+        return top_z;
     }
 }
 
