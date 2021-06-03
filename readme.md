@@ -13,14 +13,15 @@ test.cpp
 
 
                 Инструкция по запуску на Linux:
-                `apt-get -y install \
+                apt-get -y install \
                             cxxtest \
-                            libsfml-dev`
-                 `git clone --recurse-submodules git@github.com:kik0s/3d-framework.git`
-                 `mkdir build && cd build`
-                 `cmake ..`
-                 `make`
-                 `./3d-drawer`
+                            libsfml-dev
+                 git clone --recurse-submodules git@github.com:kik0s/3d-framework.git
+                 cd 3d-framework
+                 mkdir build && cd build
+                 cmake ..
+                 make
+                 ./3d-drawer
 
 Пререквизиты: пакеты из списка:
                  
