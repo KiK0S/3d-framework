@@ -8,15 +8,19 @@
 
 namespace app {
 
-void World::add_object(std::unique_ptr<SurfaceObject>&& t) {
-    objects_.emplace_back(std::move(t));
+World::ObjectPtrListIt World::add_object(ObjectPtr&& t) {
+    return objects_.insert(objects_.begin(), std::move(t));
 }
 
-std::list<std::unique_ptr<SurfaceObject>>::iterator World::begin() {
+void World::erase_object(ObjectPtrListIt it) {
+    objects_.erase(it);
+}
+
+World::ObjectPtrListIt World::begin() {
     return objects_.begin();
 }
 
-std::list<std::unique_ptr<SurfaceObject>>::iterator World::end() {
+World::ObjectPtrListIt World::end() {
     return objects_.end();
 }
 

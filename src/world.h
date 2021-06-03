@@ -19,20 +19,29 @@ class Renderer;
 */
 class World {
 public:
+    using ObjectPtr = std::unique_ptr<SurfaceObject>;
+    using ObjectPtrList = std::list<ObjectPtr>;
+    using ObjectPtrListIt = ObjectPtrList::iterator;
+
     /*!
         \brief Добавление объекта
      */
-    void add_object(std::unique_ptr<SurfaceObject>&& w);
+    ObjectPtrListIt add_object(ObjectPtr&& w);
+
+    /*!
+        \brief Добавление объекта
+     */
+    void erase_object(ObjectPtrListIt it);
 
     /*!
         \brief итератор на начало списка объектов
      */
-    std::list<std::unique_ptr<SurfaceObject>>::iterator begin();
+    ObjectPtrListIt begin();
 
     /*!
         \brief итератор на конец списка объектов
      */
-    std::list<std::unique_ptr<SurfaceObject>>::iterator end();
+    ObjectPtrListIt end();
 
 private:
     std::list<std::unique_ptr<SurfaceObject>> objects_;
