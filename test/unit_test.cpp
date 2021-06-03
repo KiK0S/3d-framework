@@ -86,14 +86,14 @@ public:
         camera.move(app::Point4d(-100, -100, 0));
         TS_ASSERT_EQUALS(sf::Vector2f(1000 - 0.5, 1000 - 0.5).x, camera.project_on_screen(camera.transform_to_cameras_coordinates(near_plane_point)).x);
         TS_ASSERT_EQUALS(sf::Vector2f(1000 - 0.5, 1000 - 0.5).y,camera.project_on_screen(camera.transform_to_cameras_coordinates(near_plane_point)).y);
-        camera.move(app::Point4d(0, 0, -100));
-        TS_ASSERT_EQUALS(app::Point4d(200, 200, 500).x, camera.transform_to_cameras_coordinates(near_plane_point).x);
-        TS_ASSERT_EQUALS(app::Point4d(200, 200, 500).y, camera.transform_to_cameras_coordinates(near_plane_point).y);
-        TS_ASSERT_EQUALS(app::Point4d(200, 200, 500).z, camera.transform_to_cameras_coordinates(near_plane_point).z);
+        camera.move(app::Point4d(0, 0, -400));
+        TS_ASSERT_EQUALS(app::Point4d(200, 200, 800).x, camera.transform_to_cameras_coordinates(near_plane_point).x);
+        TS_ASSERT_EQUALS(app::Point4d(200, 200, 800).y, camera.transform_to_cameras_coordinates(near_plane_point).y);
+        TS_ASSERT_EQUALS(app::Point4d(200, 200, 800).z, camera.transform_to_cameras_coordinates(near_plane_point).z);
         TS_ASSERT_EQUALS(sf::Vector2f(750 - 0.5, 750 - 0.5).x, camera.project_on_screen(camera.transform_to_cameras_coordinates(near_plane_point)).x);
         TS_ASSERT_EQUALS(sf::Vector2f(750 - 0.5, 750 - 0.5).y, camera.project_on_screen(camera.transform_to_cameras_coordinates(near_plane_point)).y);
 
-        camera.move(app::Point4d(100, 100, 100)); // again in (0; 0; 0)
+        camera.move(app::Point4d(100, 100, 400)); // again in (0; 0; 0)
         camera.rotate(app::Matrix4d::construct_rotation_matrix(2, PI / 4));
         TS_ASSERT_DELTA(camera.get_z_value(near_plane_point), -1.0, EPS);
         TS_ASSERT_DELTA(camera.get_z_value(near_plane_point), -1.0, EPS);
