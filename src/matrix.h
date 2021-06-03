@@ -182,6 +182,7 @@ public:
         Matrix copy = (*this);
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < N; j++) {
+                (*this)(i, j) = 0;
                 for (int k = 0; k < N; k++) {
                     (*this)(i, j) += copy(i, k) * other(k, j);
                 }
