@@ -28,7 +28,7 @@ public:
     /*!
         \brief Массив информации о триангуляции поверхностей фигуры
      */
-    std::vector<Triangle4d> triangles() const;
+    std::vector<Triangle4d> get_triangles() const;
 
 private:
     struct Triplet {

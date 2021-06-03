@@ -8,7 +8,7 @@ SurfaceObject::SurfaceObject(std::vector<Point4d> points,
                              sf::Color color):
     WireObject(std::move(points), std::move(edges)), triangles_(std::move(triangles)), color_(color) {}
 
-std::vector<Triangle4d> SurfaceObject::triangles() const {
+std::vector<Triangle4d> SurfaceObject::get_triangles() const {
     std::vector<Triangle4d> result;
     for (Triplet triplet : triangles_) {
         result.emplace_back(WireObject::points_[triplet.a],
