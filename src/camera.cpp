@@ -6,7 +6,9 @@ namespace app {
 
 Camera::Camera(double screen_width, double screen_height):
     kScreenHeight_(screen_height),
-    kScreenWidth_(screen_width) {}
+    kScreenWidth_(screen_width) {
+        create_transformation_matrixes();   
+    }
 
 Point4d Camera::transform_to_cameras_coordinates(const Point4d& p) const {
     return transform_to_camera_space_ * p;
@@ -58,11 +60,13 @@ void Camera::create_transformation_matrixes() {
                                  rect_to_canonical  *
                                  move_to_center *
                                  projective_transform;
-    transform_to_camera_space_ = camera_rotation_.transpose() * move_camera;
+    transform_to_camera_space_ = camera_rotation_.transpose() *
+                                 move_camera;
 }
 
-void Camera::apply_transform_to_world(const Matrix4d& matrix) {
+void Camera::rotate(const Matrix4d& matrix) {
     camera_rotation_ *= matrix;
+    create_transformation_matrixes();
 }
 
 double Camera::get_min_z_value() const {
@@ -71,7 +75,8 @@ double Camera::get_min_z_value() const {
 
 void Camera::move(const Point4d& v) {
     Point4d m = v;
-    focus_point_ -= m;
+    focus_point_ += m;
+    create_transformation_matrixes();
 }
 
 double Camera::get_clipping_plane_distance() const {
