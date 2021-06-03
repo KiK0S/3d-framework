@@ -70,6 +70,16 @@ public:
         \brief Уменьшает координаты точки в d раз
      */
     friend Point4d operator / (const Point4d& a, double d);
+    
+    /*!
+        \brief Увеличивает координаты точки в d раз
+     */
+    friend Point4d operator * (double d, const Point4d& p);
+
+    /*!
+        \brief Проверяет точки на равенство
+     */
+    friend bool operator == (const Point4d& a, const Point4d& b);
 
     /*!
         \brief Возвращает i-ю координату точки
@@ -105,7 +115,6 @@ public:
 
 using Vector4d = Point4d;
 
-Point4d operator * (double f, const Point4d& p);
 double cross(const sf::Vector2f& a, const sf::Vector2f& b);
 double scalar(const sf::Vector2f& a, const sf::Vector2f& b);
 double scalar(const Vector4d& a, const Vector4d& b);
@@ -115,7 +124,9 @@ sf::Vector2f& operator /= (sf::Vector2f& v, double d);
 Point4d operator + (const Point4d& a, const Point4d& b) ;
 Point4d operator - (const Point4d& a, const Point4d& b) ;
 Point4d operator * (const Point4d& a, double d) ;
+Point4d operator * (double d, const Point4d& a) ;
 Point4d operator / (const Point4d& a, double d) ;
+bool operator == (const Point4d& a, const Point4d& b) ;
 
 
 double length(const sf::Vector2f& v);

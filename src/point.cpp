@@ -42,6 +42,12 @@ Point4d operator / (const Point4d& a, double f) {
     return a * (1.0 / f);
 }
 
+bool operator == (const Point4d& a, const Point4d& b) {
+    return a.x * b.w == b.x * a.w &&
+           a.y * b.w == b.y * a.w &&
+           a.z * b.w == b.z * a.w;
+}
+
 Point4d operator * (double f, const Point4d& p) {
     return p * f;
 }

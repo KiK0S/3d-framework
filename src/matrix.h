@@ -257,8 +257,8 @@ public:
         Matrix rotation = identity_matrix();
         rotation((fixed_coordinate + 1) % 3, (fixed_coordinate + 1) % 3) = std::cos(angle);
         rotation((fixed_coordinate + 2) % 3, (fixed_coordinate + 2) % 3) = std::cos(angle);
-        rotation((fixed_coordinate + 1) % 3, (fixed_coordinate + 2) % 3) = std::sin(angle);
-        rotation((fixed_coordinate + 2) % 3, (fixed_coordinate + 1) % 3) = -std::sin(angle);
+        rotation((fixed_coordinate + 1) % 3, (fixed_coordinate + 2) % 3) = -std::sin(angle);
+        rotation((fixed_coordinate + 2) % 3, (fixed_coordinate + 1) % 3) = std::sin(angle);
         return rotation;
     }
 

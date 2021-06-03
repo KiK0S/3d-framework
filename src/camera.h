@@ -12,10 +12,15 @@ namespace app {
     \author KiK0S
     \version 1.0
     \date May 14 2021
+
+    Класс Camera отвечает за то, чтобы переводить объекты из системы координат мира
+    в систему координат экрана. Для этого этот объект генерирует матрицу преобразования 
+    ии применяет ее к точкам, которые надо отобразить.
+    Камеру можно поворачивать и двигать, что отражается на матрице преобразования.
 */
 class Camera {
 public:
-    /*!
+    /*! 
         \brief Конструктор
         \param screen_width ширина экрана, на кеторый будет проецироваться изображение
         \param screen_height высота экрана, на кеторый будет проецироваться изображение
@@ -51,15 +56,10 @@ public:
     double get_z_value(const Point4d& p) const;
 
     /*!
-        \brief Метод для инициализации матриц поворота
-     */
-    void create_transformation_matrixes();
-
-    /*!
         \brief Метод для применения матриц поворота
         \param matrix. Матрица поворотп
     */
-    void apply_transform_to_world(const Matrix4d& matrix);
+    void rotate(const Matrix4d& matrix);
 
     /*!
         \brief min z
@@ -80,6 +80,12 @@ public:
     double get_clipping_plane_distance() const;
 
 private:
+    /*!
+        \brief Метод для инициализации матриц поворота
+     */
+    void create_transformation_matrixes();
+
+
     Point4d focus_point_{0, 0, 0};
     Matrix4d transform_space_to_screen_ = Matrix4d::identity_matrix();
     Matrix4d transform_to_camera_space_ = Matrix4d::identity_matrix();
