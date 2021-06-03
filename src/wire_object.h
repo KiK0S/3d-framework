@@ -40,6 +40,11 @@ public:
      */
     void apply_transform(const Matrix4d& transform);
 
+    /*!
+        \brief Массив всех ребер объекта
+     */
+    std::vector<std::pair<Point4d, Point4d>> get_edges() const;
+
 protected:
     std::vector<Point4d> points_;
     std::vector<std::pair<int, int>> edges_;

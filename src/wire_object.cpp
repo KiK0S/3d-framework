@@ -12,4 +12,12 @@ void WireObject::apply_transform(const Matrix4d& transform) {
 
 WireObject::~WireObject() {}
 
+std::vector<std::pair<Point4d, Point4d>> WireObject::get_edges() const {
+    std::vector<std::pair<Point4d, Point4d>> result;
+    for (auto& [a, b] : edges_) {
+        result.emplace_back(points_[a], points_[b]);
+    }
+    return result;
+}
+
 }
