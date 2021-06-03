@@ -22,6 +22,19 @@ jobs:
     steps:
      - uses:  actions/checkout@v2
      - name:  build
+       run:   |
+              apt -y install libsfml-dev
+              mkdir build
+              cd build
+              cmake ..
+              make -j4
+
+  test:
+    runs-on:  ubuntu-latest
+
+    steps:
+     - uses:  actions/checkout@v2
+     - name:  test
        uses:  ./
        id:    cv
      - name:  Measure time
