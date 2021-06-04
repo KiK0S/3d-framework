@@ -58,7 +58,7 @@ public:
         TS_ASSERT_DELTA(solution(0, 0), solution_correct(0, 0), EPS);
         TS_ASSERT_DELTA(solution(1, 0), solution_correct(1, 0), EPS);
         app::Matrix<2, 2> hard_system({1, 1, 2, 1});
-        app::Matrix<2, 1> hard_solution = system.solve_system({5, 3});
+        app::Matrix<2, 1> hard_solution = hard_system.solve_system({5, 3});
         app::Matrix<2, 1> hard_solution_correct({-2, 7});
         TS_ASSERT_DELTA(hard_solution(0, 0), hard_solution_correct(0, 0), EPS);
         TS_ASSERT_DELTA(hard_solution(1, 0), hard_solution_correct(1, 0), EPS);
