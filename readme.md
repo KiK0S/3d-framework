@@ -4,12 +4,13 @@
 Умеет на текущий момент:
 Нарисовать произвольный объект, покрутить и подвигать камеру с помощью клавиатуры.
 
-Тестовое приложение поворачивает камеру по WASD + QE, сдвиг камеры по стрелочкам.
+Тестовое приложение поворачивает камеру по WASD + QE, сдвиг камеры по стрелочкам + ZX, объекты двигаются по IJKL + UO
 
 Пример использования:
 test.cpp
 
 ![Output sample](https://github.com/kik0s/3d-framework/raw/dima-review/cube.gif)
+![Output sample](https://github.com/kik0s/3d-framework/raw/dima-review/cubes.gif)
 
 
                 Инструкция по запуску на Linux:
