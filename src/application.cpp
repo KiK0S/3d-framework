@@ -29,7 +29,7 @@ void Application::move_camera(const Vector4d& v) {
 }
 
 void Application::move_world(const Vector4d& v) {
-    Matrix4d transform = Matrix4d::construct_moving_matrix(v);
+    Matrix4d transform = Matrix4d::construct_moving_matrix(camera_.get_rotation().transpose() * v);
     for (auto& object_ptr : world_) {
         object_ptr->apply_transform(transform);
     }
@@ -134,6 +134,30 @@ void Application::create_keyboard_handlers() {
         },
         {   sf::Keyboard::X, [this]() {
                 move_camera(app::Vector4d(0, 0, -10));
+            }
+        },
+        {   sf::Keyboard::J, [this]() {
+                move_world(app::Vector4d(10, 0, 0));
+            }
+        },
+        {   sf::Keyboard::L, [this]() {
+                move_world(app::Vector4d(-10, 0, 0));
+            }
+        },
+        {   sf::Keyboard::K, [this]() {
+                move_world(app::Vector4d(0, -10, 0));
+            }
+        },
+        {   sf::Keyboard::I, [this]() {
+                move_world(app::Vector4d(0, 10, 0));
+            }
+        },
+        {   sf::Keyboard::U, [this]() {
+                move_world(app::Vector4d(0, 0, 10));
+            }
+        },
+        {   sf::Keyboard::O, [this]() {
+                move_world(app::Vector4d(0, 0, -10));
             }
         },
         {   sf::Keyboard::A, [this]() {

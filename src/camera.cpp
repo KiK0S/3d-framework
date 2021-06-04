@@ -30,6 +30,29 @@ double Camera::get_z_value(const Point4d& p) const {
     return transformed.z;
 }
 
+void Camera::rotate(const Matrix4d& matrix) {
+    camera_rotation_ *= matrix;
+    create_transformation_matrixes();
+}
+
+double Camera::get_min_z_value() const {
+    return kLeftPoint_.z;
+}
+
+void Camera::move(const Point4d& v) {
+    Point4d m = v;
+    focus_point_ += m;
+    create_transformation_matrixes();
+}
+
+double Camera::get_clipping_plane_distance() const {
+    return kClippingPlaneDistance_;
+}
+
+Matrix4d Camera::get_rotation() const {
+    return camera_rotation_;
+}
+
 void Camera::create_transformation_matrixes() {
     Matrix4d canonical_to_screen{
         kScreenWidth_ / 2, 0,     0, kScreenWidth_ / 2 - 0.5,
@@ -62,25 +85,6 @@ void Camera::create_transformation_matrixes() {
                                  projective_transform;
     transform_to_camera_space_ = camera_rotation_.transpose() *
                                  move_camera;
-}
-
-void Camera::rotate(const Matrix4d& matrix) {
-    camera_rotation_ *= matrix;
-    create_transformation_matrixes();
-}
-
-double Camera::get_min_z_value() const {
-    return kLeftPoint_.z;
-}
-
-void Camera::move(const Point4d& v) {
-    Point4d m = v;
-    focus_point_ += m;
-    create_transformation_matrixes();
-}
-
-double Camera::get_clipping_plane_distance() const {
-    return kClippingPlaneDistance_;
 }
 
 }

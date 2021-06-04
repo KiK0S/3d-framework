@@ -79,6 +79,11 @@ public:
      */
     double get_clipping_plane_distance() const;
 
+    /*!
+        \brief Вернуть матрицу поворота камеры
+     */
+    Matrix4d get_rotation() const;
+
 private:
     /*!
         \brief Метод для инициализации матриц поворота

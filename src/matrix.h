@@ -434,15 +434,10 @@ Vector4d operator * (const Matrix<N, M>& matrix,
                      const Vector4d& vector) {
     static_assert(M == 4);
     Vector4d result(0, 0, 0);
-    std::array<double, M> tmp;
     for (int i = 0; i < N; i++) {
-        tmp[i] = vector.x * matrix(i, 0) + vector.y * matrix(i, 1) +
+        result(i) = vector.x * matrix(i, 0) + vector.y * matrix(i, 1) +
                  vector.z * matrix(i, 2) + vector.w * matrix(i, 3);
     }
-    result.x = tmp[0];
-    result.y = tmp[1];
-    result.z = tmp[2];
-    result.w = tmp[3];
     return result;
 }
 
