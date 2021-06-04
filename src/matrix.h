@@ -436,7 +436,7 @@ Vector4d operator * (const Matrix<N, M>& matrix,
     Vector4d result(0, 0, 0);
     for (int i = 0; i < N; i++) {
         result(i) = vector.x * matrix(i, 0) + vector.y * matrix(i, 1) +
-                 vector.z * matrix(i, 2) + vector.w * matrix(i, 3);
+                    vector.z * matrix(i, 2) + vector.w * matrix(i, 3);
     }
     return result;
 }
