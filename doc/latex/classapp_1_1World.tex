@@ -1,0 +1,139 @@
+\hypertarget{classapp_1_1World}{}\doxysection{app\+::World Class Reference}
+\label{classapp_1_1World}\index{app::World@{app::World}}
+
+
+Класс мира в 3д.  
+
+
+
+
+{\ttfamily \#include $<$world.\+h$>$}
+
+
+
+Collaboration diagram for app\+::World\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=178pt]{classapp_1_1World__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{classapp_1_1World_a889468bea53883f233051ab2737772f0}{Object\+Ptr}} = std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classapp_1_1SurfaceObject}{Surface\+Object}} $>$
+\item 
+using \mbox{\hyperlink{classapp_1_1World_adad20255f3bb1bd43d6751fee389181b}{Object\+Ptr\+List}} = std\+::list$<$ \mbox{\hyperlink{classapp_1_1World_a889468bea53883f233051ab2737772f0}{Object\+Ptr}} $>$
+\item 
+using \mbox{\hyperlink{classapp_1_1World_aa11a8b4ade6f0e1b4faab54b21caef43}{Object\+Ptr\+List\+It}} = Object\+Ptr\+List\+::iterator
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classapp_1_1World_aa11a8b4ade6f0e1b4faab54b21caef43}{Object\+Ptr\+List\+It}} \mbox{\hyperlink{classapp_1_1World_a465b3b32bb3b2b5cd3cd4c910f81c6a5}{add\+\_\+object}} (\mbox{\hyperlink{classapp_1_1World_a889468bea53883f233051ab2737772f0}{Object\+Ptr}} \&\&w)
+\begin{DoxyCompactList}\small\item\em Добавление объекта \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classapp_1_1World_a4b24b424a53aca06fa385145a361fc36}{erase\+\_\+object}} (\mbox{\hyperlink{classapp_1_1World_aa11a8b4ade6f0e1b4faab54b21caef43}{Object\+Ptr\+List\+It}} it)
+\begin{DoxyCompactList}\small\item\em Добавление объекта \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classapp_1_1World_aa11a8b4ade6f0e1b4faab54b21caef43}{Object\+Ptr\+List\+It}} \mbox{\hyperlink{classapp_1_1World_a53f29a93e7a32e8c9c8865896c1b1cb0}{begin}} ()
+\begin{DoxyCompactList}\small\item\em итератор на начало списка объектов \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classapp_1_1World_aa11a8b4ade6f0e1b4faab54b21caef43}{Object\+Ptr\+List\+It}} \mbox{\hyperlink{classapp_1_1World_a0060d80e5eb4f027341da3c8297b55e1}{end}} ()
+\begin{DoxyCompactList}\small\item\em итератор на конец списка объектов \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::list$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classapp_1_1SurfaceObject}{Surface\+Object}} $>$ $>$ \mbox{\hyperlink{classapp_1_1World_af384ad1df588e2baddfe0fd675aff913}{objects\+\_\+}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Класс мира в 3д. 
+
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+May 14 2021 
+\end{DoxyDate}
+\begin{DoxyAuthor}{Author}
+Ki\+K0S 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Member Typedef Documentation}
+\mbox{\Hypertarget{classapp_1_1World_a889468bea53883f233051ab2737772f0}\label{classapp_1_1World_a889468bea53883f233051ab2737772f0}} 
+\index{app::World@{app::World}!ObjectPtr@{ObjectPtr}}
+\index{ObjectPtr@{ObjectPtr}!app::World@{app::World}}
+\doxysubsubsection{\texorpdfstring{ObjectPtr}{ObjectPtr}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{classapp_1_1World_a889468bea53883f233051ab2737772f0}{app\+::\+World\+::\+Object\+Ptr}} =  std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classapp_1_1SurfaceObject}{Surface\+Object}}$>$}
+
+\mbox{\Hypertarget{classapp_1_1World_adad20255f3bb1bd43d6751fee389181b}\label{classapp_1_1World_adad20255f3bb1bd43d6751fee389181b}} 
+\index{app::World@{app::World}!ObjectPtrList@{ObjectPtrList}}
+\index{ObjectPtrList@{ObjectPtrList}!app::World@{app::World}}
+\doxysubsubsection{\texorpdfstring{ObjectPtrList}{ObjectPtrList}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{classapp_1_1World_adad20255f3bb1bd43d6751fee389181b}{app\+::\+World\+::\+Object\+Ptr\+List}} =  std\+::list$<$\mbox{\hyperlink{classapp_1_1World_a889468bea53883f233051ab2737772f0}{Object\+Ptr}}$>$}
+
+\mbox{\Hypertarget{classapp_1_1World_aa11a8b4ade6f0e1b4faab54b21caef43}\label{classapp_1_1World_aa11a8b4ade6f0e1b4faab54b21caef43}} 
+\index{app::World@{app::World}!ObjectPtrListIt@{ObjectPtrListIt}}
+\index{ObjectPtrListIt@{ObjectPtrListIt}!app::World@{app::World}}
+\doxysubsubsection{\texorpdfstring{ObjectPtrListIt}{ObjectPtrListIt}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{classapp_1_1World_aa11a8b4ade6f0e1b4faab54b21caef43}{app\+::\+World\+::\+Object\+Ptr\+List\+It}} =  Object\+Ptr\+List\+::iterator}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classapp_1_1World_a465b3b32bb3b2b5cd3cd4c910f81c6a5}\label{classapp_1_1World_a465b3b32bb3b2b5cd3cd4c910f81c6a5}} 
+\index{app::World@{app::World}!add\_object@{add\_object}}
+\index{add\_object@{add\_object}!app::World@{app::World}}
+\doxysubsubsection{\texorpdfstring{add\_object()}{add\_object()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classapp_1_1World_aa11a8b4ade6f0e1b4faab54b21caef43}{World\+::\+Object\+Ptr\+List\+It}} app\+::\+World\+::add\+\_\+object (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classapp_1_1World_a889468bea53883f233051ab2737772f0}{Object\+Ptr}} \&\&}]{w }\end{DoxyParamCaption})}
+
+
+
+Добавление объекта 
+
+\mbox{\Hypertarget{classapp_1_1World_a53f29a93e7a32e8c9c8865896c1b1cb0}\label{classapp_1_1World_a53f29a93e7a32e8c9c8865896c1b1cb0}} 
+\index{app::World@{app::World}!begin@{begin}}
+\index{begin@{begin}!app::World@{app::World}}
+\doxysubsubsection{\texorpdfstring{begin()}{begin()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classapp_1_1World_aa11a8b4ade6f0e1b4faab54b21caef43}{World\+::\+Object\+Ptr\+List\+It}} app\+::\+World\+::begin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+итератор на начало списка объектов 
+
+\mbox{\Hypertarget{classapp_1_1World_a0060d80e5eb4f027341da3c8297b55e1}\label{classapp_1_1World_a0060d80e5eb4f027341da3c8297b55e1}} 
+\index{app::World@{app::World}!end@{end}}
+\index{end@{end}!app::World@{app::World}}
+\doxysubsubsection{\texorpdfstring{end()}{end()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classapp_1_1World_aa11a8b4ade6f0e1b4faab54b21caef43}{World\+::\+Object\+Ptr\+List\+It}} app\+::\+World\+::end (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+итератор на конец списка объектов 
+
+\mbox{\Hypertarget{classapp_1_1World_a4b24b424a53aca06fa385145a361fc36}\label{classapp_1_1World_a4b24b424a53aca06fa385145a361fc36}} 
+\index{app::World@{app::World}!erase\_object@{erase\_object}}
+\index{erase\_object@{erase\_object}!app::World@{app::World}}
+\doxysubsubsection{\texorpdfstring{erase\_object()}{erase\_object()}}
+{\footnotesize\ttfamily void app\+::\+World\+::erase\+\_\+object (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classapp_1_1World_aa11a8b4ade6f0e1b4faab54b21caef43}{Object\+Ptr\+List\+It}}}]{it }\end{DoxyParamCaption})}
+
+
+
+Добавление объекта 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classapp_1_1World_af384ad1df588e2baddfe0fd675aff913}\label{classapp_1_1World_af384ad1df588e2baddfe0fd675aff913}} 
+\index{app::World@{app::World}!objects\_@{objects\_}}
+\index{objects\_@{objects\_}!app::World@{app::World}}
+\doxysubsubsection{\texorpdfstring{objects\_}{objects\_}}
+{\footnotesize\ttfamily std\+::list$<$std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classapp_1_1SurfaceObject}{Surface\+Object}}$>$ $>$ app\+::\+World\+::objects\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{world_8h}{world.\+h}}\item 
+src/\mbox{\hyperlink{world_8cpp}{world.\+cpp}}\end{DoxyCompactItemize}

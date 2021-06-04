@@ -1,0 +1,4 @@
+<map id="app::Screen::get_width" name="app::Screen::get_width">
+<area shape="rect" id="node1" title="возвращает ширину экрана" alt="" coords="5,13,176,39"/>
+<area shape="rect" id="node2" href="$classapp_1_1PixelScreen.html#aab0c1e1ac35858acca3dcad94ebe46e5" title="Получение ширины экрана" alt="" coords="224,5,383,47"/>
+</map>

@@ -1,0 +1,8 @@
+<map id="app::Application::rotate_camera" name="app::Application::rotate_camera">
+<area shape="rect" id="node1" title="Поворот камеры вокруг оси" alt="" coords="700,49,875,90"/>
+<area shape="rect" id="node2" href="$classapp_1_1Application.html#ab090fe1a0d1dd58ee56133567a490aa4" title="Поворот камеры вокруг оси oX." alt="" coords="485,5,652,32"/>
+<area shape="rect" id="node5" href="$classapp_1_1Application.html#aa26ce2aee7ba4246588cae5bb2147ba3" title="Поворот камеры вокруг оси oZ." alt="" coords="491,56,647,83"/>
+<area shape="rect" id="node6" href="$classapp_1_1Application.html#a140af58047310c971a437c104be20405" title="Поворот камеры вокруг оси oY." alt="" coords="487,107,650,133"/>
+<area shape="rect" id="node3" href="$classapp_1_1Application.html#ab131ef32044a6a074d2385c872b70443" title="Создание хэндлеров" alt="" coords="261,49,437,90"/>
+<area shape="rect" id="node4" href="$classapp_1_1Application.html#a3c480be05f51b91e648b2f6533a32f1b" title="Конструктор приложения." alt="" coords="5,56,213,83"/>
+</map>

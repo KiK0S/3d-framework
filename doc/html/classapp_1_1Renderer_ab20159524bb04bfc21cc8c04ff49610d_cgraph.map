@@ -1,0 +1,9 @@
+<map id="app::Renderer::draw_frame" name="app::Renderer::draw_frame">
+<area shape="rect" id="node1" title="Производит отрисовку кадра" alt="" coords="5,57,159,98"/>
+<area shape="rect" id="node2" href="$classapp_1_1Screen.html#ad29a33b7bb3387a62909b8f467e13a39" title="очистка" alt="" coords="223,5,362,32"/>
+<area shape="rect" id="node4" href="$classapp_1_1Renderer.html#a5284834ff17079185f0a28c96aba8735" title=" " alt="" coords="216,57,369,98"/>
+<area shape="rect" id="node5" href="$classapp_1_1Screen.html#a2cf71658c1908b0ca505cf2d69fbe2a2" title="выбор всех пикслей" alt="" coords="207,122,379,163"/>
+<area shape="rect" id="node3" href="$classapp_1_1PixelScreen.html#a32016edd415bb4b0875b555a236a972b" title="Очистка экрана" alt="" coords="427,5,596,32"/>
+<area shape="rect" id="node6" href="$classapp_1_1PixelScreen.html#a2d80e1ceab7feb6a99a1853adb9defc6" title="Получение высоты экрана" alt="" coords="432,89,591,130"/>
+<area shape="rect" id="node7" href="$classapp_1_1PixelScreen.html#aab0c1e1ac35858acca3dcad94ebe46e5" title="Получение ширины экрана" alt="" coords="432,154,591,195"/>
+</map>

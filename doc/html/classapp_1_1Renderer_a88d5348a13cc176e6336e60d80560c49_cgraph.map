@@ -1,0 +1,15 @@
+<map id="app::Renderer::draw_line" name="app::Renderer::draw_line">
+<area shape="rect" id="node1" title=" " alt="" coords="5,137,189,163"/>
+<area shape="rect" id="node2" href="$classapp_1_1Renderer.html#aec416dfcf4ae9b0d5bf4b98d5f6b4de2" title=" " alt="" coords="248,5,391,47"/>
+<area shape="rect" id="node4" href="$classapp_1_1Renderer.html#aab941493cf28529ea73d2c1c0dc6abdd" title=" " alt="" coords="248,71,391,112"/>
+<area shape="rect" id="node5" href="$classapp_1_1Screen.html#ac7fdfe261cc21ca9e057e50ca82b553d" title="возвращает ширину экрана" alt="" coords="449,191,620,218"/>
+<area shape="rect" id="node7" href="$classapp_1_1Renderer.html#a7353b83e67639e28e87b657fd4aedd76" title=" " alt="" coords="241,137,397,163"/>
+<area shape="rect" id="node11" href="$classapp_1_1Screen.html#afd0dcbcf76eff3320b40dadcf3095120" title="отобразить пиксель" alt="" coords="237,270,401,297"/>
+<area shape="rect" id="node3" href="$classapp_1_1Matrix.html#a29df7f197e427b66c11d5ab3519b1d83" title="Решение системы уравнений Ax = point." alt="" coords="465,5,604,47"/>
+<area shape="rect" id="node6" href="$classapp_1_1PixelScreen.html#aab0c1e1ac35858acca3dcad94ebe46e5" title="Получение ширины экрана" alt="" coords="677,235,836,276"/>
+<area shape="rect" id="node8" href="$classapp_1_1Camera.html#a9b981680099b22abb374aa5a03a435b9" title="Получение z&#45;value точки" alt="" coords="461,125,609,167"/>
+<area shape="rect" id="node10" href="$classapp_1_1Point4d.html#a685768ec2e6ed6486970b10386ad3d98" title="Нормализует координаты точки &#45; получает соответствующую трехмерную с w = 1." alt="" coords="893,103,1069,130"/>
+<area shape="rect" id="node9" href="$classapp_1_1Camera.html#ac174af1573b51a9b180a3a2d9727277c" title="Получение координат на в пространстве (экран, z&#45;value)" alt="" coords="668,125,845,167"/>
+<area shape="rect" id="node12" href="$classapp_1_1PixelScreen.html#a2d80e1ceab7feb6a99a1853adb9defc6" title="Получение высоты экрана" alt="" coords="677,325,836,367"/>
+<area shape="rect" id="node13" href="$classapp_1_1Screen.html#aae932846ff64a506659699a8334870f5" title=" " alt="" coords="455,293,614,335"/>
+</map>

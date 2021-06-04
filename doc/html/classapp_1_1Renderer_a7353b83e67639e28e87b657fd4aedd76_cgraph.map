@@ -1,0 +1,6 @@
+<map id="app::Renderer::get_z" name="app::Renderer::get_z">
+<area shape="rect" id="node1" title=" " alt="" coords="5,42,161,69"/>
+<area shape="rect" id="node2" href="$classapp_1_1Camera.html#a9b981680099b22abb374aa5a03a435b9" title="Получение z&#45;value точки" alt="" coords="209,5,357,47"/>
+<area shape="rect" id="node4" href="$classapp_1_1Point4d.html#a685768ec2e6ed6486970b10386ad3d98" title="Нормализует координаты точки &#45; получает соответствующую трехмерную с w = 1." alt="" coords="631,42,807,69"/>
+<area shape="rect" id="node3" href="$classapp_1_1Camera.html#ac174af1573b51a9b180a3a2d9727277c" title="Получение координат на в пространстве (экран, z&#45;value)" alt="" coords="405,5,583,47"/>
+</map>

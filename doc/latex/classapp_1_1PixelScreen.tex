@@ -1,0 +1,196 @@
+\hypertarget{classapp_1_1PixelScreen}{}\doxysection{app\+::Pixel\+Screen$<$ T $>$ Class Template Reference}
+\label{classapp_1_1PixelScreen}\index{app::PixelScreen$<$ T $>$@{app::PixelScreen$<$ T $>$}}
+
+
+Класс контейнера данных для пиксельного экрана.  
+
+
+
+
+{\ttfamily \#include $<$pixel\+\_\+screen.\+h$>$}
+
+
+
+Collaboration diagram for app\+::Pixel\+Screen$<$ T $>$\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=205pt]{classapp_1_1PixelScreen__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classapp_1_1PixelScreen_a34f62c96c895abe4ea49e8141add0d57}{Pixel\+Screen}} (size\+\_\+t width, size\+\_\+t height, T default\+\_\+value=T())
+\begin{DoxyCompactList}\small\item\em Создание контейнера для данных на экране \end{DoxyCompactList}\item 
+T \& \mbox{\hyperlink{classapp_1_1PixelScreen_a4f4d9e8a6b1148a614521183fc1fbf1e}{operator()}} (size\+\_\+t row, size\+\_\+t column)
+\begin{DoxyCompactList}\small\item\em Получение данных в заданном пикселе \end{DoxyCompactList}\item 
+const T \& \mbox{\hyperlink{classapp_1_1PixelScreen_a2767a1f0e4d2729139db1502b18bfe18}{operator()}} (size\+\_\+t row, size\+\_\+t column) const
+\begin{DoxyCompactList}\small\item\em Получение данных в заданном пикселе \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classapp_1_1PixelScreen_a32016edd415bb4b0875b555a236a972b}{clear}} ()
+\begin{DoxyCompactList}\small\item\em Очистка экрана \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{classapp_1_1PixelScreen_aab0c1e1ac35858acca3dcad94ebe46e5}{get\+\_\+width}} () const
+\begin{DoxyCompactList}\small\item\em Получение ширины экрана \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{classapp_1_1PixelScreen_a2d80e1ceab7feb6a99a1853adb9defc6}{get\+\_\+height}} () const
+\begin{DoxyCompactList}\small\item\em Получение высоты экрана \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+size\+\_\+t \mbox{\hyperlink{classapp_1_1PixelScreen_a93cab988d97719178d9a7895112920b8}{width\+\_\+}}
+\item 
+size\+\_\+t \mbox{\hyperlink{classapp_1_1PixelScreen_a5899ce4765d5c5b9f21b32d4d40d451e}{height\+\_\+}}
+\item 
+T \mbox{\hyperlink{classapp_1_1PixelScreen_aa3d28a7323b40c461da7a05f81c907a5}{default\+\_\+value\+\_\+}}
+\item 
+std\+::vector$<$ T $>$ \mbox{\hyperlink{classapp_1_1PixelScreen_adea3074ef6a821555d80ee8e0c63f085}{data\+\_\+}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename T$>$\newline
+class app\+::\+Pixel\+Screen$<$ T $>$}
+
+Класс контейнера данных для пиксельного экрана. 
+
+\begin{DoxyAuthor}{Author}
+Ki\+K0S 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+May 14 2021 
+\end{DoxyDate}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classapp_1_1PixelScreen_a34f62c96c895abe4ea49e8141add0d57}\label{classapp_1_1PixelScreen_a34f62c96c895abe4ea49e8141add0d57}} 
+\index{app::PixelScreen$<$ T $>$@{app::PixelScreen$<$ T $>$}!PixelScreen@{PixelScreen}}
+\index{PixelScreen@{PixelScreen}!app::PixelScreen$<$ T $>$@{app::PixelScreen$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{PixelScreen()}{PixelScreen()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{classapp_1_1PixelScreen}{app\+::\+Pixel\+Screen}}$<$ T $>$\+::\mbox{\hyperlink{classapp_1_1PixelScreen}{Pixel\+Screen}} (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{width,  }\item[{size\+\_\+t}]{height,  }\item[{T}]{default\+\_\+value = {\ttfamily T()} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Создание контейнера для данных на экране 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classapp_1_1PixelScreen_a32016edd415bb4b0875b555a236a972b}\label{classapp_1_1PixelScreen_a32016edd415bb4b0875b555a236a972b}} 
+\index{app::PixelScreen$<$ T $>$@{app::PixelScreen$<$ T $>$}!clear@{clear}}
+\index{clear@{clear}!app::PixelScreen$<$ T $>$@{app::PixelScreen$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{classapp_1_1PixelScreen}{app\+::\+Pixel\+Screen}}$<$ T $>$\+::clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Очистка экрана 
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1PixelScreen_a32016edd415bb4b0875b555a236a972b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classapp_1_1PixelScreen_a2d80e1ceab7feb6a99a1853adb9defc6}\label{classapp_1_1PixelScreen_a2d80e1ceab7feb6a99a1853adb9defc6}} 
+\index{app::PixelScreen$<$ T $>$@{app::PixelScreen$<$ T $>$}!get\_height@{get\_height}}
+\index{get\_height@{get\_height}!app::PixelScreen$<$ T $>$@{app::PixelScreen$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{get\_height()}{get\_height()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+size\+\_\+t \mbox{\hyperlink{classapp_1_1PixelScreen}{app\+::\+Pixel\+Screen}}$<$ T $>$\+::get\+\_\+height (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Получение высоты экрана 
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1PixelScreen_a2d80e1ceab7feb6a99a1853adb9defc6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classapp_1_1PixelScreen_aab0c1e1ac35858acca3dcad94ebe46e5}\label{classapp_1_1PixelScreen_aab0c1e1ac35858acca3dcad94ebe46e5}} 
+\index{app::PixelScreen$<$ T $>$@{app::PixelScreen$<$ T $>$}!get\_width@{get\_width}}
+\index{get\_width@{get\_width}!app::PixelScreen$<$ T $>$@{app::PixelScreen$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{get\_width()}{get\_width()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+size\+\_\+t \mbox{\hyperlink{classapp_1_1PixelScreen}{app\+::\+Pixel\+Screen}}$<$ T $>$\+::get\+\_\+width (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Получение ширины экрана 
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1PixelScreen_aab0c1e1ac35858acca3dcad94ebe46e5_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classapp_1_1PixelScreen_a4f4d9e8a6b1148a614521183fc1fbf1e}\label{classapp_1_1PixelScreen_a4f4d9e8a6b1148a614521183fc1fbf1e}} 
+\index{app::PixelScreen$<$ T $>$@{app::PixelScreen$<$ T $>$}!operator()@{operator()}}
+\index{operator()@{operator()}!app::PixelScreen$<$ T $>$@{app::PixelScreen$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator()()}{operator()()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T\& \mbox{\hyperlink{classapp_1_1PixelScreen}{app\+::\+Pixel\+Screen}}$<$ T $>$\+::operator() (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{row,  }\item[{size\+\_\+t}]{column }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Получение данных в заданном пикселе 
+
+\mbox{\Hypertarget{classapp_1_1PixelScreen_a2767a1f0e4d2729139db1502b18bfe18}\label{classapp_1_1PixelScreen_a2767a1f0e4d2729139db1502b18bfe18}} 
+\index{app::PixelScreen$<$ T $>$@{app::PixelScreen$<$ T $>$}!operator()@{operator()}}
+\index{operator()@{operator()}!app::PixelScreen$<$ T $>$@{app::PixelScreen$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator()()}{operator()()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+const T\& \mbox{\hyperlink{classapp_1_1PixelScreen}{app\+::\+Pixel\+Screen}}$<$ T $>$\+::operator() (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{row,  }\item[{size\+\_\+t}]{column }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Получение данных в заданном пикселе 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classapp_1_1PixelScreen_adea3074ef6a821555d80ee8e0c63f085}\label{classapp_1_1PixelScreen_adea3074ef6a821555d80ee8e0c63f085}} 
+\index{app::PixelScreen$<$ T $>$@{app::PixelScreen$<$ T $>$}!data\_@{data\_}}
+\index{data\_@{data\_}!app::PixelScreen$<$ T $>$@{app::PixelScreen$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{data\_}{data\_}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+std\+::vector$<$T$>$ \mbox{\hyperlink{classapp_1_1PixelScreen}{app\+::\+Pixel\+Screen}}$<$ T $>$\+::data\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classapp_1_1PixelScreen_aa3d28a7323b40c461da7a05f81c907a5}\label{classapp_1_1PixelScreen_aa3d28a7323b40c461da7a05f81c907a5}} 
+\index{app::PixelScreen$<$ T $>$@{app::PixelScreen$<$ T $>$}!default\_value\_@{default\_value\_}}
+\index{default\_value\_@{default\_value\_}!app::PixelScreen$<$ T $>$@{app::PixelScreen$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{default\_value\_}{default\_value\_}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T \mbox{\hyperlink{classapp_1_1PixelScreen}{app\+::\+Pixel\+Screen}}$<$ T $>$\+::default\+\_\+value\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classapp_1_1PixelScreen_a5899ce4765d5c5b9f21b32d4d40d451e}\label{classapp_1_1PixelScreen_a5899ce4765d5c5b9f21b32d4d40d451e}} 
+\index{app::PixelScreen$<$ T $>$@{app::PixelScreen$<$ T $>$}!height\_@{height\_}}
+\index{height\_@{height\_}!app::PixelScreen$<$ T $>$@{app::PixelScreen$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{height\_}{height\_}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+size\+\_\+t \mbox{\hyperlink{classapp_1_1PixelScreen}{app\+::\+Pixel\+Screen}}$<$ T $>$\+::height\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classapp_1_1PixelScreen_a93cab988d97719178d9a7895112920b8}\label{classapp_1_1PixelScreen_a93cab988d97719178d9a7895112920b8}} 
+\index{app::PixelScreen$<$ T $>$@{app::PixelScreen$<$ T $>$}!width\_@{width\_}}
+\index{width\_@{width\_}!app::PixelScreen$<$ T $>$@{app::PixelScreen$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{width\_}{width\_}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+size\+\_\+t \mbox{\hyperlink{classapp_1_1PixelScreen}{app\+::\+Pixel\+Screen}}$<$ T $>$\+::width\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{pixel__screen_8h}{pixel\+\_\+screen.\+h}}\end{DoxyCompactItemize}

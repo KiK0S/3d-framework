@@ -1,0 +1,6 @@
+<map id="app::Application::move_world" name="app::Application::move_world">
+<area shape="rect" id="node1" title="Передвинуть все объекты в мире на какой&#45;то вектор" alt="" coords="5,64,177,105"/>
+<area shape="rect" id="node2" href="$classapp_1_1Matrix.html#a8b7985e643a4506f762f1fcff703213e" title="Получение матрицы для сдвига на вектор в четырехмерном пространстве" alt="" coords="225,5,421,47"/>
+<area shape="rect" id="node3" href="$classapp_1_1Camera.html#a8e6cb8ff2c749684b60fead73acfb4d5" title="Вернуть матрицу поворота камеры" alt="" coords="227,71,419,98"/>
+<area shape="rect" id="node4" href="$classapp_1_1Matrix.html#afb0e32ababc5d2b30b3c0a3ed98ba557" title="Получение транспонированной матрицы" alt="" coords="239,122,407,149"/>
+</map>

@@ -1,0 +1,6 @@
+<map id="app::Renderer::move_triangle_to_another_basis" name="app::Renderer::move_triangle_to_another_basis">
+<area shape="rect" id="node1" title=" " alt="" coords="5,64,203,105"/>
+<area shape="rect" id="node2" href="$classapp_1_1Triangle4d.html#a5bf0ace6465a01ad8630bae2bf117e2b" title="Возвращает цвет треугольника" alt="" coords="269,5,420,47"/>
+<area shape="rect" id="node3" href="$classapp_1_1Point4d.html#a685768ec2e6ed6486970b10386ad3d98" title="Нормализует координаты точки &#45; получает соответствующую трехмерную с w = 1." alt="" coords="257,71,433,98"/>
+<area shape="rect" id="node4" href="$classapp_1_1Camera.html#aa7855dab0288e4376c8ea48c543f9fdd" title="Перевод точки в координатную систему камеры" alt="" coords="251,123,439,164"/>
+</map>

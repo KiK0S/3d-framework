@@ -1,0 +1,4 @@
+<map id="app::Application::is_open" name="app::Application::is_open">
+<area shape="rect" id="node1" title="Проверка, что графическо окно открыто" alt="" coords="209,5,395,32"/>
+<area shape="rect" id="node2" href="$classapp_1_1Application.html#af9098183238622421f4e18930c6dd8ec" title="Цикл приложения" alt="" coords="5,5,161,32"/>
+</map>

@@ -1,0 +1,42 @@
+Фреймворк для отрисовки 3д-\/объектов
+
+Версия v0.\+2 Умеет на текущий момент\+: Нарисовать произвольный объект, покрутить и подвигать камеру с помощью клавиатуры.
+
+Тестовое приложение поворачивает камеру по W\+A\+SD + QE, сдвиг камеры по стрелочкам + ZX, объекты двигаются по I\+J\+KL + UO
+
+Пример использования\+: test.\+cpp
+
+ 
+
+Рекомендую дополнительно сделать checkout на какой-\/нибудь тег из доступных, там точно должно что-\/то работать. \begin{DoxyVerb}            Инструкция по запуску на Linux:
+            apt-get -y install \
+                        cxxtest \
+                        libsfml-dev
+             git clone --recurse-submodules git@github.com:kik0s/3d-framework.git
+             cd 3d-framework
+             mkdir build && cd build
+             cmake ..
+             make
+             ./3d-drawer
+\end{DoxyVerb}
+
+
+Пререквизиты\+: пакеты из списка\+:
+
+
+\begin{DoxyItemize}
+\item freetype 
+\item x11 
+\item xrandr 
+\item udev 
+\item opengl 
+\item flac 
+\item ogg 
+\item vorbis 
+\item vorbisenc 
+\item vorbisfile 
+\item openal 
+\item pthread 
+\end{DoxyItemize}
+
+Если что-\/то не работает, есть смысл свериться с Dockerfile. 

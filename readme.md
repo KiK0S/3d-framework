@@ -12,6 +12,7 @@ test.cpp
 ![Output sample](https://github.com/kik0s/3d-framework/raw/dima-review/cube.gif)
 ![Output sample](https://github.com/kik0s/3d-framework/raw/dima-review/cubes.gif)
 
+Рекомендую дополнительно сделать checkout на какой-нибудь тег из доступных, там точно должно что-то работать.
 
                 Инструкция по запуску на Linux:
                 apt-get -y install \

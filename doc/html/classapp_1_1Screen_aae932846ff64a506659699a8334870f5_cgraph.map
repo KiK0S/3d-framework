@@ -1,0 +1,5 @@
+<map id="app::Screen::validate_pixel" name="app::Screen::validate_pixel">
+<area shape="rect" id="node1" title=" " alt="" coords="5,39,164,80"/>
+<area shape="rect" id="node2" href="$classapp_1_1PixelScreen.html#a2d80e1ceab7feb6a99a1853adb9defc6" title="Получение высоты экрана" alt="" coords="212,5,371,47"/>
+<area shape="rect" id="node3" href="$classapp_1_1PixelScreen.html#aab0c1e1ac35858acca3dcad94ebe46e5" title="Получение ширины экрана" alt="" coords="212,71,371,112"/>
+</map>

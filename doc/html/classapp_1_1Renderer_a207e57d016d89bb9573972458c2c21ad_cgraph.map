@@ -1,0 +1,10 @@
+<map id="app::Renderer::clip_triangle_camera_space" name="app::Renderer::clip_triangle_camera_space">
+<area shape="rect" id="node1" title=" " alt="" coords="5,123,185,164"/>
+<area shape="rect" id="node2" href="$classapp_1_1Renderer.html#a23fa3d21af407664342cd318472d87e5" title=" " alt="" coords="251,5,413,47"/>
+<area shape="rect" id="node3" href="$classapp_1_1Triangle4d.html#a5bf0ace6465a01ad8630bae2bf117e2b" title="Возвращает цвет треугольника" alt="" coords="497,64,648,105"/>
+<area shape="rect" id="node4" href="$classapp_1_1Renderer.html#a1ee428e3d85cd82b75b9ac836d3c98a1" title=" " alt="" coords="259,123,405,164"/>
+<area shape="rect" id="node5" href="$classapp_1_1Camera.html#a16fccbe4d8d93142853b64d8cae85037" title="Расстояние до ближайшей плоскости обзора" alt="" coords="236,188,428,229"/>
+<area shape="rect" id="node6" href="$classapp_1_1Renderer.html#a7d5e6460eeebf8d879a30511e52c014f" title=" " alt="" coords="233,253,431,295"/>
+<area shape="rect" id="node7" href="$classapp_1_1Point4d.html#a685768ec2e6ed6486970b10386ad3d98" title="Нормализует координаты точки &#45; получает соответствующую трехмерную с w = 1." alt="" coords="485,231,661,258"/>
+<area shape="rect" id="node8" href="$classapp_1_1Camera.html#aa7855dab0288e4376c8ea48c543f9fdd" title="Перевод точки в координатную систему камеры" alt="" coords="479,283,667,324"/>
+</map>

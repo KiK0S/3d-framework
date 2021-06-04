@@ -1,0 +1,5 @@
+<map id="app::Point4d::resize" name="app::Point4d::resize">
+<area shape="rect" id="node1" title="Меняет длину вектора на d." alt="" coords="5,31,156,57"/>
+<area shape="rect" id="node2" href="$classapp_1_1Point4d.html#a80f58693a026e3f9020c85bdd641c785" title="Возвращает расстояние от точки (0, 0) до x." alt="" coords="216,5,368,32"/>
+<area shape="rect" id="node3" href="$classapp_1_1Point4d.html#a685768ec2e6ed6486970b10386ad3d98" title="Нормализует координаты точки &#45; получает соответствующую трехмерную с w = 1." alt="" coords="204,56,380,83"/>
+</map>

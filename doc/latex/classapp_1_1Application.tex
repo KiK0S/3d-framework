@@ -1,0 +1,599 @@
+\hypertarget{classapp_1_1Application}{}\doxysection{app\+::Application Class Reference}
+\label{classapp_1_1Application}\index{app::Application@{app::Application}}
+
+
+Класс инстанса графического приложения.  
+
+
+
+
+{\ttfamily \#include $<$application.\+h$>$}
+
+
+
+Collaboration diagram for app\+::Application\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classapp_1_1Application__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classapp_1_1Application_a3c480be05f51b91e648b2f6533a32f1b}{Application}} ()
+\begin{DoxyCompactList}\small\item\em Конструктор приложения. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classapp_1_1Application_a6de383313a844c5f3d6a10e7d6cbaa00}{update\+\_\+and\+\_\+draw\+\_\+frame}} ()
+\begin{DoxyCompactList}\small\item\em Обновление кадра в приложении. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classapp_1_1Application_a376ff944b9ff6995d0472c58c73faece}{move\+\_\+camera}} (const \mbox{\hyperlink{namespaceapp_a315a30c3b1ec772d2da7b1032cced529}{Vector4d}} \&v)
+\begin{DoxyCompactList}\small\item\em Сдвиг фокусной позиции камеры \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classapp_1_1Application_adadc05c4dc47262d102ab8a051a36052}{move\+\_\+world}} (const \mbox{\hyperlink{namespaceapp_a315a30c3b1ec772d2da7b1032cced529}{Vector4d}} \&v)
+\begin{DoxyCompactList}\small\item\em Передвинуть все объекты в мире на какой-\/то вектор \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classapp_1_1Application_aa26ce2aee7ba4246588cae5bb2147ba3}{roll}} (double angle)
+\begin{DoxyCompactList}\small\item\em Поворот камеры вокруг оси oZ. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classapp_1_1Application_ab090fe1a0d1dd58ee56133567a490aa4}{pitch}} (double angle)
+\begin{DoxyCompactList}\small\item\em Поворот камеры вокруг оси oX. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classapp_1_1Application_a140af58047310c971a437c104be20405}{yaw}} (double angle)
+\begin{DoxyCompactList}\small\item\em Поворот камеры вокруг оси oY. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classapp_1_1Application_a9709a6a43e1d5bd76d91029346e397bd}{poll\+\_\+event}} (sf\+::\+Event $\ast$event)
+\begin{DoxyCompactList}\small\item\em поллинг событий \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{classapp_1_1World}{World}} \& \mbox{\hyperlink{classapp_1_1Application_a73c5b3f37b9274774882f1caadf5d5a0}{get\+\_\+world}} () const
+\begin{DoxyCompactList}\small\item\em Возвращает мир \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classapp_1_1World}{World}} \& \mbox{\hyperlink{classapp_1_1Application_a1ad62bd521269dfb0952f05a63e53b6f}{get\+\_\+world}} ()
+\begin{DoxyCompactList}\small\item\em Возвращает мир \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classapp_1_1Application_af9098183238622421f4e18930c6dd8ec}{run}} ()
+\begin{DoxyCompactList}\small\item\em Цикл приложения \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{classapp_1_1Application_ae3872b81da22cf4953e6e747383e9f3b}{E\+Axes}} \{ \mbox{\hyperlink{classapp_1_1Application_ae3872b81da22cf4953e6e747383e9f3bafd081fa9e91b3c2d2374755cd26de7b8}{E\+Axes\+::\+A\+X\+E\+\_\+X}} = 0, 
+\mbox{\hyperlink{classapp_1_1Application_ae3872b81da22cf4953e6e747383e9f3babadc9651d398659296be1107acee9336}{E\+Axes\+::\+A\+X\+E\+\_\+Y}} = 1, 
+\mbox{\hyperlink{classapp_1_1Application_ae3872b81da22cf4953e6e747383e9f3ba8d3d07a0bf6f24bc80b743ae0f4f4a66}{E\+Axes\+::\+A\+X\+E\+\_\+Z}} = 2
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classapp_1_1Application_a08e90b136004001b8249f00f8b21c081}{is\+\_\+open}} () const
+\begin{DoxyCompactList}\small\item\em Проверка, что графическо окно открыто \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classapp_1_1Application_a4e26297885b2eea335d5bfa827297607}{close}} ()
+\begin{DoxyCompactList}\small\item\em Закрыть приложение \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classapp_1_1Application_ae58b8b1b12acfa22a82607c6f3c967cd}{draw\+\_\+object}} (const std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classapp_1_1SurfaceObject}{Surface\+Object}} $>$ \&object)
+\begin{DoxyCompactList}\small\item\em Рисование объекта \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classapp_1_1Application_a4a6b8d2e11203830c1a8267e458d50b7}{rotate\+\_\+camera}} (double angle, \mbox{\hyperlink{classapp_1_1Application_ae3872b81da22cf4953e6e747383e9f3b}{E\+Axes}} fixed\+\_\+coord)
+\begin{DoxyCompactList}\small\item\em Поворот камеры вокруг оси \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classapp_1_1Application_ab131ef32044a6a074d2385c872b70443}{create\+\_\+keyboard\+\_\+handlers}} ()
+\begin{DoxyCompactList}\small\item\em Создание хэндлеров \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static int \mbox{\hyperlink{classapp_1_1Application_aba537b13b5e78b0748df0db7223d63cf}{convert\+\_\+axis\+\_\+to\+\_\+int}} (const \mbox{\hyperlink{classapp_1_1Application_ae3872b81da22cf4953e6e747383e9f3b}{E\+Axes}} \&axe)
+\begin{DoxyCompactList}\small\item\em Перевод enum-\/а осей в числовое значение \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classapp_1_1Renderer}{Renderer}} \mbox{\hyperlink{classapp_1_1Application_a9869f6737a2b1abe70878e8d5f19d650}{renderer\+\_\+}}
+\item 
+\mbox{\hyperlink{classapp_1_1World}{World}} \mbox{\hyperlink{classapp_1_1Application_a7ddf948bcb1c494c364004eabb18b344}{world\+\_\+}}
+\item 
+\mbox{\hyperlink{classapp_1_1Camera}{Camera}} \mbox{\hyperlink{classapp_1_1Application_ada51a9a5e66f5ff709ed4555029bb6e7}{camera\+\_\+}}
+\item 
+sf\+::\+Render\+Window \mbox{\hyperlink{classapp_1_1Application_a192887b38ceeb9cb871b6562ba906887}{window\+\_\+}}
+\item 
+std\+::vector$<$ std\+::pair$<$ sf\+::\+Keyboard\+::\+Key, std\+::function$<$ void()$>$ $>$ $>$ \mbox{\hyperlink{classapp_1_1Application_a41bf5ea0c570a4e1bb0d27b4bca7357d}{keyboard\+\_\+handlers\+\_\+}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+constexpr static size\+\_\+t \mbox{\hyperlink{classapp_1_1Application_a5faa923ee73e07aa9b4991258c29caa3}{k\+Screen\+Height\+\_\+}} = 1000
+\item 
+constexpr static size\+\_\+t \mbox{\hyperlink{classapp_1_1Application_af3a347d57a2f803cf6fae795be3515d5}{k\+Screen\+Width\+\_\+}} = 1000
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Класс инстанса графического приложения. 
+
+\begin{DoxyAuthor}{Author}
+Ki\+K0S 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+May 14 2021
+\end{DoxyDate}
+Класс создает окно размера 1000x1000, в котором будут отображаться объекты. После вызова метода \mbox{\hyperlink{classapp_1_1Application_af9098183238622421f4e18930c6dd8ec}{run()}} приложение переходит в интерактивный режим и реагирует на нажатие на клавиши. Для обработки кадра пользоваться \mbox{\hyperlink{classapp_1_1Application_a6de383313a844c5f3d6a10e7d6cbaa00}{update\+\_\+and\+\_\+draw\+\_\+frame()}} 
+
+\doxysubsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{classapp_1_1Application_ae3872b81da22cf4953e6e747383e9f3b}\label{classapp_1_1Application_ae3872b81da22cf4953e6e747383e9f3b}} 
+\index{app::Application@{app::Application}!EAxes@{EAxes}}
+\index{EAxes@{EAxes}!app::Application@{app::Application}}
+\doxysubsubsection{\texorpdfstring{EAxes}{EAxes}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{classapp_1_1Application_ae3872b81da22cf4953e6e747383e9f3b}{app\+::\+Application\+::\+E\+Axes}}\hspace{0.3cm}{\ttfamily [strong]}, {\ttfamily [private]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AXE\_X@{AXE\_X}!app::Application@{app::Application}}\index{app::Application@{app::Application}!AXE\_X@{AXE\_X}}}\mbox{\Hypertarget{classapp_1_1Application_ae3872b81da22cf4953e6e747383e9f3bafd081fa9e91b3c2d2374755cd26de7b8}\label{classapp_1_1Application_ae3872b81da22cf4953e6e747383e9f3bafd081fa9e91b3c2d2374755cd26de7b8}} 
+A\+X\+E\+\_\+X&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AXE\_Y@{AXE\_Y}!app::Application@{app::Application}}\index{app::Application@{app::Application}!AXE\_Y@{AXE\_Y}}}\mbox{\Hypertarget{classapp_1_1Application_ae3872b81da22cf4953e6e747383e9f3babadc9651d398659296be1107acee9336}\label{classapp_1_1Application_ae3872b81da22cf4953e6e747383e9f3babadc9651d398659296be1107acee9336}} 
+A\+X\+E\+\_\+Y&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AXE\_Z@{AXE\_Z}!app::Application@{app::Application}}\index{app::Application@{app::Application}!AXE\_Z@{AXE\_Z}}}\mbox{\Hypertarget{classapp_1_1Application_ae3872b81da22cf4953e6e747383e9f3ba8d3d07a0bf6f24bc80b743ae0f4f4a66}\label{classapp_1_1Application_ae3872b81da22cf4953e6e747383e9f3ba8d3d07a0bf6f24bc80b743ae0f4f4a66}} 
+A\+X\+E\+\_\+Z&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classapp_1_1Application_a3c480be05f51b91e648b2f6533a32f1b}\label{classapp_1_1Application_a3c480be05f51b91e648b2f6533a32f1b}} 
+\index{app::Application@{app::Application}!Application@{Application}}
+\index{Application@{Application}!app::Application@{app::Application}}
+\doxysubsubsection{\texorpdfstring{Application()}{Application()}}
+{\footnotesize\ttfamily app\+::\+Application\+::\+Application (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Конструктор приложения. 
+
+Стандартные габариты экрана 1000x1000 Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Application_a3c480be05f51b91e648b2f6533a32f1b_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classapp_1_1Application_a4e26297885b2eea335d5bfa827297607}\label{classapp_1_1Application_a4e26297885b2eea335d5bfa827297607}} 
+\index{app::Application@{app::Application}!close@{close}}
+\index{close@{close}!app::Application@{app::Application}}
+\doxysubsubsection{\texorpdfstring{close()}{close()}}
+{\footnotesize\ttfamily void app\+::\+Application\+::close (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Закрыть приложение 
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Application_a4e26297885b2eea335d5bfa827297607_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classapp_1_1Application_aba537b13b5e78b0748df0db7223d63cf}\label{classapp_1_1Application_aba537b13b5e78b0748df0db7223d63cf}} 
+\index{app::Application@{app::Application}!convert\_axis\_to\_int@{convert\_axis\_to\_int}}
+\index{convert\_axis\_to\_int@{convert\_axis\_to\_int}!app::Application@{app::Application}}
+\doxysubsubsection{\texorpdfstring{convert\_axis\_to\_int()}{convert\_axis\_to\_int()}}
+{\footnotesize\ttfamily int app\+::\+Application\+::convert\+\_\+axis\+\_\+to\+\_\+int (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classapp_1_1Application_ae3872b81da22cf4953e6e747383e9f3b}{E\+Axes}} \&}]{axe }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Перевод enum-\/а осей в числовое значение 
+
+
+\begin{DoxyParams}{Parameters}
+{\em axe} & Ось \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+число, соответствующее оси
+\end{DoxyReturn}
+oX -\/ 0 oY -\/ 1 oZ -\/ 2 Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Application_aba537b13b5e78b0748df0db7223d63cf_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classapp_1_1Application_ab131ef32044a6a074d2385c872b70443}\label{classapp_1_1Application_ab131ef32044a6a074d2385c872b70443}} 
+\index{app::Application@{app::Application}!create\_keyboard\_handlers@{create\_keyboard\_handlers}}
+\index{create\_keyboard\_handlers@{create\_keyboard\_handlers}!app::Application@{app::Application}}
+\doxysubsubsection{\texorpdfstring{create\_keyboard\_handlers()}{create\_keyboard\_handlers()}}
+{\footnotesize\ttfamily void app\+::\+Application\+::create\+\_\+keyboard\+\_\+handlers (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Создание хэндлеров 
+
+Создает список хэндлеров, которые будут реагировать на нажатия на клавиши Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Application_ab131ef32044a6a074d2385c872b70443_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Application_ab131ef32044a6a074d2385c872b70443_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classapp_1_1Application_ae58b8b1b12acfa22a82607c6f3c967cd}\label{classapp_1_1Application_ae58b8b1b12acfa22a82607c6f3c967cd}} 
+\index{app::Application@{app::Application}!draw\_object@{draw\_object}}
+\index{draw\_object@{draw\_object}!app::Application@{app::Application}}
+\doxysubsubsection{\texorpdfstring{draw\_object()}{draw\_object()}}
+{\footnotesize\ttfamily void app\+::\+Application\+::draw\+\_\+object (\begin{DoxyParamCaption}\item[{const std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classapp_1_1SurfaceObject}{Surface\+Object}} $>$ \&}]{object }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Рисование объекта 
+
+Метод, который с помощью \mbox{\hyperlink{classapp_1_1Renderer}{Renderer}}\textquotesingle{}a нарисует объект Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Application_ae58b8b1b12acfa22a82607c6f3c967cd_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Application_ae58b8b1b12acfa22a82607c6f3c967cd_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classapp_1_1Application_a1ad62bd521269dfb0952f05a63e53b6f}\label{classapp_1_1Application_a1ad62bd521269dfb0952f05a63e53b6f}} 
+\index{app::Application@{app::Application}!get\_world@{get\_world}}
+\index{get\_world@{get\_world}!app::Application@{app::Application}}
+\doxysubsubsection{\texorpdfstring{get\_world()}{get\_world()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classapp_1_1World}{World}}\& app\+::\+Application\+::get\+\_\+world (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Возвращает мир 
+
+\mbox{\Hypertarget{classapp_1_1Application_a73c5b3f37b9274774882f1caadf5d5a0}\label{classapp_1_1Application_a73c5b3f37b9274774882f1caadf5d5a0}} 
+\index{app::Application@{app::Application}!get\_world@{get\_world}}
+\index{get\_world@{get\_world}!app::Application@{app::Application}}
+\doxysubsubsection{\texorpdfstring{get\_world()}{get\_world()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classapp_1_1World}{World}} \& app\+::\+Application\+::get\+\_\+world (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Возвращает мир 
+
+\mbox{\Hypertarget{classapp_1_1Application_a08e90b136004001b8249f00f8b21c081}\label{classapp_1_1Application_a08e90b136004001b8249f00f8b21c081}} 
+\index{app::Application@{app::Application}!is\_open@{is\_open}}
+\index{is\_open@{is\_open}!app::Application@{app::Application}}
+\doxysubsubsection{\texorpdfstring{is\_open()}{is\_open()}}
+{\footnotesize\ttfamily bool app\+::\+Application\+::is\+\_\+open (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Проверка, что графическо окно открыто 
+
+\begin{DoxyReturn}{Returns}
+true, если окно приложения открыто, иначе false 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Application_a08e90b136004001b8249f00f8b21c081_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classapp_1_1Application_a376ff944b9ff6995d0472c58c73faece}\label{classapp_1_1Application_a376ff944b9ff6995d0472c58c73faece}} 
+\index{app::Application@{app::Application}!move\_camera@{move\_camera}}
+\index{move\_camera@{move\_camera}!app::Application@{app::Application}}
+\doxysubsubsection{\texorpdfstring{move\_camera()}{move\_camera()}}
+{\footnotesize\ttfamily void app\+::\+Application\+::move\+\_\+camera (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{namespaceapp_a315a30c3b1ec772d2da7b1032cced529}{Vector4d}} \&}]{v }\end{DoxyParamCaption})}
+
+
+
+Сдвиг фокусной позиции камеры 
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & Вектор сдвига камеры\\
+\hline
+\end{DoxyParams}
+После применения фокусная точка камеры сдвигается на вектор v. Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Application_a376ff944b9ff6995d0472c58c73faece_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Application_a376ff944b9ff6995d0472c58c73faece_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classapp_1_1Application_adadc05c4dc47262d102ab8a051a36052}\label{classapp_1_1Application_adadc05c4dc47262d102ab8a051a36052}} 
+\index{app::Application@{app::Application}!move\_world@{move\_world}}
+\index{move\_world@{move\_world}!app::Application@{app::Application}}
+\doxysubsubsection{\texorpdfstring{move\_world()}{move\_world()}}
+{\footnotesize\ttfamily void app\+::\+Application\+::move\+\_\+world (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{namespaceapp_a315a30c3b1ec772d2da7b1032cced529}{Vector4d}} \&}]{v }\end{DoxyParamCaption})}
+
+
+
+Передвинуть все объекты в мире на какой-\/то вектор 
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & Вектор сдвига объектов\\
+\hline
+\end{DoxyParams}
+После применения все вершины объектов сдвинуты на вектор v. Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Application_adadc05c4dc47262d102ab8a051a36052_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Application_adadc05c4dc47262d102ab8a051a36052_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classapp_1_1Application_ab090fe1a0d1dd58ee56133567a490aa4}\label{classapp_1_1Application_ab090fe1a0d1dd58ee56133567a490aa4}} 
+\index{app::Application@{app::Application}!pitch@{pitch}}
+\index{pitch@{pitch}!app::Application@{app::Application}}
+\doxysubsubsection{\texorpdfstring{pitch()}{pitch()}}
+{\footnotesize\ttfamily void app\+::\+Application\+::pitch (\begin{DoxyParamCaption}\item[{double}]{angle }\end{DoxyParamCaption})}
+
+
+
+Поворот камеры вокруг оси oX. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em angle} & Угол, на который делается поворот\\
+\hline
+\end{DoxyParams}
+После применения камера оказывается повернута вокруг оси oX на угол angle. Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Application_ab090fe1a0d1dd58ee56133567a490aa4_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Application_ab090fe1a0d1dd58ee56133567a490aa4_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classapp_1_1Application_a9709a6a43e1d5bd76d91029346e397bd}\label{classapp_1_1Application_a9709a6a43e1d5bd76d91029346e397bd}} 
+\index{app::Application@{app::Application}!poll\_event@{poll\_event}}
+\index{poll\_event@{poll\_event}!app::Application@{app::Application}}
+\doxysubsubsection{\texorpdfstring{poll\_event()}{poll\_event()}}
+{\footnotesize\ttfamily bool app\+::\+Application\+::poll\+\_\+event (\begin{DoxyParamCaption}\item[{sf\+::\+Event $\ast$}]{event }\end{DoxyParamCaption})}
+
+
+
+поллинг событий 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ecent} & ссылка на событие \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true, если событие произошло, иначе false
+\end{DoxyReturn}
+Если вернуло true, то по ссылке записалось событие Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Application_a9709a6a43e1d5bd76d91029346e397bd_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classapp_1_1Application_aa26ce2aee7ba4246588cae5bb2147ba3}\label{classapp_1_1Application_aa26ce2aee7ba4246588cae5bb2147ba3}} 
+\index{app::Application@{app::Application}!roll@{roll}}
+\index{roll@{roll}!app::Application@{app::Application}}
+\doxysubsubsection{\texorpdfstring{roll()}{roll()}}
+{\footnotesize\ttfamily void app\+::\+Application\+::roll (\begin{DoxyParamCaption}\item[{double}]{angle }\end{DoxyParamCaption})}
+
+
+
+Поворот камеры вокруг оси oZ. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em angle} & Угол, на который делается поворот\\
+\hline
+\end{DoxyParams}
+После применения камера оказывается повернута вокруг оси oZ на угол angle. Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Application_aa26ce2aee7ba4246588cae5bb2147ba3_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Application_aa26ce2aee7ba4246588cae5bb2147ba3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classapp_1_1Application_a4a6b8d2e11203830c1a8267e458d50b7}\label{classapp_1_1Application_a4a6b8d2e11203830c1a8267e458d50b7}} 
+\index{app::Application@{app::Application}!rotate\_camera@{rotate\_camera}}
+\index{rotate\_camera@{rotate\_camera}!app::Application@{app::Application}}
+\doxysubsubsection{\texorpdfstring{rotate\_camera()}{rotate\_camera()}}
+{\footnotesize\ttfamily void app\+::\+Application\+::rotate\+\_\+camera (\begin{DoxyParamCaption}\item[{double}]{angle,  }\item[{\mbox{\hyperlink{classapp_1_1Application_ae3872b81da22cf4953e6e747383e9f3b}{Application\+::\+E\+Axes}}}]{axe }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Поворот камеры вокруг оси 
+
+
+\begin{DoxyParams}{Parameters}
+{\em angle} & Угол, на который делается поворот \\
+\hline
+{\em fixed\+\_\+coord} & Ось, вокруг которой делается поворот\\
+\hline
+\end{DoxyParams}
+Используется для реализации roll, yaw, pitch Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Application_a4a6b8d2e11203830c1a8267e458d50b7_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Application_a4a6b8d2e11203830c1a8267e458d50b7_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classapp_1_1Application_af9098183238622421f4e18930c6dd8ec}\label{classapp_1_1Application_af9098183238622421f4e18930c6dd8ec}} 
+\index{app::Application@{app::Application}!run@{run}}
+\index{run@{run}!app::Application@{app::Application}}
+\doxysubsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily void app\+::\+Application\+::run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Цикл приложения 
+
+Основной метод, который запускает event loop приложения Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Application_af9098183238622421f4e18930c6dd8ec_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classapp_1_1Application_a6de383313a844c5f3d6a10e7d6cbaa00}\label{classapp_1_1Application_a6de383313a844c5f3d6a10e7d6cbaa00}} 
+\index{app::Application@{app::Application}!update\_and\_draw\_frame@{update\_and\_draw\_frame}}
+\index{update\_and\_draw\_frame@{update\_and\_draw\_frame}!app::Application@{app::Application}}
+\doxysubsubsection{\texorpdfstring{update\_and\_draw\_frame()}{update\_and\_draw\_frame()}}
+{\footnotesize\ttfamily void app\+::\+Application\+::update\+\_\+and\+\_\+draw\+\_\+frame (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Обновление кадра в приложении. 
+
+Перерисует окно и нанесет на него все объекты, которые сейчас хранятся в мире. Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Application_a6de383313a844c5f3d6a10e7d6cbaa00_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Application_a6de383313a844c5f3d6a10e7d6cbaa00_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classapp_1_1Application_a140af58047310c971a437c104be20405}\label{classapp_1_1Application_a140af58047310c971a437c104be20405}} 
+\index{app::Application@{app::Application}!yaw@{yaw}}
+\index{yaw@{yaw}!app::Application@{app::Application}}
+\doxysubsubsection{\texorpdfstring{yaw()}{yaw()}}
+{\footnotesize\ttfamily void app\+::\+Application\+::yaw (\begin{DoxyParamCaption}\item[{double}]{angle }\end{DoxyParamCaption})}
+
+
+
+Поворот камеры вокруг оси oY. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em angle} & Угол, на который делается поворот\\
+\hline
+\end{DoxyParams}
+После применения камера оказывается повернута вокруг оси oY на угол angle. Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Application_a140af58047310c971a437c104be20405_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Application_a140af58047310c971a437c104be20405_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classapp_1_1Application_ada51a9a5e66f5ff709ed4555029bb6e7}\label{classapp_1_1Application_ada51a9a5e66f5ff709ed4555029bb6e7}} 
+\index{app::Application@{app::Application}!camera\_@{camera\_}}
+\index{camera\_@{camera\_}!app::Application@{app::Application}}
+\doxysubsubsection{\texorpdfstring{camera\_}{camera\_}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classapp_1_1Camera}{Camera}} app\+::\+Application\+::camera\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classapp_1_1Application_a41bf5ea0c570a4e1bb0d27b4bca7357d}\label{classapp_1_1Application_a41bf5ea0c570a4e1bb0d27b4bca7357d}} 
+\index{app::Application@{app::Application}!keyboard\_handlers\_@{keyboard\_handlers\_}}
+\index{keyboard\_handlers\_@{keyboard\_handlers\_}!app::Application@{app::Application}}
+\doxysubsubsection{\texorpdfstring{keyboard\_handlers\_}{keyboard\_handlers\_}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::pair$<$sf\+::\+Keyboard\+::\+Key, std\+::function$<$void()$>$ $>$ $>$ app\+::\+Application\+::keyboard\+\_\+handlers\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classapp_1_1Application_a5faa923ee73e07aa9b4991258c29caa3}\label{classapp_1_1Application_a5faa923ee73e07aa9b4991258c29caa3}} 
+\index{app::Application@{app::Application}!kScreenHeight\_@{kScreenHeight\_}}
+\index{kScreenHeight\_@{kScreenHeight\_}!app::Application@{app::Application}}
+\doxysubsubsection{\texorpdfstring{kScreenHeight\_}{kScreenHeight\_}}
+{\footnotesize\ttfamily constexpr static size\+\_\+t app\+::\+Application\+::k\+Screen\+Height\+\_\+ = 1000\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [private]}}
+
+\mbox{\Hypertarget{classapp_1_1Application_af3a347d57a2f803cf6fae795be3515d5}\label{classapp_1_1Application_af3a347d57a2f803cf6fae795be3515d5}} 
+\index{app::Application@{app::Application}!kScreenWidth\_@{kScreenWidth\_}}
+\index{kScreenWidth\_@{kScreenWidth\_}!app::Application@{app::Application}}
+\doxysubsubsection{\texorpdfstring{kScreenWidth\_}{kScreenWidth\_}}
+{\footnotesize\ttfamily constexpr static size\+\_\+t app\+::\+Application\+::k\+Screen\+Width\+\_\+ = 1000\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [private]}}
+
+\mbox{\Hypertarget{classapp_1_1Application_a9869f6737a2b1abe70878e8d5f19d650}\label{classapp_1_1Application_a9869f6737a2b1abe70878e8d5f19d650}} 
+\index{app::Application@{app::Application}!renderer\_@{renderer\_}}
+\index{renderer\_@{renderer\_}!app::Application@{app::Application}}
+\doxysubsubsection{\texorpdfstring{renderer\_}{renderer\_}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classapp_1_1Renderer}{Renderer}} app\+::\+Application\+::renderer\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classapp_1_1Application_a192887b38ceeb9cb871b6562ba906887}\label{classapp_1_1Application_a192887b38ceeb9cb871b6562ba906887}} 
+\index{app::Application@{app::Application}!window\_@{window\_}}
+\index{window\_@{window\_}!app::Application@{app::Application}}
+\doxysubsubsection{\texorpdfstring{window\_}{window\_}}
+{\footnotesize\ttfamily sf\+::\+Render\+Window app\+::\+Application\+::window\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classapp_1_1Application_a7ddf948bcb1c494c364004eabb18b344}\label{classapp_1_1Application_a7ddf948bcb1c494c364004eabb18b344}} 
+\index{app::Application@{app::Application}!world\_@{world\_}}
+\index{world\_@{world\_}!app::Application@{app::Application}}
+\doxysubsubsection{\texorpdfstring{world\_}{world\_}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classapp_1_1World}{World}} app\+::\+Application\+::world\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{application_8h}{application.\+h}}\item 
+src/\mbox{\hyperlink{application_8cpp}{application.\+cpp}}\end{DoxyCompactItemize}

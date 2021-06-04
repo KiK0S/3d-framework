@@ -1,0 +1,5 @@
+<map id="app::Application::roll" name="app::Application::roll">
+<area shape="rect" id="node1" title="Поворот камеры вокруг оси oZ." alt="" coords="485,13,641,39"/>
+<area shape="rect" id="node2" href="$classapp_1_1Application.html#ab131ef32044a6a074d2385c872b70443" title="Создание хэндлеров" alt="" coords="261,5,437,47"/>
+<area shape="rect" id="node3" href="$classapp_1_1Application.html#a3c480be05f51b91e648b2f6533a32f1b" title="Конструктор приложения." alt="" coords="5,13,213,39"/>
+</map>

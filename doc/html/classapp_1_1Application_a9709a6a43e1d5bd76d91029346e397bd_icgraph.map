@@ -1,0 +1,4 @@
+<map id="app::Application::poll_event" name="app::Application::poll_event">
+<area shape="rect" id="node1" title="поллинг событий" alt="" coords="209,5,368,47"/>
+<area shape="rect" id="node2" href="$classapp_1_1Application.html#af9098183238622421f4e18930c6dd8ec" title="Цикл приложения" alt="" coords="5,13,161,39"/>
+</map>

@@ -1,0 +1,6 @@
+<map id="app::Screen::set_pixel" name="app::Screen::set_pixel">
+<area shape="rect" id="node1" title="отобразить пиксель" alt="" coords="5,58,169,85"/>
+<area shape="rect" id="node2" href="$classapp_1_1PixelScreen.html#a2d80e1ceab7feb6a99a1853adb9defc6" title="Получение высоты экрана" alt="" coords="424,5,583,47"/>
+<area shape="rect" id="node3" href="$classapp_1_1PixelScreen.html#aab0c1e1ac35858acca3dcad94ebe46e5" title="Получение ширины экрана" alt="" coords="424,84,583,125"/>
+<area shape="rect" id="node4" href="$classapp_1_1Screen.html#aae932846ff64a506659699a8334870f5" title=" " alt="" coords="217,51,376,92"/>
+</map>

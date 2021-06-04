@@ -1,0 +1,15 @@
+<map id="app::Matrix::transpose" name="app::Matrix::transpose">
+<area shape="rect" id="node1" title="Получение транспонированной матрицы" alt="" coords="1373,132,1541,159"/>
+<area shape="rect" id="node2" href="$classapp_1_1Camera.html#ad324b4a0629bda52737774c7ddc826b9" title="Метод для инициализации матриц поворота" alt="" coords="1135,74,1325,115"/>
+<area shape="rect" id="node13" href="$classapp_1_1Application.html#adadc05c4dc47262d102ab8a051a36052" title="Передвинуть все объекты в мире на какой&#45;то вектор" alt="" coords="1144,157,1316,198"/>
+<area shape="rect" id="node3" href="$classapp_1_1Camera.html#ad3924307c66a578a41267aa968e40285" title="Конструктор" alt="" coords="923,5,1087,32"/>
+<area shape="rect" id="node4" href="$classapp_1_1Camera.html#a2e04ab7bed0c63fa5530360325c6dbb3" title="Сдвиг на вектор" alt="" coords="929,56,1080,83"/>
+<area shape="rect" id="node8" href="$classapp_1_1Camera.html#a4fdd819ed88a57450690a757654665f7" title="Метод для применения матриц поворота" alt="" coords="929,107,1081,133"/>
+<area shape="rect" id="node5" href="$classapp_1_1Application.html#a376ff944b9ff6995d0472c58c73faece" title="Сдвиг фокусной позиции камеры" alt="" coords="701,17,873,58"/>
+<area shape="rect" id="node6" href="$classapp_1_1Application.html#ab131ef32044a6a074d2385c872b70443" title="Создание хэндлеров" alt="" coords="261,99,437,141"/>
+<area shape="rect" id="node7" href="$classapp_1_1Application.html#a3c480be05f51b91e648b2f6533a32f1b" title="Конструктор приложения." alt="" coords="5,107,213,133"/>
+<area shape="rect" id="node9" href="$classapp_1_1Application.html#a4a6b8d2e11203830c1a8267e458d50b7" title="Поворот камеры вокруг оси" alt="" coords="700,99,875,141"/>
+<area shape="rect" id="node10" href="$classapp_1_1Application.html#ab090fe1a0d1dd58ee56133567a490aa4" title="Поворот камеры вокруг оси oX." alt="" coords="485,56,652,83"/>
+<area shape="rect" id="node11" href="$classapp_1_1Application.html#aa26ce2aee7ba4246588cae5bb2147ba3" title="Поворот камеры вокруг оси oZ." alt="" coords="491,107,647,133"/>
+<area shape="rect" id="node12" href="$classapp_1_1Application.html#a140af58047310c971a437c104be20405" title="Поворот камеры вокруг оси oY." alt="" coords="487,157,650,184"/>
+</map>

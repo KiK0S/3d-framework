@@ -1,0 +1,251 @@
+\hypertarget{classapp_1_1Screen}{}\doxysection{app\+::Screen Class Reference}
+\label{classapp_1_1Screen}\index{app::Screen@{app::Screen}}
+
+
+Класс экрана.  
+
+
+
+
+{\ttfamily \#include $<$screen.\+h$>$}
+
+
+
+Collaboration diagram for app\+::Screen\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Screen__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classapp_1_1Screen_a43b433aa48898fa8f8e4a6ab707d12a2}{Screen}} (size\+\_\+t screen\+\_\+width, size\+\_\+t screen\+\_\+height)
+\begin{DoxyCompactList}\small\item\em Конструктор экрана \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classapp_1_1Screen_afd0dcbcf76eff3320b40dadcf3095120}{set\+\_\+pixel}} (int x, int y, double z, sf\+::\+Color color)
+\begin{DoxyCompactList}\small\item\em отобразить пиксель \end{DoxyCompactList}\item 
+std\+::vector$<$ sf\+::\+Vertex $>$ \mbox{\hyperlink{classapp_1_1Screen_a2cf71658c1908b0ca505cf2d69fbe2a2}{get\+\_\+pixels\+\_\+to\+\_\+draw}} () const
+\begin{DoxyCompactList}\small\item\em выбор всех пикслей \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classapp_1_1Screen_ad29a33b7bb3387a62909b8f467e13a39}{clear}} ()
+\begin{DoxyCompactList}\small\item\em очистка \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{classapp_1_1Screen_ac7fdfe261cc21ca9e057e50ca82b553d}{get\+\_\+width}} () const
+\begin{DoxyCompactList}\small\item\em возвращает ширину экрана \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{classapp_1_1Screen_a1fa9fbb16f9eb0704598428612d52f19}{get\+\_\+height}} () const
+\begin{DoxyCompactList}\small\item\em возвращает высоту экрана \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classapp_1_1Screen_aae932846ff64a506659699a8334870f5}{validate\+\_\+pixel}} (int x, int y) const
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classapp_1_1PixelScreen}{Pixel\+Screen}}$<$ sf\+::\+Color $>$ \mbox{\hyperlink{classapp_1_1Screen_a0a747ee17530bd10a393177796fc16f0}{color\+\_\+}}
+\item 
+\mbox{\hyperlink{classapp_1_1PixelScreen}{Pixel\+Screen}}$<$ double $>$ \mbox{\hyperlink{classapp_1_1Screen_a543eeb13cbe46929e516ea969345396d}{z\+\_\+value\+\_\+}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Класс экрана. 
+
+\begin{DoxyAuthor}{Author}
+Ki\+K0S 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+May 14 2021 
+\end{DoxyDate}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classapp_1_1Screen_a43b433aa48898fa8f8e4a6ab707d12a2}\label{classapp_1_1Screen_a43b433aa48898fa8f8e4a6ab707d12a2}} 
+\index{app::Screen@{app::Screen}!Screen@{Screen}}
+\index{Screen@{Screen}!app::Screen@{app::Screen}}
+\doxysubsubsection{\texorpdfstring{Screen()}{Screen()}}
+{\footnotesize\ttfamily app\+::\+Screen\+::\+Screen (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{screen\+\_\+width,  }\item[{size\+\_\+t}]{screen\+\_\+height }\end{DoxyParamCaption})}
+
+
+
+Конструктор экрана 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classapp_1_1Screen_ad29a33b7bb3387a62909b8f467e13a39}\label{classapp_1_1Screen_ad29a33b7bb3387a62909b8f467e13a39}} 
+\index{app::Screen@{app::Screen}!clear@{clear}}
+\index{clear@{clear}!app::Screen@{app::Screen}}
+\doxysubsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily void app\+::\+Screen\+::clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+очистка 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=347pt]{classapp_1_1Screen_ad29a33b7bb3387a62909b8f467e13a39_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Screen_ad29a33b7bb3387a62909b8f467e13a39_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classapp_1_1Screen_a1fa9fbb16f9eb0704598428612d52f19}\label{classapp_1_1Screen_a1fa9fbb16f9eb0704598428612d52f19}} 
+\index{app::Screen@{app::Screen}!get\_height@{get\_height}}
+\index{get\_height@{get\_height}!app::Screen@{app::Screen}}
+\doxysubsubsection{\texorpdfstring{get\_height()}{get\_height()}}
+{\footnotesize\ttfamily size\+\_\+t app\+::\+Screen\+::get\+\_\+height (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+возвращает высоту экрана 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Screen_a1fa9fbb16f9eb0704598428612d52f19_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Screen_a1fa9fbb16f9eb0704598428612d52f19_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classapp_1_1Screen_a2cf71658c1908b0ca505cf2d69fbe2a2}\label{classapp_1_1Screen_a2cf71658c1908b0ca505cf2d69fbe2a2}} 
+\index{app::Screen@{app::Screen}!get\_pixels\_to\_draw@{get\_pixels\_to\_draw}}
+\index{get\_pixels\_to\_draw@{get\_pixels\_to\_draw}!app::Screen@{app::Screen}}
+\doxysubsubsection{\texorpdfstring{get\_pixels\_to\_draw()}{get\_pixels\_to\_draw()}}
+{\footnotesize\ttfamily std\+::vector$<$ sf\+::\+Vertex $>$ app\+::\+Screen\+::get\+\_\+pixels\+\_\+to\+\_\+draw (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+выбор всех пикслей 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Screen_a2cf71658c1908b0ca505cf2d69fbe2a2_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Screen_a2cf71658c1908b0ca505cf2d69fbe2a2_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classapp_1_1Screen_ac7fdfe261cc21ca9e057e50ca82b553d}\label{classapp_1_1Screen_ac7fdfe261cc21ca9e057e50ca82b553d}} 
+\index{app::Screen@{app::Screen}!get\_width@{get\_width}}
+\index{get\_width@{get\_width}!app::Screen@{app::Screen}}
+\doxysubsubsection{\texorpdfstring{get\_width()}{get\_width()}}
+{\footnotesize\ttfamily size\+\_\+t app\+::\+Screen\+::get\+\_\+width (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+возвращает ширину экрана 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Screen_ac7fdfe261cc21ca9e057e50ca82b553d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Screen_ac7fdfe261cc21ca9e057e50ca82b553d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classapp_1_1Screen_afd0dcbcf76eff3320b40dadcf3095120}\label{classapp_1_1Screen_afd0dcbcf76eff3320b40dadcf3095120}} 
+\index{app::Screen@{app::Screen}!set\_pixel@{set\_pixel}}
+\index{set\_pixel@{set\_pixel}!app::Screen@{app::Screen}}
+\doxysubsubsection{\texorpdfstring{set\_pixel()}{set\_pixel()}}
+{\footnotesize\ttfamily void app\+::\+Screen\+::set\+\_\+pixel (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y,  }\item[{double}]{z,  }\item[{sf\+::\+Color}]{color }\end{DoxyParamCaption})}
+
+
+
+отобразить пиксель 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Screen_afd0dcbcf76eff3320b40dadcf3095120_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Screen_afd0dcbcf76eff3320b40dadcf3095120_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classapp_1_1Screen_aae932846ff64a506659699a8334870f5}\label{classapp_1_1Screen_aae932846ff64a506659699a8334870f5}} 
+\index{app::Screen@{app::Screen}!validate\_pixel@{validate\_pixel}}
+\index{validate\_pixel@{validate\_pixel}!app::Screen@{app::Screen}}
+\doxysubsubsection{\texorpdfstring{validate\_pixel()}{validate\_pixel()}}
+{\footnotesize\ttfamily bool app\+::\+Screen\+::validate\+\_\+pixel (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Screen_aae932846ff64a506659699a8334870f5_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Screen_aae932846ff64a506659699a8334870f5_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classapp_1_1Screen_a0a747ee17530bd10a393177796fc16f0}\label{classapp_1_1Screen_a0a747ee17530bd10a393177796fc16f0}} 
+\index{app::Screen@{app::Screen}!color\_@{color\_}}
+\index{color\_@{color\_}!app::Screen@{app::Screen}}
+\doxysubsubsection{\texorpdfstring{color\_}{color\_}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classapp_1_1PixelScreen}{Pixel\+Screen}}$<$sf\+::\+Color$>$ app\+::\+Screen\+::color\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classapp_1_1Screen_a543eeb13cbe46929e516ea969345396d}\label{classapp_1_1Screen_a543eeb13cbe46929e516ea969345396d}} 
+\index{app::Screen@{app::Screen}!z\_value\_@{z\_value\_}}
+\index{z\_value\_@{z\_value\_}!app::Screen@{app::Screen}}
+\doxysubsubsection{\texorpdfstring{z\_value\_}{z\_value\_}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classapp_1_1PixelScreen}{Pixel\+Screen}}$<$double$>$ app\+::\+Screen\+::z\+\_\+value\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{screen_8h}{screen.\+h}}\item 
+src/\mbox{\hyperlink{screen_8cpp}{screen.\+cpp}}\end{DoxyCompactItemize}

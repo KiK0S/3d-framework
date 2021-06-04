@@ -1,0 +1,4 @@
+<map id="app::Point4d::length" name="app::Point4d::length">
+<area shape="rect" id="node1" title="Возвращает расстояние от точки (0, 0) до x." alt="" coords="204,5,356,32"/>
+<area shape="rect" id="node2" href="$classapp_1_1Point4d.html#af713837359c27c2cd02002a9d01bb5e3" title="Меняет длину вектора на d." alt="" coords="5,5,156,32"/>
+</map>

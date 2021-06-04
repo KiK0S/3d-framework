@@ -1,0 +1,150 @@
+\hypertarget{classapp_1_1WireObject}{}\doxysection{app\+::Wire\+Object Class Reference}
+\label{classapp_1_1WireObject}\index{app::WireObject@{app::WireObject}}
+
+
+Класс каркаса объекта в 3д.  
+
+
+
+
+{\ttfamily \#include $<$wire\+\_\+object.\+h$>$}
+
+
+
+Inheritance diagram for app\+::Wire\+Object\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=246pt]{classapp_1_1WireObject__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for app\+::Wire\+Object\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=196pt]{classapp_1_1WireObject__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classapp_1_1WireObject_a3b7521345e258d5b402e1b2c55faba34}{Wire\+Object}} (std\+::vector$<$ \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} $>$ points, std\+::vector$<$ std\+::pair$<$ int, int $>$$>$ edges)
+\begin{DoxyCompactList}\small\item\em Конструктор каркаса объекта \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classapp_1_1WireObject_a5af7983e0b7477a7ae7d602c4691470b}{$\sim$\+Wire\+Object}} ()
+\item 
+std\+::vector$<$ \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} $>$\+::iterator \mbox{\hyperlink{classapp_1_1WireObject_a5e707a62498d3dd32c875a897bb2d386}{begin}} ()
+\begin{DoxyCompactList}\small\item\em итератор на начало списка вершин \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} $>$\+::iterator \mbox{\hyperlink{classapp_1_1WireObject_a8bf16f191a9a4249717da7ab9bfed7ac}{end}} ()
+\begin{DoxyCompactList}\small\item\em итератор на конец списка вершин \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classapp_1_1WireObject_a7cae7d0b2258665d92b6af39ba613570}{apply\+\_\+transform}} (const \mbox{\hyperlink{namespaceapp_aaa0cfade3dadbedd834e82c4d778584f}{Matrix4d}} \&transform)
+\begin{DoxyCompactList}\small\item\em Применение преобразвания к объекту \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::pair$<$ \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}}, \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} $>$ $>$ \mbox{\hyperlink{classapp_1_1WireObject_a386a66b8c1feb23e4d0f6f2e560fade7}{get\+\_\+edges}} () const
+\begin{DoxyCompactList}\small\item\em Массив всех ребер объекта \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} $>$ \mbox{\hyperlink{classapp_1_1WireObject_a551c3bf234b1ae670cbed0f6aa555411}{points\+\_\+}}
+\item 
+std\+::vector$<$ std\+::pair$<$ int, int $>$ $>$ \mbox{\hyperlink{classapp_1_1WireObject_abf3dd62b3b9b2fb7829420e0e89419d8}{edges\+\_\+}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Класс каркаса объекта в 3д. 
+
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+May 14 2021 
+\end{DoxyDate}
+\begin{DoxyAuthor}{Author}
+Ki\+K0S 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classapp_1_1WireObject_a3b7521345e258d5b402e1b2c55faba34}\label{classapp_1_1WireObject_a3b7521345e258d5b402e1b2c55faba34}} 
+\index{app::WireObject@{app::WireObject}!WireObject@{WireObject}}
+\index{WireObject@{WireObject}!app::WireObject@{app::WireObject}}
+\doxysubsubsection{\texorpdfstring{WireObject()}{WireObject()}}
+{\footnotesize\ttfamily app\+::\+Wire\+Object\+::\+Wire\+Object (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} $>$}]{points,  }\item[{std\+::vector$<$ std\+::pair$<$ int, int $>$$>$}]{edges }\end{DoxyParamCaption})}
+
+
+
+Конструктор каркаса объекта 
+
+\mbox{\Hypertarget{classapp_1_1WireObject_a5af7983e0b7477a7ae7d602c4691470b}\label{classapp_1_1WireObject_a5af7983e0b7477a7ae7d602c4691470b}} 
+\index{app::WireObject@{app::WireObject}!````~WireObject@{$\sim$WireObject}}
+\index{````~WireObject@{$\sim$WireObject}!app::WireObject@{app::WireObject}}
+\doxysubsubsection{\texorpdfstring{$\sim$WireObject()}{~WireObject()}}
+{\footnotesize\ttfamily app\+::\+Wire\+Object\+::$\sim$\+Wire\+Object (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classapp_1_1WireObject_a7cae7d0b2258665d92b6af39ba613570}\label{classapp_1_1WireObject_a7cae7d0b2258665d92b6af39ba613570}} 
+\index{app::WireObject@{app::WireObject}!apply\_transform@{apply\_transform}}
+\index{apply\_transform@{apply\_transform}!app::WireObject@{app::WireObject}}
+\doxysubsubsection{\texorpdfstring{apply\_transform()}{apply\_transform()}}
+{\footnotesize\ttfamily void app\+::\+Wire\+Object\+::apply\+\_\+transform (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{namespaceapp_aaa0cfade3dadbedd834e82c4d778584f}{Matrix4d}} \&}]{transform }\end{DoxyParamCaption})}
+
+
+
+Применение преобразвания к объекту 
+
+\mbox{\Hypertarget{classapp_1_1WireObject_a5e707a62498d3dd32c875a897bb2d386}\label{classapp_1_1WireObject_a5e707a62498d3dd32c875a897bb2d386}} 
+\index{app::WireObject@{app::WireObject}!begin@{begin}}
+\index{begin@{begin}!app::WireObject@{app::WireObject}}
+\doxysubsubsection{\texorpdfstring{begin()}{begin()}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{classapp_1_1Point4d}{Point4d}}$>$\+::iterator app\+::\+Wire\+Object\+::begin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+итератор на начало списка вершин 
+
+\mbox{\Hypertarget{classapp_1_1WireObject_a8bf16f191a9a4249717da7ab9bfed7ac}\label{classapp_1_1WireObject_a8bf16f191a9a4249717da7ab9bfed7ac}} 
+\index{app::WireObject@{app::WireObject}!end@{end}}
+\index{end@{end}!app::WireObject@{app::WireObject}}
+\doxysubsubsection{\texorpdfstring{end()}{end()}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{classapp_1_1Point4d}{Point4d}}$>$\+::iterator app\+::\+Wire\+Object\+::end (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+итератор на конец списка вершин 
+
+\mbox{\Hypertarget{classapp_1_1WireObject_a386a66b8c1feb23e4d0f6f2e560fade7}\label{classapp_1_1WireObject_a386a66b8c1feb23e4d0f6f2e560fade7}} 
+\index{app::WireObject@{app::WireObject}!get\_edges@{get\_edges}}
+\index{get\_edges@{get\_edges}!app::WireObject@{app::WireObject}}
+\doxysubsubsection{\texorpdfstring{get\_edges()}{get\_edges()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::pair$<$ \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}}, \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} $>$ $>$ app\+::\+Wire\+Object\+::get\+\_\+edges (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Массив всех ребер объекта 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classapp_1_1WireObject_abf3dd62b3b9b2fb7829420e0e89419d8}\label{classapp_1_1WireObject_abf3dd62b3b9b2fb7829420e0e89419d8}} 
+\index{app::WireObject@{app::WireObject}!edges\_@{edges\_}}
+\index{edges\_@{edges\_}!app::WireObject@{app::WireObject}}
+\doxysubsubsection{\texorpdfstring{edges\_}{edges\_}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::pair$<$int, int$>$ $>$ app\+::\+Wire\+Object\+::edges\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classapp_1_1WireObject_a551c3bf234b1ae670cbed0f6aa555411}\label{classapp_1_1WireObject_a551c3bf234b1ae670cbed0f6aa555411}} 
+\index{app::WireObject@{app::WireObject}!points\_@{points\_}}
+\index{points\_@{points\_}!app::WireObject@{app::WireObject}}
+\doxysubsubsection{\texorpdfstring{points\_}{points\_}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{classapp_1_1Point4d}{Point4d}}$>$ app\+::\+Wire\+Object\+::points\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{wire__object_8h}{wire\+\_\+object.\+h}}\item 
+src/\mbox{\hyperlink{wire__object_8cpp}{wire\+\_\+object.\+cpp}}\end{DoxyCompactItemize}
