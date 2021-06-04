@@ -13,7 +13,7 @@ namespace app {
     \author KiK0S
     \version 1.0
     \date May 14 2021
- 
+
     Класс создает окно размера 1000x1000, в котором будут отображаться объекты.
     После вызова метода run() приложение переходит в интерактивный режим
         и реагирует на нажатие на клавиши.
@@ -73,7 +73,7 @@ public:
         После применения камера оказывается повернута вокруг оси oX на угол angle.
     */
     void pitch(double angle) ;
-    
+
     /*!
         \brief Поворот камеры вокруг оси oY
         \param angle Угол, на который делается поворот
@@ -127,12 +127,12 @@ private:
         Метод, который с помощью Renderer'a нарисует объект
     */
     void draw_object(const std::unique_ptr<SurfaceObject>& object) ;
-   
+
     /*!
         \brief Перевод enum-а осей в числовое значение
         \param axe Ось
         \returns число, соответствующее оси
-        
+
         oX - 0
         oY - 1
         oZ - 2
@@ -143,14 +143,14 @@ private:
         \brief Поворот камеры вокруг оси
         \param angle Угол, на который делается поворот
         \param fixed_coord Ось, вокруг которой делается поворот
-        
+
         Используется для реализации roll, yaw, pitch
     */
     void rotate_camera(double angle, EAxes fixed_coord) ;
 
     /*!
         \brief Создание хэндлеров
-        
+
         Создает список хэндлеров, которые будут реагировать на нажатия на клавиши
     */
     void create_keyboard_handlers() ;

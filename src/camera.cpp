@@ -7,8 +7,8 @@ namespace app {
 Camera::Camera(double screen_width, double screen_height):
     kScreenHeight_(screen_height),
     kScreenWidth_(screen_width) {
-        create_transformation_matrixes();   
-    }
+    create_transformation_matrixes();
+}
 
 Point4d Camera::transform_to_cameras_coordinates(const Point4d& p) const {
     return transform_to_camera_space_ * p;

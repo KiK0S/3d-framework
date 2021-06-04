@@ -70,7 +70,7 @@ public:
         \brief Уменьшает координаты точки в d раз
      */
     friend Point4d operator / (const Point4d& a, double d);
-    
+
     /*!
         \brief Увеличивает координаты точки в d раз
      */

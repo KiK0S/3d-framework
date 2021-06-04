@@ -5,7 +5,7 @@
 namespace app {
 
 Screen::Screen(size_t screen_width, size_t screen_height):
-    z_value_(screen_width, screen_height, 100),
+    z_value_(screen_width, screen_height, 1),
     color_(screen_width, screen_height, sf::Color::Transparent) {}
 
 std::vector<sf::Vertex> Screen::get_pixels_to_draw() const {

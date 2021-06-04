@@ -1,6 +1,7 @@
 #include "matrix.h"
 #include "renderer.h"
 #include "triangle.h"
+#include <cassert>
 #include <vector>
 
 namespace app {
@@ -26,14 +27,17 @@ void Renderer::draw_triangle(const Camera& camera, const Triangle4d& triangle4d)
 }
 
 Matrix<2, 1> Renderer::get_coords(int x, int y, const Matrix2d& basis, sf::Vector2f left_point) {
-    sf::Vector2f arrow = sf::Vector2f(x, y) - left_point;
-    return basis.solve_system(Matrix<2, 1>(arrow));
+    Matrix<2, 1> arrow = Matrix<2, 1>(sf::Vector2f(x, y) - left_point);
+    Matrix<2, 1> res = basis.solve_system(arrow);
+    assert(basis * res == arrow);
+    return res;
 }
 
 double Renderer::get_z(const Camera& camera, int x, int y,
                        Matrix<2, 1>&& coords,
                        const Point4d& a, const Point4d& b, const Point4d& c) {
     Point4d p = a + coords(0, 0) * (b - a) + coords(1, 0) * (c - a);
+    p.normalize();
     return camera.get_z_value(p);
 }
 
@@ -175,8 +179,10 @@ void Renderer::draw_data(const Camera& camera, const Renderer::DrawData& data) {
 
 void Renderer::draw_line(int x, double top_y, double bottom_y,
                          const Camera& camera, const Renderer::DrawData& data) {
-    double top_z = get_z(camera, x, top_y, std::move(get_coords(x, top_y, data.triangle_basis, data.left_point)), data.a, data.b, data.c);
-    double bottom_z = get_z(camera, x, bottom_y, std::move(get_coords(x, bottom_y, data.triangle_basis, data.left_point)), data.a, data.b, data.c);
+    Matrix<2, 1> coord_top = get_coords(x, top_y, data.triangle_basis, data.left_point);
+    Matrix<2, 1> coord_bottom = get_coords(x, bottom_y, data.triangle_basis, data.left_point);
+    double top_z = get_z(camera, x, top_y, std::move(coord_top), data.a, data.b, data.c);
+    double bottom_z = get_z(camera, x, bottom_y, std::move(coord_bottom), data.a, data.b, data.c);
     int min_valid_y = std::max(0, (int)ceil(top_y));
     int max_valid_y = std::min((int)screen_.get_width() - 1, (int)floor(bottom_y));
     for (int y = min_valid_y; y <= max_valid_y; y++) {

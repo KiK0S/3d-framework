@@ -311,19 +311,18 @@ private:
 
     template <size_t _M>
     void convert_to_upper_triangular(Matrix<N, _M>* paired) {
-        Matrix copy = (*this);
         for (int j = 0; j < std::min(N, M); j++) {
-            int id = copy.find_optimal_row(j);
+            int id = this->find_optimal_row(j);
             if (id == -1) {
                 return;
             }
-            copy.swap_rows(id, j);
+            this->swap_rows(id, j);
             paired->swap_rows(id, j);
-            double x = copy(j, j);
+            double x = (*this)(j, j);
             if (x == 0) {
                 return ;
             }
-            copy.clear_column(j, paired, x);
+            this->clear_column(j, paired, x);
         }
     }
 
@@ -344,13 +343,15 @@ public:
     /*!
         \brief Решение системы уравнений Ax = point
     */
-    Matrix<N, 1> solve_system(Matrix<N, 1>&& point) const {
+    Matrix<N, 1> solve_system(Matrix<N, 1> point) const {
         Matrix copy = (*this);
         copy.convert_to_upper_triangular(&point);
         for (int i = N - 1; i >= 0; i--) {
             for (int j = i + 1; j < M; j++) {
                 point(i, 0) -= point(j, 0) * copy(i, j);
             }
+            assert(copy(i, i) != 0);
+            point(i, 0) /= copy(i, i);
         }
         return point;
     }
@@ -380,9 +381,10 @@ using Matrix2d = Matrix<2, 2>;
 template<size_t N, size_t M>
 bool operator == (const Matrix<N, M>& first,
                   const Matrix<N, M>& second) {
+    static constexpr double EPS = 1e-6;
     for (int i = 0; i < N; i++) {
         for (int j = 0; j < M; j++) {
-            if (first(i, j) != second(i, j)) {
+            if (std::abs(first(i, j) - second(i, j)) > EPS) {
                 return false;
             }
         }

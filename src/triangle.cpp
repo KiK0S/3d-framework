@@ -63,12 +63,13 @@ sf::Vector2f Triangle2d::get_right_point() const {
 }
 
 double Triangle2d::min_y_in_line(double x) const {
-    if (std::abs(b.x - x) < 1e-10) {
+    static constexpr double EPS{1e-6};
+    if (std::abs(b.x - x) < EPS) {
         return b.y;
     }
     if (b.x > x) {
         sf::Vector2f v = a - b;
-        if (std::abs(v.x) < 1e-5) {
+        if (std::abs(v.x) < EPS) {
             return a.y;
         }
         double k = (b.x - x) / v.x;
@@ -77,7 +78,7 @@ double Triangle2d::min_y_in_line(double x) const {
     }
     else {
         sf::Vector2f v = c - b;
-        if (std::abs(v.x) < 1e-5) {
+        if (std::abs(v.x) < EPS) {
             return b.y;
         }
         double k = (b.x - x) / v.x;
@@ -87,12 +88,13 @@ double Triangle2d::min_y_in_line(double x) const {
 }
 
 double Triangle2d::max_y_in_line(double x) const {
-    if (std::abs(c.x - x) < 1e-10) {
+    static constexpr double EPS{1e-6};
+    if (std::abs(c.x - x) < EPS) {
         return c.y;
     }
     if (c.x > x) {
         sf::Vector2f v = a - c;
-        if (std::abs(v.x) < 1e-5) {
+        if (std::abs(v.x) < EPS) {
             return c.y;
         }
         double k = (c.x - x) / v.x;
@@ -101,7 +103,7 @@ double Triangle2d::max_y_in_line(double x) const {
     }
     else {
         sf::Vector2f v = b - c;
-        if (std::abs(v.x) < 1e-5) {
+        if (std::abs(v.x) < EPS) {
             return c.y;
         }
         double k = (c.x - x) / v.x;
@@ -112,6 +114,7 @@ double Triangle2d::max_y_in_line(double x) const {
 
 
 Matrix<2, 2> Triangle2d::create_basis() const {
+    assert(b != a && a != c);
     return Matrix<2, 2> ({b - a, c - a}).transpose();
 }
 
@@ -127,7 +130,7 @@ double Triangle2d::square() const {
 }
 
 bool Triangle2d::is_degenerate() const {
-    return a == b || a == c || b == c;
+    return square() == 0;
 }
 
 }

@@ -57,6 +57,7 @@ double Point4d::length() const {
 }
 
 void Point4d::normalize() {
+    assert(w != 0);
     x /= w;
     y /= w;
     z /= w;
