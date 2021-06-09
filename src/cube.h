@@ -16,6 +16,7 @@ public:
     /*!
         \brief Расстояние до ближайшей плоскости обзора
         \param offset сдвиг куба относительно центра координат. По умолчанию (0, 0, 0)
+        \param color Цвет куба. По умолчанию черный.
      */
     Cube(const Point4d& offset = kStart_, sf::Color color = sf::Color::Black);
 

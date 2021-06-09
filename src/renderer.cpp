@@ -163,7 +163,7 @@ Renderer::DrawData Renderer::create_data(const Triangle2d& triangle2d, const Tri
         right_point,
         std::move(basis),
         triangle2d,
-        triangle4d.get_color()
+        triangle4d.get_shadowed_color()
     };
 }
 

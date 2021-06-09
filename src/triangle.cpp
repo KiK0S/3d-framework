@@ -14,6 +14,25 @@ void Triangle4d::get_points(std::array<int, 3> order, Point4d *a, Point4d *b, Po
     *c = points[order[2]];
 }
 
+Vector4d Triangle4d::get_normal_vector() const {
+    Vector4d na = b - a;
+    Vector4d nb = c - a;
+    Vector4d res(na.z * nb.y - nb.z * na.y,
+                 na.x * nb.z - nb.x * na.z,
+                 na.y * nb.x - nb.y * na.x);
+    res.resize(1);
+    return res;
+}
+
+sf::Color Triangle4d::get_shadowed_color() const {
+    double shadow_coeff = std::sqrt(std::abs(scalar(Vector4d(0, 0, 1), get_normal_vector())));
+    sf::Color res(color_);
+    res.r *= shadow_coeff;
+    res.g *= shadow_coeff;
+    res.b *= shadow_coeff;
+    return res;
+}
+
 sf::Color Triangle4d::get_color() const {
     return color_;
 }

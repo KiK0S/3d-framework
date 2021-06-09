@@ -90,7 +90,6 @@ private:
      */
     void create_transformation_matrixes();
 
-
     Point4d focus_point_{0, 0, 0};
     Matrix4d transform_space_to_screen_ = Matrix4d::identity_matrix();
     Matrix4d transform_to_camera_space_ = Matrix4d::identity_matrix();

@@ -29,6 +29,16 @@ public:
      */
     sf::Color get_color() const ;
 
+    /*!
+        \brief Возвращает цвет треугольника с учетом тени
+     */
+    sf::Color get_shadowed_color() const ;
+
+    /*!
+        \brief Возвращает вектор нормали к плоскости треугольника длины 1
+     */
+    Vector4d get_normal_vector() const ;
+
     Point4d a, b, c;
 private:
     sf::Color color_;

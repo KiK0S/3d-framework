@@ -13,17 +13,22 @@ namespace app {
     \date May 14 2021
 */
 class SurfaceObject : public WireObject {
-private:
-    struct Triplet;
-
 public:
+    struct Triplet {
+        int a, b, c;
+        sf::Color color;
+        Triplet() = delete;
+        Triplet(int a, int b, int c, sf::Color color = sf::Color::Black)
+                : a(a) , b(b) , c(c) , color(color) {}
+        
+    };
+
     /*!
         \brief Конструктор объекта в пространстве
      */
     SurfaceObject(std::vector<Point4d> points = {},
                   std::vector<std::pair<int, int>> edges = {},
-                  std::vector<Triplet> triangles = {},
-                  sf::Color color = sf::Color::Black);
+                  std::vector<Triplet> triangles = {});
 
     /*!
         \brief Массив информации о триангуляции поверхностей фигуры
@@ -31,13 +36,6 @@ public:
     std::vector<Triangle4d> get_triangles() const;
 
 private:
-    struct Triplet {
-        int a, b, c;
-        Triplet() = delete;
-        Triplet(int a, int b, int c): a(a), b(b), c(c) {}
-    };
-
-    sf::Color color_;
     std::vector<Triplet> triangles_;
 };
 

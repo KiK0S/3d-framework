@@ -92,12 +92,14 @@ public:
     bool poll_event(sf::Event* event);
 
     /*!
-        \brief Возвращает мир
+        \brief Возвращает ми
+        \returns Мир World, константная версия
     */
     const World& get_world() const ;
 
     /*!
         \brief Возвращает мир
+        \returns Мир World, константная версия
     */
     World& get_world() ;
 

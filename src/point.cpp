@@ -53,6 +53,7 @@ Point4d operator * (double f, const Point4d& p) {
 }
 
 double Point4d::length() const {
+    assert(w == 1);
     return std::sqrt(x * x + y * y + z * z);
 }
 
@@ -104,7 +105,7 @@ double scalar(const sf::Vector2f& a, const sf::Vector2f& b) {
 }
 
 double scalar(const Vector4d& a, const Vector4d& b) {
-    return a.x * b.x + a.y * b.y + a.z * b.z;
+    return a.x / a.w * b.x / b.w + a.y / a.w * b.y / b.w + a.z / a.w * b.z / b.w;
 }
 
 sf::Vector2f& operator*= (sf::Vector2f& v, double d) {
