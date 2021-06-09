@@ -1,23 +1,32 @@
 Фреймворк для отрисовки 3д-объектов
 
-Версия v0.2
+*Последний доступный тег v0.3*
 Умеет на текущий момент:
-Нарисовать произвольный объект, покрутить и подвигать камеру с помощью клавиатуры.
+* Нарисовать произвольный объект
+* Проективное преобразование
+* Покрутить и подвигать камеру с помощью клавиатуры.
+* Распарсить .off-объект
+* Тени
 
 Тестовое приложение поворачивает камеру по WASD + QE, сдвиг камеры по стрелочкам + ZX, объекты двигаются по IJKL + UO
 
 Пример использования:
-test.cpp
 
-![Output sample](https://github.com/kik0s/3d-framework/raw/dima-review/cube.gif)
-![Output sample](https://github.com/kik0s/3d-framework/raw/dima-review/cubes.gif)
+![Output sample](https://github.com/kik0s/3d-framework/raw/dima-review/example/cube.gif)
+![Output sample](https://github.com/kik0s/3d-framework/raw/dima-review/example/cubes.gif)
+![Output sample](https://github.com/kik0s/3d-framework/raw/dima-review/example/apple.png)
+![Output sample](https://github.com/kik0s/3d-framework/raw/dima-review/example/teapot.png)
+![Output sample](https://github.com/kik0s/3d-framework/raw/dima-review/example/heart.png)
+![Output sample](https://github.com/kik0s/3d-framework/raw/dima-review/example/mushroom.png)
 
-Рекомендую дополнительно сделать checkout на какой-нибудь тег из доступных, там точно должно что-то работать.
+Рекомендую дополнительно сделать checkout на последний тег из доступных.
+
 
                 Инструкция по запуску на Linux:
-                apt-get -y install \
-                            cxxtest \
-                            libsfml-dev
+                # опционально, чтобы поставить нужные пакеты на систему, так собирается в github actions 
+                # apt-get -y install \
+                #            cxxtest \
+                #            libsfml-dev
                  git clone --recurse-submodules git@github.com:kik0s/3d-framework.git
                  cd 3d-framework
                  mkdir build && cd build
