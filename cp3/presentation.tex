@@ -1,0 +1,174 @@
+\documentclass{beamer}
+
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian, english]{babel}
+
+\usepackage{amsmath, amsfonts, amsthm, amscd}
+%\usepackage{graphics}
+\usepackage{graphicx}
+\usepackage[matrix,arrow,curve]{xy}
+%\usepackage{multicol}
+
+%----------------------------------------------------
+
+\newtheorem{problemR}{Проблема}
+\newtheorem{aim}{Цель}
+
+
+\newtheorem{construction}{Construction}
+\newtheorem{problems}{Problems}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{question}{Question}
+
+\mode<presentation>
+\usetheme{Madrid}
+
+\title{}
+\date{2021}
+\author{Константин Амеличев}
+
+
+\begin{document}
+
+
+
+\begin{frame}
+\begin{center}
+
+
+{\large \scshape
+
+\bigskip
+
+\bigskip
+
+3d-Renderer с нуля
+
+\bigskip
+}
+
+
+
+Амеличев Константин, ПМИ 191\\
+
+\bigskip
+
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+
+\end{center}
+\end{frame}
+
+\begin{frame}
+
+\frametitle{Цель работы}
+
+Разработка библиотеки для отрисовки объектов из 3d-пространства
+
+\bigskip
+
+Из пререквизитов~--- только отрисовка пикселей на экране.
+
+\end{frame}
+
+\begin{frame}
+
+\frametitle{Поставленные задачи}
+
+\begin{itemize}
+\item Изучение теории
+\item Сборка пайплайна
+\item Создание приложения
+\item Тестирование
+\item Документация
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Pipeline}
+
+\begin{itemize}
+\item Перенос объекта в систему координат камеры.
+\item Клиппинг (выбор объектов для отображения).
+\item Проективное преобразование
+\item Растеризация
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+
+\frametitle{Изучение теории}
+
+\begin{itemize}
+
+\item Однородные координаты для работы с 3d-пространством
+\begin{itemize}
+\item $\begin{pmatrix} x \\ y \\ z \\ w \end{pmatrix} \iff \begin{pmatrix} \frac{x}{w} \\ \frac{y}{w} \\ \frac{z}{w} \\ 1 \end{pmatrix} \iff \begin{pmatrix} x \\ y \\ z \end{pmatrix}$
+\end{itemize}
+\item Повороты и сдвиги
+\item Проективное преобразование
+\item Работа с матрицами
+
+\end{itemize}
+
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Алгоритмическая часть}
+
+\begin{itemize}
+\item Клиппинг
+% Алгоритм Уайлера — Атертона
+\item Растеризация
+\begin{itemize}
+	\item Выбор пикселей треугольника
+	\item Вычисление z-value
+\end{itemize}
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Программная часть}
+
+\begin{itemize}
+\item Renderer
+\item Camera
+\item World
+\item Window (SFML)
+\end{itemize}
+
+\end{frame}
+
+% \begin{frame}
+% \frametitle{Схема взаимодействия}
+
+% \end{frame}
+
+\begin{frame}
+\frametitle{Программная часть}
+
+\begin{itemize}
+\item Application
+\item Doxygen
+\item CxxTest + Github Actions
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Результаты}
+
+КАРТИНКА
+
+\end{frame}
+
+
+\end{document}
