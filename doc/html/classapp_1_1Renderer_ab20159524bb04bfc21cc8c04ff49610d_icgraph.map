@@ -1,0 +1,5 @@
+<map id="app::Renderer::draw_frame" name="app::Renderer::draw_frame">
+<area shape="rect" id="node1" title="Производит отрисовку кадра" alt="" coords="437,5,591,47"/>
+<area shape="rect" id="node2" href="$classapp_1_1Application.html#a6de383313a844c5f3d6a10e7d6cbaa00" title="Обновление кадра в приложении." alt="" coords="209,5,389,47"/>
+<area shape="rect" id="node3" href="$classapp_1_1Application.html#af9098183238622421f4e18930c6dd8ec" title="Цикл приложения" alt="" coords="5,13,161,39"/>
+</map>

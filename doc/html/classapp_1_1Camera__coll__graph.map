@@ -1,0 +1,5 @@
+<map id="app::Camera" name="app::Camera">
+<area shape="rect" id="node1" title="Класс камеры" alt="" coords="71,497,263,795"/>
+<area shape="rect" id="node2" href="$classapp_1_1Point4d.html" title="Класс четырехмерной точки." alt="" coords="5,42,129,339"/>
+<area shape="rect" id="node3" href="$classapp_1_1Matrix.html" title=" " alt="" coords="154,5,383,376"/>
+</map>

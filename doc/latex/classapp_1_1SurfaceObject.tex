@@ -1,0 +1,112 @@
+\hypertarget{classapp_1_1SurfaceObject}{}\doxysection{app\+::Surface\+Object Class Reference}
+\label{classapp_1_1SurfaceObject}\index{app::SurfaceObject@{app::SurfaceObject}}
+
+
+Класс объекта в 3д.  
+
+
+
+
+{\ttfamily \#include $<$surface\+\_\+object.\+h$>$}
+
+
+
+Inheritance diagram for app\+::Surface\+Object\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=246pt]{classapp_1_1SurfaceObject__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for app\+::Surface\+Object\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=196pt]{classapp_1_1SurfaceObject__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structapp_1_1SurfaceObject_1_1Triplet}{Triplet}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classapp_1_1SurfaceObject_ada31ea1f9b3adee0801babd5eb8355a9}{Surface\+Object}} (std\+::vector$<$ \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} $>$ points=\{\}, std\+::vector$<$ std\+::pair$<$ int, int $>$$>$ edges=\{\}, std\+::vector$<$ \mbox{\hyperlink{structapp_1_1SurfaceObject_1_1Triplet}{Triplet}} $>$ triangles=\{\}, sf\+::\+Color color=sf\+::\+Color\+::\+Black)
+\begin{DoxyCompactList}\small\item\em Конструктор объекта в пространстве \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{classapp_1_1Triangle4d}{Triangle4d}} $>$ \mbox{\hyperlink{classapp_1_1SurfaceObject_a5e4951bdbaf453f826c8aaebdd5a206b}{get\+\_\+triangles}} () const
+\begin{DoxyCompactList}\small\item\em Массив информации о триангуляции поверхностей фигуры \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+sf\+::\+Color \mbox{\hyperlink{classapp_1_1SurfaceObject_adc934a403376031e76edd492ae91533a}{color\+\_\+}}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{structapp_1_1SurfaceObject_1_1Triplet}{Triplet}} $>$ \mbox{\hyperlink{classapp_1_1SurfaceObject_a047eded6a25ff22fa379b7a2dedd434d}{triangles\+\_\+}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Класс объекта в 3д. 
+
+\begin{DoxyAuthor}{Author}
+Ki\+K0S 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+May 14 2021 
+\end{DoxyDate}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classapp_1_1SurfaceObject_ada31ea1f9b3adee0801babd5eb8355a9}\label{classapp_1_1SurfaceObject_ada31ea1f9b3adee0801babd5eb8355a9}} 
+\index{app::SurfaceObject@{app::SurfaceObject}!SurfaceObject@{SurfaceObject}}
+\index{SurfaceObject@{SurfaceObject}!app::SurfaceObject@{app::SurfaceObject}}
+\doxysubsubsection{\texorpdfstring{SurfaceObject()}{SurfaceObject()}}
+{\footnotesize\ttfamily app\+::\+Surface\+Object\+::\+Surface\+Object (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} $>$}]{points = {\ttfamily \{\}},  }\item[{std\+::vector$<$ std\+::pair$<$ int, int $>$$>$}]{edges = {\ttfamily \{\}},  }\item[{std\+::vector$<$ \mbox{\hyperlink{structapp_1_1SurfaceObject_1_1Triplet}{Triplet}} $>$}]{triangles = {\ttfamily \{\}},  }\item[{sf\+::\+Color}]{color = {\ttfamily sf\+:\+:Color\+:\+:Black} }\end{DoxyParamCaption})}
+
+
+
+Конструктор объекта в пространстве 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classapp_1_1SurfaceObject_a5e4951bdbaf453f826c8aaebdd5a206b}\label{classapp_1_1SurfaceObject_a5e4951bdbaf453f826c8aaebdd5a206b}} 
+\index{app::SurfaceObject@{app::SurfaceObject}!get\_triangles@{get\_triangles}}
+\index{get\_triangles@{get\_triangles}!app::SurfaceObject@{app::SurfaceObject}}
+\doxysubsubsection{\texorpdfstring{get\_triangles()}{get\_triangles()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{classapp_1_1Triangle4d}{Triangle4d}} $>$ app\+::\+Surface\+Object\+::get\+\_\+triangles (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Массив информации о триангуляции поверхностей фигуры 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classapp_1_1SurfaceObject_adc934a403376031e76edd492ae91533a}\label{classapp_1_1SurfaceObject_adc934a403376031e76edd492ae91533a}} 
+\index{app::SurfaceObject@{app::SurfaceObject}!color\_@{color\_}}
+\index{color\_@{color\_}!app::SurfaceObject@{app::SurfaceObject}}
+\doxysubsubsection{\texorpdfstring{color\_}{color\_}}
+{\footnotesize\ttfamily sf\+::\+Color app\+::\+Surface\+Object\+::color\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classapp_1_1SurfaceObject_a047eded6a25ff22fa379b7a2dedd434d}\label{classapp_1_1SurfaceObject_a047eded6a25ff22fa379b7a2dedd434d}} 
+\index{app::SurfaceObject@{app::SurfaceObject}!triangles\_@{triangles\_}}
+\index{triangles\_@{triangles\_}!app::SurfaceObject@{app::SurfaceObject}}
+\doxysubsubsection{\texorpdfstring{triangles\_}{triangles\_}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{structapp_1_1SurfaceObject_1_1Triplet}{Triplet}}$>$ app\+::\+Surface\+Object\+::triangles\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{surface__object_8h}{surface\+\_\+object.\+h}}\item 
+src/\mbox{\hyperlink{surface__object_8cpp}{surface\+\_\+object.\+cpp}}\end{DoxyCompactItemize}

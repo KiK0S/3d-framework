@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [ main ]
+  push:
+    branches: [ dima-review ]
+
+  workflow_dispatch:
+
+jobs:
+  check-ci:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Just hello world
+        run:  echo Hello, world!
+  build:
+    runs-on:  ubuntu-latest
+
+    steps:
+     - uses:  actions/checkout@v2
+     - name:  build
+       run:   |
+              sudo apt -y install libsfml-dev
+              mkdir build
+              cd build
+              cmake ..
+              make -j4
+
+  test:
+    runs-on:  ubuntu-latest
+
+    steps:
+     - uses:  actions/checkout@v2
+     - name:  test
+       uses:  ./
+       id:    cv
+     - name:  Measure time
+       run:   echo "The time was ${{ steps.build.outputs.time }}"
+     

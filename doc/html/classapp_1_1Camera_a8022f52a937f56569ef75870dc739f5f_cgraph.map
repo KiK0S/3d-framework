@@ -1,0 +1,5 @@
+<map id="app::Camera::project_on_screen" name="app::Camera::project_on_screen">
+<area shape="rect" id="node1" title="Получение видоизмененных 2д&#45;коортинат точки" alt="" coords="5,5,164,47"/>
+<area shape="rect" id="node2" href="$classapp_1_1Camera.html#ac174af1573b51a9b180a3a2d9727277c" title="Получение координат на в пространстве (экран, z&#45;value)" alt="" coords="212,5,389,47"/>
+<area shape="rect" id="node3" href="$classapp_1_1Point4d.html#a685768ec2e6ed6486970b10386ad3d98" title="Нормализует координаты точки &#45; получает соответствующую трехмерную с w = 1." alt="" coords="437,13,613,39"/>
+</map>

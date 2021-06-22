@@ -1,0 +1,4 @@
+<map id="app::Screen::clear" name="app::Screen::clear">
+<area shape="rect" id="node1" title="очистка" alt="" coords="5,5,144,32"/>
+<area shape="rect" id="node2" href="$classapp_1_1PixelScreen.html#a32016edd415bb4b0875b555a236a972b" title="Очистка экрана" alt="" coords="192,5,361,32"/>
+</map>

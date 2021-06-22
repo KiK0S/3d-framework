@@ -1,0 +1,6 @@
+<map id="app::Renderer" name="app::Renderer">
+<area shape="rect" id="node1" title="Класс рендерера" alt="" coords="107,505,309,817"/>
+<area shape="rect" id="node2" href="$classapp_1_1Screen.html" title="Класс экрана." alt="" coords="122,277,294,443"/>
+<area shape="rect" id="node3" href="$classapp_1_1PixelScreen.html" title=" " alt="" coords="5,13,208,207"/>
+<area shape="rect" id="node4" href="$classapp_1_1PixelScreen.html" title=" " alt="" coords="233,5,389,215"/>
+</map>

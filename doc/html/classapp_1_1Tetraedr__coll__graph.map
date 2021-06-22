@@ -1,0 +1,6 @@
+<map id="app::Tetraedr" name="app::Tetraedr">
+<area shape="rect" id="node1" title="Класс тетраедра в 3д." alt="" coords="146,624,257,731"/>
+<area shape="rect" id="node2" href="$classapp_1_1SurfaceObject.html" title="Класс объекта в 3д." alt="" coords="10,315,155,422"/>
+<area shape="rect" id="node3" href="$classapp_1_1WireObject.html" title="Класс каркаса объекта в 3д." alt="" coords="5,5,160,171"/>
+<area shape="rect" id="node4" href="$classapp_1_1Point4d.html" title="Класс четырехмерной точки." alt="" coords="179,220,303,517"/>
+</map>

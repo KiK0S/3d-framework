@@ -1,0 +1,21 @@
+<map id="src/matrix.h" name="src/matrix.h">
+<area shape="rect" id="node1" title=" " alt="" coords="657,5,757,32"/>
+<area shape="rect" id="node2" href="$camera_8h.html" title=" " alt="" coords="201,155,307,181"/>
+<area shape="rect" id="node5" href="$application_8cpp.html" title=" " alt="" coords="833,453,977,480"/>
+<area shape="rect" id="node8" href="$renderer_8cpp.html" title=" " alt="" coords="913,304,1040,331"/>
+<area shape="rect" id="node11" href="$camera_8cpp.html" title=" " alt="" coords="5,229,127,256"/>
+<area shape="rect" id="node12" href="$triangle_8h.html" title=" " alt="" coords="785,80,891,107"/>
+<area shape="rect" id="node18" href="$wire__object_8h.html" title=" " alt="" coords="512,80,644,107"/>
+<area shape="rect" id="node3" href="$renderer_8h.html" title=" " alt="" coords="499,229,609,256"/>
+<area shape="rect" id="node6" href="$world_8h.html" title=" " alt="" coords="302,304,395,331"/>
+<area shape="rect" id="node9" href="$tetraedr_8h.html" title=" " alt="" coords="203,229,311,256"/>
+<area shape="rect" id="node4" href="$application_8h.html" title=" " alt="" coords="496,379,625,405"/>
+<area shape="rect" id="node7" href="$world_8cpp.html" title=" " alt="" coords="771,379,879,405"/>
+<area shape="rect" id="node10" href="$tetraedr_8cpp.html" title=" " alt="" coords="155,304,278,331"/>
+<area shape="rect" id="node13" href="$surface__object_8h.html" title=" " alt="" coords="502,155,654,181"/>
+<area shape="rect" id="node17" href="$triangle_8cpp.html" title=" " alt="" coords="678,155,801,181"/>
+<area shape="rect" id="node14" href="$cube_8h.html" title=" " alt="" coords="386,229,474,256"/>
+<area shape="rect" id="node16" href="$surface__object_8cpp.html" title=" " alt="" coords="633,229,800,256"/>
+<area shape="rect" id="node15" href="$cube_8cpp.html" title=" " alt="" coords="420,304,523,331"/>
+<area shape="rect" id="node19" href="$wire__object_8cpp.html" title=" " alt="" coords="331,155,478,181"/>
+</map>

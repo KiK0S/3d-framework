@@ -1,0 +1,307 @@
+\hypertarget{classapp_1_1Triangle2d}{}\doxysection{app\+::Triangle2d Class Reference}
+\label{classapp_1_1Triangle2d}\index{app::Triangle2d@{app::Triangle2d}}
+
+
+Класс треугольника в 2д.  
+
+
+
+
+{\ttfamily \#include $<$triangle.\+h$>$}
+
+
+
+Collaboration diagram for app\+::Triangle2d\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=189pt]{classapp_1_1Triangle2d__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classapp_1_1Triangle2d_a6b3d00ae3d8bb95425f16c0563cb7137}{Triangle2d}} (sf\+::\+Vector2f \mbox{\hyperlink{classapp_1_1Triangle2d_ac7f057fb2adb8dcd05e008a38d7c720f}{a}}, sf\+::\+Vector2f \mbox{\hyperlink{classapp_1_1Triangle2d_af4ba641428016b295a0b9805aca619fa}{b}}, sf\+::\+Vector2f \mbox{\hyperlink{classapp_1_1Triangle2d_a3e6fa9ba079cb3c59b0d7be80a632d8f}{c}})
+\begin{DoxyCompactList}\small\item\em Конструктор треугольника \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classapp_1_1Triangle2d_a28cde6316cd372252aa7f97dc5c87c7b}{inner\+\_\+point}} (const sf\+::\+Vector2f \&o) const
+\begin{DoxyCompactList}\small\item\em Проверяет, что точка внутри треугольника \end{DoxyCompactList}\item 
+sf\+::\+Vector2f \mbox{\hyperlink{classapp_1_1Triangle2d_add3b3ea70e4a1c762a7f2846fec06e5a}{get\+\_\+left\+\_\+point}} () const
+\begin{DoxyCompactList}\small\item\em Возвращает самую левую точку треугольника \end{DoxyCompactList}\item 
+sf\+::\+Vector2f \mbox{\hyperlink{classapp_1_1Triangle2d_a28106e12c57137cc452f8436e59b3496}{get\+\_\+right\+\_\+point}} () const
+\begin{DoxyCompactList}\small\item\em Возвращает самую правую точку треугольника \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classapp_1_1Triangle2d_a30d36ea2c255b9ffd1b1f7f4fb8f7045}{min\+\_\+y\+\_\+in\+\_\+line}} (double x) const
+\begin{DoxyCompactList}\small\item\em Возвращает минимальную y-\/координату точки треугольника с заданной x-\/координатой \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classapp_1_1Triangle2d_a239f42f893259fd756cc988ea6db1d25}{max\+\_\+y\+\_\+in\+\_\+line}} (double x) const
+\begin{DoxyCompactList}\small\item\em Возвращает максимальную y-\/координату точки треугольника с заданной x-\/координатой \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}$<$ 2, 2 $>$ \mbox{\hyperlink{classapp_1_1Triangle2d_a01aecf34982cb11335997584439e7dab}{create\+\_\+basis}} () const
+\begin{DoxyCompactList}\small\item\em Создает два базисных вектора треугольника \end{DoxyCompactList}\item 
+std\+::array$<$ int, 3 $>$ \mbox{\hyperlink{classapp_1_1Triangle2d_ad6abffbef66a88b40f8c2cc9f6d20e22}{get\+\_\+order}} () const
+\begin{DoxyCompactList}\small\item\em Возвращает порядок, в котором точки a, b, c отсортированы относительно того порядка, который был передан в конструктор \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classapp_1_1Triangle2d_a8d17928665e2bcb0913837d1fab3b6d7}{square}} () const
+\begin{DoxyCompactList}\small\item\em Вычисляет площадь треугольника \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classapp_1_1Triangle2d_a4477d0ba992dd4cdaf5b78da0a9cf3b0}{is\+\_\+degenerate}} () const
+\begin{DoxyCompactList}\small\item\em Проверка треугольника на вырожденность \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+sf\+::\+Vector2f \mbox{\hyperlink{classapp_1_1Triangle2d_ac7f057fb2adb8dcd05e008a38d7c720f}{a}}
+\item 
+sf\+::\+Vector2f \mbox{\hyperlink{classapp_1_1Triangle2d_af4ba641428016b295a0b9805aca619fa}{b}}
+\item 
+sf\+::\+Vector2f \mbox{\hyperlink{classapp_1_1Triangle2d_a3e6fa9ba079cb3c59b0d7be80a632d8f}{c}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::array$<$ int, 3 $>$ \mbox{\hyperlink{classapp_1_1Triangle2d_a5a1e92b5e722f28de1685413cf80dfc4}{order\+\_\+}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Класс треугольника в 2д. 
+
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+May 14 2021 
+\end{DoxyDate}
+\begin{DoxyAuthor}{Author}
+Ki\+K0S 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classapp_1_1Triangle2d_a6b3d00ae3d8bb95425f16c0563cb7137}\label{classapp_1_1Triangle2d_a6b3d00ae3d8bb95425f16c0563cb7137}} 
+\index{app::Triangle2d@{app::Triangle2d}!Triangle2d@{Triangle2d}}
+\index{Triangle2d@{Triangle2d}!app::Triangle2d@{app::Triangle2d}}
+\doxysubsubsection{\texorpdfstring{Triangle2d()}{Triangle2d()}}
+{\footnotesize\ttfamily app\+::\+Triangle2d\+::\+Triangle2d (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{a,  }\item[{sf\+::\+Vector2f}]{b,  }\item[{sf\+::\+Vector2f}]{c }\end{DoxyParamCaption})}
+
+
+
+Конструктор треугольника 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=329pt]{classapp_1_1Triangle2d_a6b3d00ae3d8bb95425f16c0563cb7137_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classapp_1_1Triangle2d_a01aecf34982cb11335997584439e7dab}\label{classapp_1_1Triangle2d_a01aecf34982cb11335997584439e7dab}} 
+\index{app::Triangle2d@{app::Triangle2d}!create\_basis@{create\_basis}}
+\index{create\_basis@{create\_basis}!app::Triangle2d@{app::Triangle2d}}
+\doxysubsubsection{\texorpdfstring{create\_basis()}{create\_basis()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}$<$ 2, 2 $>$ app\+::\+Triangle2d\+::create\+\_\+basis (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Создает два базисных вектора треугольника 
+
+Вектора сделаны так, что в паре с точкой A образуют векторное пространство, а треугольник натянут на точку A Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Triangle2d_a01aecf34982cb11335997584439e7dab_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classapp_1_1Triangle2d_add3b3ea70e4a1c762a7f2846fec06e5a}\label{classapp_1_1Triangle2d_add3b3ea70e4a1c762a7f2846fec06e5a}} 
+\index{app::Triangle2d@{app::Triangle2d}!get\_left\_point@{get\_left\_point}}
+\index{get\_left\_point@{get\_left\_point}!app::Triangle2d@{app::Triangle2d}}
+\doxysubsubsection{\texorpdfstring{get\_left\_point()}{get\_left\_point()}}
+{\footnotesize\ttfamily sf\+::\+Vector2f app\+::\+Triangle2d\+::get\+\_\+left\+\_\+point (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Возвращает самую левую точку треугольника 
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Triangle2d_add3b3ea70e4a1c762a7f2846fec06e5a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classapp_1_1Triangle2d_ad6abffbef66a88b40f8c2cc9f6d20e22}\label{classapp_1_1Triangle2d_ad6abffbef66a88b40f8c2cc9f6d20e22}} 
+\index{app::Triangle2d@{app::Triangle2d}!get\_order@{get\_order}}
+\index{get\_order@{get\_order}!app::Triangle2d@{app::Triangle2d}}
+\doxysubsubsection{\texorpdfstring{get\_order()}{get\_order()}}
+{\footnotesize\ttfamily std\+::array$<$ int, 3 $>$ app\+::\+Triangle2d\+::get\+\_\+order (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Возвращает порядок, в котором точки a, b, c отсортированы относительно того порядка, который был передан в конструктор 
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Triangle2d_ad6abffbef66a88b40f8c2cc9f6d20e22_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classapp_1_1Triangle2d_a28106e12c57137cc452f8436e59b3496}\label{classapp_1_1Triangle2d_a28106e12c57137cc452f8436e59b3496}} 
+\index{app::Triangle2d@{app::Triangle2d}!get\_right\_point@{get\_right\_point}}
+\index{get\_right\_point@{get\_right\_point}!app::Triangle2d@{app::Triangle2d}}
+\doxysubsubsection{\texorpdfstring{get\_right\_point()}{get\_right\_point()}}
+{\footnotesize\ttfamily sf\+::\+Vector2f app\+::\+Triangle2d\+::get\+\_\+right\+\_\+point (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Возвращает самую правую точку треугольника 
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Triangle2d_a28106e12c57137cc452f8436e59b3496_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classapp_1_1Triangle2d_a28cde6316cd372252aa7f97dc5c87c7b}\label{classapp_1_1Triangle2d_a28cde6316cd372252aa7f97dc5c87c7b}} 
+\index{app::Triangle2d@{app::Triangle2d}!inner\_point@{inner\_point}}
+\index{inner\_point@{inner\_point}!app::Triangle2d@{app::Triangle2d}}
+\doxysubsubsection{\texorpdfstring{inner\_point()}{inner\_point()}}
+{\footnotesize\ttfamily bool app\+::\+Triangle2d\+::inner\+\_\+point (\begin{DoxyParamCaption}\item[{const sf\+::\+Vector2f \&}]{o }\end{DoxyParamCaption}) const}
+
+
+
+Проверяет, что точка внутри треугольника 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=304pt]{classapp_1_1Triangle2d_a28cde6316cd372252aa7f97dc5c87c7b_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classapp_1_1Triangle2d_a4477d0ba992dd4cdaf5b78da0a9cf3b0}\label{classapp_1_1Triangle2d_a4477d0ba992dd4cdaf5b78da0a9cf3b0}} 
+\index{app::Triangle2d@{app::Triangle2d}!is\_degenerate@{is\_degenerate}}
+\index{is\_degenerate@{is\_degenerate}!app::Triangle2d@{app::Triangle2d}}
+\doxysubsubsection{\texorpdfstring{is\_degenerate()}{is\_degenerate()}}
+{\footnotesize\ttfamily bool app\+::\+Triangle2d\+::is\+\_\+degenerate (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Проверка треугольника на вырожденность 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Triangle2d_a4477d0ba992dd4cdaf5b78da0a9cf3b0_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Triangle2d_a4477d0ba992dd4cdaf5b78da0a9cf3b0_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classapp_1_1Triangle2d_a239f42f893259fd756cc988ea6db1d25}\label{classapp_1_1Triangle2d_a239f42f893259fd756cc988ea6db1d25}} 
+\index{app::Triangle2d@{app::Triangle2d}!max\_y\_in\_line@{max\_y\_in\_line}}
+\index{max\_y\_in\_line@{max\_y\_in\_line}!app::Triangle2d@{app::Triangle2d}}
+\doxysubsubsection{\texorpdfstring{max\_y\_in\_line()}{max\_y\_in\_line()}}
+{\footnotesize\ttfamily double app\+::\+Triangle2d\+::max\+\_\+y\+\_\+in\+\_\+line (\begin{DoxyParamCaption}\item[{double}]{x }\end{DoxyParamCaption}) const}
+
+
+
+Возвращает максимальную y-\/координату точки треугольника с заданной x-\/координатой 
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Triangle2d_a239f42f893259fd756cc988ea6db1d25_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classapp_1_1Triangle2d_a30d36ea2c255b9ffd1b1f7f4fb8f7045}\label{classapp_1_1Triangle2d_a30d36ea2c255b9ffd1b1f7f4fb8f7045}} 
+\index{app::Triangle2d@{app::Triangle2d}!min\_y\_in\_line@{min\_y\_in\_line}}
+\index{min\_y\_in\_line@{min\_y\_in\_line}!app::Triangle2d@{app::Triangle2d}}
+\doxysubsubsection{\texorpdfstring{min\_y\_in\_line()}{min\_y\_in\_line()}}
+{\footnotesize\ttfamily double app\+::\+Triangle2d\+::min\+\_\+y\+\_\+in\+\_\+line (\begin{DoxyParamCaption}\item[{double}]{x }\end{DoxyParamCaption}) const}
+
+
+
+Возвращает минимальную y-\/координату точки треугольника с заданной x-\/координатой 
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Triangle2d_a30d36ea2c255b9ffd1b1f7f4fb8f7045_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classapp_1_1Triangle2d_a8d17928665e2bcb0913837d1fab3b6d7}\label{classapp_1_1Triangle2d_a8d17928665e2bcb0913837d1fab3b6d7}} 
+\index{app::Triangle2d@{app::Triangle2d}!square@{square}}
+\index{square@{square}!app::Triangle2d@{app::Triangle2d}}
+\doxysubsubsection{\texorpdfstring{square()}{square()}}
+{\footnotesize\ttfamily double app\+::\+Triangle2d\+::square (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Вычисляет площадь треугольника 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=312pt]{classapp_1_1Triangle2d_a8d17928665e2bcb0913837d1fab3b6d7_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Triangle2d_a8d17928665e2bcb0913837d1fab3b6d7_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classapp_1_1Triangle2d_ac7f057fb2adb8dcd05e008a38d7c720f}\label{classapp_1_1Triangle2d_ac7f057fb2adb8dcd05e008a38d7c720f}} 
+\index{app::Triangle2d@{app::Triangle2d}!a@{a}}
+\index{a@{a}!app::Triangle2d@{app::Triangle2d}}
+\doxysubsubsection{\texorpdfstring{a}{a}}
+{\footnotesize\ttfamily sf\+::\+Vector2f app\+::\+Triangle2d\+::a}
+
+\mbox{\Hypertarget{classapp_1_1Triangle2d_af4ba641428016b295a0b9805aca619fa}\label{classapp_1_1Triangle2d_af4ba641428016b295a0b9805aca619fa}} 
+\index{app::Triangle2d@{app::Triangle2d}!b@{b}}
+\index{b@{b}!app::Triangle2d@{app::Triangle2d}}
+\doxysubsubsection{\texorpdfstring{b}{b}}
+{\footnotesize\ttfamily sf\+::\+Vector2f app\+::\+Triangle2d\+::b}
+
+\mbox{\Hypertarget{classapp_1_1Triangle2d_a3e6fa9ba079cb3c59b0d7be80a632d8f}\label{classapp_1_1Triangle2d_a3e6fa9ba079cb3c59b0d7be80a632d8f}} 
+\index{app::Triangle2d@{app::Triangle2d}!c@{c}}
+\index{c@{c}!app::Triangle2d@{app::Triangle2d}}
+\doxysubsubsection{\texorpdfstring{c}{c}}
+{\footnotesize\ttfamily sf\+::\+Vector2f app\+::\+Triangle2d\+::c}
+
+\mbox{\Hypertarget{classapp_1_1Triangle2d_a5a1e92b5e722f28de1685413cf80dfc4}\label{classapp_1_1Triangle2d_a5a1e92b5e722f28de1685413cf80dfc4}} 
+\index{app::Triangle2d@{app::Triangle2d}!order\_@{order\_}}
+\index{order\_@{order\_}!app::Triangle2d@{app::Triangle2d}}
+\doxysubsubsection{\texorpdfstring{order\_}{order\_}}
+{\footnotesize\ttfamily std\+::array$<$int, 3$>$ app\+::\+Triangle2d\+::order\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{triangle_8h}{triangle.\+h}}\item 
+src/\mbox{\hyperlink{triangle_8cpp}{triangle.\+cpp}}\end{DoxyCompactItemize}

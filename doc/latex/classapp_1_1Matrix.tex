@@ -1,0 +1,598 @@
+\hypertarget{classapp_1_1Matrix}{}\doxysection{app\+::Matrix$<$ N, M $>$ Class Template Reference}
+\label{classapp_1_1Matrix}\index{app::Matrix$<$ N, M $>$@{app::Matrix$<$ N, M $>$}}
+
+
+Класс для работы с матрицами.  
+
+
+
+
+{\ttfamily \#include $<$matrix.\+h$>$}
+
+
+
+Collaboration diagram for app\+::Matrix$<$ N, M $>$\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=252pt]{classapp_1_1Matrix__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classapp_1_1Matrix_a7b49609f9cd1e4dfe731f9e6d6367c98}{Matrix}} ()
+\begin{DoxyCompactList}\small\item\em Конструктор, делающий нулевую матрицу \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classapp_1_1Matrix_a12ccd969ea36e0676cd625a6a8d089a7}{Matrix}} (const \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \&p)
+\begin{DoxyCompactList}\small\item\em Конструктор, создающий матрицу по четырехмерной точке \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classapp_1_1Matrix_a81f8f10236d98d1ccf62cd696771948e}{Matrix}} (const sf\+::\+Vector2f \&v)
+\begin{DoxyCompactList}\small\item\em Конструктор, создающий матрицу по двумерному вектору \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classapp_1_1Matrix_a0206f8d2f01b49308e8ac11df3d22cd4}{Matrix}} (const std\+::array$<$ double, N $\ast$M $>$ \&data)
+\begin{DoxyCompactList}\small\item\em Конструктор, создающий матрицу из массива со всеми ее элементами \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classapp_1_1Matrix_a952433729ea47b535d25cc6615f27421}{Matrix}} (std\+::initializer\+\_\+list$<$ double $>$ initial)
+\begin{DoxyCompactList}\small\item\em Конструктор, создающий матрицу из списка ее элементов \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classapp_1_1Matrix_a6fe2271638e47ae5fef11b9cb384f2c4}{Matrix}} (const std\+::vector$<$ sf\+::\+Vector2f $>$ \&data)
+\begin{DoxyCompactList}\small\item\em Конструктор, создающий матрицу по массиву двумерных векторов \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classapp_1_1Matrix_ade800284790b7070316db04ee4d9a098}{Matrix}} (const std\+::vector$<$ \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} $>$ \&data)
+\begin{DoxyCompactList}\small\item\em Конструктор, создающий матрицу по массиву четырехмерных точек \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classapp_1_1Matrix_a5e34a282ed542046eff0537d21ba35c9}{operator()}} (size\+\_\+t row, size\+\_\+t column) const
+\begin{DoxyCompactList}\small\item\em Оператор доступа к элементу матрицы \end{DoxyCompactList}\item 
+double \& \mbox{\hyperlink{classapp_1_1Matrix_a8db464a28a12585730284b5efe9c6d16}{operator()}} (size\+\_\+t row, size\+\_\+t column)
+\begin{DoxyCompactList}\small\item\em Оператор доступа к элементу матрицы \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classapp_1_1Matrix}{Matrix}} \& \mbox{\hyperlink{classapp_1_1Matrix_a686a40b91ddb756247c01bc93dcb7b77}{operator+=}} (const \mbox{\hyperlink{classapp_1_1Matrix}{Matrix}} \&other)
+\begin{DoxyCompactList}\small\item\em Оператор прибавления матрицы по правилу A\mbox{[}x\mbox{]}\mbox{[}y\mbox{]} += B\mbox{[}x\mbox{]}\mbox{[}y\mbox{]}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classapp_1_1Matrix}{Matrix}} \mbox{\hyperlink{classapp_1_1Matrix_a2c07ccc373a27a421e833e943b6832c9}{operator-\/}} () const
+\begin{DoxyCompactList}\small\item\em Оператор получения матрицы с обратным знаком\+: A\mbox{[}x\mbox{]}\mbox{[}y\mbox{]} -\/$>$ -\/A\mbox{[}x\mbox{]}\mbox{[}y\mbox{]}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classapp_1_1Matrix}{Matrix}} \& \mbox{\hyperlink{classapp_1_1Matrix_a873cb841c0e39f70ec6119580eb4bfc5}{operator-\/=}} (const \mbox{\hyperlink{classapp_1_1Matrix}{Matrix}} \&other)
+\begin{DoxyCompactList}\small\item\em Оператор вычитания матрицы по правилу A\mbox{[}x\mbox{]}\mbox{[}y\mbox{]} -\/= B\mbox{[}x\mbox{]}\mbox{[}y\mbox{]}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classapp_1_1Matrix}{Matrix}} \& \mbox{\hyperlink{classapp_1_1Matrix_ad8f3d48390d7b2bbdf98284f150ebda8}{operator$\ast$=}} (double k)
+\begin{DoxyCompactList}\small\item\em Оператор домножения матрицы на число по правилу A\mbox{[}x\mbox{]}\mbox{[}y\mbox{]} $\ast$= k. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classapp_1_1Matrix}{Matrix}} \& \mbox{\hyperlink{classapp_1_1Matrix_a9f6671bbc31c887f3f2b79d5b69dea99}{operator/=}} (double k)
+\begin{DoxyCompactList}\small\item\em Оператор деления матрицы на число по правилу A\mbox{[}x\mbox{]}\mbox{[}y\mbox{]} /= k. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classapp_1_1Matrix}{Matrix}} \mbox{\hyperlink{classapp_1_1Matrix_a13dd35dfd80b8e9c960706402eaae356}{operator$\ast$}} (double k) const
+\begin{DoxyCompactList}\small\item\em Оператор домножения матрицы на число по правилу A\mbox{[}x\mbox{]}\mbox{[}y\mbox{]} $\ast$= k. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classapp_1_1Matrix}{Matrix}} \mbox{\hyperlink{classapp_1_1Matrix_a58a0b29d10337a8aafd138b8165fe70d}{operator/}} (double k) const
+\begin{DoxyCompactList}\small\item\em Оператор деления матрицы на число по правилу A\mbox{[}x\mbox{]}\mbox{[}y\mbox{]} /= k. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classapp_1_1Matrix}{Matrix}} \& \mbox{\hyperlink{classapp_1_1Matrix_ac0be416d9067030df70b47344fc9391f}{operator$\ast$=}} (const \mbox{\hyperlink{classapp_1_1Matrix}{Matrix}} \&other)
+\begin{DoxyCompactList}\small\item\em Оператор домножения квадратной матрицы на матрицу \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}$<$ M, N $>$ \mbox{\hyperlink{classapp_1_1Matrix_afb0e32ababc5d2b30b3c0a3ed98ba557}{transpose}} () const
+\begin{DoxyCompactList}\small\item\em Получение транспонированной матрицы \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}$<$ N, 1 $>$ \mbox{\hyperlink{classapp_1_1Matrix_a29df7f197e427b66c11d5ab3519b1d83}{solve\+\_\+system}} (\mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}$<$ N, 1 $>$ point) const
+\begin{DoxyCompactList}\small\item\em Решение системы уравнений Ax = point. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classapp_1_1Matrix}{Matrix}} \mbox{\hyperlink{classapp_1_1Matrix_aec28f2dd133f15e10beab7fb13edb610}{inverse}} () const
+\begin{DoxyCompactList}\small\item\em Получение обратной матрицы \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classapp_1_1Matrix}{Matrix}} \mbox{\hyperlink{classapp_1_1Matrix_a957b65928ab3b151fa60e5a433df17a0}{identity\+\_\+matrix}} ()
+\begin{DoxyCompactList}\small\item\em Получение единичной матрицы\+: A\mbox{[}x\mbox{]}\mbox{[}x\mbox{]} = 1, A\mbox{[}x\mbox{]}\mbox{[}y\mbox{]} = 0. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{classapp_1_1Matrix}{Matrix}} \mbox{\hyperlink{classapp_1_1Matrix_a8b7985e643a4506f762f1fcff703213e}{construct\+\_\+moving\+\_\+matrix}} (const \mbox{\hyperlink{namespaceapp_a315a30c3b1ec772d2da7b1032cced529}{Vector4d}} \&moving\+\_\+vector)
+\begin{DoxyCompactList}\small\item\em Получение матрицы для сдвига на вектор в четырехмерном пространстве \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{classapp_1_1Matrix}{Matrix}} \mbox{\hyperlink{classapp_1_1Matrix_a9e652729bbb0bd05961f6ea8645a21f6}{construct\+\_\+rotation\+\_\+matrix}} (int fixed\+\_\+coordinate, double angle)
+\begin{DoxyCompactList}\small\item\em Получение матрицы для поворота в четырехмерном пространстве \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classapp_1_1Matrix}{Matrix}} \& \mbox{\hyperlink{classapp_1_1Matrix_a3650fe912bc08e9b6bf0129998edaf23}{swap\+\_\+rows}} (size\+\_\+t i, size\+\_\+t j)
+\item 
+\mbox{\hyperlink{classapp_1_1Matrix}{Matrix}} \& \mbox{\hyperlink{classapp_1_1Matrix_a8c807f486c82f29701655aa594a93b87}{multiply\+\_\+row}} (size\+\_\+t i, double k)
+\item 
+\mbox{\hyperlink{classapp_1_1Matrix}{Matrix}} \& \mbox{\hyperlink{classapp_1_1Matrix_ab211d037d2211145a9097174909ed2cc}{multiply\+\_\+then\+\_\+substract\+\_\+row}} (size\+\_\+t i, size\+\_\+t j, double k)
+\item 
+int \mbox{\hyperlink{classapp_1_1Matrix_aebd556a097f9911693dabe70f0320ddc}{find\+\_\+optimal\+\_\+row}} (size\+\_\+t column) const
+\item 
+{\footnotesize template$<$size\+\_\+t \+\_\+M$>$ }\\void \mbox{\hyperlink{classapp_1_1Matrix_ae612823801ec4af9815b321a63925587}{clear\+\_\+column}} (int column, \mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}$<$ N, \+\_\+M $>$ $\ast$paired, double k)
+\item 
+{\footnotesize template$<$size\+\_\+t \+\_\+M$>$ }\\void \mbox{\hyperlink{classapp_1_1Matrix_a6accdb642dd6fa0fafd87fc7b5a06352}{convert\+\_\+to\+\_\+upper\+\_\+triangular}} (\mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}$<$ N, \+\_\+M $>$ $\ast$paired)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::array$<$ double, N $\ast$M $>$ \mbox{\hyperlink{classapp_1_1Matrix_a8f279deb6181cb405b9fabc8179cc0f2}{data\+\_\+}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$size\+\_\+t N\+\_\+, size\+\_\+t M\+\_\+$>$ }\\class \mbox{\hyperlink{classapp_1_1Matrix_aa9fe77da1d8e2d5fa9b0a58901bfb6fc}{Matrix}}
+\item 
+{\footnotesize template$<$size\+\_\+t N\+\_\+, size\+\_\+t M\+\_\+$>$ }\\bool \mbox{\hyperlink{classapp_1_1Matrix_a018095360c3eed41805debefa828fc87}{operator==}} (const \mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}$<$ N\+\_\+, M\+\_\+ $>$ \&first, const \mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}$<$ N\+\_\+, M\+\_\+ $>$ \&second)
+\begin{DoxyCompactList}\small\item\em Оператор сравнения матриц по правилу A\mbox{[}x\mbox{]}\mbox{[}y\mbox{]} == B\mbox{[}x\mbox{]}\mbox{[}y\mbox{]}. \end{DoxyCompactList}\item 
+{\footnotesize template$<$size\+\_\+t N\+\_\+, size\+\_\+t M\+\_\+$>$ }\\bool \mbox{\hyperlink{classapp_1_1Matrix_a9d3e5662831949d2045a3b2f06821507}{operator!=}} (const \mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}$<$ N\+\_\+, M\+\_\+ $>$ \&first, const \mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}$<$ N\+\_\+, M\+\_\+ $>$ \&second)
+\begin{DoxyCompactList}\small\item\em Оператор проверки матриц на неравенство по правилу A\mbox{[}x\mbox{]}\mbox{[}y\mbox{]} == B\mbox{[}x\mbox{]}\mbox{[}y\mbox{]}. \end{DoxyCompactList}\item 
+{\footnotesize template$<$size\+\_\+t N\+\_\+, size\+\_\+t M\+\_\+$>$ }\\\mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}$<$ N\+\_\+, M\+\_\+ $>$ \mbox{\hyperlink{classapp_1_1Matrix_a52591388be3a42078c134f4df4412dab}{operator+}} (const \mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}$<$ N\+\_\+, M\+\_\+ $>$ \&first, const \mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}$<$ N\+\_\+, M\+\_\+ $>$ \&second)
+\begin{DoxyCompactList}\small\item\em Оператор сложения матриц по правилу A\mbox{[}x\mbox{]}\mbox{[}y\mbox{]} + B\mbox{[}x\mbox{]}\mbox{[}y\mbox{]}. \end{DoxyCompactList}\item 
+{\footnotesize template$<$size\+\_\+t N\+\_\+, size\+\_\+t M\+\_\+$>$ }\\\mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}$<$ N\+\_\+, M\+\_\+ $>$ \mbox{\hyperlink{classapp_1_1Matrix_ac23cb0bfd6ad8fb2a7fcd43466ab3abf}{operator-\/}} (const \mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}$<$ N\+\_\+, M\+\_\+ $>$ \&first, const \mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}$<$ N\+\_\+, M\+\_\+ $>$ \&second)
+\begin{DoxyCompactList}\small\item\em Оператор вычитания матриц по правилу A\mbox{[}x\mbox{]}\mbox{[}y\mbox{]} -\/ B\mbox{[}x\mbox{]}\mbox{[}y\mbox{]}. \end{DoxyCompactList}\item 
+{\footnotesize template$<$size\+\_\+t N\+\_\+, size\+\_\+t M\+\_\+, size\+\_\+t K$>$ }\\\mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}$<$ N\+\_\+, K $>$ \mbox{\hyperlink{classapp_1_1Matrix_a4c1feb7524e6bfb87cd39f5e2a1013b4}{operator$\ast$}} (const \mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}$<$ N\+\_\+, M\+\_\+ $>$ \&first, const \mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}$<$ M\+\_\+, K $>$ \&second)
+\begin{DoxyCompactList}\small\item\em Оператор перемножения матриц \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$size\+\_\+t N, size\+\_\+t M$>$\newline
+class app\+::\+Matrix$<$ N, M $>$}
+
+Класс для работы с матрицами. 
+
+\begin{DoxyAuthor}{Author}
+Ki\+K0S 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+May 14 2021 
+\end{DoxyDate}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classapp_1_1Matrix_a7b49609f9cd1e4dfe731f9e6d6367c98}\label{classapp_1_1Matrix_a7b49609f9cd1e4dfe731f9e6d6367c98}} 
+\index{app::Matrix$<$ N, M $>$@{app::Matrix$<$ N, M $>$}!Matrix@{Matrix}}
+\index{Matrix@{Matrix}!app::Matrix$<$ N, M $>$@{app::Matrix$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{Matrix()}{Matrix()}\hspace{0.1cm}{\footnotesize\ttfamily [1/7]}}
+{\footnotesize\ttfamily template$<$size\+\_\+t N, size\+\_\+t M$>$ \\
+\mbox{\hyperlink{classapp_1_1Matrix}{app\+::\+Matrix}}$<$ N, M $>$\+::\mbox{\hyperlink{classapp_1_1Matrix}{Matrix}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Конструктор, делающий нулевую матрицу 
+
+\mbox{\Hypertarget{classapp_1_1Matrix_a12ccd969ea36e0676cd625a6a8d089a7}\label{classapp_1_1Matrix_a12ccd969ea36e0676cd625a6a8d089a7}} 
+\index{app::Matrix$<$ N, M $>$@{app::Matrix$<$ N, M $>$}!Matrix@{Matrix}}
+\index{Matrix@{Matrix}!app::Matrix$<$ N, M $>$@{app::Matrix$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{Matrix()}{Matrix()}\hspace{0.1cm}{\footnotesize\ttfamily [2/7]}}
+{\footnotesize\ttfamily template$<$size\+\_\+t N, size\+\_\+t M$>$ \\
+\mbox{\hyperlink{classapp_1_1Matrix}{app\+::\+Matrix}}$<$ N, M $>$\+::\mbox{\hyperlink{classapp_1_1Matrix}{Matrix}} (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \&}]{p }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Конструктор, создающий матрицу по четырехмерной точке 
+
+\mbox{\Hypertarget{classapp_1_1Matrix_a81f8f10236d98d1ccf62cd696771948e}\label{classapp_1_1Matrix_a81f8f10236d98d1ccf62cd696771948e}} 
+\index{app::Matrix$<$ N, M $>$@{app::Matrix$<$ N, M $>$}!Matrix@{Matrix}}
+\index{Matrix@{Matrix}!app::Matrix$<$ N, M $>$@{app::Matrix$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{Matrix()}{Matrix()}\hspace{0.1cm}{\footnotesize\ttfamily [3/7]}}
+{\footnotesize\ttfamily template$<$size\+\_\+t N, size\+\_\+t M$>$ \\
+\mbox{\hyperlink{classapp_1_1Matrix}{app\+::\+Matrix}}$<$ N, M $>$\+::\mbox{\hyperlink{classapp_1_1Matrix}{Matrix}} (\begin{DoxyParamCaption}\item[{const sf\+::\+Vector2f \&}]{v }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Конструктор, создающий матрицу по двумерному вектору 
+
+\mbox{\Hypertarget{classapp_1_1Matrix_a0206f8d2f01b49308e8ac11df3d22cd4}\label{classapp_1_1Matrix_a0206f8d2f01b49308e8ac11df3d22cd4}} 
+\index{app::Matrix$<$ N, M $>$@{app::Matrix$<$ N, M $>$}!Matrix@{Matrix}}
+\index{Matrix@{Matrix}!app::Matrix$<$ N, M $>$@{app::Matrix$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{Matrix()}{Matrix()}\hspace{0.1cm}{\footnotesize\ttfamily [4/7]}}
+{\footnotesize\ttfamily template$<$size\+\_\+t N, size\+\_\+t M$>$ \\
+\mbox{\hyperlink{classapp_1_1Matrix}{app\+::\+Matrix}}$<$ N, M $>$\+::\mbox{\hyperlink{classapp_1_1Matrix}{Matrix}} (\begin{DoxyParamCaption}\item[{const std\+::array$<$ double, N $\ast$M $>$ \&}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Конструктор, создающий матрицу из массива со всеми ее элементами 
+
+\mbox{\Hypertarget{classapp_1_1Matrix_a952433729ea47b535d25cc6615f27421}\label{classapp_1_1Matrix_a952433729ea47b535d25cc6615f27421}} 
+\index{app::Matrix$<$ N, M $>$@{app::Matrix$<$ N, M $>$}!Matrix@{Matrix}}
+\index{Matrix@{Matrix}!app::Matrix$<$ N, M $>$@{app::Matrix$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{Matrix()}{Matrix()}\hspace{0.1cm}{\footnotesize\ttfamily [5/7]}}
+{\footnotesize\ttfamily template$<$size\+\_\+t N, size\+\_\+t M$>$ \\
+\mbox{\hyperlink{classapp_1_1Matrix}{app\+::\+Matrix}}$<$ N, M $>$\+::\mbox{\hyperlink{classapp_1_1Matrix}{Matrix}} (\begin{DoxyParamCaption}\item[{std\+::initializer\+\_\+list$<$ double $>$}]{initial }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Конструктор, создающий матрицу из списка ее элементов 
+
+\mbox{\Hypertarget{classapp_1_1Matrix_a6fe2271638e47ae5fef11b9cb384f2c4}\label{classapp_1_1Matrix_a6fe2271638e47ae5fef11b9cb384f2c4}} 
+\index{app::Matrix$<$ N, M $>$@{app::Matrix$<$ N, M $>$}!Matrix@{Matrix}}
+\index{Matrix@{Matrix}!app::Matrix$<$ N, M $>$@{app::Matrix$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{Matrix()}{Matrix()}\hspace{0.1cm}{\footnotesize\ttfamily [6/7]}}
+{\footnotesize\ttfamily template$<$size\+\_\+t N, size\+\_\+t M$>$ \\
+\mbox{\hyperlink{classapp_1_1Matrix}{app\+::\+Matrix}}$<$ N, M $>$\+::\mbox{\hyperlink{classapp_1_1Matrix}{Matrix}} (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ sf\+::\+Vector2f $>$ \&}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Конструктор, создающий матрицу по массиву двумерных векторов 
+
+\mbox{\Hypertarget{classapp_1_1Matrix_ade800284790b7070316db04ee4d9a098}\label{classapp_1_1Matrix_ade800284790b7070316db04ee4d9a098}} 
+\index{app::Matrix$<$ N, M $>$@{app::Matrix$<$ N, M $>$}!Matrix@{Matrix}}
+\index{Matrix@{Matrix}!app::Matrix$<$ N, M $>$@{app::Matrix$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{Matrix()}{Matrix()}\hspace{0.1cm}{\footnotesize\ttfamily [7/7]}}
+{\footnotesize\ttfamily template$<$size\+\_\+t N, size\+\_\+t M$>$ \\
+\mbox{\hyperlink{classapp_1_1Matrix}{app\+::\+Matrix}}$<$ N, M $>$\+::\mbox{\hyperlink{classapp_1_1Matrix}{Matrix}} (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} $>$ \&}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Конструктор, создающий матрицу по массиву четырехмерных точек 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classapp_1_1Matrix_ae612823801ec4af9815b321a63925587}\label{classapp_1_1Matrix_ae612823801ec4af9815b321a63925587}} 
+\index{app::Matrix$<$ N, M $>$@{app::Matrix$<$ N, M $>$}!clear\_column@{clear\_column}}
+\index{clear\_column@{clear\_column}!app::Matrix$<$ N, M $>$@{app::Matrix$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{clear\_column()}{clear\_column()}}
+{\footnotesize\ttfamily template$<$size\+\_\+t N, size\+\_\+t M$>$ \\
+template$<$size\+\_\+t \+\_\+M$>$ \\
+void \mbox{\hyperlink{classapp_1_1Matrix}{app\+::\+Matrix}}$<$ N, M $>$\+::clear\+\_\+column (\begin{DoxyParamCaption}\item[{int}]{column,  }\item[{\mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}$<$ N, \+\_\+M $>$ $\ast$}]{paired,  }\item[{double}]{k }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Matrix_ae612823801ec4af9815b321a63925587_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classapp_1_1Matrix_a8b7985e643a4506f762f1fcff703213e}\label{classapp_1_1Matrix_a8b7985e643a4506f762f1fcff703213e}} 
+\index{app::Matrix$<$ N, M $>$@{app::Matrix$<$ N, M $>$}!construct\_moving\_matrix@{construct\_moving\_matrix}}
+\index{construct\_moving\_matrix@{construct\_moving\_matrix}!app::Matrix$<$ N, M $>$@{app::Matrix$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{construct\_moving\_matrix()}{construct\_moving\_matrix()}}
+{\footnotesize\ttfamily template$<$size\+\_\+t N, size\+\_\+t M$>$ \\
+static \mbox{\hyperlink{classapp_1_1Matrix}{Matrix}} \mbox{\hyperlink{classapp_1_1Matrix}{app\+::\+Matrix}}$<$ N, M $>$\+::construct\+\_\+moving\+\_\+matrix (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{namespaceapp_a315a30c3b1ec772d2da7b1032cced529}{Vector4d}} \&}]{moving\+\_\+vector }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Получение матрицы для сдвига на вектор в четырехмерном пространстве 
+
+\mbox{\Hypertarget{classapp_1_1Matrix_a9e652729bbb0bd05961f6ea8645a21f6}\label{classapp_1_1Matrix_a9e652729bbb0bd05961f6ea8645a21f6}} 
+\index{app::Matrix$<$ N, M $>$@{app::Matrix$<$ N, M $>$}!construct\_rotation\_matrix@{construct\_rotation\_matrix}}
+\index{construct\_rotation\_matrix@{construct\_rotation\_matrix}!app::Matrix$<$ N, M $>$@{app::Matrix$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{construct\_rotation\_matrix()}{construct\_rotation\_matrix()}}
+{\footnotesize\ttfamily template$<$size\+\_\+t N, size\+\_\+t M$>$ \\
+static \mbox{\hyperlink{classapp_1_1Matrix}{Matrix}} \mbox{\hyperlink{classapp_1_1Matrix}{app\+::\+Matrix}}$<$ N, M $>$\+::construct\+\_\+rotation\+\_\+matrix (\begin{DoxyParamCaption}\item[{int}]{fixed\+\_\+coordinate,  }\item[{double}]{angle }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Получение матрицы для поворота в четырехмерном пространстве 
+
+\mbox{\Hypertarget{classapp_1_1Matrix_a6accdb642dd6fa0fafd87fc7b5a06352}\label{classapp_1_1Matrix_a6accdb642dd6fa0fafd87fc7b5a06352}} 
+\index{app::Matrix$<$ N, M $>$@{app::Matrix$<$ N, M $>$}!convert\_to\_upper\_triangular@{convert\_to\_upper\_triangular}}
+\index{convert\_to\_upper\_triangular@{convert\_to\_upper\_triangular}!app::Matrix$<$ N, M $>$@{app::Matrix$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{convert\_to\_upper\_triangular()}{convert\_to\_upper\_triangular()}}
+{\footnotesize\ttfamily template$<$size\+\_\+t N, size\+\_\+t M$>$ \\
+template$<$size\+\_\+t \+\_\+M$>$ \\
+void \mbox{\hyperlink{classapp_1_1Matrix}{app\+::\+Matrix}}$<$ N, M $>$\+::convert\+\_\+to\+\_\+upper\+\_\+triangular (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}$<$ N, \+\_\+M $>$ $\ast$}]{paired }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=346pt]{classapp_1_1Matrix_a6accdb642dd6fa0fafd87fc7b5a06352_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classapp_1_1Matrix_aebd556a097f9911693dabe70f0320ddc}\label{classapp_1_1Matrix_aebd556a097f9911693dabe70f0320ddc}} 
+\index{app::Matrix$<$ N, M $>$@{app::Matrix$<$ N, M $>$}!find\_optimal\_row@{find\_optimal\_row}}
+\index{find\_optimal\_row@{find\_optimal\_row}!app::Matrix$<$ N, M $>$@{app::Matrix$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{find\_optimal\_row()}{find\_optimal\_row()}}
+{\footnotesize\ttfamily template$<$size\+\_\+t N, size\+\_\+t M$>$ \\
+int \mbox{\hyperlink{classapp_1_1Matrix}{app\+::\+Matrix}}$<$ N, M $>$\+::find\+\_\+optimal\+\_\+row (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{column }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Matrix_aebd556a097f9911693dabe70f0320ddc_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classapp_1_1Matrix_a957b65928ab3b151fa60e5a433df17a0}\label{classapp_1_1Matrix_a957b65928ab3b151fa60e5a433df17a0}} 
+\index{app::Matrix$<$ N, M $>$@{app::Matrix$<$ N, M $>$}!identity\_matrix@{identity\_matrix}}
+\index{identity\_matrix@{identity\_matrix}!app::Matrix$<$ N, M $>$@{app::Matrix$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{identity\_matrix()}{identity\_matrix()}}
+{\footnotesize\ttfamily template$<$size\+\_\+t N, size\+\_\+t M$>$ \\
+static \mbox{\hyperlink{classapp_1_1Matrix}{Matrix}} \mbox{\hyperlink{classapp_1_1Matrix}{app\+::\+Matrix}}$<$ N, M $>$\+::identity\+\_\+matrix (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Получение единичной матрицы\+: A\mbox{[}x\mbox{]}\mbox{[}x\mbox{]} = 1, A\mbox{[}x\mbox{]}\mbox{[}y\mbox{]} = 0. 
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Matrix_a957b65928ab3b151fa60e5a433df17a0_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classapp_1_1Matrix_aec28f2dd133f15e10beab7fb13edb610}\label{classapp_1_1Matrix_aec28f2dd133f15e10beab7fb13edb610}} 
+\index{app::Matrix$<$ N, M $>$@{app::Matrix$<$ N, M $>$}!inverse@{inverse}}
+\index{inverse@{inverse}!app::Matrix$<$ N, M $>$@{app::Matrix$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{inverse()}{inverse()}}
+{\footnotesize\ttfamily template$<$size\+\_\+t N, size\+\_\+t M$>$ \\
+\mbox{\hyperlink{classapp_1_1Matrix}{Matrix}} \mbox{\hyperlink{classapp_1_1Matrix}{app\+::\+Matrix}}$<$ N, M $>$\+::inverse (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Получение обратной матрицы 
+
+\mbox{\Hypertarget{classapp_1_1Matrix_a8c807f486c82f29701655aa594a93b87}\label{classapp_1_1Matrix_a8c807f486c82f29701655aa594a93b87}} 
+\index{app::Matrix$<$ N, M $>$@{app::Matrix$<$ N, M $>$}!multiply\_row@{multiply\_row}}
+\index{multiply\_row@{multiply\_row}!app::Matrix$<$ N, M $>$@{app::Matrix$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{multiply\_row()}{multiply\_row()}}
+{\footnotesize\ttfamily template$<$size\+\_\+t N, size\+\_\+t M$>$ \\
+\mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}\& \mbox{\hyperlink{classapp_1_1Matrix}{app\+::\+Matrix}}$<$ N, M $>$\+::multiply\+\_\+row (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{i,  }\item[{double}]{k }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\mbox{\Hypertarget{classapp_1_1Matrix_ab211d037d2211145a9097174909ed2cc}\label{classapp_1_1Matrix_ab211d037d2211145a9097174909ed2cc}} 
+\index{app::Matrix$<$ N, M $>$@{app::Matrix$<$ N, M $>$}!multiply\_then\_substract\_row@{multiply\_then\_substract\_row}}
+\index{multiply\_then\_substract\_row@{multiply\_then\_substract\_row}!app::Matrix$<$ N, M $>$@{app::Matrix$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{multiply\_then\_substract\_row()}{multiply\_then\_substract\_row()}}
+{\footnotesize\ttfamily template$<$size\+\_\+t N, size\+\_\+t M$>$ \\
+\mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}\& \mbox{\hyperlink{classapp_1_1Matrix}{app\+::\+Matrix}}$<$ N, M $>$\+::multiply\+\_\+then\+\_\+substract\+\_\+row (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{i,  }\item[{size\+\_\+t}]{j,  }\item[{double}]{k }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=348pt]{classapp_1_1Matrix_ab211d037d2211145a9097174909ed2cc_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classapp_1_1Matrix_a8db464a28a12585730284b5efe9c6d16}\label{classapp_1_1Matrix_a8db464a28a12585730284b5efe9c6d16}} 
+\index{app::Matrix$<$ N, M $>$@{app::Matrix$<$ N, M $>$}!operator()@{operator()}}
+\index{operator()@{operator()}!app::Matrix$<$ N, M $>$@{app::Matrix$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{operator()()}{operator()()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$size\+\_\+t N, size\+\_\+t M$>$ \\
+double\& \mbox{\hyperlink{classapp_1_1Matrix}{app\+::\+Matrix}}$<$ N, M $>$\+::operator() (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{row,  }\item[{size\+\_\+t}]{column }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Оператор доступа к элементу матрицы 
+
+
+\begin{DoxyParams}{Parameters}
+{\em row} & ряд \\
+\hline
+{\em column} & колонка \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A\mbox{[}row\mbox{]}\mbox{[}column\mbox{]} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classapp_1_1Matrix_a5e34a282ed542046eff0537d21ba35c9}\label{classapp_1_1Matrix_a5e34a282ed542046eff0537d21ba35c9}} 
+\index{app::Matrix$<$ N, M $>$@{app::Matrix$<$ N, M $>$}!operator()@{operator()}}
+\index{operator()@{operator()}!app::Matrix$<$ N, M $>$@{app::Matrix$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{operator()()}{operator()()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$size\+\_\+t N, size\+\_\+t M$>$ \\
+double \mbox{\hyperlink{classapp_1_1Matrix}{app\+::\+Matrix}}$<$ N, M $>$\+::operator() (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{row,  }\item[{size\+\_\+t}]{column }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Оператор доступа к элементу матрицы 
+
+
+\begin{DoxyParams}{Parameters}
+{\em row} & ряд \\
+\hline
+{\em column} & колонка \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A\mbox{[}row\mbox{]}\mbox{[}column\mbox{]} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classapp_1_1Matrix_a13dd35dfd80b8e9c960706402eaae356}\label{classapp_1_1Matrix_a13dd35dfd80b8e9c960706402eaae356}} 
+\index{app::Matrix$<$ N, M $>$@{app::Matrix$<$ N, M $>$}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!app::Matrix$<$ N, M $>$@{app::Matrix$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{operator$\ast$()}{operator*()}}
+{\footnotesize\ttfamily template$<$size\+\_\+t N, size\+\_\+t M$>$ \\
+\mbox{\hyperlink{classapp_1_1Matrix}{Matrix}} \mbox{\hyperlink{classapp_1_1Matrix}{app\+::\+Matrix}}$<$ N, M $>$\+::operator$\ast$ (\begin{DoxyParamCaption}\item[{double}]{k }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Оператор домножения матрицы на число по правилу A\mbox{[}x\mbox{]}\mbox{[}y\mbox{]} $\ast$= k. 
+
+\mbox{\Hypertarget{classapp_1_1Matrix_ac0be416d9067030df70b47344fc9391f}\label{classapp_1_1Matrix_ac0be416d9067030df70b47344fc9391f}} 
+\index{app::Matrix$<$ N, M $>$@{app::Matrix$<$ N, M $>$}!operator$\ast$=@{operator$\ast$=}}
+\index{operator$\ast$=@{operator$\ast$=}!app::Matrix$<$ N, M $>$@{app::Matrix$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{operator$\ast$=()}{operator*=()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$size\+\_\+t N, size\+\_\+t M$>$ \\
+\mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}\& \mbox{\hyperlink{classapp_1_1Matrix}{app\+::\+Matrix}}$<$ N, M $>$\+::operator$\ast$= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}$<$ N, M $>$ \&}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Оператор домножения квадратной матрицы на матрицу 
+
+\mbox{\Hypertarget{classapp_1_1Matrix_ad8f3d48390d7b2bbdf98284f150ebda8}\label{classapp_1_1Matrix_ad8f3d48390d7b2bbdf98284f150ebda8}} 
+\index{app::Matrix$<$ N, M $>$@{app::Matrix$<$ N, M $>$}!operator$\ast$=@{operator$\ast$=}}
+\index{operator$\ast$=@{operator$\ast$=}!app::Matrix$<$ N, M $>$@{app::Matrix$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{operator$\ast$=()}{operator*=()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$size\+\_\+t N, size\+\_\+t M$>$ \\
+\mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}\& \mbox{\hyperlink{classapp_1_1Matrix}{app\+::\+Matrix}}$<$ N, M $>$\+::operator$\ast$= (\begin{DoxyParamCaption}\item[{double}]{k }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Оператор домножения матрицы на число по правилу A\mbox{[}x\mbox{]}\mbox{[}y\mbox{]} $\ast$= k. 
+
+\mbox{\Hypertarget{classapp_1_1Matrix_a686a40b91ddb756247c01bc93dcb7b77}\label{classapp_1_1Matrix_a686a40b91ddb756247c01bc93dcb7b77}} 
+\index{app::Matrix$<$ N, M $>$@{app::Matrix$<$ N, M $>$}!operator+=@{operator+=}}
+\index{operator+=@{operator+=}!app::Matrix$<$ N, M $>$@{app::Matrix$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{operator+=()}{operator+=()}}
+{\footnotesize\ttfamily template$<$size\+\_\+t N, size\+\_\+t M$>$ \\
+\mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}\& \mbox{\hyperlink{classapp_1_1Matrix}{app\+::\+Matrix}}$<$ N, M $>$\+::operator+= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}$<$ N, M $>$ \&}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Оператор прибавления матрицы по правилу A\mbox{[}x\mbox{]}\mbox{[}y\mbox{]} += B\mbox{[}x\mbox{]}\mbox{[}y\mbox{]}. 
+
+\mbox{\Hypertarget{classapp_1_1Matrix_a2c07ccc373a27a421e833e943b6832c9}\label{classapp_1_1Matrix_a2c07ccc373a27a421e833e943b6832c9}} 
+\index{app::Matrix$<$ N, M $>$@{app::Matrix$<$ N, M $>$}!operator-\/@{operator-\/}}
+\index{operator-\/@{operator-\/}!app::Matrix$<$ N, M $>$@{app::Matrix$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{operator-\/()}{operator-()}}
+{\footnotesize\ttfamily template$<$size\+\_\+t N, size\+\_\+t M$>$ \\
+\mbox{\hyperlink{classapp_1_1Matrix}{Matrix}} \mbox{\hyperlink{classapp_1_1Matrix}{app\+::\+Matrix}}$<$ N, M $>$\+::operator-\/ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Оператор получения матрицы с обратным знаком\+: A\mbox{[}x\mbox{]}\mbox{[}y\mbox{]} -\/$>$ -\/A\mbox{[}x\mbox{]}\mbox{[}y\mbox{]}. 
+
+\mbox{\Hypertarget{classapp_1_1Matrix_a873cb841c0e39f70ec6119580eb4bfc5}\label{classapp_1_1Matrix_a873cb841c0e39f70ec6119580eb4bfc5}} 
+\index{app::Matrix$<$ N, M $>$@{app::Matrix$<$ N, M $>$}!operator-\/=@{operator-\/=}}
+\index{operator-\/=@{operator-\/=}!app::Matrix$<$ N, M $>$@{app::Matrix$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{operator-\/=()}{operator-=()}}
+{\footnotesize\ttfamily template$<$size\+\_\+t N, size\+\_\+t M$>$ \\
+\mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}\& \mbox{\hyperlink{classapp_1_1Matrix}{app\+::\+Matrix}}$<$ N, M $>$\+::operator-\/= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}$<$ N, M $>$ \&}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Оператор вычитания матрицы по правилу A\mbox{[}x\mbox{]}\mbox{[}y\mbox{]} -\/= B\mbox{[}x\mbox{]}\mbox{[}y\mbox{]}. 
+
+\mbox{\Hypertarget{classapp_1_1Matrix_a58a0b29d10337a8aafd138b8165fe70d}\label{classapp_1_1Matrix_a58a0b29d10337a8aafd138b8165fe70d}} 
+\index{app::Matrix$<$ N, M $>$@{app::Matrix$<$ N, M $>$}!operator/@{operator/}}
+\index{operator/@{operator/}!app::Matrix$<$ N, M $>$@{app::Matrix$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{operator/()}{operator/()}}
+{\footnotesize\ttfamily template$<$size\+\_\+t N, size\+\_\+t M$>$ \\
+\mbox{\hyperlink{classapp_1_1Matrix}{Matrix}} \mbox{\hyperlink{classapp_1_1Matrix}{app\+::\+Matrix}}$<$ N, M $>$\+::operator/ (\begin{DoxyParamCaption}\item[{double}]{k }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Оператор деления матрицы на число по правилу A\mbox{[}x\mbox{]}\mbox{[}y\mbox{]} /= k. 
+
+\mbox{\Hypertarget{classapp_1_1Matrix_a9f6671bbc31c887f3f2b79d5b69dea99}\label{classapp_1_1Matrix_a9f6671bbc31c887f3f2b79d5b69dea99}} 
+\index{app::Matrix$<$ N, M $>$@{app::Matrix$<$ N, M $>$}!operator/=@{operator/=}}
+\index{operator/=@{operator/=}!app::Matrix$<$ N, M $>$@{app::Matrix$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{operator/=()}{operator/=()}}
+{\footnotesize\ttfamily template$<$size\+\_\+t N, size\+\_\+t M$>$ \\
+\mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}\& \mbox{\hyperlink{classapp_1_1Matrix}{app\+::\+Matrix}}$<$ N, M $>$\+::operator/= (\begin{DoxyParamCaption}\item[{double}]{k }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Оператор деления матрицы на число по правилу A\mbox{[}x\mbox{]}\mbox{[}y\mbox{]} /= k. 
+
+\mbox{\Hypertarget{classapp_1_1Matrix_a29df7f197e427b66c11d5ab3519b1d83}\label{classapp_1_1Matrix_a29df7f197e427b66c11d5ab3519b1d83}} 
+\index{app::Matrix$<$ N, M $>$@{app::Matrix$<$ N, M $>$}!solve\_system@{solve\_system}}
+\index{solve\_system@{solve\_system}!app::Matrix$<$ N, M $>$@{app::Matrix$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{solve\_system()}{solve\_system()}}
+{\footnotesize\ttfamily template$<$size\+\_\+t N, size\+\_\+t M$>$ \\
+\mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}$<$N, 1$>$ \mbox{\hyperlink{classapp_1_1Matrix}{app\+::\+Matrix}}$<$ N, M $>$\+::solve\+\_\+system (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}$<$ N, 1 $>$}]{point }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Решение системы уравнений Ax = point. 
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Matrix_a29df7f197e427b66c11d5ab3519b1d83_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classapp_1_1Matrix_a3650fe912bc08e9b6bf0129998edaf23}\label{classapp_1_1Matrix_a3650fe912bc08e9b6bf0129998edaf23}} 
+\index{app::Matrix$<$ N, M $>$@{app::Matrix$<$ N, M $>$}!swap\_rows@{swap\_rows}}
+\index{swap\_rows@{swap\_rows}!app::Matrix$<$ N, M $>$@{app::Matrix$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{swap\_rows()}{swap\_rows()}}
+{\footnotesize\ttfamily template$<$size\+\_\+t N, size\+\_\+t M$>$ \\
+\mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}\& \mbox{\hyperlink{classapp_1_1Matrix}{app\+::\+Matrix}}$<$ N, M $>$\+::swap\+\_\+rows (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{i,  }\item[{size\+\_\+t}]{j }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Matrix_a3650fe912bc08e9b6bf0129998edaf23_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classapp_1_1Matrix_afb0e32ababc5d2b30b3c0a3ed98ba557}\label{classapp_1_1Matrix_afb0e32ababc5d2b30b3c0a3ed98ba557}} 
+\index{app::Matrix$<$ N, M $>$@{app::Matrix$<$ N, M $>$}!transpose@{transpose}}
+\index{transpose@{transpose}!app::Matrix$<$ N, M $>$@{app::Matrix$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{transpose()}{transpose()}}
+{\footnotesize\ttfamily template$<$size\+\_\+t N, size\+\_\+t M$>$ \\
+\mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}$<$M, N$>$ \mbox{\hyperlink{classapp_1_1Matrix}{app\+::\+Matrix}}$<$ N, M $>$\+::transpose (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Получение транспонированной матрицы 
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Matrix_afb0e32ababc5d2b30b3c0a3ed98ba557_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{classapp_1_1Matrix_aa9fe77da1d8e2d5fa9b0a58901bfb6fc}\label{classapp_1_1Matrix_aa9fe77da1d8e2d5fa9b0a58901bfb6fc}} 
+\index{app::Matrix$<$ N, M $>$@{app::Matrix$<$ N, M $>$}!Matrix@{Matrix}}
+\index{Matrix@{Matrix}!app::Matrix$<$ N, M $>$@{app::Matrix$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{Matrix}{Matrix}}
+{\footnotesize\ttfamily template$<$size\+\_\+t N, size\+\_\+t M$>$ \\
+template$<$size\+\_\+t N\+\_\+, size\+\_\+t M\+\_\+$>$ \\
+friend class \mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}\hspace{0.3cm}{\ttfamily [friend]}}
+
+\mbox{\Hypertarget{classapp_1_1Matrix_a9d3e5662831949d2045a3b2f06821507}\label{classapp_1_1Matrix_a9d3e5662831949d2045a3b2f06821507}} 
+\index{app::Matrix$<$ N, M $>$@{app::Matrix$<$ N, M $>$}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!app::Matrix$<$ N, M $>$@{app::Matrix$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{operator"!=}{operator!=}}
+{\footnotesize\ttfamily template$<$size\+\_\+t N, size\+\_\+t M$>$ \\
+template$<$size\+\_\+t N\+\_\+, size\+\_\+t M\+\_\+$>$ \\
+bool operator!= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}$<$ N\+\_\+, M\+\_\+ $>$ \&}]{first,  }\item[{const \mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}$<$ N\+\_\+, M\+\_\+ $>$ \&}]{second }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Оператор проверки матриц на неравенство по правилу A\mbox{[}x\mbox{]}\mbox{[}y\mbox{]} == B\mbox{[}x\mbox{]}\mbox{[}y\mbox{]}. 
+
+\mbox{\Hypertarget{classapp_1_1Matrix_a4c1feb7524e6bfb87cd39f5e2a1013b4}\label{classapp_1_1Matrix_a4c1feb7524e6bfb87cd39f5e2a1013b4}} 
+\index{app::Matrix$<$ N, M $>$@{app::Matrix$<$ N, M $>$}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!app::Matrix$<$ N, M $>$@{app::Matrix$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{operator$\ast$}{operator*}}
+{\footnotesize\ttfamily template$<$size\+\_\+t N, size\+\_\+t M$>$ \\
+template$<$size\+\_\+t N\+\_\+, size\+\_\+t M\+\_\+, size\+\_\+t K$>$ \\
+\mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}$<$N\+\_\+, K$>$ operator$\ast$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}$<$ N\+\_\+, M\+\_\+ $>$ \&}]{first,  }\item[{const \mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}$<$ M\+\_\+, K $>$ \&}]{second }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Оператор перемножения матриц 
+
+\mbox{\Hypertarget{classapp_1_1Matrix_a52591388be3a42078c134f4df4412dab}\label{classapp_1_1Matrix_a52591388be3a42078c134f4df4412dab}} 
+\index{app::Matrix$<$ N, M $>$@{app::Matrix$<$ N, M $>$}!operator+@{operator+}}
+\index{operator+@{operator+}!app::Matrix$<$ N, M $>$@{app::Matrix$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{operator+}{operator+}}
+{\footnotesize\ttfamily template$<$size\+\_\+t N, size\+\_\+t M$>$ \\
+template$<$size\+\_\+t N\+\_\+, size\+\_\+t M\+\_\+$>$ \\
+\mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}$<$N\+\_\+, M\+\_\+$>$ operator+ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}$<$ N\+\_\+, M\+\_\+ $>$ \&}]{first,  }\item[{const \mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}$<$ N\+\_\+, M\+\_\+ $>$ \&}]{second }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Оператор сложения матриц по правилу A\mbox{[}x\mbox{]}\mbox{[}y\mbox{]} + B\mbox{[}x\mbox{]}\mbox{[}y\mbox{]}. 
+
+\mbox{\Hypertarget{classapp_1_1Matrix_ac23cb0bfd6ad8fb2a7fcd43466ab3abf}\label{classapp_1_1Matrix_ac23cb0bfd6ad8fb2a7fcd43466ab3abf}} 
+\index{app::Matrix$<$ N, M $>$@{app::Matrix$<$ N, M $>$}!operator-\/@{operator-\/}}
+\index{operator-\/@{operator-\/}!app::Matrix$<$ N, M $>$@{app::Matrix$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{operator-\/}{operator-}}
+{\footnotesize\ttfamily template$<$size\+\_\+t N, size\+\_\+t M$>$ \\
+template$<$size\+\_\+t N\+\_\+, size\+\_\+t M\+\_\+$>$ \\
+\mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}$<$N\+\_\+, M\+\_\+$>$ operator-\/ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}$<$ N\+\_\+, M\+\_\+ $>$ \&}]{first,  }\item[{const \mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}$<$ N\+\_\+, M\+\_\+ $>$ \&}]{second }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Оператор вычитания матриц по правилу A\mbox{[}x\mbox{]}\mbox{[}y\mbox{]} -\/ B\mbox{[}x\mbox{]}\mbox{[}y\mbox{]}. 
+
+\mbox{\Hypertarget{classapp_1_1Matrix_a018095360c3eed41805debefa828fc87}\label{classapp_1_1Matrix_a018095360c3eed41805debefa828fc87}} 
+\index{app::Matrix$<$ N, M $>$@{app::Matrix$<$ N, M $>$}!operator==@{operator==}}
+\index{operator==@{operator==}!app::Matrix$<$ N, M $>$@{app::Matrix$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{operator==}{operator==}}
+{\footnotesize\ttfamily template$<$size\+\_\+t N, size\+\_\+t M$>$ \\
+template$<$size\+\_\+t N\+\_\+, size\+\_\+t M\+\_\+$>$ \\
+bool operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}$<$ N\+\_\+, M\+\_\+ $>$ \&}]{first,  }\item[{const \mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}$<$ N\+\_\+, M\+\_\+ $>$ \&}]{second }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Оператор сравнения матриц по правилу A\mbox{[}x\mbox{]}\mbox{[}y\mbox{]} == B\mbox{[}x\mbox{]}\mbox{[}y\mbox{]}. 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classapp_1_1Matrix_a8f279deb6181cb405b9fabc8179cc0f2}\label{classapp_1_1Matrix_a8f279deb6181cb405b9fabc8179cc0f2}} 
+\index{app::Matrix$<$ N, M $>$@{app::Matrix$<$ N, M $>$}!data\_@{data\_}}
+\index{data\_@{data\_}!app::Matrix$<$ N, M $>$@{app::Matrix$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{data\_}{data\_}}
+{\footnotesize\ttfamily template$<$size\+\_\+t N, size\+\_\+t M$>$ \\
+std\+::array$<$double, N $\ast$ M$>$ \mbox{\hyperlink{classapp_1_1Matrix}{app\+::\+Matrix}}$<$ N, M $>$\+::data\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{matrix_8h}{matrix.\+h}}\end{DoxyCompactItemize}

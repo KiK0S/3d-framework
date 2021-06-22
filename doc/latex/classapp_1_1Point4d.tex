@@ -1,0 +1,351 @@
+\hypertarget{classapp_1_1Point4d}{}\doxysection{app\+::Point4d Class Reference}
+\label{classapp_1_1Point4d}\index{app::Point4d@{app::Point4d}}
+
+
+Класс четырехмерной точки.  
+
+
+
+
+{\ttfamily \#include $<$point.\+h$>$}
+
+
+
+Collaboration diagram for app\+::Point4d\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=173pt]{classapp_1_1Point4d__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classapp_1_1Point4d_a9c819a08afa9d055507536c3ed95dc9a}{Point4d}} ()
+\begin{DoxyCompactList}\small\item\em Создает нулевую точку \end{DoxyCompactList}\item 
+constexpr \mbox{\hyperlink{classapp_1_1Point4d_ac320161c881379be74686fc6d559fa27}{Point4d}} (const std\+::initializer\+\_\+list$<$ double $>$ \&args)
+\begin{DoxyCompactList}\small\item\em Создает точку по трехмерной точке \end{DoxyCompactList}\item 
+constexpr \mbox{\hyperlink{classapp_1_1Point4d_ada465c1a0847868bdcb3d5ea84e4d8ca}{Point4d}} (double \mbox{\hyperlink{classapp_1_1Point4d_a4a4ce05a89bcbc69d2a0cc80764c7bc5}{x}}, double \mbox{\hyperlink{classapp_1_1Point4d_a26f8e2788878c77d4af3c8f6ec4266ea}{y}}, double \mbox{\hyperlink{classapp_1_1Point4d_adf5754114305368f308e8e48c45df257}{z}})
+\begin{DoxyCompactList}\small\item\em Создает точку по трехмерной точке \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \& \mbox{\hyperlink{classapp_1_1Point4d_a285e24cd233b386656a3b065113ab4e8}{operator+=}} (const \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \&p)
+\begin{DoxyCompactList}\small\item\em Прибавляет другую точку по правилу сложения трехмерных точек \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \& \mbox{\hyperlink{classapp_1_1Point4d_a25a3b1c47a9551a9df894b06961ac0bc}{operator-\/=}} (const \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \&p)
+\begin{DoxyCompactList}\small\item\em Вычитает другую точку по правилу сложения трехмерных точек \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \& \mbox{\hyperlink{classapp_1_1Point4d_a28275f021a5f6288214a80335d083d5b}{operator$\ast$=}} (double f)
+\begin{DoxyCompactList}\small\item\em Увеличивает координаты в f раз \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \& \mbox{\hyperlink{classapp_1_1Point4d_a00278fd97ca12247a89e3ec34e9e4ece}{operator/=}} (double f)
+\begin{DoxyCompactList}\small\item\em Уменьшает координаты в f раз \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classapp_1_1Point4d_ab734f898053f7fe8ea80cd0dceeed3da}{operator()}} (size\+\_\+t i) const
+\begin{DoxyCompactList}\small\item\em Возвращает i-\/ю координату точки \end{DoxyCompactList}\item 
+double \& \mbox{\hyperlink{classapp_1_1Point4d_a61e431f3539bfc7841921aa99ea66dd5}{operator()}} (size\+\_\+t i)
+\begin{DoxyCompactList}\small\item\em Возвращает i-\/ю координату точки \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classapp_1_1Point4d_a80f58693a026e3f9020c85bdd641c785}{length}} () const
+\begin{DoxyCompactList}\small\item\em Возвращает расстояние от точки (0, 0) до x. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classapp_1_1Point4d_a685768ec2e6ed6486970b10386ad3d98}{normalize}} ()
+\begin{DoxyCompactList}\small\item\em Нормализует координаты точки -\/ получает соответствующую трехмерную с w = 1. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classapp_1_1Point4d_af713837359c27c2cd02002a9d01bb5e3}{resize}} (double d)
+\begin{DoxyCompactList}\small\item\em Меняет длину вектора на d. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classapp_1_1Point4d_ab98dc4d5b0e1c56ba48f7fd21772d04e}{is\+\_\+collinear}} (const \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \&b) const
+\begin{DoxyCompactList}\small\item\em проверяет вектора на сонаправленность \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{classapp_1_1Point4d_a4a4ce05a89bcbc69d2a0cc80764c7bc5}{x}}
+\item 
+double \mbox{\hyperlink{classapp_1_1Point4d_a26f8e2788878c77d4af3c8f6ec4266ea}{y}}
+\item 
+double \mbox{\hyperlink{classapp_1_1Point4d_adf5754114305368f308e8e48c45df257}{z}}
+\item 
+double \mbox{\hyperlink{classapp_1_1Point4d_a5212c0a4dedb01db0a81a1db5864b257}{w}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \mbox{\hyperlink{classapp_1_1Point4d_ab88b32e2ced9380719782d33b8c4f65d}{operator+}} (const \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \&a, const \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \&b)
+\begin{DoxyCompactList}\small\item\em Складывает точки по правилу сложения трехмерных точек \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \mbox{\hyperlink{classapp_1_1Point4d_a6587756c2849ee91351dae2d1d5706d8}{operator-\/}} (const \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \&a, const \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \&b)
+\begin{DoxyCompactList}\small\item\em Вычитает точки по правилу сложения трехмерных точек \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \mbox{\hyperlink{classapp_1_1Point4d_a85f53b80c2041a50dbc35a369a80ba55}{operator$\ast$}} (const \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \&a, double d)
+\begin{DoxyCompactList}\small\item\em Увеличивает координаты точки в d раз \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \mbox{\hyperlink{classapp_1_1Point4d_a64079e4e9cca4ab271d1f4794bcfbcf5}{operator/}} (const \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \&a, double d)
+\begin{DoxyCompactList}\small\item\em Уменьшает координаты точки в d раз \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \mbox{\hyperlink{classapp_1_1Point4d_a1fac6ae7ce8dee08682a48e228bf97e9}{operator$\ast$}} (double d, const \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \&p)
+\begin{DoxyCompactList}\small\item\em Увеличивает координаты точки в d раз \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classapp_1_1Point4d_a786320824b45fc58b8792ec1f0328ca1}{operator==}} (const \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \&a, const \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \&b)
+\begin{DoxyCompactList}\small\item\em Проверяет точки на равенство \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Класс четырехмерной точки. 
+
+Есть явное соответствие между 3d-\/точкой и 4d-\/точкой. (x, y, z) -\/$>$ (x, y, z, 1); (x, y, z, w) -\/$>$ (x / w, y / w, z / w) \begin{DoxyAuthor}{Author}
+Ki\+K0S 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+May 14 2021 
+\end{DoxyDate}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classapp_1_1Point4d_a9c819a08afa9d055507536c3ed95dc9a}\label{classapp_1_1Point4d_a9c819a08afa9d055507536c3ed95dc9a}} 
+\index{app::Point4d@{app::Point4d}!Point4d@{Point4d}}
+\index{Point4d@{Point4d}!app::Point4d@{app::Point4d}}
+\doxysubsubsection{\texorpdfstring{Point4d()}{Point4d()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily app\+::\+Point4d\+::\+Point4d (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Создает нулевую точку 
+
+\mbox{\Hypertarget{classapp_1_1Point4d_ac320161c881379be74686fc6d559fa27}\label{classapp_1_1Point4d_ac320161c881379be74686fc6d559fa27}} 
+\index{app::Point4d@{app::Point4d}!Point4d@{Point4d}}
+\index{Point4d@{Point4d}!app::Point4d@{app::Point4d}}
+\doxysubsubsection{\texorpdfstring{Point4d()}{Point4d()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily constexpr app\+::\+Point4d\+::\+Point4d (\begin{DoxyParamCaption}\item[{const std\+::initializer\+\_\+list$<$ double $>$ \&}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+Создает точку по трехмерной точке 
+
+\mbox{\Hypertarget{classapp_1_1Point4d_ada465c1a0847868bdcb3d5ea84e4d8ca}\label{classapp_1_1Point4d_ada465c1a0847868bdcb3d5ea84e4d8ca}} 
+\index{app::Point4d@{app::Point4d}!Point4d@{Point4d}}
+\index{Point4d@{Point4d}!app::Point4d@{app::Point4d}}
+\doxysubsubsection{\texorpdfstring{Point4d()}{Point4d()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily constexpr app\+::\+Point4d\+::\+Point4d (\begin{DoxyParamCaption}\item[{double}]{x,  }\item[{double}]{y,  }\item[{double}]{z }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+Создает точку по трехмерной точке 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classapp_1_1Point4d_ab98dc4d5b0e1c56ba48f7fd21772d04e}\label{classapp_1_1Point4d_ab98dc4d5b0e1c56ba48f7fd21772d04e}} 
+\index{app::Point4d@{app::Point4d}!is\_collinear@{is\_collinear}}
+\index{is\_collinear@{is\_collinear}!app::Point4d@{app::Point4d}}
+\doxysubsubsection{\texorpdfstring{is\_collinear()}{is\_collinear()}}
+{\footnotesize\ttfamily bool app\+::\+Point4d\+::is\+\_\+collinear (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \&}]{b }\end{DoxyParamCaption}) const}
+
+
+
+проверяет вектора на сонаправленность 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & Вектор, который проверяется на сонаправленность данному \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classapp_1_1Point4d_a80f58693a026e3f9020c85bdd641c785}\label{classapp_1_1Point4d_a80f58693a026e3f9020c85bdd641c785}} 
+\index{app::Point4d@{app::Point4d}!length@{length}}
+\index{length@{length}!app::Point4d@{app::Point4d}}
+\doxysubsubsection{\texorpdfstring{length()}{length()}}
+{\footnotesize\ttfamily double app\+::\+Point4d\+::length (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Возвращает расстояние от точки (0, 0) до x. 
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=343pt]{classapp_1_1Point4d_a80f58693a026e3f9020c85bdd641c785_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classapp_1_1Point4d_a685768ec2e6ed6486970b10386ad3d98}\label{classapp_1_1Point4d_a685768ec2e6ed6486970b10386ad3d98}} 
+\index{app::Point4d@{app::Point4d}!normalize@{normalize}}
+\index{normalize@{normalize}!app::Point4d@{app::Point4d}}
+\doxysubsubsection{\texorpdfstring{normalize()}{normalize()}}
+{\footnotesize\ttfamily void app\+::\+Point4d\+::normalize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Нормализует координаты точки -\/ получает соответствующую трехмерную с w = 1. 
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Point4d_a685768ec2e6ed6486970b10386ad3d98_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classapp_1_1Point4d_a61e431f3539bfc7841921aa99ea66dd5}\label{classapp_1_1Point4d_a61e431f3539bfc7841921aa99ea66dd5}} 
+\index{app::Point4d@{app::Point4d}!operator()@{operator()}}
+\index{operator()@{operator()}!app::Point4d@{app::Point4d}}
+\doxysubsubsection{\texorpdfstring{operator()()}{operator()()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily double \& app\+::\+Point4d\+::operator() (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{i }\end{DoxyParamCaption})}
+
+
+
+Возвращает i-\/ю координату точки 
+
+\mbox{\Hypertarget{classapp_1_1Point4d_ab734f898053f7fe8ea80cd0dceeed3da}\label{classapp_1_1Point4d_ab734f898053f7fe8ea80cd0dceeed3da}} 
+\index{app::Point4d@{app::Point4d}!operator()@{operator()}}
+\index{operator()@{operator()}!app::Point4d@{app::Point4d}}
+\doxysubsubsection{\texorpdfstring{operator()()}{operator()()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily double app\+::\+Point4d\+::operator() (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{i }\end{DoxyParamCaption}) const}
+
+
+
+Возвращает i-\/ю координату точки 
+
+\mbox{\Hypertarget{classapp_1_1Point4d_a28275f021a5f6288214a80335d083d5b}\label{classapp_1_1Point4d_a28275f021a5f6288214a80335d083d5b}} 
+\index{app::Point4d@{app::Point4d}!operator$\ast$=@{operator$\ast$=}}
+\index{operator$\ast$=@{operator$\ast$=}!app::Point4d@{app::Point4d}}
+\doxysubsubsection{\texorpdfstring{operator$\ast$=()}{operator*=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \& app\+::\+Point4d\+::operator$\ast$= (\begin{DoxyParamCaption}\item[{double}]{f }\end{DoxyParamCaption})}
+
+
+
+Увеличивает координаты в f раз 
+
+\mbox{\Hypertarget{classapp_1_1Point4d_a285e24cd233b386656a3b065113ab4e8}\label{classapp_1_1Point4d_a285e24cd233b386656a3b065113ab4e8}} 
+\index{app::Point4d@{app::Point4d}!operator+=@{operator+=}}
+\index{operator+=@{operator+=}!app::Point4d@{app::Point4d}}
+\doxysubsubsection{\texorpdfstring{operator+=()}{operator+=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \& app\+::\+Point4d\+::operator+= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \&}]{p }\end{DoxyParamCaption})}
+
+
+
+Прибавляет другую точку по правилу сложения трехмерных точек 
+
+\mbox{\Hypertarget{classapp_1_1Point4d_a25a3b1c47a9551a9df894b06961ac0bc}\label{classapp_1_1Point4d_a25a3b1c47a9551a9df894b06961ac0bc}} 
+\index{app::Point4d@{app::Point4d}!operator-\/=@{operator-\/=}}
+\index{operator-\/=@{operator-\/=}!app::Point4d@{app::Point4d}}
+\doxysubsubsection{\texorpdfstring{operator-\/=()}{operator-=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \& app\+::\+Point4d\+::operator-\/= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \&}]{p }\end{DoxyParamCaption})}
+
+
+
+Вычитает другую точку по правилу сложения трехмерных точек 
+
+\mbox{\Hypertarget{classapp_1_1Point4d_a00278fd97ca12247a89e3ec34e9e4ece}\label{classapp_1_1Point4d_a00278fd97ca12247a89e3ec34e9e4ece}} 
+\index{app::Point4d@{app::Point4d}!operator/=@{operator/=}}
+\index{operator/=@{operator/=}!app::Point4d@{app::Point4d}}
+\doxysubsubsection{\texorpdfstring{operator/=()}{operator/=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \& app\+::\+Point4d\+::operator/= (\begin{DoxyParamCaption}\item[{double}]{f }\end{DoxyParamCaption})}
+
+
+
+Уменьшает координаты в f раз 
+
+\mbox{\Hypertarget{classapp_1_1Point4d_af713837359c27c2cd02002a9d01bb5e3}\label{classapp_1_1Point4d_af713837359c27c2cd02002a9d01bb5e3}} 
+\index{app::Point4d@{app::Point4d}!resize@{resize}}
+\index{resize@{resize}!app::Point4d@{app::Point4d}}
+\doxysubsubsection{\texorpdfstring{resize()}{resize()}}
+{\footnotesize\ttfamily void app\+::\+Point4d\+::resize (\begin{DoxyParamCaption}\item[{double}]{d }\end{DoxyParamCaption})}
+
+
+
+Меняет длину вектора на d. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Point4d_af713837359c27c2cd02002a9d01bb5e3_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{classapp_1_1Point4d_a85f53b80c2041a50dbc35a369a80ba55}\label{classapp_1_1Point4d_a85f53b80c2041a50dbc35a369a80ba55}} 
+\index{app::Point4d@{app::Point4d}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!app::Point4d@{app::Point4d}}
+\doxysubsubsection{\texorpdfstring{operator$\ast$}{operator*}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} operator$\ast$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \&}]{a,  }\item[{double}]{d }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Увеличивает координаты точки в d раз 
+
+\mbox{\Hypertarget{classapp_1_1Point4d_a1fac6ae7ce8dee08682a48e228bf97e9}\label{classapp_1_1Point4d_a1fac6ae7ce8dee08682a48e228bf97e9}} 
+\index{app::Point4d@{app::Point4d}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!app::Point4d@{app::Point4d}}
+\doxysubsubsection{\texorpdfstring{operator$\ast$}{operator*}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} operator$\ast$ (\begin{DoxyParamCaption}\item[{double}]{d,  }\item[{const \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \&}]{p }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Увеличивает координаты точки в d раз 
+
+\mbox{\Hypertarget{classapp_1_1Point4d_ab88b32e2ced9380719782d33b8c4f65d}\label{classapp_1_1Point4d_ab88b32e2ced9380719782d33b8c4f65d}} 
+\index{app::Point4d@{app::Point4d}!operator+@{operator+}}
+\index{operator+@{operator+}!app::Point4d@{app::Point4d}}
+\doxysubsubsection{\texorpdfstring{operator+}{operator+}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} operator+ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \&}]{a,  }\item[{const \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \&}]{b }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Складывает точки по правилу сложения трехмерных точек 
+
+\mbox{\Hypertarget{classapp_1_1Point4d_a6587756c2849ee91351dae2d1d5706d8}\label{classapp_1_1Point4d_a6587756c2849ee91351dae2d1d5706d8}} 
+\index{app::Point4d@{app::Point4d}!operator-\/@{operator-\/}}
+\index{operator-\/@{operator-\/}!app::Point4d@{app::Point4d}}
+\doxysubsubsection{\texorpdfstring{operator-\/}{operator-}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} operator-\/ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \&}]{a,  }\item[{const \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \&}]{b }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Вычитает точки по правилу сложения трехмерных точек 
+
+\mbox{\Hypertarget{classapp_1_1Point4d_a64079e4e9cca4ab271d1f4794bcfbcf5}\label{classapp_1_1Point4d_a64079e4e9cca4ab271d1f4794bcfbcf5}} 
+\index{app::Point4d@{app::Point4d}!operator/@{operator/}}
+\index{operator/@{operator/}!app::Point4d@{app::Point4d}}
+\doxysubsubsection{\texorpdfstring{operator/}{operator/}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} operator/ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \&}]{a,  }\item[{double}]{d }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Уменьшает координаты точки в d раз 
+
+\mbox{\Hypertarget{classapp_1_1Point4d_a786320824b45fc58b8792ec1f0328ca1}\label{classapp_1_1Point4d_a786320824b45fc58b8792ec1f0328ca1}} 
+\index{app::Point4d@{app::Point4d}!operator==@{operator==}}
+\index{operator==@{operator==}!app::Point4d@{app::Point4d}}
+\doxysubsubsection{\texorpdfstring{operator==}{operator==}}
+{\footnotesize\ttfamily bool operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \&}]{a,  }\item[{const \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \&}]{b }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Проверяет точки на равенство 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classapp_1_1Point4d_a5212c0a4dedb01db0a81a1db5864b257}\label{classapp_1_1Point4d_a5212c0a4dedb01db0a81a1db5864b257}} 
+\index{app::Point4d@{app::Point4d}!w@{w}}
+\index{w@{w}!app::Point4d@{app::Point4d}}
+\doxysubsubsection{\texorpdfstring{w}{w}}
+{\footnotesize\ttfamily double app\+::\+Point4d\+::w}
+
+\mbox{\Hypertarget{classapp_1_1Point4d_a4a4ce05a89bcbc69d2a0cc80764c7bc5}\label{classapp_1_1Point4d_a4a4ce05a89bcbc69d2a0cc80764c7bc5}} 
+\index{app::Point4d@{app::Point4d}!x@{x}}
+\index{x@{x}!app::Point4d@{app::Point4d}}
+\doxysubsubsection{\texorpdfstring{x}{x}}
+{\footnotesize\ttfamily double app\+::\+Point4d\+::x}
+
+\mbox{\Hypertarget{classapp_1_1Point4d_a26f8e2788878c77d4af3c8f6ec4266ea}\label{classapp_1_1Point4d_a26f8e2788878c77d4af3c8f6ec4266ea}} 
+\index{app::Point4d@{app::Point4d}!y@{y}}
+\index{y@{y}!app::Point4d@{app::Point4d}}
+\doxysubsubsection{\texorpdfstring{y}{y}}
+{\footnotesize\ttfamily double app\+::\+Point4d\+::y}
+
+\mbox{\Hypertarget{classapp_1_1Point4d_adf5754114305368f308e8e48c45df257}\label{classapp_1_1Point4d_adf5754114305368f308e8e48c45df257}} 
+\index{app::Point4d@{app::Point4d}!z@{z}}
+\index{z@{z}!app::Point4d@{app::Point4d}}
+\doxysubsubsection{\texorpdfstring{z}{z}}
+{\footnotesize\ttfamily double app\+::\+Point4d\+::z}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{point_8h}{point.\+h}}\item 
+src/\mbox{\hyperlink{point_8cpp}{point.\+cpp}}\end{DoxyCompactItemize}

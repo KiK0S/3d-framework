@@ -1,0 +1,5 @@
+<map id="app::Screen::get_pixels_to_draw" name="app::Screen::get_pixels_to_draw">
+<area shape="rect" id="node1" title="выбор всех пикслей" alt="" coords="5,39,177,80"/>
+<area shape="rect" id="node2" href="$classapp_1_1PixelScreen.html#a2d80e1ceab7feb6a99a1853adb9defc6" title="Получение высоты экрана" alt="" coords="225,5,384,47"/>
+<area shape="rect" id="node3" href="$classapp_1_1PixelScreen.html#aab0c1e1ac35858acca3dcad94ebe46e5" title="Получение ширины экрана" alt="" coords="225,71,384,112"/>
+</map>

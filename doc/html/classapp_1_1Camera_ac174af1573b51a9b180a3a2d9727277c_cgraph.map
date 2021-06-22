@@ -1,0 +1,4 @@
+<map id="app::Camera::transform_to_screen" name="app::Camera::transform_to_screen">
+<area shape="rect" id="node1" title="Получение координат на в пространстве (экран, z&#45;value)" alt="" coords="5,5,183,47"/>
+<area shape="rect" id="node2" href="$classapp_1_1Point4d.html#a685768ec2e6ed6486970b10386ad3d98" title="Нормализует координаты точки &#45; получает соответствующую трехмерную с w = 1." alt="" coords="231,13,407,39"/>
+</map>

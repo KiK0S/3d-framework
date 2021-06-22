@@ -1,0 +1,9 @@
+<map id="app::Application::yaw" name="app::Application::yaw">
+<area shape="rect" id="node1" title="Поворот камеры вокруг оси oY." alt="" coords="5,93,168,120"/>
+<area shape="rect" id="node2" href="$classapp_1_1Application.html#a4a6b8d2e11203830c1a8267e458d50b7" title="Поворот камеры вокруг оси" alt="" coords="216,86,391,127"/>
+<area shape="rect" id="node3" href="$classapp_1_1Matrix.html#a9e652729bbb0bd05961f6ea8645a21f6" title="Получение матрицы для поворота в четырехмерном пространстве" alt="" coords="455,5,606,61"/>
+<area shape="rect" id="node4" href="$classapp_1_1Application.html#aba537b13b5e78b0748df0db7223d63cf" title="Перевод enum&#45;а осей в числовое значение" alt="" coords="439,86,623,127"/>
+<area shape="rect" id="node5" href="$classapp_1_1Camera.html#a4fdd819ed88a57450690a757654665f7" title="Метод для применения матриц поворота" alt="" coords="455,152,607,179"/>
+<area shape="rect" id="node6" href="$classapp_1_1Camera.html#ad324b4a0629bda52737774c7ddc826b9" title="Метод для инициализации матриц поворота" alt="" coords="671,145,861,186"/>
+<area shape="rect" id="node7" href="$classapp_1_1Matrix.html#afb0e32ababc5d2b30b3c0a3ed98ba557" title="Получение транспонированной матрицы" alt="" coords="909,152,1077,179"/>
+</map>

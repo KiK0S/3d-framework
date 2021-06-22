@@ -1,0 +1,5 @@
+<map id="app::Triangle2d::is_degenerate" name="app::Triangle2d::is_degenerate">
+<area shape="rect" id="node1" title="Проверка треугольника на вырожденность" alt="" coords="5,5,145,47"/>
+<area shape="rect" id="node2" href="$classapp_1_1Triangle2d.html#a8d17928665e2bcb0913837d1fab3b6d7" title="Вычисляет площадь треугольника" alt="" coords="193,13,367,39"/>
+<area shape="rect" id="node3" href="$namespaceapp.html#a30300927314e2f76a4c5d019e429f363" title=" " alt="" coords="415,13,503,39"/>
+</map>

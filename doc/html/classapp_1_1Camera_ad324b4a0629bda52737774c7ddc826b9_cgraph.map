@@ -1,0 +1,4 @@
+<map id="app::Camera::create_transformation_matrixes" name="app::Camera::create_transformation_matrixes">
+<area shape="rect" id="node1" title="Метод для инициализации матриц поворота" alt="" coords="5,5,196,47"/>
+<area shape="rect" id="node2" href="$classapp_1_1Matrix.html#afb0e32ababc5d2b30b3c0a3ed98ba557" title="Получение транспонированной матрицы" alt="" coords="244,13,412,39"/>
+</map>

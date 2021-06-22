@@ -1,0 +1,4 @@
+<map id="app::Triangle4d" name="app::Triangle4d">
+<area shape="rect" id="node1" title="Класс треугольника в 4д." alt="" coords="7,395,128,501"/>
+<area shape="rect" id="node2" href="$classapp_1_1Point4d.html" title="Класс четырехмерной точки." alt="" coords="5,5,129,303"/>
+</map>

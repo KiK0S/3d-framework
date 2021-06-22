@@ -1,0 +1,5 @@
+<map id="app::Camera::rotate" name="app::Camera::rotate">
+<area shape="rect" id="node1" title="Метод для применения матриц поворота" alt="" coords="5,13,157,39"/>
+<area shape="rect" id="node2" href="$classapp_1_1Camera.html#ad324b4a0629bda52737774c7ddc826b9" title="Метод для инициализации матриц поворота" alt="" coords="205,5,396,47"/>
+<area shape="rect" id="node3" href="$classapp_1_1Matrix.html#afb0e32ababc5d2b30b3c0a3ed98ba557" title="Получение транспонированной матрицы" alt="" coords="444,13,612,39"/>
+</map>

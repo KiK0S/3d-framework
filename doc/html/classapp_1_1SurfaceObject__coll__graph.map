@@ -1,0 +1,4 @@
+<map id="app::SurfaceObject" name="app::SurfaceObject">
+<area shape="rect" id="node1" title="Класс объекта в 3д." alt="" coords="10,219,155,325"/>
+<area shape="rect" id="node2" href="$classapp_1_1WireObject.html" title="Класс каркаса объекта в 3д." alt="" coords="5,5,160,171"/>
+</map>

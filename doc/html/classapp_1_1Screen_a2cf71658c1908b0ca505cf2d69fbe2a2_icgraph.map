@@ -1,0 +1,6 @@
+<map id="app::Screen::get_pixels_to_draw" name="app::Screen::get_pixels_to_draw">
+<area shape="rect" id="node1" title="выбор всех пикслей" alt="" coords="639,5,811,47"/>
+<area shape="rect" id="node2" href="$classapp_1_1Renderer.html#ab20159524bb04bfc21cc8c04ff49610d" title="Производит отрисовку кадра" alt="" coords="437,5,591,47"/>
+<area shape="rect" id="node3" href="$classapp_1_1Application.html#a6de383313a844c5f3d6a10e7d6cbaa00" title="Обновление кадра в приложении." alt="" coords="209,5,389,47"/>
+<area shape="rect" id="node4" href="$classapp_1_1Application.html#af9098183238622421f4e18930c6dd8ec" title="Цикл приложения" alt="" coords="5,13,161,39"/>
+</map>

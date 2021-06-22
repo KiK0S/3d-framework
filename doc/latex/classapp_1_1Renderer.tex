@@ -1,0 +1,407 @@
+\hypertarget{classapp_1_1Renderer}{}\doxysection{app\+::Renderer Class Reference}
+\label{classapp_1_1Renderer}\index{app::Renderer@{app::Renderer}}
+
+
+Класс рендерера  
+
+
+
+
+{\ttfamily \#include $<$renderer.\+h$>$}
+
+
+
+Collaboration diagram for app\+::Renderer\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classapp_1_1Renderer__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structapp_1_1Renderer_1_1DrawData}{Draw\+Data}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classapp_1_1Renderer_a48234720d1cc801129c7d946067b3c3f}{Renderer}} (double width, double height)
+\begin{DoxyCompactList}\small\item\em Конструктор рендерера \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classapp_1_1Renderer_ab20159524bb04bfc21cc8c04ff49610d}{draw\+\_\+frame}} (sf\+::\+Render\+Window \&window)
+\begin{DoxyCompactList}\small\item\em Производит отрисовку кадра \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classapp_1_1Renderer_abe888132cd72453941f7cca28077c99a}{draw\+\_\+triangle}} (const \mbox{\hyperlink{classapp_1_1Camera}{Camera}} \&camera, const \mbox{\hyperlink{classapp_1_1Triangle4d}{Triangle4d}} \&triangle)
+\begin{DoxyCompactList}\small\item\em Добавляет треугольник на буферный кадр \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classapp_1_1Renderer_a9aed8bbfd2d13c2498434c34be2b95bc}{draw\+\_\+data}} (const \mbox{\hyperlink{classapp_1_1Camera}{Camera}} \&camera, const \mbox{\hyperlink{structapp_1_1Renderer_1_1DrawData}{Renderer\+::\+Draw\+Data}} \&data)
+\item 
+void \mbox{\hyperlink{classapp_1_1Renderer_a88d5348a13cc176e6336e60d80560c49}{draw\+\_\+line}} (int x, double top\+\_\+y, double bottom\+\_\+y, const \mbox{\hyperlink{classapp_1_1Camera}{Camera}} \&camera, const \mbox{\hyperlink{structapp_1_1Renderer_1_1DrawData}{Renderer\+::\+Draw\+Data}} \&data)
+\item 
+void \mbox{\hyperlink{classapp_1_1Renderer_a5284834ff17079185f0a28c96aba8735}{draw\+\_\+pixels}} (const std\+::vector$<$ sf\+::\+Vertex $>$ \&data, sf\+::\+Render\+Window \&window)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static double \mbox{\hyperlink{classapp_1_1Renderer_a7353b83e67639e28e87b657fd4aedd76}{get\+\_\+z}} (const \mbox{\hyperlink{classapp_1_1Camera}{Camera}} \&camera, int x, int y, \mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}$<$ 2, 1 $>$ \&\&coords, const \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \&a, const \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \&b, const \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \&c)
+\item 
+static \mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}$<$ 2, 1 $>$ \mbox{\hyperlink{classapp_1_1Renderer_aec416dfcf4ae9b0d5bf4b98d5f6b4de2}{get\+\_\+coords}} (int x, int y, const \mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}$<$ 2, 2 $>$ \&basis, sf\+::\+Vector2f point)
+\item 
+static std\+::optional$<$ \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} $>$ \mbox{\hyperlink{classapp_1_1Renderer_a1ee428e3d85cd82b75b9ac836d3c98a1}{find\+\_\+intersection}} (const \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \&a, const \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \&b, double z)
+\item 
+static std\+::vector$<$ \mbox{\hyperlink{classapp_1_1Triangle4d}{Triangle4d}} $>$ \mbox{\hyperlink{classapp_1_1Renderer_a23fa3d21af407664342cd318472d87e5}{divide\+\_\+triangle}} (const \mbox{\hyperlink{classapp_1_1Triangle4d}{Triangle4d}} \&triangle, double z\+\_\+plane, const \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \&f\+\_\+intersection, const \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \&s\+\_\+intersection)
+\item 
+static \mbox{\hyperlink{classapp_1_1Triangle4d}{Triangle4d}} \mbox{\hyperlink{classapp_1_1Renderer_a7d5e6460eeebf8d879a30511e52c014f}{move\+\_\+triangle\+\_\+to\+\_\+another\+\_\+basis}} (const \mbox{\hyperlink{classapp_1_1Camera}{Camera}} \&camera, const \mbox{\hyperlink{classapp_1_1Triangle4d}{Triangle4d}} \&triangle)
+\item 
+static \mbox{\hyperlink{classapp_1_1Triangle2d}{Triangle2d}} \mbox{\hyperlink{classapp_1_1Renderer_abf0ace8efe3c477dd7a65de11025eb46}{project\+\_\+on\+\_\+screen}} (const \mbox{\hyperlink{classapp_1_1Camera}{Camera}} \&camera, const \mbox{\hyperlink{classapp_1_1Triangle4d}{Triangle4d}} \&triangle)
+\item 
+static double \mbox{\hyperlink{classapp_1_1Renderer_aab941493cf28529ea73d2c1c0dc6abdd}{get\+\_\+scaled\+\_\+z\+\_\+value}} (double y, double top\+\_\+y, double bottom\+\_\+y, double top\+\_\+z, double bottom\+\_\+z)
+\item 
+static std\+::vector$<$ \mbox{\hyperlink{classapp_1_1Triangle4d}{Triangle4d}} $>$ \mbox{\hyperlink{classapp_1_1Renderer_a207e57d016d89bb9573972458c2c21ad}{clip\+\_\+triangle\+\_\+camera\+\_\+space}} (const \mbox{\hyperlink{classapp_1_1Camera}{Camera}} \&camera, const \mbox{\hyperlink{classapp_1_1Triangle4d}{Triangle4d}} \&triangle)
+\item 
+static \mbox{\hyperlink{structapp_1_1Renderer_1_1DrawData}{Renderer\+::\+Draw\+Data}} \mbox{\hyperlink{classapp_1_1Renderer_a9f822cfced8cf3567caf80588683a3d9}{create\+\_\+data}} (const \mbox{\hyperlink{classapp_1_1Triangle2d}{Triangle2d}} \&triangle2d, const \mbox{\hyperlink{classapp_1_1Triangle4d}{Triangle4d}} \&triangle4d)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classapp_1_1Screen}{Screen}} \mbox{\hyperlink{classapp_1_1Renderer_aac3efd42c18c71d35cc2fa2f46f00372}{screen\+\_\+}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Класс рендерера 
+
+\begin{DoxyAuthor}{Author}
+Ki\+K0S 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+May 14 2021 
+\end{DoxyDate}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classapp_1_1Renderer_a48234720d1cc801129c7d946067b3c3f}\label{classapp_1_1Renderer_a48234720d1cc801129c7d946067b3c3f}} 
+\index{app::Renderer@{app::Renderer}!Renderer@{Renderer}}
+\index{Renderer@{Renderer}!app::Renderer@{app::Renderer}}
+\doxysubsubsection{\texorpdfstring{Renderer()}{Renderer()}}
+{\footnotesize\ttfamily app\+::\+Renderer\+::\+Renderer (\begin{DoxyParamCaption}\item[{double}]{width,  }\item[{double}]{height }\end{DoxyParamCaption})}
+
+
+
+Конструктор рендерера 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classapp_1_1Renderer_a207e57d016d89bb9573972458c2c21ad}\label{classapp_1_1Renderer_a207e57d016d89bb9573972458c2c21ad}} 
+\index{app::Renderer@{app::Renderer}!clip\_triangle\_camera\_space@{clip\_triangle\_camera\_space}}
+\index{clip\_triangle\_camera\_space@{clip\_triangle\_camera\_space}!app::Renderer@{app::Renderer}}
+\doxysubsubsection{\texorpdfstring{clip\_triangle\_camera\_space()}{clip\_triangle\_camera\_space()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{classapp_1_1Triangle4d}{Triangle4d}} $>$ app\+::\+Renderer\+::clip\+\_\+triangle\+\_\+camera\+\_\+space (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classapp_1_1Camera}{Camera}} \&}]{camera,  }\item[{const \mbox{\hyperlink{classapp_1_1Triangle4d}{Triangle4d}} \&}]{triangle }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Renderer_a207e57d016d89bb9573972458c2c21ad_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Renderer_a207e57d016d89bb9573972458c2c21ad_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classapp_1_1Renderer_a9f822cfced8cf3567caf80588683a3d9}\label{classapp_1_1Renderer_a9f822cfced8cf3567caf80588683a3d9}} 
+\index{app::Renderer@{app::Renderer}!create\_data@{create\_data}}
+\index{create\_data@{create\_data}!app::Renderer@{app::Renderer}}
+\doxysubsubsection{\texorpdfstring{create\_data()}{create\_data()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structapp_1_1Renderer_1_1DrawData}{Renderer\+::\+Draw\+Data}} app\+::\+Renderer\+::create\+\_\+data (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classapp_1_1Triangle2d}{Triangle2d}} \&}]{triangle2d,  }\item[{const \mbox{\hyperlink{classapp_1_1Triangle4d}{Triangle4d}} \&}]{triangle4d }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Renderer_a9f822cfced8cf3567caf80588683a3d9_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Renderer_a9f822cfced8cf3567caf80588683a3d9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classapp_1_1Renderer_a23fa3d21af407664342cd318472d87e5}\label{classapp_1_1Renderer_a23fa3d21af407664342cd318472d87e5}} 
+\index{app::Renderer@{app::Renderer}!divide\_triangle@{divide\_triangle}}
+\index{divide\_triangle@{divide\_triangle}!app::Renderer@{app::Renderer}}
+\doxysubsubsection{\texorpdfstring{divide\_triangle()}{divide\_triangle()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{classapp_1_1Triangle4d}{Triangle4d}} $>$ app\+::\+Renderer\+::divide\+\_\+triangle (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classapp_1_1Triangle4d}{Triangle4d}} \&}]{triangle,  }\item[{double}]{z\+\_\+plane,  }\item[{const \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \&}]{f\+\_\+intersection,  }\item[{const \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \&}]{s\+\_\+intersection }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Renderer_a23fa3d21af407664342cd318472d87e5_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Renderer_a23fa3d21af407664342cd318472d87e5_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classapp_1_1Renderer_a9aed8bbfd2d13c2498434c34be2b95bc}\label{classapp_1_1Renderer_a9aed8bbfd2d13c2498434c34be2b95bc}} 
+\index{app::Renderer@{app::Renderer}!draw\_data@{draw\_data}}
+\index{draw\_data@{draw\_data}!app::Renderer@{app::Renderer}}
+\doxysubsubsection{\texorpdfstring{draw\_data()}{draw\_data()}}
+{\footnotesize\ttfamily void app\+::\+Renderer\+::draw\+\_\+data (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classapp_1_1Camera}{Camera}} \&}]{camera,  }\item[{const \mbox{\hyperlink{structapp_1_1Renderer_1_1DrawData}{Renderer\+::\+Draw\+Data}} \&}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Renderer_a9aed8bbfd2d13c2498434c34be2b95bc_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Renderer_a9aed8bbfd2d13c2498434c34be2b95bc_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classapp_1_1Renderer_ab20159524bb04bfc21cc8c04ff49610d}\label{classapp_1_1Renderer_ab20159524bb04bfc21cc8c04ff49610d}} 
+\index{app::Renderer@{app::Renderer}!draw\_frame@{draw\_frame}}
+\index{draw\_frame@{draw\_frame}!app::Renderer@{app::Renderer}}
+\doxysubsubsection{\texorpdfstring{draw\_frame()}{draw\_frame()}}
+{\footnotesize\ttfamily void app\+::\+Renderer\+::draw\+\_\+frame (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})}
+
+
+
+Производит отрисовку кадра 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Renderer_ab20159524bb04bfc21cc8c04ff49610d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Renderer_ab20159524bb04bfc21cc8c04ff49610d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classapp_1_1Renderer_a88d5348a13cc176e6336e60d80560c49}\label{classapp_1_1Renderer_a88d5348a13cc176e6336e60d80560c49}} 
+\index{app::Renderer@{app::Renderer}!draw\_line@{draw\_line}}
+\index{draw\_line@{draw\_line}!app::Renderer@{app::Renderer}}
+\doxysubsubsection{\texorpdfstring{draw\_line()}{draw\_line()}}
+{\footnotesize\ttfamily void app\+::\+Renderer\+::draw\+\_\+line (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{double}]{top\+\_\+y,  }\item[{double}]{bottom\+\_\+y,  }\item[{const \mbox{\hyperlink{classapp_1_1Camera}{Camera}} \&}]{camera,  }\item[{const \mbox{\hyperlink{structapp_1_1Renderer_1_1DrawData}{Renderer\+::\+Draw\+Data}} \&}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Renderer_a88d5348a13cc176e6336e60d80560c49_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Renderer_a88d5348a13cc176e6336e60d80560c49_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classapp_1_1Renderer_a5284834ff17079185f0a28c96aba8735}\label{classapp_1_1Renderer_a5284834ff17079185f0a28c96aba8735}} 
+\index{app::Renderer@{app::Renderer}!draw\_pixels@{draw\_pixels}}
+\index{draw\_pixels@{draw\_pixels}!app::Renderer@{app::Renderer}}
+\doxysubsubsection{\texorpdfstring{draw\_pixels()}{draw\_pixels()}}
+{\footnotesize\ttfamily void app\+::\+Renderer\+::draw\+\_\+pixels (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ sf\+::\+Vertex $>$ \&}]{data,  }\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Renderer_a5284834ff17079185f0a28c96aba8735_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classapp_1_1Renderer_abe888132cd72453941f7cca28077c99a}\label{classapp_1_1Renderer_abe888132cd72453941f7cca28077c99a}} 
+\index{app::Renderer@{app::Renderer}!draw\_triangle@{draw\_triangle}}
+\index{draw\_triangle@{draw\_triangle}!app::Renderer@{app::Renderer}}
+\doxysubsubsection{\texorpdfstring{draw\_triangle()}{draw\_triangle()}}
+{\footnotesize\ttfamily void app\+::\+Renderer\+::draw\+\_\+triangle (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classapp_1_1Camera}{Camera}} \&}]{camera,  }\item[{const \mbox{\hyperlink{classapp_1_1Triangle4d}{Triangle4d}} \&}]{triangle }\end{DoxyParamCaption})}
+
+
+
+Добавляет треугольник на буферный кадр 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Renderer_abe888132cd72453941f7cca28077c99a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Renderer_abe888132cd72453941f7cca28077c99a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classapp_1_1Renderer_a1ee428e3d85cd82b75b9ac836d3c98a1}\label{classapp_1_1Renderer_a1ee428e3d85cd82b75b9ac836d3c98a1}} 
+\index{app::Renderer@{app::Renderer}!find\_intersection@{find\_intersection}}
+\index{find\_intersection@{find\_intersection}!app::Renderer@{app::Renderer}}
+\doxysubsubsection{\texorpdfstring{find\_intersection()}{find\_intersection()}}
+{\footnotesize\ttfamily std\+::optional$<$ \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} $>$ app\+::\+Renderer\+::find\+\_\+intersection (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \&}]{a,  }\item[{const \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \&}]{b,  }\item[{double}]{z }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Renderer_a1ee428e3d85cd82b75b9ac836d3c98a1_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classapp_1_1Renderer_aec416dfcf4ae9b0d5bf4b98d5f6b4de2}\label{classapp_1_1Renderer_aec416dfcf4ae9b0d5bf4b98d5f6b4de2}} 
+\index{app::Renderer@{app::Renderer}!get\_coords@{get\_coords}}
+\index{get\_coords@{get\_coords}!app::Renderer@{app::Renderer}}
+\doxysubsubsection{\texorpdfstring{get\_coords()}{get\_coords()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}$<$ 2, 1 $>$ app\+::\+Renderer\+::get\+\_\+coords (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y,  }\item[{const \mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}$<$ 2, 2 $>$ \&}]{basis,  }\item[{sf\+::\+Vector2f}]{point }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=327pt]{classapp_1_1Renderer_aec416dfcf4ae9b0d5bf4b98d5f6b4de2_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Renderer_aec416dfcf4ae9b0d5bf4b98d5f6b4de2_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classapp_1_1Renderer_aab941493cf28529ea73d2c1c0dc6abdd}\label{classapp_1_1Renderer_aab941493cf28529ea73d2c1c0dc6abdd}} 
+\index{app::Renderer@{app::Renderer}!get\_scaled\_z\_value@{get\_scaled\_z\_value}}
+\index{get\_scaled\_z\_value@{get\_scaled\_z\_value}!app::Renderer@{app::Renderer}}
+\doxysubsubsection{\texorpdfstring{get\_scaled\_z\_value()}{get\_scaled\_z\_value()}}
+{\footnotesize\ttfamily double app\+::\+Renderer\+::get\+\_\+scaled\+\_\+z\+\_\+value (\begin{DoxyParamCaption}\item[{double}]{y,  }\item[{double}]{top\+\_\+y,  }\item[{double}]{bottom\+\_\+y,  }\item[{double}]{top\+\_\+z,  }\item[{double}]{bottom\+\_\+z }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Renderer_aab941493cf28529ea73d2c1c0dc6abdd_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classapp_1_1Renderer_a7353b83e67639e28e87b657fd4aedd76}\label{classapp_1_1Renderer_a7353b83e67639e28e87b657fd4aedd76}} 
+\index{app::Renderer@{app::Renderer}!get\_z@{get\_z}}
+\index{get\_z@{get\_z}!app::Renderer@{app::Renderer}}
+\doxysubsubsection{\texorpdfstring{get\_z()}{get\_z()}}
+{\footnotesize\ttfamily double app\+::\+Renderer\+::get\+\_\+z (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classapp_1_1Camera}{Camera}} \&}]{camera,  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{\mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}$<$ 2, 1 $>$ \&\&}]{coords,  }\item[{const \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \&}]{a,  }\item[{const \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \&}]{b,  }\item[{const \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \&}]{c }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Renderer_a7353b83e67639e28e87b657fd4aedd76_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Renderer_a7353b83e67639e28e87b657fd4aedd76_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classapp_1_1Renderer_a7d5e6460eeebf8d879a30511e52c014f}\label{classapp_1_1Renderer_a7d5e6460eeebf8d879a30511e52c014f}} 
+\index{app::Renderer@{app::Renderer}!move\_triangle\_to\_another\_basis@{move\_triangle\_to\_another\_basis}}
+\index{move\_triangle\_to\_another\_basis@{move\_triangle\_to\_another\_basis}!app::Renderer@{app::Renderer}}
+\doxysubsubsection{\texorpdfstring{move\_triangle\_to\_another\_basis()}{move\_triangle\_to\_another\_basis()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classapp_1_1Triangle4d}{Triangle4d}} app\+::\+Renderer\+::move\+\_\+triangle\+\_\+to\+\_\+another\+\_\+basis (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classapp_1_1Camera}{Camera}} \&}]{camera,  }\item[{const \mbox{\hyperlink{classapp_1_1Triangle4d}{Triangle4d}} \&}]{triangle }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Renderer_a7d5e6460eeebf8d879a30511e52c014f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Renderer_a7d5e6460eeebf8d879a30511e52c014f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classapp_1_1Renderer_abf0ace8efe3c477dd7a65de11025eb46}\label{classapp_1_1Renderer_abf0ace8efe3c477dd7a65de11025eb46}} 
+\index{app::Renderer@{app::Renderer}!project\_on\_screen@{project\_on\_screen}}
+\index{project\_on\_screen@{project\_on\_screen}!app::Renderer@{app::Renderer}}
+\doxysubsubsection{\texorpdfstring{project\_on\_screen()}{project\_on\_screen()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classapp_1_1Triangle2d}{Triangle2d}} app\+::\+Renderer\+::project\+\_\+on\+\_\+screen (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classapp_1_1Camera}{Camera}} \&}]{camera,  }\item[{const \mbox{\hyperlink{classapp_1_1Triangle4d}{Triangle4d}} \&}]{triangle }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Renderer_abf0ace8efe3c477dd7a65de11025eb46_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Renderer_abf0ace8efe3c477dd7a65de11025eb46_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classapp_1_1Renderer_aac3efd42c18c71d35cc2fa2f46f00372}\label{classapp_1_1Renderer_aac3efd42c18c71d35cc2fa2f46f00372}} 
+\index{app::Renderer@{app::Renderer}!screen\_@{screen\_}}
+\index{screen\_@{screen\_}!app::Renderer@{app::Renderer}}
+\doxysubsubsection{\texorpdfstring{screen\_}{screen\_}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classapp_1_1Screen}{Screen}} app\+::\+Renderer\+::screen\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{renderer_8h}{renderer.\+h}}\item 
+src/\mbox{\hyperlink{renderer_8cpp}{renderer.\+cpp}}\end{DoxyCompactItemize}

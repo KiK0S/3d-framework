@@ -1,0 +1,236 @@
+\hypertarget{namespaceapp}{}\doxysection{app Namespace Reference}
+\label{namespaceapp}\index{app@{app}}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classapp_1_1Application}{Application}}
+\begin{DoxyCompactList}\small\item\em Класс инстанса графического приложения. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classapp_1_1Camera}{Camera}}
+\begin{DoxyCompactList}\small\item\em Класс камеры \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classapp_1_1Cube}{Cube}}
+\begin{DoxyCompactList}\small\item\em Класс куба. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}
+\begin{DoxyCompactList}\small\item\em Класс для работы с матрицами. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classapp_1_1PixelScreen}{Pixel\+Screen}}
+\begin{DoxyCompactList}\small\item\em Класс контейнера данных для пиксельного экрана. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}}
+\begin{DoxyCompactList}\small\item\em Класс четырехмерной точки. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classapp_1_1Renderer}{Renderer}}
+\begin{DoxyCompactList}\small\item\em Класс рендерера \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classapp_1_1Screen}{Screen}}
+\begin{DoxyCompactList}\small\item\em Класс экрана. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classapp_1_1SurfaceObject}{Surface\+Object}}
+\begin{DoxyCompactList}\small\item\em Класс объекта в 3д. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classapp_1_1Tetraedr}{Tetraedr}}
+\begin{DoxyCompactList}\small\item\em Класс тетраедра в 3д. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classapp_1_1Triangle2d}{Triangle2d}}
+\begin{DoxyCompactList}\small\item\em Класс треугольника в 2д. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classapp_1_1Triangle4d}{Triangle4d}}
+\begin{DoxyCompactList}\small\item\em Класс треугольника в 4д. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classapp_1_1WireObject}{Wire\+Object}}
+\begin{DoxyCompactList}\small\item\em Класс каркаса объекта в 3д. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classapp_1_1World}{World}}
+\begin{DoxyCompactList}\small\item\em Класс мира в 3д. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{namespaceapp_aaa0cfade3dadbedd834e82c4d778584f}{Matrix4d}} = \mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}$<$ 4, 4 $>$
+\item 
+using \mbox{\hyperlink{namespaceapp_a7199f4d76ba03bee1f8a5943508de981}{Matrix2d}} = \mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}$<$ 2, 2 $>$
+\item 
+using \mbox{\hyperlink{namespaceapp_a315a30c3b1ec772d2da7b1032cced529}{Vector4d}} = \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$size\+\_\+t N, size\+\_\+t M$>$ }\\bool \mbox{\hyperlink{namespaceapp_a15c850174ac1a74936305739d3f8eae5}{operator==}} (const \mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}$<$ N, M $>$ \&first, const \mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}$<$ N, M $>$ \&second)
+\item 
+{\footnotesize template$<$size\+\_\+t N, size\+\_\+t M$>$ }\\bool \mbox{\hyperlink{namespaceapp_a838973b2efd145b72801fa476ad0fefa}{operator!=}} (const \mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}$<$ N, M $>$ \&first, const \mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}$<$ N, M $>$ \&second)
+\item 
+{\footnotesize template$<$size\+\_\+t N, size\+\_\+t M$>$ }\\\mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}$<$ N, M $>$ \mbox{\hyperlink{namespaceapp_a3767475e264d7d59f9d6a2c61bf0310f}{operator+}} (const \mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}$<$ N, M $>$ \&first, const \mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}$<$ N, M $>$ \&second)
+\item 
+{\footnotesize template$<$size\+\_\+t N, size\+\_\+t M$>$ }\\\mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}$<$ N, M $>$ \mbox{\hyperlink{namespaceapp_a23e7b98a7598fe27ae775b952fd7dbc3}{operator-\/}} (const \mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}$<$ N, M $>$ \&first, const \mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}$<$ N, M $>$ \&second)
+\item 
+{\footnotesize template$<$size\+\_\+t N, size\+\_\+t M, size\+\_\+t K$>$ }\\\mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}$<$ N, K $>$ \mbox{\hyperlink{namespaceapp_a3bd9b613fd850313eff6f630b5ef2ff1}{operator$\ast$}} (const \mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}$<$ N, M $>$ \&first, const \mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}$<$ M, K $>$ \&second)
+\item 
+{\footnotesize template$<$size\+\_\+t N, size\+\_\+t M$>$ }\\\mbox{\hyperlink{namespaceapp_a315a30c3b1ec772d2da7b1032cced529}{Vector4d}} \mbox{\hyperlink{namespaceapp_a29edcc50c76aa6e2ea5e42f9897a8c50}{operator$\ast$}} (const \mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}$<$ N, M $>$ \&matrix, const \mbox{\hyperlink{namespaceapp_a315a30c3b1ec772d2da7b1032cced529}{Vector4d}} \&vector)
+\item 
+{\footnotesize template$<$size\+\_\+t N, size\+\_\+t M$>$ }\\sf\+::\+Vector2f \mbox{\hyperlink{namespaceapp_a9970d2c973420768c47841460b69d585}{operator$\ast$}} (const \mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}$<$ N, M $>$ \&matrix, const sf\+::\+Vector2f \&vector)
+\item 
+\mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \mbox{\hyperlink{namespaceapp_a697c77acfef7dc45d53040318dc2aa6d}{operator+}} (const \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \&a, const \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \&b)
+\item 
+\mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \mbox{\hyperlink{namespaceapp_a958cf65d16c5c4cd1a3dc0975838ddab}{operator-\/}} (const \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \&a, const \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \&b)
+\item 
+\mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \mbox{\hyperlink{namespaceapp_a8b199e44fe22289fbc50bf5dd033a88f}{operator$\ast$}} (const \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \&a, double f)
+\item 
+\mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \mbox{\hyperlink{namespaceapp_aa54bfac5eb65fafe6a31b93c028d4562}{operator/}} (const \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \&a, double f)
+\item 
+bool \mbox{\hyperlink{namespaceapp_a9730af7e49787937dd89b237880f3863}{operator==}} (const \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \&a, const \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \&b)
+\item 
+\mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \mbox{\hyperlink{namespaceapp_a0f101180c9aaf1e2163b515dc7b13240}{operator$\ast$}} (double f, const \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \&p)
+\item 
+double \mbox{\hyperlink{namespaceapp_a30300927314e2f76a4c5d019e429f363}{cross}} (const sf\+::\+Vector2f \&a, const sf\+::\+Vector2f \&b)
+\item 
+double \mbox{\hyperlink{namespaceapp_aa488bdeda124d54e241b063ac2146416}{scalar}} (const sf\+::\+Vector2f \&a, const sf\+::\+Vector2f \&b)
+\item 
+double \mbox{\hyperlink{namespaceapp_ab4ca8d2a9daa1335ab0171b9959960c6}{scalar}} (const \mbox{\hyperlink{namespaceapp_a315a30c3b1ec772d2da7b1032cced529}{Vector4d}} \&a, const \mbox{\hyperlink{namespaceapp_a315a30c3b1ec772d2da7b1032cced529}{Vector4d}} \&b)
+\item 
+sf\+::\+Vector2f \& \mbox{\hyperlink{namespaceapp_aca33dc2b6d138fb7ae9853ef4a203bde}{operator$\ast$=}} (sf\+::\+Vector2f \&v, double d)
+\item 
+sf\+::\+Vector2f \& \mbox{\hyperlink{namespaceapp_a71289e5b890446649eaac07875825647}{operator/=}} (sf\+::\+Vector2f \&v, double d)
+\item 
+double \mbox{\hyperlink{namespaceapp_af72208284730164f847a4fbb7b252e98}{length}} (const sf\+::\+Vector2f \&v)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{namespaceapp_a7199f4d76ba03bee1f8a5943508de981}\label{namespaceapp_a7199f4d76ba03bee1f8a5943508de981}} 
+\index{app@{app}!Matrix2d@{Matrix2d}}
+\index{Matrix2d@{Matrix2d}!app@{app}}
+\doxysubsubsection{\texorpdfstring{Matrix2d}{Matrix2d}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{namespaceapp_a7199f4d76ba03bee1f8a5943508de981}{app\+::\+Matrix2d}} = typedef \mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}$<$2, 2$>$}
+
+\mbox{\Hypertarget{namespaceapp_aaa0cfade3dadbedd834e82c4d778584f}\label{namespaceapp_aaa0cfade3dadbedd834e82c4d778584f}} 
+\index{app@{app}!Matrix4d@{Matrix4d}}
+\index{Matrix4d@{Matrix4d}!app@{app}}
+\doxysubsubsection{\texorpdfstring{Matrix4d}{Matrix4d}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{namespaceapp_aaa0cfade3dadbedd834e82c4d778584f}{app\+::\+Matrix4d}} = typedef \mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}$<$4, 4$>$}
+
+\mbox{\Hypertarget{namespaceapp_a315a30c3b1ec772d2da7b1032cced529}\label{namespaceapp_a315a30c3b1ec772d2da7b1032cced529}} 
+\index{app@{app}!Vector4d@{Vector4d}}
+\index{Vector4d@{Vector4d}!app@{app}}
+\doxysubsubsection{\texorpdfstring{Vector4d}{Vector4d}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{namespaceapp_a315a30c3b1ec772d2da7b1032cced529}{app\+::\+Vector4d}} = typedef \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}}}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{namespaceapp_a30300927314e2f76a4c5d019e429f363}\label{namespaceapp_a30300927314e2f76a4c5d019e429f363}} 
+\index{app@{app}!cross@{cross}}
+\index{cross@{cross}!app@{app}}
+\doxysubsubsection{\texorpdfstring{cross()}{cross()}}
+{\footnotesize\ttfamily double app\+::cross (\begin{DoxyParamCaption}\item[{const sf\+::\+Vector2f \&}]{a,  }\item[{const sf\+::\+Vector2f \&}]{b }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespaceapp_a30300927314e2f76a4c5d019e429f363_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{namespaceapp_af72208284730164f847a4fbb7b252e98}\label{namespaceapp_af72208284730164f847a4fbb7b252e98}} 
+\index{app@{app}!length@{length}}
+\index{length@{length}!app@{app}}
+\doxysubsubsection{\texorpdfstring{length()}{length()}}
+{\footnotesize\ttfamily double app\+::length (\begin{DoxyParamCaption}\item[{const sf\+::\+Vector2f \&}]{v }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespaceapp_a838973b2efd145b72801fa476ad0fefa}\label{namespaceapp_a838973b2efd145b72801fa476ad0fefa}} 
+\index{app@{app}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!app@{app}}
+\doxysubsubsection{\texorpdfstring{operator"!=()}{operator!=()}}
+{\footnotesize\ttfamily template$<$size\+\_\+t N, size\+\_\+t M$>$ \\
+bool app\+::operator!= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}$<$ N, M $>$ \&}]{first,  }\item[{const \mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}$<$ N, M $>$ \&}]{second }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespaceapp_a3bd9b613fd850313eff6f630b5ef2ff1}\label{namespaceapp_a3bd9b613fd850313eff6f630b5ef2ff1}} 
+\index{app@{app}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!app@{app}}
+\doxysubsubsection{\texorpdfstring{operator$\ast$()}{operator*()}\hspace{0.1cm}{\footnotesize\ttfamily [1/5]}}
+{\footnotesize\ttfamily template$<$size\+\_\+t N, size\+\_\+t M, size\+\_\+t K$>$ \\
+\mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}$<$N, K$>$ app\+::operator$\ast$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}$<$ N, M $>$ \&}]{first,  }\item[{const \mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}$<$ M, K $>$ \&}]{second }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespaceapp_a9970d2c973420768c47841460b69d585}\label{namespaceapp_a9970d2c973420768c47841460b69d585}} 
+\index{app@{app}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!app@{app}}
+\doxysubsubsection{\texorpdfstring{operator$\ast$()}{operator*()}\hspace{0.1cm}{\footnotesize\ttfamily [2/5]}}
+{\footnotesize\ttfamily template$<$size\+\_\+t N, size\+\_\+t M$>$ \\
+sf\+::\+Vector2f app\+::operator$\ast$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}$<$ N, M $>$ \&}]{matrix,  }\item[{const sf\+::\+Vector2f \&}]{vector }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespaceapp_a29edcc50c76aa6e2ea5e42f9897a8c50}\label{namespaceapp_a29edcc50c76aa6e2ea5e42f9897a8c50}} 
+\index{app@{app}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!app@{app}}
+\doxysubsubsection{\texorpdfstring{operator$\ast$()}{operator*()}\hspace{0.1cm}{\footnotesize\ttfamily [3/5]}}
+{\footnotesize\ttfamily template$<$size\+\_\+t N, size\+\_\+t M$>$ \\
+\mbox{\hyperlink{namespaceapp_a315a30c3b1ec772d2da7b1032cced529}{Vector4d}} app\+::operator$\ast$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}$<$ N, M $>$ \&}]{matrix,  }\item[{const \mbox{\hyperlink{namespaceapp_a315a30c3b1ec772d2da7b1032cced529}{Vector4d}} \&}]{vector }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespaceapp_a8b199e44fe22289fbc50bf5dd033a88f}\label{namespaceapp_a8b199e44fe22289fbc50bf5dd033a88f}} 
+\index{app@{app}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!app@{app}}
+\doxysubsubsection{\texorpdfstring{operator$\ast$()}{operator*()}\hspace{0.1cm}{\footnotesize\ttfamily [4/5]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} app\+::operator$\ast$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \&}]{a,  }\item[{double}]{f }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespaceapp_a0f101180c9aaf1e2163b515dc7b13240}\label{namespaceapp_a0f101180c9aaf1e2163b515dc7b13240}} 
+\index{app@{app}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!app@{app}}
+\doxysubsubsection{\texorpdfstring{operator$\ast$()}{operator*()}\hspace{0.1cm}{\footnotesize\ttfamily [5/5]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} app\+::operator$\ast$ (\begin{DoxyParamCaption}\item[{double}]{f,  }\item[{const \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \&}]{p }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespaceapp_aca33dc2b6d138fb7ae9853ef4a203bde}\label{namespaceapp_aca33dc2b6d138fb7ae9853ef4a203bde}} 
+\index{app@{app}!operator$\ast$=@{operator$\ast$=}}
+\index{operator$\ast$=@{operator$\ast$=}!app@{app}}
+\doxysubsubsection{\texorpdfstring{operator$\ast$=()}{operator*=()}}
+{\footnotesize\ttfamily sf\+::\+Vector2f \& app\+::operator$\ast$= (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f \&}]{v,  }\item[{double}]{d }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespaceapp_a3767475e264d7d59f9d6a2c61bf0310f}\label{namespaceapp_a3767475e264d7d59f9d6a2c61bf0310f}} 
+\index{app@{app}!operator+@{operator+}}
+\index{operator+@{operator+}!app@{app}}
+\doxysubsubsection{\texorpdfstring{operator+()}{operator+()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$size\+\_\+t N, size\+\_\+t M$>$ \\
+\mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}$<$N, M$>$ app\+::operator+ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}$<$ N, M $>$ \&}]{first,  }\item[{const \mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}$<$ N, M $>$ \&}]{second }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespaceapp_a697c77acfef7dc45d53040318dc2aa6d}\label{namespaceapp_a697c77acfef7dc45d53040318dc2aa6d}} 
+\index{app@{app}!operator+@{operator+}}
+\index{operator+@{operator+}!app@{app}}
+\doxysubsubsection{\texorpdfstring{operator+()}{operator+()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} app\+::operator+ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \&}]{a,  }\item[{const \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \&}]{b }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespaceapp_a23e7b98a7598fe27ae775b952fd7dbc3}\label{namespaceapp_a23e7b98a7598fe27ae775b952fd7dbc3}} 
+\index{app@{app}!operator-\/@{operator-\/}}
+\index{operator-\/@{operator-\/}!app@{app}}
+\doxysubsubsection{\texorpdfstring{operator-\/()}{operator-()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$size\+\_\+t N, size\+\_\+t M$>$ \\
+\mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}$<$N, M$>$ app\+::operator-\/ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}$<$ N, M $>$ \&}]{first,  }\item[{const \mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}$<$ N, M $>$ \&}]{second }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespaceapp_a958cf65d16c5c4cd1a3dc0975838ddab}\label{namespaceapp_a958cf65d16c5c4cd1a3dc0975838ddab}} 
+\index{app@{app}!operator-\/@{operator-\/}}
+\index{operator-\/@{operator-\/}!app@{app}}
+\doxysubsubsection{\texorpdfstring{operator-\/()}{operator-()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} app\+::operator-\/ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \&}]{a,  }\item[{const \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \&}]{b }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespaceapp_aa54bfac5eb65fafe6a31b93c028d4562}\label{namespaceapp_aa54bfac5eb65fafe6a31b93c028d4562}} 
+\index{app@{app}!operator/@{operator/}}
+\index{operator/@{operator/}!app@{app}}
+\doxysubsubsection{\texorpdfstring{operator/()}{operator/()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} app\+::operator/ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \&}]{a,  }\item[{double}]{f }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespaceapp_a71289e5b890446649eaac07875825647}\label{namespaceapp_a71289e5b890446649eaac07875825647}} 
+\index{app@{app}!operator/=@{operator/=}}
+\index{operator/=@{operator/=}!app@{app}}
+\doxysubsubsection{\texorpdfstring{operator/=()}{operator/=()}}
+{\footnotesize\ttfamily sf\+::\+Vector2f \& app\+::operator/= (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f \&}]{v,  }\item[{double}]{d }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespaceapp_a15c850174ac1a74936305739d3f8eae5}\label{namespaceapp_a15c850174ac1a74936305739d3f8eae5}} 
+\index{app@{app}!operator==@{operator==}}
+\index{operator==@{operator==}!app@{app}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$size\+\_\+t N, size\+\_\+t M$>$ \\
+bool app\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}$<$ N, M $>$ \&}]{first,  }\item[{const \mbox{\hyperlink{classapp_1_1Matrix}{Matrix}}$<$ N, M $>$ \&}]{second }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespaceapp_a9730af7e49787937dd89b237880f3863}\label{namespaceapp_a9730af7e49787937dd89b237880f3863}} 
+\index{app@{app}!operator==@{operator==}}
+\index{operator==@{operator==}!app@{app}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily bool app\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \&}]{a,  }\item[{const \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \&}]{b }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespaceapp_aa488bdeda124d54e241b063ac2146416}\label{namespaceapp_aa488bdeda124d54e241b063ac2146416}} 
+\index{app@{app}!scalar@{scalar}}
+\index{scalar@{scalar}!app@{app}}
+\doxysubsubsection{\texorpdfstring{scalar()}{scalar()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily double app\+::scalar (\begin{DoxyParamCaption}\item[{const sf\+::\+Vector2f \&}]{a,  }\item[{const sf\+::\+Vector2f \&}]{b }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespaceapp_ab4ca8d2a9daa1335ab0171b9959960c6}\label{namespaceapp_ab4ca8d2a9daa1335ab0171b9959960c6}} 
+\index{app@{app}!scalar@{scalar}}
+\index{scalar@{scalar}!app@{app}}
+\doxysubsubsection{\texorpdfstring{scalar()}{scalar()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily double app\+::scalar (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{namespaceapp_a315a30c3b1ec772d2da7b1032cced529}{Vector4d}} \&}]{a,  }\item[{const \mbox{\hyperlink{namespaceapp_a315a30c3b1ec772d2da7b1032cced529}{Vector4d}} \&}]{b }\end{DoxyParamCaption})}
+

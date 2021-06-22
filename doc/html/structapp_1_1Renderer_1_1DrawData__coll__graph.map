@@ -1,0 +1,6 @@
+<map id="app::Renderer::DrawData" name="app::Renderer::DrawData">
+<area shape="rect" id="node1" title=" " alt="" coords="175,468,362,575"/>
+<area shape="rect" id="node2" href="$classapp_1_1Point4d.html" title="Класс четырехмерной точки." alt="" coords="5,42,129,339"/>
+<area shape="rect" id="node3" href="$classapp_1_1Matrix.html" title=" " alt="" coords="154,5,383,376"/>
+<area shape="rect" id="node4" href="$classapp_1_1Triangle2d.html" title="Класс треугольника в 2д." alt="" coords="408,64,553,317"/>
+</map>

@@ -1,0 +1,40 @@
+\begin{thebibliography}{1}
+
+\bibitem{vtkBook}
+\url{https://raw.githubusercontent.com/lorensen/VTKExamples/master/src/VTKBookLaTeX/VTKTextBook.pdf}.
+\newblock [VTKBook].
+
+\bibitem{urtech}
+\url{https://www.youtube.com/playlist?list=PLbCDZQXIq7uYaf263gr-zb0wZGoCL-T5G}.
+\newblock [Urtech University Computer Graphics lectures].
+
+\bibitem{Math3d}
+Eric Lengyel.
+\newblock {\em Mathmatics for 3d game programming and computer graphics}.
+\newblock Course Technology PTR, 2012.
+
+\bibitem{SFML}
+\url{https://www.sfml-dev.org/index.php}.
+\newblock [Simple and Fast Multimedia Library Documentation]
+
+\bibitem{Doxygen}
+\url{https://www.doxygen.nl/manual/docblocks.html}
+\newblock [Doxygen documentation tool]
+
+\bibitem{Docker}
+\url{https://docs.docker.com/}
+\newblock [Docker documentation]
+
+\bibitem{Cxxtest}
+\url{http://cxxtest.com/guide.html}
+\newblock [Cxxtest guide]
+
+\bibitem{CppReference}
+\url{https://en.cppreference.com/w/}
+\newblock [CppReference]
+
+\bibitem{Github Actions}
+\url{https://docs.github.com/en/actions}
+\newblock [Github Actions guide]
+
+\end{thebibliography}

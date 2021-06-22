@@ -1,0 +1,8 @@
+<map id="app::Application::rotate_camera" name="app::Application::rotate_camera">
+<area shape="rect" id="node1" title="Поворот камеры вокруг оси" alt="" coords="5,86,180,127"/>
+<area shape="rect" id="node2" href="$classapp_1_1Matrix.html#a9e652729bbb0bd05961f6ea8645a21f6" title="Получение матрицы для поворота в четырехмерном пространстве" alt="" coords="245,5,395,61"/>
+<area shape="rect" id="node3" href="$classapp_1_1Application.html#aba537b13b5e78b0748df0db7223d63cf" title="Перевод enum&#45;а осей в числовое значение" alt="" coords="228,86,412,127"/>
+<area shape="rect" id="node4" href="$classapp_1_1Camera.html#a4fdd819ed88a57450690a757654665f7" title="Метод для применения матриц поворота" alt="" coords="244,152,396,179"/>
+<area shape="rect" id="node5" href="$classapp_1_1Camera.html#ad324b4a0629bda52737774c7ddc826b9" title="Метод для инициализации матриц поворота" alt="" coords="460,145,651,186"/>
+<area shape="rect" id="node6" href="$classapp_1_1Matrix.html#afb0e32ababc5d2b30b3c0a3ed98ba557" title="Получение транспонированной матрицы" alt="" coords="699,152,867,179"/>
+</map>

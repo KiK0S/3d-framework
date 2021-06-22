@@ -1,0 +1,11 @@
+<map id="app::Application" name="app::Application">
+<area shape="rect" id="node1" title="Класс инстанса графического приложения." alt="" coords="272,1144,484,1500"/>
+<area shape="rect" id="node2" href="$classapp_1_1Camera.html" title="Класс камеры" alt="" coords="97,777,289,1074"/>
+<area shape="rect" id="node3" href="$classapp_1_1Point4d.html" title="Класс четырехмерной точки." alt="" coords="5,314,129,611"/>
+<area shape="rect" id="node4" href="$classapp_1_1Matrix.html" title=" " alt="" coords="154,277,383,648"/>
+<area shape="rect" id="node5" href="$classapp_1_1World.html" title="Класс мира в 3д." alt="" coords="313,865,443,986"/>
+<area shape="rect" id="node6" href="$classapp_1_1Renderer.html" title="Класс рендерера" alt="" coords="467,769,670,1081"/>
+<area shape="rect" id="node7" href="$classapp_1_1Screen.html" title="Класс экрана." alt="" coords="483,380,655,545"/>
+<area shape="rect" id="node8" href="$classapp_1_1PixelScreen.html" title=" " alt="" coords="366,13,569,207"/>
+<area shape="rect" id="node9" href="$classapp_1_1PixelScreen.html" title=" " alt="" coords="593,5,749,215"/>
+</map>

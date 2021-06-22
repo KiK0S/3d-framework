@@ -1,0 +1,4 @@
+<map id="app::Application::update_and_draw_frame" name="app::Application::update_and_draw_frame">
+<area shape="rect" id="node1" title="Обновление кадра в приложении." alt="" coords="209,5,389,47"/>
+<area shape="rect" id="node2" href="$classapp_1_1Application.html#af9098183238622421f4e18930c6dd8ec" title="Цикл приложения" alt="" coords="5,13,161,39"/>
+</map>

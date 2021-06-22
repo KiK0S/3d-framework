@@ -1,0 +1,11 @@
+<map id="src/pixel_screen.h" name="src/pixel_screen.h">
+<area shape="rect" id="node1" title=" " alt="" coords="234,5,373,32"/>
+<area shape="rect" id="node2" href="$screen_8h.html" title=" " alt="" coords="209,80,309,107"/>
+<area shape="rect" id="node6" href="$world_8h.html" title=" " alt="" coords="231,229,325,256"/>
+<area shape="rect" id="node3" href="$renderer_8h.html" title=" " alt="" coords="171,155,281,181"/>
+<area shape="rect" id="node7" href="$world_8cpp.html" title=" " alt="" coords="295,304,403,331"/>
+<area shape="rect" id="node9" href="$screen_8cpp.html" title=" " alt="" coords="31,155,146,181"/>
+<area shape="rect" id="node4" href="$application_8h.html" title=" " alt="" coords="129,304,259,331"/>
+<area shape="rect" id="node5" href="$application_8cpp.html" title=" " alt="" coords="21,379,165,405"/>
+<area shape="rect" id="node8" href="$renderer_8cpp.html" title=" " alt="" coords="29,229,156,256"/>
+</map>

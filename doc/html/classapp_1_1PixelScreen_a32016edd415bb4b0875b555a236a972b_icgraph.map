@@ -1,0 +1,7 @@
+<map id="app::PixelScreen::clear" name="app::PixelScreen::clear">
+<area shape="rect" id="node1" title="Очистка экрана" alt="" coords="825,13,995,39"/>
+<area shape="rect" id="node2" href="$classapp_1_1Screen.html#ad29a33b7bb3387a62909b8f467e13a39" title="очистка" alt="" coords="639,13,777,39"/>
+<area shape="rect" id="node3" href="$classapp_1_1Renderer.html#ab20159524bb04bfc21cc8c04ff49610d" title="Производит отрисовку кадра" alt="" coords="437,5,591,47"/>
+<area shape="rect" id="node4" href="$classapp_1_1Application.html#a6de383313a844c5f3d6a10e7d6cbaa00" title="Обновление кадра в приложении." alt="" coords="209,5,389,47"/>
+<area shape="rect" id="node5" href="$classapp_1_1Application.html#af9098183238622421f4e18930c6dd8ec" title="Цикл приложения" alt="" coords="5,13,161,39"/>
+</map>

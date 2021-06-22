@@ -1,0 +1,4 @@
+<map id="app::Screen::get_height" name="app::Screen::get_height">
+<area shape="rect" id="node1" title="возвращает высоту экрана" alt="" coords="5,13,180,39"/>
+<area shape="rect" id="node2" href="$classapp_1_1PixelScreen.html#a2d80e1ceab7feb6a99a1853adb9defc6" title="Получение высоты экрана" alt="" coords="228,5,387,47"/>
+</map>

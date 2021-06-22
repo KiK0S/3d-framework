@@ -1,0 +1,57 @@
+\hypertarget{matrix_8h}{}\doxysection{src/matrix.h File Reference}
+\label{matrix_8h}\index{src/matrix.h@{src/matrix.h}}
+{\ttfamily \#include \char`\"{}point.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$cassert$>$}\newline
+{\ttfamily \#include $<$cmath$>$}\newline
+{\ttfamily \#include $<$cstdlib$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+Include dependency graph for matrix.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{matrix_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{matrix_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classapp_1_1Matrix}{app\+::\+Matrix$<$ N, M $>$}}
+\begin{DoxyCompactList}\small\item\em Класс для работы с матрицами. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+ \mbox{\hyperlink{namespaceapp}{app}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{namespaceapp_aaa0cfade3dadbedd834e82c4d778584f}{app\+::\+Matrix4d}} = Matrix$<$ 4, 4 $>$
+\item 
+using \mbox{\hyperlink{namespaceapp_a7199f4d76ba03bee1f8a5943508de981}{app\+::\+Matrix2d}} = Matrix$<$ 2, 2 $>$
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$size\+\_\+t N, size\+\_\+t M$>$ }\\bool \mbox{\hyperlink{namespaceapp_a15c850174ac1a74936305739d3f8eae5}{app\+::operator==}} (const Matrix$<$ N, M $>$ \&first, const Matrix$<$ N, M $>$ \&second)
+\item 
+{\footnotesize template$<$size\+\_\+t N, size\+\_\+t M$>$ }\\bool \mbox{\hyperlink{namespaceapp_a838973b2efd145b72801fa476ad0fefa}{app\+::operator!=}} (const Matrix$<$ N, M $>$ \&first, const Matrix$<$ N, M $>$ \&second)
+\item 
+{\footnotesize template$<$size\+\_\+t N, size\+\_\+t M$>$ }\\Matrix$<$ N, M $>$ \mbox{\hyperlink{namespaceapp_a3767475e264d7d59f9d6a2c61bf0310f}{app\+::operator+}} (const Matrix$<$ N, M $>$ \&first, const Matrix$<$ N, M $>$ \&second)
+\item 
+{\footnotesize template$<$size\+\_\+t N, size\+\_\+t M$>$ }\\Matrix$<$ N, M $>$ \mbox{\hyperlink{namespaceapp_a23e7b98a7598fe27ae775b952fd7dbc3}{app\+::operator-\/}} (const Matrix$<$ N, M $>$ \&first, const Matrix$<$ N, M $>$ \&second)
+\item 
+{\footnotesize template$<$size\+\_\+t N, size\+\_\+t M, size\+\_\+t K$>$ }\\Matrix$<$ N, K $>$ \mbox{\hyperlink{namespaceapp_a3bd9b613fd850313eff6f630b5ef2ff1}{app\+::operator$\ast$}} (const Matrix$<$ N, M $>$ \&first, const Matrix$<$ M, K $>$ \&second)
+\item 
+{\footnotesize template$<$size\+\_\+t N, size\+\_\+t M$>$ }\\Vector4d \mbox{\hyperlink{namespaceapp_a29edcc50c76aa6e2ea5e42f9897a8c50}{app\+::operator$\ast$}} (const Matrix$<$ N, M $>$ \&matrix, const Vector4d \&vector)
+\item 
+{\footnotesize template$<$size\+\_\+t N, size\+\_\+t M$>$ }\\sf\+::\+Vector2f \mbox{\hyperlink{namespaceapp_a9970d2c973420768c47841460b69d585}{app\+::operator$\ast$}} (const Matrix$<$ N, M $>$ \&matrix, const sf\+::\+Vector2f \&vector)
+\end{DoxyCompactItemize}

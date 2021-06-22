@@ -1,0 +1,8 @@
+<map id="app::Triangle2d::square" name="app::Triangle2d::square">
+<area shape="rect" id="node1" title="Вычисляет площадь треугольника" alt="" coords="1041,13,1215,39"/>
+<area shape="rect" id="node2" href="$classapp_1_1Triangle2d.html#a4477d0ba992dd4cdaf5b78da0a9cf3b0" title="Проверка треугольника на вырожденность" alt="" coords="853,5,993,47"/>
+<area shape="rect" id="node3" href="$classapp_1_1Renderer.html#abe888132cd72453941f7cca28077c99a" title="Добавляет треугольник на буферный кадр" alt="" coords="652,5,805,47"/>
+<area shape="rect" id="node4" href="$classapp_1_1Application.html#ae58b8b1b12acfa22a82607c6f3c967cd" title="Рисование объекта" alt="" coords="437,5,604,47"/>
+<area shape="rect" id="node5" href="$classapp_1_1Application.html#a6de383313a844c5f3d6a10e7d6cbaa00" title="Обновление кадра в приложении." alt="" coords="209,5,389,47"/>
+<area shape="rect" id="node6" href="$classapp_1_1Application.html#af9098183238622421f4e18930c6dd8ec" title="Цикл приложения" alt="" coords="5,13,161,39"/>
+</map>

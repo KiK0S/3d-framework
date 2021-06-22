@@ -1,0 +1,449 @@
+\hypertarget{classapp_1_1Camera}{}\doxysection{app\+::Camera Class Reference}
+\label{classapp_1_1Camera}\index{app::Camera@{app::Camera}}
+
+
+Класс камеры  
+
+
+
+
+{\ttfamily \#include $<$camera.\+h$>$}
+
+
+
+Collaboration diagram for app\+::Camera\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classapp_1_1Camera__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classapp_1_1Camera_ad3924307c66a578a41267aa968e40285}{Camera}} (double screen\+\_\+width, double screen\+\_\+height)
+\begin{DoxyCompactList}\small\item\em Конструктор \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \mbox{\hyperlink{classapp_1_1Camera_aa7855dab0288e4376c8ea48c543f9fdd}{transform\+\_\+to\+\_\+cameras\+\_\+coordinates}} (const \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \&p) const
+\begin{DoxyCompactList}\small\item\em Перевод точки в координатную систему камеры \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \mbox{\hyperlink{classapp_1_1Camera_ac174af1573b51a9b180a3a2d9727277c}{transform\+\_\+to\+\_\+screen}} (const \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \&p) const
+\begin{DoxyCompactList}\small\item\em Получение координат на в пространстве (экран, z-\/value) \end{DoxyCompactList}\item 
+sf\+::\+Vector2f \mbox{\hyperlink{classapp_1_1Camera_a8022f52a937f56569ef75870dc739f5f}{project\+\_\+on\+\_\+screen}} (const \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \&p) const
+\begin{DoxyCompactList}\small\item\em Получение видоизмененных 2д-\/коортинат точки \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classapp_1_1Camera_a9b981680099b22abb374aa5a03a435b9}{get\+\_\+z\+\_\+value}} (const \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \&p) const
+\begin{DoxyCompactList}\small\item\em Получение z-\/value точки \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classapp_1_1Camera_a4fdd819ed88a57450690a757654665f7}{rotate}} (const \mbox{\hyperlink{namespaceapp_aaa0cfade3dadbedd834e82c4d778584f}{Matrix4d}} \&matrix)
+\begin{DoxyCompactList}\small\item\em Метод для применения матриц поворота \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classapp_1_1Camera_aa2149939e759bbd0348cbd38c902e6f0}{get\+\_\+min\+\_\+z\+\_\+value}} () const
+\begin{DoxyCompactList}\small\item\em min z \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classapp_1_1Camera_a2e04ab7bed0c63fa5530360325c6dbb3}{move}} (const \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \&v)
+\begin{DoxyCompactList}\small\item\em Сдвиг на вектор \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classapp_1_1Camera_a16fccbe4d8d93142853b64d8cae85037}{get\+\_\+clipping\+\_\+plane\+\_\+distance}} () const
+\begin{DoxyCompactList}\small\item\em Расстояние до ближайшей плоскости обзора \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespaceapp_aaa0cfade3dadbedd834e82c4d778584f}{Matrix4d}} \mbox{\hyperlink{classapp_1_1Camera_a8e6cb8ff2c749684b60fead73acfb4d5}{get\+\_\+rotation}} () const
+\begin{DoxyCompactList}\small\item\em Вернуть матрицу поворота камеры \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classapp_1_1Camera_ad324b4a0629bda52737774c7ddc826b9}{create\+\_\+transformation\+\_\+matrixes}} ()
+\begin{DoxyCompactList}\small\item\em Метод для инициализации матриц поворота \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \mbox{\hyperlink{classapp_1_1Camera_aabd4a58b9c4148a7db86f5edaad60f75}{focus\+\_\+point\+\_\+}} \{0, 0, 0\}
+\item 
+\mbox{\hyperlink{namespaceapp_aaa0cfade3dadbedd834e82c4d778584f}{Matrix4d}} \mbox{\hyperlink{classapp_1_1Camera_adc21c07bcb9e2419d76dadf6fcc062e1}{transform\+\_\+space\+\_\+to\+\_\+screen\+\_\+}} = \mbox{\hyperlink{classapp_1_1Matrix_a957b65928ab3b151fa60e5a433df17a0}{Matrix4d\+::identity\+\_\+matrix}}()
+\item 
+\mbox{\hyperlink{namespaceapp_aaa0cfade3dadbedd834e82c4d778584f}{Matrix4d}} \mbox{\hyperlink{classapp_1_1Camera_a80c33b94ec038e73867210ad4666e16a}{transform\+\_\+to\+\_\+camera\+\_\+space\+\_\+}} = \mbox{\hyperlink{classapp_1_1Matrix_a957b65928ab3b151fa60e5a433df17a0}{Matrix4d\+::identity\+\_\+matrix}}()
+\item 
+\mbox{\hyperlink{namespaceapp_aaa0cfade3dadbedd834e82c4d778584f}{Matrix4d}} \mbox{\hyperlink{classapp_1_1Camera_aee94ea755ccc2ac76ef0fcf58a800e34}{camera\+\_\+rotation\+\_\+}} = \mbox{\hyperlink{classapp_1_1Matrix_a957b65928ab3b151fa60e5a433df17a0}{Matrix4d\+::identity\+\_\+matrix}}()
+\item 
+double \mbox{\hyperlink{classapp_1_1Camera_af7b3e7b2d3f9d09fcae42527fc396cd3}{k\+Screen\+Height\+\_\+}}
+\item 
+double \mbox{\hyperlink{classapp_1_1Camera_aee435701b4aba31c6012dc3cd5f18471}{k\+Screen\+Width\+\_\+}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+constexpr static \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \mbox{\hyperlink{classapp_1_1Camera_a641e9d32bd9168d10f89fecd265274e8}{k\+Left\+Point\+\_\+}} \{-\/200, -\/200, 400\}
+\item 
+constexpr static \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \mbox{\hyperlink{classapp_1_1Camera_a31b76a8530a52a913040431a5baac673}{k\+Right\+Point\+\_\+}} \{200, 200, 5000\}
+\item 
+constexpr static double \mbox{\hyperlink{classapp_1_1Camera_a16c82da5d2f8bceac1dbe93315d9f5d2}{k\+Clipping\+Plane\+Distance\+\_\+}} \{1\}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Класс камеры 
+
+\begin{DoxyAuthor}{Author}
+Ki\+K0S 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+May 14 2021
+\end{DoxyDate}
+Класс \mbox{\hyperlink{classapp_1_1Camera}{Camera}} отвечает за то, чтобы переводить объекты из системы координат мира в систему координат экрана. Для этого этот объект генерирует матрицу преобразования ии применяет ее к точкам, которые надо отобразить. Камеру можно поворачивать и двигать, что отражается на матрице преобразования. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classapp_1_1Camera_ad3924307c66a578a41267aa968e40285}\label{classapp_1_1Camera_ad3924307c66a578a41267aa968e40285}} 
+\index{app::Camera@{app::Camera}!Camera@{Camera}}
+\index{Camera@{Camera}!app::Camera@{app::Camera}}
+\doxysubsubsection{\texorpdfstring{Camera()}{Camera()}}
+{\footnotesize\ttfamily app\+::\+Camera\+::\+Camera (\begin{DoxyParamCaption}\item[{double}]{screen\+\_\+width,  }\item[{double}]{screen\+\_\+height }\end{DoxyParamCaption})}
+
+
+
+Конструктор 
+
+
+\begin{DoxyParams}{Parameters}
+{\em screen\+\_\+width} & ширина экрана, на кеторый будет проецироваться изображение \\
+\hline
+{\em screen\+\_\+height} & высота экрана, на кеторый будет проецироваться изображение \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Camera_ad3924307c66a578a41267aa968e40285_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classapp_1_1Camera_ad324b4a0629bda52737774c7ddc826b9}\label{classapp_1_1Camera_ad324b4a0629bda52737774c7ddc826b9}} 
+\index{app::Camera@{app::Camera}!create\_transformation\_matrixes@{create\_transformation\_matrixes}}
+\index{create\_transformation\_matrixes@{create\_transformation\_matrixes}!app::Camera@{app::Camera}}
+\doxysubsubsection{\texorpdfstring{create\_transformation\_matrixes()}{create\_transformation\_matrixes()}}
+{\footnotesize\ttfamily void app\+::\+Camera\+::create\+\_\+transformation\+\_\+matrixes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Метод для инициализации матриц поворота 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Camera_ad324b4a0629bda52737774c7ddc826b9_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Camera_ad324b4a0629bda52737774c7ddc826b9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classapp_1_1Camera_a16fccbe4d8d93142853b64d8cae85037}\label{classapp_1_1Camera_a16fccbe4d8d93142853b64d8cae85037}} 
+\index{app::Camera@{app::Camera}!get\_clipping\_plane\_distance@{get\_clipping\_plane\_distance}}
+\index{get\_clipping\_plane\_distance@{get\_clipping\_plane\_distance}!app::Camera@{app::Camera}}
+\doxysubsubsection{\texorpdfstring{get\_clipping\_plane\_distance()}{get\_clipping\_plane\_distance()}}
+{\footnotesize\ttfamily double app\+::\+Camera\+::get\+\_\+clipping\+\_\+plane\+\_\+distance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Расстояние до ближайшей плоскости обзора 
+
+\begin{DoxyReturn}{Returns}
+Расстояние до плоскости, ближе которой камера не видит 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Camera_a16fccbe4d8d93142853b64d8cae85037_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classapp_1_1Camera_aa2149939e759bbd0348cbd38c902e6f0}\label{classapp_1_1Camera_aa2149939e759bbd0348cbd38c902e6f0}} 
+\index{app::Camera@{app::Camera}!get\_min\_z\_value@{get\_min\_z\_value}}
+\index{get\_min\_z\_value@{get\_min\_z\_value}!app::Camera@{app::Camera}}
+\doxysubsubsection{\texorpdfstring{get\_min\_z\_value()}{get\_min\_z\_value()}}
+{\footnotesize\ttfamily double app\+::\+Camera\+::get\+\_\+min\+\_\+z\+\_\+value (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+min z 
+
+\begin{DoxyReturn}{Returns}
+Минимальная z-\/value, которая перенесется на экран 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classapp_1_1Camera_a8e6cb8ff2c749684b60fead73acfb4d5}\label{classapp_1_1Camera_a8e6cb8ff2c749684b60fead73acfb4d5}} 
+\index{app::Camera@{app::Camera}!get\_rotation@{get\_rotation}}
+\index{get\_rotation@{get\_rotation}!app::Camera@{app::Camera}}
+\doxysubsubsection{\texorpdfstring{get\_rotation()}{get\_rotation()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespaceapp_aaa0cfade3dadbedd834e82c4d778584f}{Matrix4d}} app\+::\+Camera\+::get\+\_\+rotation (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Вернуть матрицу поворота камеры 
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Camera_a8e6cb8ff2c749684b60fead73acfb4d5_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classapp_1_1Camera_a9b981680099b22abb374aa5a03a435b9}\label{classapp_1_1Camera_a9b981680099b22abb374aa5a03a435b9}} 
+\index{app::Camera@{app::Camera}!get\_z\_value@{get\_z\_value}}
+\index{get\_z\_value@{get\_z\_value}!app::Camera@{app::Camera}}
+\doxysubsubsection{\texorpdfstring{get\_z\_value()}{get\_z\_value()}}
+{\footnotesize\ttfamily double app\+::\+Camera\+::get\+\_\+z\+\_\+value (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \&}]{p }\end{DoxyParamCaption}) const}
+
+
+
+Получение z-\/value точки 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & Точка, у которой ищется z-\/value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+z-\/value точки 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Camera_a9b981680099b22abb374aa5a03a435b9_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Camera_a9b981680099b22abb374aa5a03a435b9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classapp_1_1Camera_a2e04ab7bed0c63fa5530360325c6dbb3}\label{classapp_1_1Camera_a2e04ab7bed0c63fa5530360325c6dbb3}} 
+\index{app::Camera@{app::Camera}!move@{move}}
+\index{move@{move}!app::Camera@{app::Camera}}
+\doxysubsubsection{\texorpdfstring{move()}{move()}}
+{\footnotesize\ttfamily void app\+::\+Camera\+::move (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \&}]{v }\end{DoxyParamCaption})}
+
+
+
+Сдвиг на вектор 
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & вектор сдвига \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Camera_a2e04ab7bed0c63fa5530360325c6dbb3_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Camera_a2e04ab7bed0c63fa5530360325c6dbb3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classapp_1_1Camera_a8022f52a937f56569ef75870dc739f5f}\label{classapp_1_1Camera_a8022f52a937f56569ef75870dc739f5f}} 
+\index{app::Camera@{app::Camera}!project\_on\_screen@{project\_on\_screen}}
+\index{project\_on\_screen@{project\_on\_screen}!app::Camera@{app::Camera}}
+\doxysubsubsection{\texorpdfstring{project\_on\_screen()}{project\_on\_screen()}}
+{\footnotesize\ttfamily sf\+::\+Vector2f app\+::\+Camera\+::project\+\_\+on\+\_\+screen (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \&}]{p }\end{DoxyParamCaption}) const}
+
+
+
+Получение видоизмененных 2д-\/коортинат точки 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & Точка, которая переносится на экран \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Проекция точки на экран 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Camera_a8022f52a937f56569ef75870dc739f5f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Camera_a8022f52a937f56569ef75870dc739f5f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classapp_1_1Camera_a4fdd819ed88a57450690a757654665f7}\label{classapp_1_1Camera_a4fdd819ed88a57450690a757654665f7}} 
+\index{app::Camera@{app::Camera}!rotate@{rotate}}
+\index{rotate@{rotate}!app::Camera@{app::Camera}}
+\doxysubsubsection{\texorpdfstring{rotate()}{rotate()}}
+{\footnotesize\ttfamily void app\+::\+Camera\+::rotate (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{namespaceapp_aaa0cfade3dadbedd834e82c4d778584f}{Matrix4d}} \&}]{matrix }\end{DoxyParamCaption})}
+
+
+
+Метод для применения матриц поворота 
+
+
+\begin{DoxyParams}{Parameters}
+{\em matrix.} & Матрица поворотп \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Camera_a4fdd819ed88a57450690a757654665f7_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Camera_a4fdd819ed88a57450690a757654665f7_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classapp_1_1Camera_aa7855dab0288e4376c8ea48c543f9fdd}\label{classapp_1_1Camera_aa7855dab0288e4376c8ea48c543f9fdd}} 
+\index{app::Camera@{app::Camera}!transform\_to\_cameras\_coordinates@{transform\_to\_cameras\_coordinates}}
+\index{transform\_to\_cameras\_coordinates@{transform\_to\_cameras\_coordinates}!app::Camera@{app::Camera}}
+\doxysubsubsection{\texorpdfstring{transform\_to\_cameras\_coordinates()}{transform\_to\_cameras\_coordinates()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} app\+::\+Camera\+::transform\+\_\+to\+\_\+cameras\+\_\+coordinates (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \&}]{p }\end{DoxyParamCaption}) const}
+
+
+
+Перевод точки в координатную систему камеры 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & Точка, которая переводится в координатную систему камеры \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Точка после поворота и сдвига, в координатной системе камеры 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Camera_aa7855dab0288e4376c8ea48c543f9fdd_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classapp_1_1Camera_ac174af1573b51a9b180a3a2d9727277c}\label{classapp_1_1Camera_ac174af1573b51a9b180a3a2d9727277c}} 
+\index{app::Camera@{app::Camera}!transform\_to\_screen@{transform\_to\_screen}}
+\index{transform\_to\_screen@{transform\_to\_screen}!app::Camera@{app::Camera}}
+\doxysubsubsection{\texorpdfstring{transform\_to\_screen()}{transform\_to\_screen()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} app\+::\+Camera\+::transform\+\_\+to\+\_\+screen (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} \&}]{p }\end{DoxyParamCaption}) const}
+
+
+
+Получение координат на в пространстве (экран, z-\/value) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & Точка, которая переводится в пространство (экран, z-\/value) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Точка после преобразваний, в координатной системе (экран, z-\/value) 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Camera_ac174af1573b51a9b180a3a2d9727277c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1Camera_ac174af1573b51a9b180a3a2d9727277c_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classapp_1_1Camera_aee94ea755ccc2ac76ef0fcf58a800e34}\label{classapp_1_1Camera_aee94ea755ccc2ac76ef0fcf58a800e34}} 
+\index{app::Camera@{app::Camera}!camera\_rotation\_@{camera\_rotation\_}}
+\index{camera\_rotation\_@{camera\_rotation\_}!app::Camera@{app::Camera}}
+\doxysubsubsection{\texorpdfstring{camera\_rotation\_}{camera\_rotation\_}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespaceapp_aaa0cfade3dadbedd834e82c4d778584f}{Matrix4d}} app\+::\+Camera\+::camera\+\_\+rotation\+\_\+ = \mbox{\hyperlink{classapp_1_1Matrix_a957b65928ab3b151fa60e5a433df17a0}{Matrix4d\+::identity\+\_\+matrix}}()\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classapp_1_1Camera_aabd4a58b9c4148a7db86f5edaad60f75}\label{classapp_1_1Camera_aabd4a58b9c4148a7db86f5edaad60f75}} 
+\index{app::Camera@{app::Camera}!focus\_point\_@{focus\_point\_}}
+\index{focus\_point\_@{focus\_point\_}!app::Camera@{app::Camera}}
+\doxysubsubsection{\texorpdfstring{focus\_point\_}{focus\_point\_}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} app\+::\+Camera\+::focus\+\_\+point\+\_\+ \{0, 0, 0\}\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classapp_1_1Camera_a16c82da5d2f8bceac1dbe93315d9f5d2}\label{classapp_1_1Camera_a16c82da5d2f8bceac1dbe93315d9f5d2}} 
+\index{app::Camera@{app::Camera}!kClippingPlaneDistance\_@{kClippingPlaneDistance\_}}
+\index{kClippingPlaneDistance\_@{kClippingPlaneDistance\_}!app::Camera@{app::Camera}}
+\doxysubsubsection{\texorpdfstring{kClippingPlaneDistance\_}{kClippingPlaneDistance\_}}
+{\footnotesize\ttfamily constexpr static double app\+::\+Camera\+::k\+Clipping\+Plane\+Distance\+\_\+ \{1\}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [private]}}
+
+\mbox{\Hypertarget{classapp_1_1Camera_a641e9d32bd9168d10f89fecd265274e8}\label{classapp_1_1Camera_a641e9d32bd9168d10f89fecd265274e8}} 
+\index{app::Camera@{app::Camera}!kLeftPoint\_@{kLeftPoint\_}}
+\index{kLeftPoint\_@{kLeftPoint\_}!app::Camera@{app::Camera}}
+\doxysubsubsection{\texorpdfstring{kLeftPoint\_}{kLeftPoint\_}}
+{\footnotesize\ttfamily constexpr static \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} app\+::\+Camera\+::k\+Left\+Point\+\_\+ \{-\/200, -\/200, 400\}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [private]}}
+
+\mbox{\Hypertarget{classapp_1_1Camera_a31b76a8530a52a913040431a5baac673}\label{classapp_1_1Camera_a31b76a8530a52a913040431a5baac673}} 
+\index{app::Camera@{app::Camera}!kRightPoint\_@{kRightPoint\_}}
+\index{kRightPoint\_@{kRightPoint\_}!app::Camera@{app::Camera}}
+\doxysubsubsection{\texorpdfstring{kRightPoint\_}{kRightPoint\_}}
+{\footnotesize\ttfamily constexpr static \mbox{\hyperlink{classapp_1_1Point4d}{Point4d}} app\+::\+Camera\+::k\+Right\+Point\+\_\+ \{200, 200, 5000\}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [private]}}
+
+\mbox{\Hypertarget{classapp_1_1Camera_af7b3e7b2d3f9d09fcae42527fc396cd3}\label{classapp_1_1Camera_af7b3e7b2d3f9d09fcae42527fc396cd3}} 
+\index{app::Camera@{app::Camera}!kScreenHeight\_@{kScreenHeight\_}}
+\index{kScreenHeight\_@{kScreenHeight\_}!app::Camera@{app::Camera}}
+\doxysubsubsection{\texorpdfstring{kScreenHeight\_}{kScreenHeight\_}}
+{\footnotesize\ttfamily double app\+::\+Camera\+::k\+Screen\+Height\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classapp_1_1Camera_aee435701b4aba31c6012dc3cd5f18471}\label{classapp_1_1Camera_aee435701b4aba31c6012dc3cd5f18471}} 
+\index{app::Camera@{app::Camera}!kScreenWidth\_@{kScreenWidth\_}}
+\index{kScreenWidth\_@{kScreenWidth\_}!app::Camera@{app::Camera}}
+\doxysubsubsection{\texorpdfstring{kScreenWidth\_}{kScreenWidth\_}}
+{\footnotesize\ttfamily double app\+::\+Camera\+::k\+Screen\+Width\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classapp_1_1Camera_adc21c07bcb9e2419d76dadf6fcc062e1}\label{classapp_1_1Camera_adc21c07bcb9e2419d76dadf6fcc062e1}} 
+\index{app::Camera@{app::Camera}!transform\_space\_to\_screen\_@{transform\_space\_to\_screen\_}}
+\index{transform\_space\_to\_screen\_@{transform\_space\_to\_screen\_}!app::Camera@{app::Camera}}
+\doxysubsubsection{\texorpdfstring{transform\_space\_to\_screen\_}{transform\_space\_to\_screen\_}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespaceapp_aaa0cfade3dadbedd834e82c4d778584f}{Matrix4d}} app\+::\+Camera\+::transform\+\_\+space\+\_\+to\+\_\+screen\+\_\+ = \mbox{\hyperlink{classapp_1_1Matrix_a957b65928ab3b151fa60e5a433df17a0}{Matrix4d\+::identity\+\_\+matrix}}()\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classapp_1_1Camera_a80c33b94ec038e73867210ad4666e16a}\label{classapp_1_1Camera_a80c33b94ec038e73867210ad4666e16a}} 
+\index{app::Camera@{app::Camera}!transform\_to\_camera\_space\_@{transform\_to\_camera\_space\_}}
+\index{transform\_to\_camera\_space\_@{transform\_to\_camera\_space\_}!app::Camera@{app::Camera}}
+\doxysubsubsection{\texorpdfstring{transform\_to\_camera\_space\_}{transform\_to\_camera\_space\_}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespaceapp_aaa0cfade3dadbedd834e82c4d778584f}{Matrix4d}} app\+::\+Camera\+::transform\+\_\+to\+\_\+camera\+\_\+space\+\_\+ = \mbox{\hyperlink{classapp_1_1Matrix_a957b65928ab3b151fa60e5a433df17a0}{Matrix4d\+::identity\+\_\+matrix}}()\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{camera_8h}{camera.\+h}}\item 
+src/\mbox{\hyperlink{camera_8cpp}{camera.\+cpp}}\end{DoxyCompactItemize}

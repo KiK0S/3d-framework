@@ -1,0 +1,5 @@
+<map id="app::Camera::get_z_value" name="app::Camera::get_z_value">
+<area shape="rect" id="node1" title="Получение z&#45;value точки" alt="" coords="5,5,153,47"/>
+<area shape="rect" id="node2" href="$classapp_1_1Camera.html#ac174af1573b51a9b180a3a2d9727277c" title="Получение координат на в пространстве (экран, z&#45;value)" alt="" coords="201,5,379,47"/>
+<area shape="rect" id="node3" href="$classapp_1_1Point4d.html#a685768ec2e6ed6486970b10386ad3d98" title="Нормализует координаты точки &#45; получает соответствующую трехмерную с w = 1." alt="" coords="427,13,603,39"/>
+</map>

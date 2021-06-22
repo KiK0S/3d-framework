@@ -1,0 +1,9 @@
+<map id="app::Renderer::create_data" name="app::Renderer::create_data">
+<area shape="rect" id="node1" title=" " alt="" coords="5,177,204,203"/>
+<area shape="rect" id="node2" href="$classapp_1_1Triangle2d.html#a01aecf34982cb11335997584439e7dab" title="Создает два базисных вектора треугольника" alt="" coords="252,5,423,47"/>
+<area shape="rect" id="node3" href="$classapp_1_1Triangle4d.html#a5bf0ace6465a01ad8630bae2bf117e2b" title="Возвращает цвет треугольника" alt="" coords="262,71,413,112"/>
+<area shape="rect" id="node4" href="$classapp_1_1Triangle2d.html#add3b3ea70e4a1c762a7f2846fec06e5a" title="Возвращает самую левую точку треугольника" alt="" coords="262,136,413,177"/>
+<area shape="rect" id="node5" href="$classapp_1_1Triangle2d.html#ad6abffbef66a88b40f8c2cc9f6d20e22" title="Возвращает порядок, в котором точки a, b, c отсортированы относительно того порядка,..." alt="" coords="262,201,413,243"/>
+<area shape="rect" id="node6" href="$classapp_1_1Triangle4d.html#aebf686e30f1baff42e0fa7f5aa0852a3" title="Выдает вершины треугольника в нужном порядке" alt="" coords="262,267,413,308"/>
+<area shape="rect" id="node7" href="$classapp_1_1Triangle2d.html#a28106e12c57137cc452f8436e59b3496" title="Возвращает самую правую точку треугольника" alt="" coords="262,332,413,373"/>
+</map>
