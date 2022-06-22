@@ -4,7 +4,7 @@ on:
   pull_request:
     branches: [ main ]
   push:
-    branches: [ dima-review ]
+    branches: [ main ]
 
   workflow_dispatch:
 
@@ -26,7 +26,7 @@ jobs:
               sudo apt -y install libsfml-dev
               mkdir build
               cd build
-              cmake ..
+              cmake -DBUILD_TEST ..
               make -j4
 
   test:
