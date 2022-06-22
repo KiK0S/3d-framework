@@ -1,5 +1,4 @@
 cmake_minimum_required(VERSION 2.8)
-project(src)
 file(GLOB SRC_FILES "*.cpp")
 set(SOURCE_LIB ${SRC_FILES})
-add_library(src STATIC ${SOURCE_LIB})
+add_library(my3dframework STATIC ${SOURCE_LIB})

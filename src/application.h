@@ -110,8 +110,6 @@ public:
     */
     void run();
 
-private:
-
     /*!
         \brief Проверка, что графическо окно открыто
         \returns true, если окно приложения открыто, иначе false
@@ -122,6 +120,8 @@ private:
         \brief Закрыть приложение
     */
     void close() ;
+
+private:
 
     /*!
         \brief Рисование объекта
