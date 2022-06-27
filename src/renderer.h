@@ -7,6 +7,7 @@
 #include "triangle.h"
 #include <SFML/Graphics.hpp>
 #include <cstddef>
+#include <optional>
 #include <vector>
 
 namespace app {
