@@ -40,7 +40,7 @@ double Camera::get_min_z_value() const {
 }
 
 void Camera::move(const Point4d& v) {
-    Point4d m = v;
+    Point4d m = camera_rotation_ * v;
     focus_point_ += m;
     create_transformation_matrixes();
 }
@@ -51,6 +51,11 @@ double Camera::get_clipping_plane_distance() const {
 
 Matrix4d Camera::get_rotation() const {
     return camera_rotation_;
+}
+
+void Camera::reset_rotation() {
+    camera_rotation_ = Matrix4d::identity_matrix();
+    create_transformation_matrixes();
 }
 
 void Camera::create_transformation_matrixes() {

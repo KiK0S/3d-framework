@@ -33,7 +33,7 @@ public:
 
         Стандартные габариты экрана 1000x1000
      */
-    Application();
+    Application(bool def);
 
     /*!
         \brief Обновление кадра в приложении.
@@ -99,9 +99,21 @@ public:
 
     /*!
         \brief Возвращает мир
-        \returns Мир World, константная версия
+        \returns Мир World, неконстантная версия
     */
     World& get_world() ;
+
+    /*!
+        \brief Возвращает камеру
+        \returns Camera, неконстантная версия
+    */
+    Camera& get_camera() ;
+
+    /*!
+        \brief Возвращает окно sfml
+        \returns окно sf::RenderWindow
+    */
+    const sf::RenderWindow& get_window() const ;
 
     /*!
         \brief Цикл приложения
@@ -120,6 +132,9 @@ public:
         \brief Закрыть приложение
     */
     void close() ;
+
+    constexpr static size_t kScreenHeight = 1000;
+    constexpr static size_t kScreenWidth = 1000;
 
 private:
 
@@ -157,8 +172,6 @@ private:
     */
     void create_keyboard_handlers() ;
 
-    constexpr static size_t kScreenHeight_ = 1000;
-    constexpr static size_t kScreenWidth_ = 1000;
     Renderer renderer_;
     World world_;
     Camera camera_;

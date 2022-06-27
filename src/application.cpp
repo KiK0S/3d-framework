@@ -7,12 +7,14 @@
 namespace app {
 
 
-Application::Application():
-    world_(), camera_(kScreenWidth_, kScreenHeight_),
-    renderer_(kScreenWidth_, kScreenHeight_),
-    window_(sf::VideoMode(kScreenWidth_, kScreenHeight_),
-            "Test: interacrtive camera") {
-    create_keyboard_handlers();
+Application::Application(bool def = true):
+    world_(), camera_(kScreenWidth, kScreenHeight),
+    renderer_(kScreenWidth, kScreenHeight),
+    window_(sf::VideoMode(kScreenWidth, kScreenHeight),
+            "My3dFramework Application") {
+    if (def) {
+        create_keyboard_handlers();
+    }
 }
 
 void Application::update_and_draw_frame() {
@@ -61,6 +63,14 @@ const World& Application::get_world() const {
 
 World& Application::get_world() {
     return world_;
+}
+
+Camera& Application::get_camera() {
+    return camera_;
+}
+
+const sf::RenderWindow& Application::get_window() const {
+    return window_;
 }
 
 void Application::close() {

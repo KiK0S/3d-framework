@@ -84,6 +84,11 @@ public:
      */
     Matrix4d get_rotation() const;
 
+    /*!
+        \brief Сбросить матрицу поворота камеры
+     */
+    void reset_rotation();
+
 private:
     /*!
         \brief Метод для инициализации матриц поворота

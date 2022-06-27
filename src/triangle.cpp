@@ -25,7 +25,7 @@ Vector4d Triangle4d::get_normal_vector() const {
 }
 
 sf::Color Triangle4d::get_shadowed_color() const {
-    double shadow_coeff = std::sqrt(std::abs(scalar(Vector4d(0, 0, 1), get_normal_vector())));
+    double shadow_coeff = 0.8 + 0.2 * std::sqrt(std::abs(scalar(Vector4d(0, 0, 1), get_normal_vector())));
     sf::Color res(color_);
     res.r *= shadow_coeff;
     res.g *= shadow_coeff;
