@@ -7,7 +7,7 @@
 namespace app {
 
 
-Application::Application(bool def = true):
+Application::Application(bool def):
     world_(), camera_(kScreenWidth, kScreenHeight),
     renderer_(kScreenWidth, kScreenHeight),
     window_(sf::VideoMode(kScreenWidth, kScreenHeight),

@@ -33,7 +33,7 @@ public:
 
         Стандартные габариты экрана 1000x1000
      */
-    Application(bool def);
+    Application(bool def = true);
 
     /*!
         \brief Обновление кадра в приложении.
