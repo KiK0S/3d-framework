@@ -22,8 +22,9 @@
 ![Output sample](https://github.com/kik0s/3d-framework/raw/master/example/demo_game.gif)
 
 ### Демо приложения для изучения объекта
-![Output sample](https://github.com/kik0s/3d-framework/raw/master/example/cube.gif)
 ![Output sample](https://github.com/kik0s/3d-framework/raw/master/example/cubes.gif)
+
+### Кадры приложения изучения объектов с off-моделями
 ![Output sample](https://github.com/kik0s/3d-framework/raw/master/example/apple.png)
 ![Output sample](https://github.com/kik0s/3d-framework/raw/master/example/teapot.png)
 ![Output sample](https://github.com/kik0s/3d-framework/raw/master/example/heart.png)
