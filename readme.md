@@ -1,23 +1,35 @@
-Фреймворк для отрисовки 3д-объектов
+# Фреймворк для отрисовки 3д-объектов
 
-*Последний доступный тег v0.3*
-Умеет на текущий момент:
+<ins> Амеличев Константин, под руководством Трушина Дмитрия, ФКН</ins>
+
+### Функционал:
 * Нарисовать произвольный объект
 * Проективное преобразование
 * Покрутить и подвигать камеру с помощью клавиатуры.
 * Распарсить .off-объект
 * Тени
 
-Тестовое приложение поворачивает камеру по WASD + QE, сдвиг камеры по стрелочкам + ZX, объекты двигаются по IJKL + UO
+## Демо
 
-Пример использования:
+Есть тесторое приложение с возможностью изучить объект со всех сторон в пространстве со следующим управлением: поворот камеры по WASD + QE, сдвиг камеры по стрелочкам + ZX, объекты двигаются по IJKL + UO.
 
-![Output sample](https://github.com/kik0s/3d-framework/raw/dima-review/example/cube.gif)
-![Output sample](https://github.com/kik0s/3d-framework/raw/dima-review/example/cubes.gif)
-![Output sample](https://github.com/kik0s/3d-framework/raw/dima-review/example/apple.png)
-![Output sample](https://github.com/kik0s/3d-framework/raw/dima-review/example/teapot.png)
-![Output sample](https://github.com/kik0s/3d-framework/raw/dima-review/example/heart.png)
-![Output sample](https://github.com/kik0s/3d-framework/raw/dima-review/example/mushroom.png)
+Есть тестовая игрушка с управлением камером мышкой и хождением по стрелочкам.
+
+## Видео, картинки демо:
+
+
+### Демо игры
+![Output sample](https://github.com/kik0s/3d-framework/raw/master/example/demo_game.gif)
+
+### Демо приложения для изучения объекта
+![Output sample](https://github.com/kik0s/3d-framework/raw/master/example/cube.gif)
+![Output sample](https://github.com/kik0s/3d-framework/raw/master/example/cubes.gif)
+![Output sample](https://github.com/kik0s/3d-framework/raw/master/example/apple.png)
+![Output sample](https://github.com/kik0s/3d-framework/raw/master/example/teapot.png)
+![Output sample](https://github.com/kik0s/3d-framework/raw/master/example/heart.png)
+![Output sample](https://github.com/kik0s/3d-framework/raw/master/example/mushroom.png)
+
+
 
 Рекомендую дополнительно сделать checkout на последний тег из доступных.
 
@@ -33,6 +45,7 @@
                  cmake ..
                  make
                  ./3d-drawer
+                 
 
 Пререквизиты: пакеты из списка:
                  
