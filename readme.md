@@ -1,21 +1,31 @@
-# Фреймворк для отрисовки 3д-объектов
+# 3d rendering from scratch
 
 <ins> Амеличев Константин, под руководством Трушина Дмитрия, ФКН</ins>
+<ins> Amelichev Konstantin, with Dmitry Trushin mentorship, CS HSE</ins>
 
-### Функционал:
-* Нарисовать произвольный объект
-* Проективное преобразование
-* Покрутить и подвигать камеру с помощью клавиатуры.
-* Распарсить .off-объект
-* Тени
+### Components
+* World
+* Camera
+* Screen
+* Objects
+<ins> Амеличев Константин, под руководством Трушина Дмитрия, ФКН</ins>
+* Renderer
 
-## Демо
+### What it can do:
+* Load .off-object as 3d object
+* Decompose objects into triangles
+* Projective transform
+* Rotate, translate camera
+* Draw shadows
+* It is even possible to develop a game on top of this rendering engine
+
+## Demo
 
 Есть тесторое приложение с возможностью изучить объект со всех сторон в пространстве со следующим управлением: поворот камеры по WASD + QE, сдвиг камеры по стрелочкам + ZX, объекты двигаются по IJKL + UO.
 
 Есть тестовая игрушка с управлением камером мышкой и хождением по стрелочкам.
 
-## Видео, картинки демо:
+## Have a look:
 
 
 ### Демо игры
