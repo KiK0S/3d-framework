@@ -1,6 +1,7 @@
 # 3d rendering from scratch
 
 <ins> Амеличев Константин, под руководством Трушина Дмитрия, ФКН</ins>
+
 <ins> Amelichev Konstantin, with Dmitry Trushin mentorship, CS HSE</ins>
 
 ### Components
@@ -8,7 +9,6 @@
 * Camera
 * Screen
 * Objects
-<ins> Амеличев Константин, под руководством Трушина Дмитрия, ФКН</ins>
 * Renderer
 
 ### What it can do:
