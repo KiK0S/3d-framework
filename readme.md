@@ -1,6 +1,5 @@
 # 3d rendering from scratch
 
-<ins> Амеличев Константин, под руководством Трушина Дмитрия, ФКН</ins>
 
 <ins> Amelichev Konstantin, with Dmitry Trushin mentorship, CS HSE</ins>
 
@@ -14,27 +13,28 @@
 ### What it can do:
 * Load .off-object as 3d object
 * Decompose objects into triangles
-* Projective transform
+* Perform projective transformation
 * Rotate, translate camera
-* Draw shadows
-* It is even possible to develop a game on top of this rendering engine
+* Apply diffusal lighting
 
-## Demo
+## Demo app
 
-Есть тесторое приложение с возможностью изучить объект со всех сторон в пространстве со следующим управлением: поворот камеры по WASD + QE, сдвиг камеры по стрелочкам + ZX, объекты двигаются по IJKL + UO.
+Camera rotations: WASD + QE
+Camera translations: arrows + ZX
+Move objects: IJKL + UO.
 
-Есть тестовая игрушка с управлением камером мышкой и хождением по стрелочкам.
+There is also a test first-person "game" with mouse-controlled camera and walking using arrows.
 
 ## Have a look:
 
 
-### Демо игры
+### First-person "game"
 ![Output sample](https://github.com/kik0s/3d-framework/raw/master/example/demo_game.gif)
 
-### Демо приложения для изучения объекта
+### Mesh viewer
 ![Output sample](https://github.com/kik0s/3d-framework/raw/master/example/cubes.gif)
 
-### Кадры приложения изучения объектов с off-моделями
+### Different .off-models
 ![Output sample](https://github.com/kik0s/3d-framework/raw/master/example/apple.png)
 ![Output sample](https://github.com/kik0s/3d-framework/raw/master/example/teapot.png)
 ![Output sample](https://github.com/kik0s/3d-framework/raw/master/example/heart.png)
@@ -42,11 +42,10 @@
 
 
 
-Рекомендую дополнительно сделать checkout на последний тег из доступных.
 
-
-                Инструкция по запуску на Linux:
-                # опционально, чтобы поставить нужные пакеты на систему, так собирается в github actions 
+## Build (Linux):
+```
+                # this is optional as done in github actions 
                 # apt-get -y install \
                 #            cxxtest \
                 #            libsfml-dev
@@ -56,9 +55,9 @@
                  cmake ..
                  make
                  ./3d-drawer
-                 
+```              
 
-Пререквизиты: пакеты из списка:
+Also probably these packages should be installed:
                  
 <ul>
 <li>freetype</li>
