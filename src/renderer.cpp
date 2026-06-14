@@ -26,6 +26,14 @@ void Renderer::draw_triangle(const Camera& camera, const Triangle4d& triangle4d)
     }
 }
 
+void Renderer::copy_rgba_to(std::vector<uint8_t>& pixels) const {
+    screen_.copy_rgba_to(pixels);
+}
+
+void Renderer::clear() {
+    screen_.clear();
+}
+
 Matrix<2, 1> Renderer::get_coords(int x, int y, const Matrix2d& basis, sf::Vector2f left_point) {
     Matrix<2, 1> arrow = Matrix<2, 1>(sf::Vector2f(x, y) - left_point);
     Matrix<2, 1> res = basis.solve_system(arrow);

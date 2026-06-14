@@ -75,3 +75,19 @@ Also probably these packages should be installed:
 </ul>
 
 Если что-то не работает, есть смысл свериться с Dockerfile.
+
+## Build the WASM teapot demo:
+
+The browser demo reuses the software rasterizer and OFF loader without SFML.
+It builds a static page that can be deployed to GitHub Pages.
+
+```
+emcmake cmake -S web -B build-wasm -DCMAKE_BUILD_TYPE=Release
+cmake --build build-wasm --parallel
+mkdir -p public
+cp web/index.html public/
+cp build-wasm/rasterizer.js build-wasm/rasterizer.wasm build-wasm/rasterizer.data public/
+```
+
+The Pages workflow in `.github/workflows/pages.yml` runs these steps and
+preloads `models/teapot.off` into the WASM filesystem.

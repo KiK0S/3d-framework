@@ -2,6 +2,7 @@
 
 #include "pixel_screen.h"
 #include <SFML/Graphics.hpp>
+#include <cstdint>
 #include <vector>
 
 namespace app {
@@ -28,6 +29,11 @@ public:
         \brief выбор всех пикслей
     */
     std::vector<sf::Vertex> get_pixels_to_draw() const ;
+
+    /*!
+        \brief copy the current screen into an RGBA byte buffer
+    */
+    void copy_rgba_to(std::vector<uint8_t>& pixels) const ;
 
     /*!
         \brief очистка

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "point.h"
+#include <array>
 #include <cassert>
 #include <cmath>
 #include <cstdlib>

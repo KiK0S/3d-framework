@@ -1,0 +1,45 @@
+name: Pages
+
+on:
+  push:
+    branches: [ master ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: mymindstorm/setup-emsdk@v14
+
+      - name: Build WASM demo
+        run: |
+          emcmake cmake -S web -B build-wasm -DCMAKE_BUILD_TYPE=Release
+          cmake --build build-wasm --parallel
+          mkdir -p public
+          cp web/index.html public/
+          cp build-wasm/rasterizer.js build-wasm/rasterizer.wasm build-wasm/rasterizer.data public/
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

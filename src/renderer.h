@@ -7,6 +7,7 @@
 #include "triangle.h"
 #include <SFML/Graphics.hpp>
 #include <cstddef>
+#include <cstdint>
 #include <optional>
 #include <vector>
 
@@ -34,6 +35,16 @@ public:
         \brief Добавляет треугольник на буферный кадр
      */
     void draw_triangle(const Camera& camera, const Triangle4d& triangle) ;
+
+    /*!
+        \brief Copies the current frame buffer into RGBA byte order.
+     */
+    void copy_rgba_to(std::vector<uint8_t>& pixels) const;
+
+    /*!
+        \brief Clears the current frame without drawing it to an SFML window.
+     */
+    void clear();
 
 private:
     static double get_z(const Camera& camera, int x, int y, Matrix<2, 1>&& coords,

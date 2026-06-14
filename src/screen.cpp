@@ -25,6 +25,23 @@ std::vector<sf::Vertex> Screen::get_pixels_to_draw() const {
     return data;
 }
 
+void Screen::copy_rgba_to(std::vector<uint8_t>& pixels) const {
+    const size_t screen_width = color_.get_width();
+    const size_t screen_height = color_.get_height();
+    pixels.assign(screen_width * screen_height * 4, 255);
+
+    for (size_t x = 0; x < screen_width; x++) {
+        for (size_t y = 0; y < screen_height; y++) {
+            const size_t index = (y * screen_width + x) * 4;
+            const sf::Color color = color_(x, y);
+            pixels[index] = color.r;
+            pixels[index + 1] = color.g;
+            pixels[index + 2] = color.b;
+            pixels[index + 3] = color.a;
+        }
+    }
+}
+
 void Screen::clear() {
     color_.clear();
     z_value_.clear();
