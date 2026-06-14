@@ -7,6 +7,7 @@
 #include "tetraedr.h"
 #include <SFML/Graphics.hpp>
 #include <list>
+#include <memory>
 
 namespace app {
 

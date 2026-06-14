@@ -4,6 +4,8 @@
 #include "world.h"
 #include <SFML/Graphics.hpp>
 #include <cstddef>
+#include <functional>
+#include <memory>
 #include <vector>
 
 namespace app {

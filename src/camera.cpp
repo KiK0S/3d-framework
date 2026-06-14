@@ -22,7 +22,7 @@ Point4d Camera::transform_to_screen(const Point4d& p) const {
 
 sf::Vector2f Camera::project_on_screen(const Point4d& p) const {
     Point4d transformed = transform_to_screen(p);
-    return {transformed.x, transformed.y};
+    return {static_cast<float>(transformed.x), static_cast<float>(transformed.y)};
 }
 
 double Camera::get_z_value(const Point4d& p) const {
