@@ -1,6 +1,7 @@
 #include "application.h"
 #include "cube.h"
 #include "point.h"
+#include "sfml_compat.h"
 #include <chrono>
 #include <cmath>
 #include <thread>
@@ -29,30 +30,39 @@ int main() {
     double last_yaw = 0;
     application.get_camera().move({0, -50, 0});
     while (application.is_open()) {
-        sf::Event event;
-        while (application.poll_event(&event)) {
-            if (event.type == sf::Event::Closed) {
+#if SFML_VERSION_MAJOR >= 3
+        while (auto event = application.poll_event()) {
+            if (app::sfml_compat::is_closed(*event)) {
                 application.close();
                 return 0;
             }
         }
+#else
+        sf::Event event;
+        while (application.poll_event(&event)) {
+            if (app::sfml_compat::is_closed(event)) {
+                application.close();
+                return 0;
+            }
+        }
+#endif
 
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
+        if (sf::Keyboard::isKeyPressed(app::sfml_compat::key_up)) {
             application.move_camera(app::Vector4d(0, 0, 10));
         }
 
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
+        if (sf::Keyboard::isKeyPressed(app::sfml_compat::key_down)) {
             application.move_camera(app::Vector4d(0, 0, -10));
         }
 
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
+        if (sf::Keyboard::isKeyPressed(app::sfml_compat::key_left)) {
             rotate(-0.1, application);
         }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
+        if (sf::Keyboard::isKeyPressed(app::sfml_compat::key_right)) {
             rotate(0.1, application);
         }
         
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
+        if (sf::Keyboard::isKeyPressed(app::sfml_compat::key_space)) {
             application.move_camera(app::Vector4d(0, -10, 0));
             velocityZ += 10;
         }

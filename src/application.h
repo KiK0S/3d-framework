@@ -1,11 +1,13 @@
 #pragma once
 
 #include "renderer.h"
+#include "sfml_compat.h"
 #include "world.h"
 #include <SFML/Graphics.hpp>
 #include <cstddef>
 #include <functional>
 #include <memory>
+#include <optional>
 #include <vector>
 
 namespace app {
@@ -91,7 +93,11 @@ public:
 
         Если вернуло true, то по ссылке записалось событие
     */
+#if SFML_VERSION_MAJOR >= 3
+    std::optional<sf::Event> poll_event();
+#else
     bool poll_event(sf::Event* event);
+#endif
 
     /*!
         \brief Возвращает ми

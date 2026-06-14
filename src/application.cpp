@@ -10,7 +10,7 @@ namespace app {
 Application::Application(bool def):
     world_(), camera_(kScreenWidth, kScreenHeight),
     renderer_(kScreenWidth, kScreenHeight),
-    window_(sf::VideoMode(kScreenWidth, kScreenHeight),
+    window_(sfml_compat::video_mode(kScreenWidth, kScreenHeight),
             "My3dFramework Application") {
     if (def) {
         create_keyboard_handlers();
@@ -49,9 +49,15 @@ void Application::yaw(double angle) {
     rotate_camera(angle, EAxes::AXE_X);
 }
 
+#if SFML_VERSION_MAJOR >= 3
+std::optional<sf::Event> Application::poll_event() {
+    return window_.pollEvent();
+}
+#else
 bool Application::poll_event(sf::Event* event) {
     return window_.pollEvent(*event);
 }
+#endif
 
 bool Application::is_open() const {
     return window_.isOpen();
@@ -79,13 +85,22 @@ void Application::close() {
 
 void Application::run() {
     while (is_open()) {
-        sf::Event event;
-        while (poll_event(&event)) {
-            if (event.type == sf::Event::Closed) {
+#if SFML_VERSION_MAJOR >= 3
+        while (auto event = poll_event()) {
+            if (sfml_compat::is_closed(*event)) {
                 close();
                 return;
             }
         }
+#else
+        sf::Event event;
+        while (poll_event(&event)) {
+            if (sfml_compat::is_closed(event)) {
+                close();
+                return;
+            }
+        }
+#endif
         for (const auto& [key, handler] : keyboard_handlers_) {
             if (sf::Keyboard::isKeyPressed(key)) {
                 handler();
@@ -122,79 +137,79 @@ void Application::draw_object(const std::unique_ptr<SurfaceObject>& object_ptr) 
 
 void Application::create_keyboard_handlers() {
     keyboard_handlers_ = {
-        {   sf::Keyboard::Left, [this]() {
+        {   sfml_compat::key_left, [this]() {
                 move_camera(app::Vector4d(10, 0, 0));
             }
         },
-        {   sf::Keyboard::Right, [this]() {
+        {   sfml_compat::key_right, [this]() {
                 move_camera(app::Vector4d(-10, 0, 0));
             }
         },
-        {   sf::Keyboard::Down, [this]() {
+        {   sfml_compat::key_down, [this]() {
                 move_camera(app::Vector4d(0, -10, 0));
             }
         },
-        {   sf::Keyboard::Up, [this]() {
+        {   sfml_compat::key_up, [this]() {
                 move_camera(app::Vector4d(0, 10, 0));
             }
         },
-        {   sf::Keyboard::Z, [this]() {
+        {   sfml_compat::key_z, [this]() {
                 move_camera(app::Vector4d(0, 0, 10));
             }
         },
-        {   sf::Keyboard::X, [this]() {
+        {   sfml_compat::key_x, [this]() {
                 move_camera(app::Vector4d(0, 0, -10));
             }
         },
-        {   sf::Keyboard::J, [this]() {
+        {   sfml_compat::key_j, [this]() {
                 move_world(app::Vector4d(10, 0, 0));
             }
         },
-        {   sf::Keyboard::L, [this]() {
+        {   sfml_compat::key_l, [this]() {
                 move_world(app::Vector4d(-10, 0, 0));
             }
         },
-        {   sf::Keyboard::K, [this]() {
+        {   sfml_compat::key_k, [this]() {
                 move_world(app::Vector4d(0, -10, 0));
             }
         },
-        {   sf::Keyboard::I, [this]() {
+        {   sfml_compat::key_i, [this]() {
                 move_world(app::Vector4d(0, 10, 0));
             }
         },
-        {   sf::Keyboard::U, [this]() {
+        {   sfml_compat::key_u, [this]() {
                 move_world(app::Vector4d(0, 0, 10));
             }
         },
-        {   sf::Keyboard::O, [this]() {
+        {   sfml_compat::key_o, [this]() {
                 move_world(app::Vector4d(0, 0, -10));
             }
         },
-        {   sf::Keyboard::A, [this]() {
+        {   sfml_compat::key_a, [this]() {
                 yaw(0.01);
             }
         },
-        {   sf::Keyboard::D, [this]() {
+        {   sfml_compat::key_d, [this]() {
                 yaw(-0.01);
             }
         },
-        {   sf::Keyboard::W, [this]() {
+        {   sfml_compat::key_w, [this]() {
                 pitch(0.01);
             }
         },
-        {   sf::Keyboard::S, [this]() {
+        {   sfml_compat::key_s, [this]() {
                 pitch(-0.01);
             }
         },
-        {   sf::Keyboard::Q, [this]() {
+        {   sfml_compat::key_q, [this]() {
                 roll(0.01);
             }
         },
-        {   sf::Keyboard::E, [this]() {
+        {   sfml_compat::key_e, [this]() {
                 roll(-0.01);
             }
         },
-        {   sf::Keyboard::Escape, [this]() {
+        {   sfml_compat::key_escape, [this]() {
                 close();
             }
         },

@@ -82,6 +82,10 @@ void raster_frame(double delta_seconds) {
     draw_teapot();
 }
 
+void raster_move_camera(double x, double y, double z) {
+    camera.move(app::Vector4d(x, y, z));
+}
+
 double raster_angle() {
     return angle;
 }

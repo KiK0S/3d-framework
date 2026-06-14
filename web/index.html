@@ -79,18 +79,39 @@
         const context = canvas.getContext("2d");
         const init = Module.cwrap("raster_init", null, []);
         const frame = Module.cwrap("raster_frame", null, ["number"]);
+        const moveCamera = Module.cwrap("raster_move_camera", null, ["number", "number", "number"]);
         const width = Module.cwrap("raster_width", "number", []);
         const height = Module.cwrap("raster_height", "number", []);
         const pixels = Module.cwrap("raster_pixels", "number", []);
+        const keys = new Set();
+        const navigationKeys = new Set(["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"]);
 
         init();
         canvas.width = width();
         canvas.height = height();
         let previous = performance.now();
 
+        window.addEventListener("keydown", (event) => {
+          if (navigationKeys.has(event.key)) {
+            event.preventDefault();
+            keys.add(event.key);
+          }
+        });
+
+        window.addEventListener("keyup", (event) => {
+          keys.delete(event.key);
+        });
+
         function tick(now) {
-          frame((now - previous) / 1000);
+          const delta = (now - previous) / 1000;
           previous = now;
+          const speed = 260 * Math.min(delta, 0.05);
+          const x = (keys.has("ArrowLeft") ? 1 : 0) + (keys.has("ArrowRight") ? -1 : 0);
+          const y = (keys.has("ArrowUp") ? 1 : 0) + (keys.has("ArrowDown") ? -1 : 0);
+          if (x || y) {
+            moveCamera(x * speed, y * speed, 0);
+          }
+          frame(delta);
           const rgba = new Uint8ClampedArray(Module.HEAPU8.buffer, pixels(), canvas.width * canvas.height * 4);
           context.putImageData(new ImageData(rgba, canvas.width, canvas.height), 0, 0);
           status.textContent = "Running";
