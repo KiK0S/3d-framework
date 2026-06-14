@@ -28,6 +28,6 @@ if(EMSCRIPTEN)
     set_target_properties(rasterizer PROPERTIES
         OUTPUT_NAME "rasterizer"
         SUFFIX ".js"
-        LINK_FLAGS "--bind -s MODULARIZE=0 -s EXPORTED_RUNTIME_METHODS=['cwrap'] -s EXPORTED_FUNCTIONS=['_raster_init','_raster_frame','_raster_width','_raster_height','_raster_pixels','_raster_angle','_malloc','_free'] --preload-file ${CMAKE_CURRENT_LIST_DIR}/../models/teapot.off@/models/teapot.off"
+        LINK_FLAGS "--bind -s MODULARIZE=0 -s EXPORTED_RUNTIME_METHODS=['cwrap','HEAPU8'] -s EXPORTED_FUNCTIONS=['_raster_init','_raster_frame','_raster_width','_raster_height','_raster_pixels','_raster_angle','_malloc','_free'] --preload-file ${CMAKE_CURRENT_LIST_DIR}/../models/teapot.off@/models/teapot.off"
     )
 endif()

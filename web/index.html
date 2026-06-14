@@ -71,34 +71,36 @@
   <main>
     <canvas id="viewport" width="800" height="800"></canvas>
   </main>
-  <script src="rasterizer.js"></script>
   <script>
-    Module.onRuntimeInitialized = () => {
-      const status = document.getElementById("status");
-      const canvas = document.getElementById("viewport");
-      const context = canvas.getContext("2d");
-      const init = Module.cwrap("raster_init", null, []);
-      const frame = Module.cwrap("raster_frame", null, ["number"]);
-      const width = Module.cwrap("raster_width", "number", []);
-      const height = Module.cwrap("raster_height", "number", []);
-      const pixels = Module.cwrap("raster_pixels", "number", []);
+    var Module = {
+      onRuntimeInitialized() {
+        const status = document.getElementById("status");
+        const canvas = document.getElementById("viewport");
+        const context = canvas.getContext("2d");
+        const init = Module.cwrap("raster_init", null, []);
+        const frame = Module.cwrap("raster_frame", null, ["number"]);
+        const width = Module.cwrap("raster_width", "number", []);
+        const height = Module.cwrap("raster_height", "number", []);
+        const pixels = Module.cwrap("raster_pixels", "number", []);
 
-      init();
-      canvas.width = width();
-      canvas.height = height();
-      let previous = performance.now();
+        init();
+        canvas.width = width();
+        canvas.height = height();
+        let previous = performance.now();
 
-      function tick(now) {
-        frame((now - previous) / 1000);
-        previous = now;
-        const rgba = new Uint8ClampedArray(Module.HEAPU8.buffer, pixels(), canvas.width * canvas.height * 4);
-        context.putImageData(new ImageData(rgba, canvas.width, canvas.height), 0, 0);
-        status.textContent = "Running";
+        function tick(now) {
+          frame((now - previous) / 1000);
+          previous = now;
+          const rgba = new Uint8ClampedArray(Module.HEAPU8.buffer, pixels(), canvas.width * canvas.height * 4);
+          context.putImageData(new ImageData(rgba, canvas.width, canvas.height), 0, 0);
+          status.textContent = "Running";
+          requestAnimationFrame(tick);
+        }
+
         requestAnimationFrame(tick);
       }
-
-      requestAnimationFrame(tick);
     };
   </script>
+  <script src="rasterizer.js"></script>
 </body>
 </html>
