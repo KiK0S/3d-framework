@@ -13,6 +13,9 @@ namespace {
 
 constexpr int kWidth = 800;
 constexpr int kHeight = 800;
+constexpr double kInitialSideViewAngle = -1.5707963267948966;
+constexpr double kTeapotCenterZ = 869.0;
+constexpr double kViewDistance = 1030.0;
 
 app::Camera camera(kWidth, kHeight);
 app::Renderer renderer(kWidth, kHeight);
@@ -67,9 +70,8 @@ const uint8_t* raster_pixels() {
 void raster_init() {
     load_teapot();
     frame.resize(kWidth * kHeight * 4, 255);
-    camera.move(app::Vector4d(0, 0, -160));
-    camera.rotate(app::Matrix4d::construct_rotation_matrix(0, -0.45));
-    camera.rotate(app::Matrix4d::construct_rotation_matrix(2, 0.12));
+    camera.rotate(app::Matrix4d::construct_rotation_matrix(0, kInitialSideViewAngle));
+    camera.move(app::Vector4d(0, -kTeapotCenterZ, -kViewDistance));
     draw_teapot();
 }
 

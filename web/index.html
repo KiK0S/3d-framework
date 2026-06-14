@@ -33,11 +33,40 @@
       background: #fbfcf8;
     }
 
+    .titlebar {
+      display: grid;
+      gap: 6px;
+    }
+
     h1 {
       margin: 0;
       font-size: clamp(1.15rem, 2vw, 1.6rem);
       font-weight: 720;
       letter-spacing: 0;
+    }
+
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 14px;
+      font-size: 0.82rem;
+      color: #4c5c53;
+    }
+
+    kbd {
+      display: inline-grid;
+      min-width: 1.45rem;
+      height: 1.45rem;
+      place-items: center;
+      padding: 0 0.32rem;
+      border: 1px solid #aebcaf;
+      border-bottom-width: 2px;
+      border-radius: 4px;
+      background: #ffffff;
+      color: #1d2521;
+      font-family: inherit;
+      font-size: 0.78rem;
+      font-weight: 650;
     }
 
     .status {
@@ -65,7 +94,15 @@
 </head>
 <body>
   <header>
-    <h1>3d-framework WASM teapot</h1>
+    <div class="titlebar">
+      <h1>3d-framework WASM teapot</h1>
+      <div class="controls" aria-label="Controls">
+        <span><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> look</span>
+        <span><kbd>Q</kbd><kbd>E</kbd> roll</span>
+        <span><kbd>Z</kbd><kbd>X</kbd> depth</span>
+        <span><kbd>←</kbd><kbd>↑</kbd><kbd>↓</kbd><kbd>→</kbd> pan</span>
+      </div>
+    </div>
     <div class="status" id="status">Loading...</div>
   </header>
   <main>
