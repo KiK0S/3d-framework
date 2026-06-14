@@ -80,11 +80,25 @@
         const init = Module.cwrap("raster_init", null, []);
         const frame = Module.cwrap("raster_frame", null, ["number"]);
         const moveCamera = Module.cwrap("raster_move_camera", null, ["number", "number", "number"]);
+        const rotateCamera = Module.cwrap("raster_rotate_camera", null, ["number", "number"]);
         const width = Module.cwrap("raster_width", "number", []);
         const height = Module.cwrap("raster_height", "number", []);
         const pixels = Module.cwrap("raster_pixels", "number", []);
         const keys = new Set();
-        const navigationKeys = new Set(["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"]);
+        const navigationKeys = new Set([
+          "ArrowLeft",
+          "ArrowRight",
+          "ArrowUp",
+          "ArrowDown",
+          "KeyA",
+          "KeyD",
+          "KeyS",
+          "KeyW",
+          "KeyQ",
+          "KeyE",
+          "KeyX",
+          "KeyZ",
+        ]);
 
         init();
         canvas.width = width();
@@ -92,24 +106,38 @@
         let previous = performance.now();
 
         window.addEventListener("keydown", (event) => {
-          if (navigationKeys.has(event.key)) {
+          if (navigationKeys.has(event.code)) {
             event.preventDefault();
-            keys.add(event.key);
+            keys.add(event.code);
           }
         });
 
         window.addEventListener("keyup", (event) => {
-          keys.delete(event.key);
+          keys.delete(event.code);
         });
 
         function tick(now) {
           const delta = (now - previous) / 1000;
           previous = now;
           const speed = 260 * Math.min(delta, 0.05);
+          const rotationSpeed = 1.2 * Math.min(delta, 0.05);
           const x = (keys.has("ArrowLeft") ? 1 : 0) + (keys.has("ArrowRight") ? -1 : 0);
           const y = (keys.has("ArrowUp") ? 1 : 0) + (keys.has("ArrowDown") ? -1 : 0);
-          if (x || y) {
-            moveCamera(x * speed, y * speed, 0);
+          const z = (keys.has("KeyZ") ? 1 : 0) + (keys.has("KeyX") ? -1 : 0);
+          const yaw = (keys.has("KeyA") ? 1 : 0) + (keys.has("KeyD") ? -1 : 0);
+          const pitch = (keys.has("KeyW") ? 1 : 0) + (keys.has("KeyS") ? -1 : 0);
+          const roll = (keys.has("KeyQ") ? 1 : 0) + (keys.has("KeyE") ? -1 : 0);
+          if (x || y || z) {
+            moveCamera(x * speed, y * speed, z * speed);
+          }
+          if (yaw) {
+            rotateCamera(0, yaw * rotationSpeed);
+          }
+          if (pitch) {
+            rotateCamera(1, pitch * rotationSpeed);
+          }
+          if (roll) {
+            rotateCamera(2, roll * rotationSpeed);
           }
           frame(delta);
           const rgba = new Uint8ClampedArray(Module.HEAPU8.buffer, pixels(), canvas.width * canvas.height * 4);

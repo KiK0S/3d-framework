@@ -16,6 +16,12 @@ inline bool is_closed(const sf::Event& event) {
     return event.is<sf::Event::Closed>();
 }
 
+inline sf::Vertex vertex(sf::Vector2f position, sf::Color color) {
+    return sf::Vertex{position, color};
+}
+
+inline constexpr sf::PrimitiveType points = sf::PrimitiveType::Points;
+
 inline constexpr sf::Keyboard::Key key_left = sf::Keyboard::Key::Left;
 inline constexpr sf::Keyboard::Key key_right = sf::Keyboard::Key::Right;
 inline constexpr sf::Keyboard::Key key_down = sf::Keyboard::Key::Down;
@@ -46,6 +52,12 @@ inline sf::VideoMode video_mode(std::size_t width, std::size_t height) {
 inline bool is_closed(const sf::Event& event) {
     return event.type == sf::Event::Closed;
 }
+
+inline sf::Vertex vertex(sf::Vector2f position, sf::Color color) {
+    return sf::Vertex(position, color);
+}
+
+inline constexpr sf::PrimitiveType points = sf::Points;
 
 inline constexpr sf::Keyboard::Key key_left = sf::Keyboard::Left;
 inline constexpr sf::Keyboard::Key key_right = sf::Keyboard::Right;

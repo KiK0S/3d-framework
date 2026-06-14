@@ -1,4 +1,5 @@
 #include "screen.h"
+#include "sfml_compat.h"
 #include <cassert>
 #include <vector>
 
@@ -18,7 +19,7 @@ std::vector<sf::Vertex> Screen::get_pixels_to_draw() const {
     for (int i = 0; i < screen_width; i++) {
         for (int j = 0; j < screen_height; j++) {
             if (color_(i, j) != sf::Color::Transparent) {
-                data.push_back(sf::Vertex(sf::Vector2f(i, j), color_(i, j)));
+                data.push_back(sfml_compat::vertex(sf::Vector2f(i, j), color_(i, j)));
             }
         }
     }

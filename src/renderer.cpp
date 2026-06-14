@@ -1,5 +1,6 @@
 #include "matrix.h"
 #include "renderer.h"
+#include "sfml_compat.h"
 #include "triangle.h"
 #include <cassert>
 #include <vector>
@@ -200,7 +201,7 @@ void Renderer::draw_line(int x, double top_y, double bottom_y,
 }
 
 void Renderer::draw_pixels(const std::vector<sf::Vertex>& data, sf::RenderWindow& window) {
-    window.draw(data.data(), data.size(), sf::Points);
+    window.draw(data.data(), data.size(), sfml_compat::points);
 }
 
 }

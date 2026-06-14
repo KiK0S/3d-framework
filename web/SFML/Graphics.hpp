@@ -92,6 +92,48 @@ enum PrimitiveType {
     Points
 };
 
+class VideoMode {
+public:
+    VideoMode(unsigned int = 0, unsigned int = 0) {}
+};
+
+struct Event {
+    enum EventType {
+        Closed
+    };
+
+    EventType type = Closed;
+};
+
+struct Keyboard {
+    enum Key {
+        Left,
+        Right,
+        Down,
+        Up,
+        Z,
+        X,
+        J,
+        L,
+        K,
+        I,
+        U,
+        O,
+        A,
+        D,
+        W,
+        S,
+        Q,
+        E,
+        Space,
+        Escape
+    };
+
+    static bool isKeyPressed(Key) {
+        return false;
+    }
+};
+
 class RenderWindow {
 public:
     void draw(const Vertex*, std::size_t, PrimitiveType) {}

@@ -57,7 +57,6 @@ SurfaceObject Loader::load(const std::string& filename) {
 		for (int j = 0; j < n; j++) {
 			iss >> indices[j];
 		}
-		iss.eof();
 		double A, B, C;
 		if (iss.peek() == ' ') {
 			iss >> A >> B >> C;

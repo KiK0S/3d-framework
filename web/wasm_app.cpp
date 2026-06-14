@@ -76,14 +76,16 @@ void raster_init() {
 void raster_frame(double delta_seconds) {
     load_teapot();
     const double delta = std::min(delta_seconds, 0.05);
-    const double step = delta * 0.75;
-    angle += step;
-    teapot.apply_transform(app::Matrix4d::construct_rotation_matrix(1, step));
+    angle += delta;
     draw_teapot();
 }
 
 void raster_move_camera(double x, double y, double z) {
     camera.move(app::Vector4d(x, y, z));
+}
+
+void raster_rotate_camera(int axis, double angle) {
+    camera.rotate(app::Matrix4d::construct_rotation_matrix(axis, angle));
 }
 
 double raster_angle() {
