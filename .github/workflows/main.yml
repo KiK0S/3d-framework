@@ -13,14 +13,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v6
       - name: Just hello world
         run:  echo Hello, world!
   build:
     runs-on:  ubuntu-latest
 
     steps:
-     - uses:  actions/checkout@v2
+     - uses:  actions/checkout@v6
      - name:  build
        run:   |
               sudo apt -y install libsfml-dev
@@ -33,7 +33,7 @@ jobs:
     runs-on:  ubuntu-latest
 
     steps:
-     - uses:  actions/checkout@v2
+     - uses:  actions/checkout@v6
      - name:  test
        uses:  ./
        id:    cv
